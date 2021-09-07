@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Soft.Data.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Soft.Data
 {
-    public class StudentData : PersonData
+    public class StudentData : PersonRoleData
     {
 
         public List<TheoryCourseData> TheoryCourse { get; set; }

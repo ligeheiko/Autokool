@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Soft.Data
 {
-    public class ExamData : BaseData
+    public class AdministratorData : PersonRoleData
     {
-        public bool Passed { get; set; }
-
+        
     }
 }

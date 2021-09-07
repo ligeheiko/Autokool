@@ -5,8 +5,11 @@ using System.Threading.Tasks;
 
 namespace Soft.Data
 {
-    public class HeadMasterData : TeacherData
+    public enum ClassType
     {
-        
+        Unspecified = 0,
+        Theory = 1,
+        Driving = 2,
+
     }
 }
