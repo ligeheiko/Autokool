@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>aspnet-Soft-E45E7043-4EAD-4B4C-92C6-6583566DE96A</UserSecretsId>
+    <AssemblyName>Autokool.Soft</AssemblyName>
+    <RootNamespace>Autokool.Soft</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,6 +13,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Pages\Pages.csproj" />
   </ItemGroup>
 
 </Project>
