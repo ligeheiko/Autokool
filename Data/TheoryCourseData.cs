@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Soft.Data
+namespace Data
 {
     public class TheoryCourseData : ExamData
     {
