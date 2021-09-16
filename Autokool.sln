@@ -14,6 +14,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{1E7AECD6-21C0-4692-82EF-E2A9AB3B173D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Facade", "Facade\Facade.csproj", "{B0A39840-8FFE-4859-8EE3-29D2CD33F3EF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{41AE5EE4-9C3C-4430-844E-8B3D355E9BB7} = {41AE5EE4-9C3C-4430-844E-8B3D355E9BB7}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra", "Infra\Infra.csproj", "{528EB349-64C5-4B8A-9EF9-6A0E2FCF86D5}"
 EndProject
