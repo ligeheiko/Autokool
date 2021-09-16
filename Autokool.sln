@@ -1,25 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31624.102
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31710.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Soft", "Soft\Soft.csproj", "{DF9929B8-4351-4651-A4A1-2C6F670A9919}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{9819D87A-B164-4668-BBEF-635993C5C7C4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{A7CB2092-EEDA-47C2-8D94-5DACF1A9E6DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aids", "Aids\Aids.csproj", "{7F2089E3-9ECD-46C9-9AEE-9010668EE1DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aids", "Aids\Aids.csproj", "{7F2089E3-9ECD-46C9-9AEE-9010668EE1DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{FEE3B269-38B4-432B-9503-BCB8D49A003B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{FEE3B269-38B4-432B-9503-BCB8D49A003B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{1E7AECD6-21C0-4692-82EF-E2A9AB3B173D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{1E7AECD6-21C0-4692-82EF-E2A9AB3B173D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Facade", "Facade\Facade.csproj", "{B0A39840-8FFE-4859-8EE3-29D2CD33F3EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facade", "Facade\Facade.csproj", "{B0A39840-8FFE-4859-8EE3-29D2CD33F3EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra", "Infra\Infra.csproj", "{528EB349-64C5-4B8A-9EF9-6A0E2FCF86D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra", "Infra\Infra.csproj", "{528EB349-64C5-4B8A-9EF9-6A0E2FCF86D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pages", "Pages\Pages.csproj", "{668647A4-EC98-4CD7-A0BB-BC9121963F2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pages", "Pages\Pages.csproj", "{668647A4-EC98-4CD7-A0BB-BC9121963F2E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{41AE5EE4-9C3C-4430-844E-8B3D355E9BB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,6 @@ Global
 		{9819D87A-B164-4668-BBEF-635993C5C7C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9819D87A-B164-4668-BBEF-635993C5C7C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9819D87A-B164-4668-BBEF-635993C5C7C4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A7CB2092-EEDA-47C2-8D94-5DACF1A9E6DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A7CB2092-EEDA-47C2-8D94-5DACF1A9E6DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A7CB2092-EEDA-47C2-8D94-5DACF1A9E6DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A7CB2092-EEDA-47C2-8D94-5DACF1A9E6DF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7F2089E3-9ECD-46C9-9AEE-9010668EE1DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7F2089E3-9ECD-46C9-9AEE-9010668EE1DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F2089E3-9ECD-46C9-9AEE-9010668EE1DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -63,6 +59,10 @@ Global
 		{668647A4-EC98-4CD7-A0BB-BC9121963F2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{668647A4-EC98-4CD7-A0BB-BC9121963F2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{668647A4-EC98-4CD7-A0BB-BC9121963F2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41AE5EE4-9C3C-4430-844E-8B3D355E9BB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41AE5EE4-9C3C-4430-844E-8B3D355E9BB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41AE5EE4-9C3C-4430-844E-8B3D355E9BB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41AE5EE4-9C3C-4430-844E-8B3D355E9BB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

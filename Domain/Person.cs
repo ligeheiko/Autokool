@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    class Person : Base
+    public enum Person
     {
     }
 }
