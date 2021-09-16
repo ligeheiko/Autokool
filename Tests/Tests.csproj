@@ -30,4 +30,12 @@
     <ProjectReference Include="..\Soft\Soft.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="AidsTests\" />
+    <Folder Include="CoreTests\" />
+    <Folder Include="FacadeTests\" />
+    <Folder Include="InfraTests\" />
+    <Folder Include="PagesTests\" />
+  </ItemGroup>
+
 </Project>

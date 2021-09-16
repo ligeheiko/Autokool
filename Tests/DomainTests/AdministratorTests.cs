@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain
+namespace Autokool.Tests.DomainTests
 {
-    public class Person
+    internal class AdministratorTests : BaseDomainTests
     {
-
     }
 }

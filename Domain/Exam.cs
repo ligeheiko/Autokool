@@ -9,5 +9,7 @@ namespace Domain
 {
     public class Exam : Base
     {
+        public bool Passed { get; }
+
     }
 }
