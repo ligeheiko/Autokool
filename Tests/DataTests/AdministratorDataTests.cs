@@ -1,4 +1,5 @@
-﻿using Data.Common;
+﻿using Data;
+using Data.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -10,12 +11,7 @@ using Tests;
 namespace Autokool.Tests.DataTests
 {
     [TestClass]
-    public class BaseDataTests : BaseTests<BaseData, object>
+    public class AdministratorDataTests : BaseTests<AdministratorData, PersonRoleData>
     {
-        [TestMethod]
-        public void IDTest()
-        {
-            TestProperty(x => obj.ID = x, () => obj.ID);
-        }
     }
 }
