@@ -1,10 +1,6 @@
 ﻿using Data.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Tests;
 
 namespace Autokool.Tests.DataTests
@@ -15,7 +11,17 @@ namespace Autokool.Tests.DataTests
         [TestMethod]
         public void IDTest()
         {
-            TestProperty(x => obj.ID = x, () => obj.ID);
+            TestProperty<string>(nameof(obj.ID));
+        }
+        [TestMethod]
+        public void ValidToTest()
+        {
+            TestProperty<DateTime>(nameof(obj.ValidTo));
+        }
+        [TestMethod]
+        public void ValidFromTest()
+        {
+            TestProperty<DateTime>(nameof(obj.ValidFrom));
         }
     }
 }

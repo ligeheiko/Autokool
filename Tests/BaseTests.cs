@@ -24,14 +24,14 @@ namespace Tests
         {
             Assert.IsInstanceOfType(obj, typeof(TBaseObject));
         }
-        protected void TestProperty<TType>(Action<TType>set , Func<TType> get)
+        protected void TestProperty<TType>(string propertyName)
         {
-            //Genereeri random var
-            //omista see set abil propertile
-            //get meetodiga leiad vaartuse
-            // assert, genereeritud ja tegelik on vordsed
-            //ma ei suutnud valja moelda seda
-            Assert.Inconclusive();
+            var properyInfo = obj.GetType().GetProperty(propertyName);
+            Assert.IsNotNull(properyInfo);
+            var expected = GetRandom.ValueOf<TType>();
+            properyInfo.SetValue(obj, expected);
+            var actual = properyInfo.GetValue(obj);
+            Assert.AreEqual(expected, actual);
         }
     }
 }
