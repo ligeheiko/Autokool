@@ -13,6 +13,7 @@ namespace Domain
         public List<Exam> Exams { get; }
         public List<Course> Courses { get; }
         public List<Student> Students { get; }
+        public List<Teacher> Teachers { get; }
         public void AddNewCourse(Course c, Teacher t, Administrator a) { throw new NotImplementedException(); }
         public void AddTeacher(Teacher t, Administrator a) { throw new NotImplementedException(); }
         public void Remove(Teacher t, Administrator a) { throw new NotImplementedException(); }

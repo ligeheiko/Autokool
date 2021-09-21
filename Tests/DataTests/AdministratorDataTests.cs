@@ -13,5 +13,6 @@ namespace Autokool.Tests.DataTests
     [TestClass]
     public class AdministratorDataTests : BaseTests<AdministratorData, PersonRoleData>
     {
+
     }
 }

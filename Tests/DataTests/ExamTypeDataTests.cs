@@ -13,5 +13,15 @@ namespace Autokool.Tests.DataTests
     [TestClass]
     public class ExamTypeDataTests : BaseTests<ExamTypeData, object>
     {
+        [TestMethod]
+        public void TheoryExamTest()
+        {
+            TestProperty<string>(nameof(obj.TheoryExam));
+        }
+        [TestMethod]
+        public void DrivingExamTest()
+        {
+            TestProperty<string>(nameof(obj.DrivingExam));
+        }
     }
 }

@@ -8,6 +8,6 @@ namespace Data
 {
     public class TeacherData : PersonRoleData
     {
-
+        public List<StudentData> Students { get; set; }
     }
 }

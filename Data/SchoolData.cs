@@ -8,9 +8,10 @@ namespace Data
 {
     public class SchoolData : BaseData
     {
-        public PracticalCourseData PracticalCourse { get; set; }
-        public TheoryCourseData TheoryCourse { get; set; }
-        public StudentData Student { get; set; }
-        public TeacherData Teacher { get; set; }
+        public AdministratorData Administrators { get; set; }
+        public StudentData Students { get; set; }
+        public TeacherData Teachers { get; set; }
+        public CourseData Courses { get; set; }
+
     }
 }

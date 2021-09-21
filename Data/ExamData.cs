@@ -10,5 +10,6 @@ namespace Data
     {
         public bool Passed { get; set; }
 
+        public List<ExamTypeData> ExamTypes { get; set; }
     }
 }

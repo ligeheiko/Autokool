@@ -9,7 +9,6 @@ namespace Data
     public class CourseData : BaseData
     {
         public string Location { get; set; }
-        public DateTime Beginning { get; set; }
-        public DateTime End { get; set; }
+        public List<CourseType> CourseTypes { get; set; }
     }
 }
