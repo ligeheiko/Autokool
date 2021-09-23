@@ -14,10 +14,10 @@ namespace Autokool.Tests.DataTests
         {
             TestProperty<bool>(nameof(obj.Passed));
         }
-        [TestMethod]
-        public void ExamTypeTest()
-        {
-            TestProperty<List<ExamTypeData>>(nameof(obj.ExamType));
-        }
+        //[TestMethod]
+        //public void ExamTypeTest()
+        //{
+        //    TestProperty<List<ExamTypeData>>(nameof(obj.ExamType));
+        //}
     }
 }

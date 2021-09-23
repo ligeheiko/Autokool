@@ -9,6 +9,6 @@ namespace Data
     public class CourseData : BaseData
     {
         public string Location { get; set; }
-        public List<CourseType> CourseType { get; set; }
+        //public List<CourseType> CourseType { get; set; }
     }
 }

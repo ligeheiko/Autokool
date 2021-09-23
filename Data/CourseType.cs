@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Data
 {
-    public enum CourseType
+    [Keyless]
+    public class CourseType
     {
-        Unspecified = 0,
-        Theory = 1,
-        Driving = 2,
+        public string Unspecified { get; set; }
+        public string Theory { get; set; }
+        public string Driving { get; set; }
+
     }
 }
