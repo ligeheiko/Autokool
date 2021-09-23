@@ -11,22 +11,22 @@ namespace Autokool.Tests.DataTests
         [TestMethod]
         public void AdministratorTest()
         {
-            TestProperty<AdministratorData>(nameof(obj.Administrators));
+            TestProperty<AdministratorData>(nameof(obj.Administrator));
         }
         [TestMethod]
         public void TeacherTest()
         {
-            TestProperty<TeacherData>(nameof(obj.Teachers));
+            TestProperty<TeacherData>(nameof(obj.Teacher));
         }
         [TestMethod]
         public void StudentTest()
         {
-            TestProperty<StudentData>(nameof(obj.Students));
+            TestProperty<StudentData>(nameof(obj.Student));
         }
         [TestMethod]
         public void CourseTest()
         {
-            TestProperty<CourseData>(nameof(obj.Courses));
+            TestProperty<CourseData>(nameof(obj.Course));
         }
     }
 }

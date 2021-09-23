@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    public class TeacherData : PersonRoleData
+    public class TeacherData : PersonData
     {
-        public List<StudentData> Students { get; set; }
+        public List<StudentData> Student { get; set; }
     }
 }

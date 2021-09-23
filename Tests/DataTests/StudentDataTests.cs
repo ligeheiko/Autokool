@@ -11,7 +11,7 @@ namespace Autokool.Tests.DataTests
         [TestMethod]
         public void CourseTest()
         {
-            TestProperty<CourseData>(nameof(obj.Courses));
+            TestProperty<CourseData>(nameof(obj.Course));
         }
     }
 }

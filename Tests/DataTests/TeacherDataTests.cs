@@ -12,7 +12,7 @@ namespace Autokool.Tests.DataTests
         [TestMethod]
         public void StudentTest()
         {
-            TestProperty<List<StudentData>>(nameof(obj.Students));
+            TestProperty<List<StudentData>>(nameof(obj.Student));
         }
     }
 }

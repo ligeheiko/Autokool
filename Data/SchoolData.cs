@@ -8,10 +8,10 @@ namespace Data
 {
     public class SchoolData : BaseData
     {
-        public AdministratorData Administrators { get; set; }
-        public StudentData Students { get; set; }
-        public TeacherData Teachers { get; set; }
-        public CourseData Courses { get; set; }
+        public AdministratorData Administrator { get; set; }
+        public StudentData Student { get; set; }
+        public TeacherData Teacher { get; set; }
+        public CourseData Course { get; set; }
 
     }
 }

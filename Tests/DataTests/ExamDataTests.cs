@@ -17,7 +17,7 @@ namespace Autokool.Tests.DataTests
         [TestMethod]
         public void ExamTypeTest()
         {
-            TestProperty<List<ExamTypeData>>(nameof(obj.ExamTypes));
+            TestProperty<List<ExamTypeData>>(nameof(obj.ExamType));
         }
     }
 }
