@@ -18,10 +18,10 @@ namespace Autokool.Tests.DataTests
         {
             TestProperty<string>(nameof(obj.Location));
         }
-        //[TestMethod]
-        //public void ClassTypesTest()
-        //{
-        //    TestProperty<List<CourseType>>(nameof(obj.CourseType));
-        //}
+        [TestMethod]
+        public void ClassTypesTest()
+        {
+            TestProperty<string>(nameof(obj.CourseTypeID));
+        }
     }
 }
