@@ -12,5 +12,10 @@ namespace Autokool.Tests.DataTests
         {
             TestProperty<string>(nameof(obj.PersonID));
         }
+        [TestMethod]
+        public void RoleTypeIDTest()
+        {
+            TestProperty<string>(nameof(obj.RoleTypeID));
+        }
     }
 }

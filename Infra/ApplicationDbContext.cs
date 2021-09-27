@@ -1,4 +1,5 @@
 ﻿using Data;
+using Data.Common;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

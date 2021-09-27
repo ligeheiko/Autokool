@@ -11,7 +11,7 @@ using Tests;
 namespace Autokool.Tests.DataTests
 {
     [TestClass]
-    public class AdministratorDataTests : BaseTests<AdministratorData, PersonRoleData>
+    public class AdministratorDataTests : BaseTests<AdministratorData, PersonData>
     {
 
     }

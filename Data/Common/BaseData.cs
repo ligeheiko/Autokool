@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Data.Common
 {
-    public class BaseData
+    public abstract class BaseData
     {
         public string ID { get; set; }
         public DateTime ValidFrom { get; set; }

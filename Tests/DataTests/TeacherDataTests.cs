@@ -7,7 +7,7 @@ using Tests;
 namespace Autokool.Tests.DataTests
 {
     [TestClass]
-    public class TeacherDataTests : BaseTests<TeacherData, PersonRoleData>
+    public class TeacherDataTests : BaseTests<TeacherData, PersonData>
     {
         [TestMethod]
         public void StudentTest()
