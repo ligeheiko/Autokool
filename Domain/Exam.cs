@@ -1,15 +1,9 @@
-﻿using Domain.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Data;
+using Domain.Common;
 
 namespace Domain
 {
-    public class Exam : Base
+    public class Exam : BaseEntity<ExamData>
     {
-        public bool Passed { get; }
-
     }
 }

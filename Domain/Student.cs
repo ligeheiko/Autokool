@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Common;
+using Data;
 
 namespace Domain
 {
-    public class Student : PartyRole
+    public class Student : Person<StudentData>
     {
     }
 }

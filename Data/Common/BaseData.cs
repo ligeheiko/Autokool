@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Data.Common
 {
-    public abstract class BaseData
+    public class BaseData : IEntityData
     {
         public string ID { get; set; }
         public DateTime ValidFrom { get; set; }

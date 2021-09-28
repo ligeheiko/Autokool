@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Data;
 
 namespace Domain
 {
-    public class School : Base
+    public class School : BaseEntity<SchoolData>
     {
         public List<Administrator> Administrators { get; }
         public List<Exam> Exams { get; }

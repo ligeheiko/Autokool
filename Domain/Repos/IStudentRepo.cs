@@ -1,14 +1,12 @@
 ﻿using System;
-using Domain.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain
+namespace Domain.Repos
 {
-    public class PartyRole/*: Base*/
+    public interface IStudentRepo : IRepo<Student>
     {
-        //see vastab personRoleDatale?
     }
 }

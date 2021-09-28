@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Common
+namespace Core
 {
-    public class Base
+    public interface IBaseEntity
     {
         public string ID { get; }
-        public DateTime ValidFrom { get; set; }
-        public DateTime ValidTo { get; set; }
+        public DateTime ValidFrom { get; }
+        public DateTime ValidTo { get; }
     }
 }
