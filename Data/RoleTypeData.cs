@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Data
 {
     public class RoleTypeData
     {
-        public string ID{ get; set; }
+        public string AdministratorID{ get; set; }
+        public string StudentID { get; set; }
+        public string TeacherID { get; set; }
+        //ei ole kindel kas see on vajalik
     }
 }
