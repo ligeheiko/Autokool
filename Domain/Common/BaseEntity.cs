@@ -1,8 +1,8 @@
-﻿using Contoso.Aids;
-using Core;
+﻿using Autokool.Aids;
+using Autokool.Core;
 using System;
 
-namespace Domain.Common
+namespace Autokool.Domain.Common
 {
     public class BaseEntity<TData>  where TData
         : class , IEntityData, new ()

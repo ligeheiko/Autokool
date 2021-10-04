@@ -1,6 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace Data
+﻿
+namespace Autokool.Data.DrivingSchool
 {
     public class ExamTypeData
     {

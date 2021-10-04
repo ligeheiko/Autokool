@@ -1,9 +1,9 @@
 ﻿using System;
-using Domain.Common;
+using Autokool.Domain.Common;
 using System.Collections.Generic;
-using Data;
+using Autokool.Data.DrivingSchool;
 
-namespace Domain
+namespace Autokool.Domain
 {
     public class School : BaseEntity<SchoolData>
     {

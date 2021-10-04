@@ -1,7 +1,7 @@
-﻿using Core;
-using Data.Common;
+﻿using Autokool.Data.Common;
+using Autokool.Core;
 
-namespace Domain.Common
+namespace Autokool.Domain.Common
 {
     public abstract class Person<TData> : BaseEntity<TData>,
         IPersonEntity where TData : PersonData, new()

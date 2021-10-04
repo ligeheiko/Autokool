@@ -1,7 +1,7 @@
-﻿using Domain.Repos;
+﻿using Autokool.Domain.Repos;
 using System;
 
-namespace Domain.Common
+namespace Autokool.Domain.Common
 {
     public static class GetRepo
     {

@@ -1,7 +1,7 @@
-﻿using Domain.Common;
-using Data;
+﻿using Autokool.Domain.Common;
+using Autokool.Data.DrivingSchool;
 
-namespace Domain
+namespace Autokool.Domain
 {
     public class Student : Person<StudentData>
     {

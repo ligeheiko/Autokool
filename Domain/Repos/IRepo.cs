@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Domain.Repos
+namespace Autokool.Domain.Repos
 {
     public interface IRepo<TDomainObject>
     {

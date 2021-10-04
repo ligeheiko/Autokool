@@ -1,7 +1,9 @@
 ﻿using System.Reflection;
 
-namespace Contoso.Aids {
-    public static class NonPublicFlagsFor {
+namespace Autokool.Aids
+{
+    public static class NonPublicFlagsFor
+    {
         private const BindingFlags p = BindingFlags.NonPublic;
         private const BindingFlags i = BindingFlags.Instance;
         private const BindingFlags s = BindingFlags.Static;
@@ -9,6 +11,6 @@ namespace Contoso.Aids {
         public const BindingFlags All = p | i | s;
         public const BindingFlags Instance = p | i;
         public const BindingFlags Static = p | s;
-        public const BindingFlags Declared = p | d | i | s; 
+        public const BindingFlags Declared = p | d | i | s;
     }
 }

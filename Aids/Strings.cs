@@ -2,8 +2,10 @@
 using System.Globalization;
 using System.Linq;
 
-namespace Contoso.Aids {
-    public static class Strings {
+namespace Autokool.Aids
+{
+    public static class Strings
+    {
 
         public static string Format(this string s, params object[] args)
             => Safe.Run(
@@ -15,7 +17,8 @@ namespace Contoso.Aids {
                 false);
         public static string Backwards(this string s)
             => Safe.Run(
-                () => {
+                () =>
+                {
                     if (s is null) return string.Empty;
                     var x = s.Length - 1;
                     var r = string.Empty;
@@ -40,14 +43,16 @@ namespace Contoso.Aids {
                 s ?? string.Empty);
         public static string GetHead(this string s, char separator = '.')
             => Safe.Run(
-                () => {
+                () =>
+                {
                     if (string.IsNullOrWhiteSpace(s)) return string.Empty;
                     var i = s.IndexOf(separator);
                     return i < 0 ? s : s.Substring(0, i);
                 }, string.Empty);
         public static string GetTail(this string s, char separator = '.')
             => Safe.Run(
-                () => {
+                () =>
+                {
                     if (string.IsNullOrWhiteSpace(s)) return string.Empty;
                     var i = s.IndexOf(separator);
 
@@ -55,27 +60,31 @@ namespace Contoso.Aids {
                 }, string.Empty);
         public static string IfNullSetEmpty(string s) => s ?? string.Empty;
         public static string Trim(string s) => IfNullSetEmpty(s).Trim();
-        public static bool Contains(string s1, string s2) {
+        public static bool Contains(string s1, string s2)
+        {
             if (string.IsNullOrEmpty(s1)) return false;
             return !string.IsNullOrEmpty(s2) && s1.Contains(s2);
         }
         public static int GetLength(string x) => !string.IsNullOrEmpty(x) ? x.Length : 0;
         public static string ToLower(string s) => string.IsNullOrEmpty(s) ? string.Empty : s.ToLower();
         public static string ToUpper(string s) => string.IsNullOrEmpty(s) ? string.Empty : s.ToUpper();
-        public static string Substring(string s, int startIndex) 
+        public static string Substring(string s, int startIndex)
             => !string.IsNullOrEmpty(s) ? s[startIndex..] : string.Empty;
-        public static string Substring(string s, int startIndex, int length) 
+        public static string Substring(string s, int startIndex, int length)
             => !string.IsNullOrEmpty(s) ? s.Substring(startIndex, length) : string.Empty;
-        public static bool EndsWith(string x, string y) {
+        public static bool EndsWith(string x, string y)
+        {
             if (string.IsNullOrEmpty(x)) return false;
             return !string.IsNullOrEmpty(y) && x.EndsWith(y);
         }
-        public static bool StartsWith(string x, string y) {
+        public static bool StartsWith(string x, string y)
+        {
             if (string.IsNullOrEmpty(x)) return false;
             return !string.IsNullOrEmpty(y) && x.StartsWith(y);
         }
         internal static string addStringPattern => "{0}{1}";
-        public static string Add(string s1, string s2) {
+        public static string Add(string s1, string s2)
+        {
             s1 ??= string.Empty;
             s2 ??= string.Empty;
             return string.Format(addStringPattern, s1, s2);

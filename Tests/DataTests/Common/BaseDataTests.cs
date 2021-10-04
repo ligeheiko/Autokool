@@ -1,9 +1,9 @@
-﻿using Data.Common;
+﻿using Autokool.Data.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Tests;
 
-namespace Autokool.Tests.DataTests
+namespace Autokool.Tests.DataTests.Common
 {
     [TestClass]
     public class BaseDataTests : BaseTests<BaseData, object>

@@ -1,7 +1,7 @@
-﻿using Core;
+﻿using Autokool.Core;
 using System;
 
-namespace Data.Common
+namespace Autokool.Data.Common
 {
     public class BaseData : IEntityData
     {

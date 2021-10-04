@@ -1,6 +1,6 @@
-﻿using Data.Common;
+﻿using Autokool.Data.Common;
 
-namespace Data
+namespace Autokool.Data.DrivingSchool
 {
     public class SchoolData : BaseData
     {

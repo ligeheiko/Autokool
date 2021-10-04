@@ -1,7 +1,6 @@
-﻿using Data;
-using Data.Common;
+﻿using Autokool.Data.Common;
 
-namespace Domain.Repos
+namespace Autokool.Domain.Repos
 {
     public interface IPersonRepo : IRepo<PersonData>
     {

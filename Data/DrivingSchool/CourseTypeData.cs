@@ -1,5 +1,5 @@
 ﻿
-namespace Data
+namespace Autokool.Data.DrivingSchool
 {
     public class CourseTypeData
     {

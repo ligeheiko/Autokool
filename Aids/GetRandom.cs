@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 
-namespace Contoso.Aids {
-    public static class GetRandom {
+namespace Autokool.Aids
+{
+    public static class GetRandom
+    {
         public static sbyte Int8(sbyte min = sbyte.MinValue, sbyte max = sbyte.MaxValue)
             => Convert.ToSByte(rnd(min, max));
         public static short Int16(short min = short.MinValue, short max = short.MaxValue)
@@ -28,31 +30,35 @@ namespace Contoso.Aids {
               => rnd(min, max);
         public static decimal Decimal(decimal min = decimal.MinValue, decimal max = decimal.MaxValue)
             => Convert.ToDecimal(rnd(Convert.ToDouble(min), Convert.ToDouble(max)));
-        public static DateTime DateTime(DateTime? minValue = null, DateTime? maxValue = null) {
+        public static DateTime DateTime(DateTime? minValue = null, DateTime? maxValue = null)
+        {
             DateTime min = minValue ?? System.DateTime.MinValue;
             DateTime max = maxValue ?? System.DateTime.MaxValue;
             var ticks = Convert.ToInt64(rnd(Convert.ToDouble(min.Ticks), Convert.ToDouble(max.Ticks)));
             return new DateTime(ticks);
         }
-        public static string String(uint minLength = 5, uint maxLength = 30) {
+        public static string String(uint minLength = 5, uint maxLength = 30)
+        {
             var min = getMin(minLength, maxLength);
             var max = getMax(minLength, maxLength);
             var rnd = new Random();
-            var length = Int32((int)min, (int)max); 
+            var length = Int32((int)min, (int)max);
             byte[] bytes = new byte[length];
             rnd.NextBytes(bytes);
             return Encoding.UTF8.GetString(bytes);
         }
-        public static string Text(uint minLength = 5, uint maxLength = 30) {
+        public static string Text(uint minLength = 5, uint maxLength = 30)
+        {
             var b = new StringBuilder();
             var size = UInt32(minLength, maxLength);
             for (var i = 0; i < size; i++) b.Append(Char('a', 'z'));
             return b.ToString();
         }
-        internal static T getMax<T>(T x, T y) where T: IComparable => x.CompareTo(y) > 0 ? x : y;
+        internal static T getMax<T>(T x, T y) where T : IComparable => x.CompareTo(y) > 0 ? x : y;
         internal static T getMin<T>(T x, T y) where T : IComparable => x.CompareTo(y) < 0 ? x : y;
-        internal static double rnd(double minValue, double maxValue) {
-            var rnd = new Random().NextDouble(); 
+        internal static double rnd(double minValue, double maxValue)
+        {
+            var rnd = new Random().NextDouble();
             var min = getMin(minValue, maxValue) / 10.0;
             var max = getMax(minValue, maxValue) / 10.0;
             return (rnd * (max - min) + min) * 10.0;
@@ -63,14 +69,16 @@ namespace Contoso.Aids {
         public static Color Color()
             => System.Drawing.Color.FromArgb(UInt8(), UInt8(), UInt8());
         public static T EnumOf<T>() => (T)EnumOf(typeof(T));
-        public static object EnumOf(Type t) {
+        public static object EnumOf(Type t)
+        {
             var count = GetEnum.Count(t);
             var index = Int32(0, count);
             return GetEnum.ValueByIndex(t, index);
         }
-        public static TimeSpan TimeSpan() => new (Int64());
+        public static TimeSpan TimeSpan() => new(Int64());
         public static object ValueOf<T>() => ValueOf(typeof(T));
-        public static object ValueOf(Type t) {
+        public static object ValueOf(Type t)
+        {
             var x = Nullable.GetUnderlyingType(t);
             if (!(x is null)) t = x;
             if (t.IsArray) return ArrayOf(t.GetElementType());
@@ -110,7 +118,8 @@ namespace Contoso.Aids {
             if (t == typeof(TimeSpan)) return TimeSpan();
             return ObjectOf(t);
         }
-        public static object ArrayOf(Type t) {
+        public static object ArrayOf(Type t)
+        {
             if (t is null) return null;
             var listType = typeof(List<>);
             var constructedListType = listType.MakeGenericType(t);
@@ -122,7 +131,8 @@ namespace Contoso.Aids {
         }
 
         public static T ObjectOf<T>() => (T)ObjectOf(typeof(T));
-        public static object ObjectOf(Type t) {
+        public static object ObjectOf(Type t)
+        {
             var o = CreateNew.Instance(t);
             SetRandom.Values(o);
             return o;
@@ -131,14 +141,17 @@ namespace Contoso.Aids {
             => $"{Text()}.{Text()}@{Text()}.{Text()}";
         public static string Password()
             => $"{Text()}{Char('\x20', '\x2f')}{UInt32()}.{Text().ToUpper()}";
-        public static List<T> List<T>(Func<T> func) {
+        public static List<T> List<T>(Func<T> func)
+        {
             var list = new List<T>();
             for (var i = 0; i < UInt8(2, 10); i++) list.Add(func());
             return list;
         }
-        public static object AnyDouble(byte minValue = 0, byte maxValue = 100) {
+        public static object AnyDouble(byte minValue = 0, byte maxValue = 100)
+        {
             var i = UInt8();
-            return (i % 10) switch {
+            return (i % 10) switch
+            {
                 0 => Int32(minValue, maxValue),
                 1 => UInt32(minValue, maxValue),
                 2 => Float(minValue, maxValue),
@@ -151,9 +164,11 @@ namespace Contoso.Aids {
                 _ => Double(minValue, maxValue)
             };
         }
-        public static object AnyInt(byte minValue = 0, byte maxValue = 100) {
+        public static object AnyInt(byte minValue = 0, byte maxValue = 100)
+        {
             var i = UInt8();
-            return (i % 5) switch {
+            return (i % 5) switch
+            {
                 0 => Int8(0),
                 1 => UInt8(minValue, maxValue),
                 2 => Int16(minValue, maxValue),
@@ -161,9 +176,11 @@ namespace Contoso.Aids {
                 _ => Int32(minValue, maxValue)
             };
         }
-        public static object AnyValue() {
+        public static object AnyValue()
+        {
             var i = Int32();
-            return (i % 10) switch {
+            return (i % 10) switch
+            {
                 0 => (object)DateTime(),
                 1 => String(),
                 2 => Char(),

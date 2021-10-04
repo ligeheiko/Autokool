@@ -1,7 +1,7 @@
-﻿using Data;
-using Domain.Common;
+﻿using Autokool.Data.DrivingSchool;
+using Autokool.Domain.Common;
 
-namespace Domain
+namespace Autokool.Domain
 {
     public class Course : BaseEntity<CourseData>
     {

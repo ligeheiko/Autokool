@@ -1,6 +1,6 @@
-﻿using Data;
+﻿using Autokool.Data.DrivingSchool;
 
-namespace Domain.Repos
+namespace Autokool.Domain.Repos
 {
     public interface IExamRepo : IRepo<ExamData>
     {

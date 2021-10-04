@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Core
+namespace Autokool.Core
 {
     public interface IEntityData : IBaseEntity
     {

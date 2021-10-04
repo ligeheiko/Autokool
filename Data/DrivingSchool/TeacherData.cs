@@ -1,7 +1,7 @@
-﻿using Data.Common;
+﻿using Autokool.Data.Common;
 using System.Collections.Generic;
 
-namespace Data
+namespace Autokool.Data.DrivingSchool
 {
     public class TeacherData : PersonData
     {
