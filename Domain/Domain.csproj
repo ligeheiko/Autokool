@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>Autokool.Domain</AssemblyName>
+    <RootNamespace>Autokool.Domain</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
