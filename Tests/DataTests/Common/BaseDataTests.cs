@@ -1,4 +1,5 @@
-﻿using Autokool.Data.Common;
+﻿using Autokool.Aids;
+using Autokool.Data.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Tests;
@@ -6,22 +7,22 @@ using Tests;
 namespace Autokool.Tests.DataTests.Common
 {
     [TestClass]
-    public class BaseDataTests : BaseTests<BaseData, object>
+    public class BaseDataTests : AbstractTests<BaseData, object>
     {
         [TestMethod]
         public void IDTest()
         {
-            TestProperty<string>(nameof(obj.ID));
+            isProperty<string>();
         }
         [TestMethod]
         public void ValidToTest()
         {
-            TestProperty<DateTime>(nameof(obj.ValidTo));
+            isProperty<DateTime>();
         }
         [TestMethod]
         public void ValidFromTest()
         {
-            TestProperty<DateTime>(nameof(obj.ValidFrom));
+            isProperty<DateTime>();
         }
     }
 }

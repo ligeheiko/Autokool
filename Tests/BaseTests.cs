@@ -1,37 +1,64 @@
-using Autokool.Aids;
+﻿using Autokool.Aids;
+using Autokool.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Tests
 {
-    [TestClass]
-    public class BaseTests<TObject, TBaseObject> where TObject : new ()
+    public class BaseTests : TestAids
     {
-        protected TObject obj { get; private set; }
-        [TestInitialize]
-        public void TestInitialize()
+        protected Type type;
+
+        [TestCleanup]
+        public virtual void TestCleanup()
         {
-            obj = new TObject();
+            objUnderTests = null;
+            type = null;
         }
         [TestMethod]
-        public void CanCreateTest()
+        public virtual void IsSpecifiedClassTested()
         {
-            Assert.IsNotNull(obj);
+            if (type == null) notTested(notSpecifiedMsg);
+            var testClassName = GetType().Name;
+            isTrue(testClassName.StartsWith(testableClassName));
         }
         [TestMethod]
-        public void IsInheritedFrom()
+        public virtual void IsTested()
         {
-            Assert.IsInstanceOfType(obj, typeof(TBaseObject));
+            if (type == null) notTested(notSpecifiedMsg);
+            members = publicDeclaredMembers;
+            removeTestedMethods();
+            if (!isTested) notTested(notTestedMsg, members[0]);
         }
-        protected void TestProperty<TType>(string propertyName)
+        private const string notSpecifiedMsg = "Class is not specified";
+        private const string notTestedMsg = "<{0}> is not tested";
+        private List<string> members { get; set; }
+        private bool isTested => members.Count == 0;
+        private string testableClassName
         {
-            var properyInfo = obj.GetType().GetProperty(propertyName);
-            Assert.IsNotNull(properyInfo);
-            var expected = GetRandom.ValueOf<TType>();
-            properyInfo.SetValue(obj, expected);
-            var actual = properyInfo.GetValue(obj);
-            Assert.AreEqual(expected, actual);
+            get
+            {
+                var s = type.Name;
+                var index = s.IndexOf("`", StringComparison.Ordinal);
+                if (index > -1) s = s.Substring(0, index);
+                return s;
+            }
+        }
+        private List<string> publicDeclaredMembers
+                => GetClass.Members(type, PublicFlagsFor.Declared).Select(e => e.Name).ToList();
+
+        private void removeTestedMethods()
+        {
+            var tests = GetType().GetMembers().Select(e => e.Name).ToList();
+            for (var i = members.Count; i > 0; i--)
+            {
+                var m = members[i - 1] + "Test";
+                var isTested = tests.Find(o => o == m);
+                if (string.IsNullOrEmpty(isTested)) continue;
+                members.RemoveAt(i - 1);
+            }
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Autokool.Data.DrivingSchool
 {
-    public class AdministratorData : PersonData
+    public sealed class AdministratorData : PersonData
     {
 
     }

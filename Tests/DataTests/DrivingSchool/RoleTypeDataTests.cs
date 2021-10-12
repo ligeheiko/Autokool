@@ -5,22 +5,22 @@ using Tests;
 namespace Autokool.Tests.DataTests.DrivingSchool
 {
     [TestClass]
-    public class RoleTypeDataTests : BaseTests<RoleTypeData, object>
+    public class RoleTypeDataTests : SealedTests<RoleTypeData, object>
     {
         [TestMethod]
         public void AdministratorIDTest()
         {
-            TestProperty<string>(nameof(obj.AdministratorID));
+            isProperty<string>();
         }
         [TestMethod]
         public void StudentIDTest()
         {
-            TestProperty<string>(nameof(obj.StudentID));
+            isProperty<string>();
         }
         [TestMethod]
         public void TeacherIDTest()
         {
-            TestProperty<string>(nameof(obj.TeacherID));
+            isProperty<string>();
         }
     }
 }

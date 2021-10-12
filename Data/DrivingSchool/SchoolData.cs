@@ -2,7 +2,7 @@
 
 namespace Autokool.Data.DrivingSchool
 {
-    public class SchoolData : BaseData
+    public sealed class SchoolData : BaseData
     {
         public AdministratorData Administrator { get; set; }
         public StudentData Student { get; set; }

@@ -2,9 +2,9 @@
 
 namespace Autokool.Data.DrivingSchool
 {
-    public class ExamData : BaseData
+    public sealed class ExamData : BaseData
     {
-        public bool Passed { get; set; }
+        public bool? Passed { get; set; }
         public string ExamTypeID { get; set; }
         //public List<ExamTypeData> ExamType { get; set; }
     }

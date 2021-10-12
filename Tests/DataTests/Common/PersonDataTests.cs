@@ -1,31 +1,32 @@
-﻿using Autokool.Data.Common;
+﻿using Autokool.Aids;
+using Autokool.Data.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Tests;
 
 namespace Autokool.Tests.DataTests.Common
 {
     [TestClass]
-    public class PersonDataTests : BaseTests<PersonData, BaseData>
+    public class PersonDataTests : AbstractTests<PersonData, BaseData>
     {
         [TestMethod]
         public void FirstNameTest()
         {
-            TestProperty<string>(nameof(obj.FirstName));
+            isProperty<string>();
         }
         [TestMethod]
         public void LastNameTest()
         {
-            TestProperty<string>(nameof(obj.LastName));
+            isProperty<string>();
         }
         [TestMethod]
         public void EmailTest()
         {
-            TestProperty<string>(nameof(obj.Email));
+            isProperty<string>();
         }
         [TestMethod]
         public void PhoneNrTest()
         {
-            TestProperty<string>(nameof(obj.PhoneNr));
+            isProperty<string>();
         }
     }
 }

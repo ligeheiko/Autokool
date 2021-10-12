@@ -2,7 +2,7 @@
 
 namespace Autokool.Data.DrivingSchool
 {
-    public class CourseData : BaseData
+    public sealed class CourseData : BaseData
     {
         public string Location { get; set; }
         public string CourseTypeID { get; set; }

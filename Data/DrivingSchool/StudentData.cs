@@ -2,7 +2,7 @@
 
 namespace Autokool.Data.DrivingSchool
 {
-    public class StudentData : PersonData
+    public sealed class StudentData : PersonData
     {
         public CourseData Course { get; set; }
     }

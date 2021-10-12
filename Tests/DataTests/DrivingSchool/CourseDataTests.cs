@@ -6,17 +6,17 @@ using Tests;
 namespace Autokool.Tests.DataTests.DrivingSchool
 {
     [TestClass]
-    public class CourseDataTests : BaseTests<CourseData, BaseData>
+    public class CourseDataTests : SealedTests<CourseData, BaseData>
     {
         [TestMethod]
         public void LocationTest()
         {
-            TestProperty<string>(nameof(obj.Location));
+            isProperty<string>();
         }
         [TestMethod]
-        public void ClassTypesTest()
+        public void CourseTypeIDTest()
         {
-            TestProperty<string>(nameof(obj.CourseTypeID));
+            isProperty<string>();
         }
     }
 }

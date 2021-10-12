@@ -1,26 +1,25 @@
 ﻿using Autokool.Data.DrivingSchool;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Tests;
 
 namespace Autokool.Tests.DataTests.DrivingSchool
 {
     [TestClass]
-    public class ExamTypeDataTests : BaseTests<ExamTypeData, object>
+    public class ExamTypeDataTests : SealedTests<ExamTypeData, object>
     {
         [TestMethod]
         public void IDTest()
         {
-            TestProperty<string>(nameof(obj.ID));
+            isProperty<string>();
         }
         [TestMethod]
         public void TheoryExamTest()
         {
-            TestProperty<string>(nameof(obj.TheoryExam));
+            isProperty<string>();
         }
         [TestMethod]
         public void DrivingExamTest()
         {
-            TestProperty<string>(nameof(obj.DrivingExam));
+            isProperty<string>();
         }
     }
 }

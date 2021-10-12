@@ -1,7 +1,7 @@
 ﻿
 namespace Autokool.Data.DrivingSchool
 {
-    public class RoleTypeData
+    public sealed class RoleTypeData
     {
         public string AdministratorID{ get; set; }
         public string StudentID { get; set; }

@@ -7,12 +7,12 @@ using Tests;
 namespace Autokool.Tests.DataTests.DrivingSchool
 {
     [TestClass]
-    public class TeacherDataTests : BaseTests<TeacherData, PersonData>
+    public class TeacherDataTests : SealedTests<TeacherData, PersonData>
     {
         [TestMethod]
         public void StudentTest()
         {
-            TestProperty<List<StudentData>>(nameof(obj.Student));
+            isProperty<List<StudentData>>();
         }
     }
 }

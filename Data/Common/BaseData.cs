@@ -3,7 +3,7 @@ using System;
 
 namespace Autokool.Data.Common
 {
-    public class BaseData : IEntityData
+    public abstract class BaseData : IEntityData
     {
         public string ID { get; set; }
         public DateTime ValidFrom { get; set; }

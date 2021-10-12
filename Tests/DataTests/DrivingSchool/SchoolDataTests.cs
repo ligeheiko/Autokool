@@ -6,27 +6,27 @@ using Tests;
 namespace Autokool.Tests.DataTests.DrivingSchool
 {
     [TestClass]
-    public class SchoolDataTests : BaseTests<SchoolData, BaseData>
+    public class SchoolDataTests : SealedTests<SchoolData, BaseData>
     {
         [TestMethod]
         public void AdministratorTest()
         {
-            TestProperty<AdministratorData>(nameof(obj.Administrator));
+            isProperty<AdministratorData>();
         }
         [TestMethod]
         public void TeacherTest()
         {
-            TestProperty<TeacherData>(nameof(obj.Teacher));
+            isProperty<TeacherData>();
         }
         [TestMethod]
         public void StudentTest()
         {
-            TestProperty<StudentData>(nameof(obj.Student));
+            isProperty<StudentData>();
         }
         [TestMethod]
         public void CourseTest()
         {
-            TestProperty<CourseData>(nameof(obj.Course));
+            isProperty<CourseData>();
         }
     }
 }
