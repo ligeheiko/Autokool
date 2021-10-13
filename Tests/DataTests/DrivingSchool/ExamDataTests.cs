@@ -1,7 +1,6 @@
 ﻿using Autokool.Data.Common;
 using Autokool.Data.DrivingSchool;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Tests;
 
 namespace Autokool.Tests.DataTests.DrivingSchool
 {
@@ -11,7 +10,7 @@ namespace Autokool.Tests.DataTests.DrivingSchool
         [TestMethod]
         public void PassedTest()
         {
-            isProperty<bool>();
+            isProperty<bool>(false);
         }
         [TestMethod]
         public void ExamTypeIDTest()

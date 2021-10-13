@@ -3,7 +3,7 @@ using Autokool.Domain.Common;
 
 namespace Autokool.Domain
 {
-    public class Course : BaseEntity<CourseData>
+    public sealed class Course : BaseEntity<CourseData>
     {
         public string Location => Data.Location;
         public string CourseTypeID => Data.CourseTypeID;

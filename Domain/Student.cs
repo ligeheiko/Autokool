@@ -3,7 +3,7 @@ using Autokool.Data.DrivingSchool;
 
 namespace Autokool.Domain
 {
-    public class Student : Person<StudentData>
+    public sealed class Student : Person<StudentData>
     {
     }
 }

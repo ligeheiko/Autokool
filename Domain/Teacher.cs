@@ -3,7 +3,7 @@ using Autokool.Domain.Common;
 
 namespace Autokool.Domain
 {
-    public class Teacher : Person<TeacherData>
+    public sealed class Teacher : Person<TeacherData>
     {
     }
 }

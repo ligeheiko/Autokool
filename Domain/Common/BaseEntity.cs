@@ -4,7 +4,7 @@ using System;
 
 namespace Autokool.Domain.Common
 {
-    public class BaseEntity<TData>  where TData
+    public abstract class BaseEntity<TData>  where TData
         : class , IEntityData, new ()
     {
         private readonly TData data;

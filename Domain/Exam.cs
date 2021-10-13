@@ -3,7 +3,7 @@ using Autokool.Domain.Common;
 
 namespace Autokool.Domain
 {
-    public class Exam : BaseEntity<ExamData>
+    public sealed class Exam : BaseEntity<ExamData>
     {
     }
 }

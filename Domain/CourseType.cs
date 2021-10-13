@@ -1,6 +1,6 @@
 ﻿namespace Autokool.Domain
 {
-    public class CourseType
+    public sealed class CourseType
     {
     }
 }

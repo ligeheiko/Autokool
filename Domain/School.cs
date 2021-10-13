@@ -5,7 +5,7 @@ using Autokool.Data.DrivingSchool;
 
 namespace Autokool.Domain
 {
-    public class School : BaseEntity<SchoolData>
+    public sealed class School : BaseEntity<SchoolData>
     {
         public List<Administrator> Administrators { get; }
         public List<Exam> Exams { get; }
