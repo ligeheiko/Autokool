@@ -4,6 +4,6 @@ namespace Autokool.Data.DrivingSchool
 {
     public sealed class StudentData : PersonData
     {
-        public CourseData Course { get; set; }
+        public string CourseID { get; set; }
     }
 }

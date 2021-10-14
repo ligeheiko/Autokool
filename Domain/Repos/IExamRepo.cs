@@ -2,7 +2,7 @@
 
 namespace Autokool.Domain.Repos
 {
-    public interface IExamRepo : IRepo<ExamData>
+    public interface IExamRepo : IRepo<Exam>
     {
     }
 }

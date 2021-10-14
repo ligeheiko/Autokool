@@ -1,7 +1,7 @@
 ﻿
 namespace Autokool.Domain.Repos
 {
-    interface ICourseTypeRepo : IRepo<CourseType>
+    public interface ICourseTypeRepo : IRepo<CourseType>
     {
     }
 }

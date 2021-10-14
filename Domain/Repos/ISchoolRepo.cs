@@ -1,8 +1,7 @@
-﻿using Autokool.Data.DrivingSchool;
-
+﻿
 namespace Autokool.Domain.Repos
 {
-    public interface ISchoolRepo : IRepo<SchoolData>
+    public interface ISchoolRepo : IRepo<School>
     {
     }
 }
