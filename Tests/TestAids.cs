@@ -8,19 +8,33 @@ namespace Autokool.Tests
         protected object objUnderTests;
         protected void isProperty<T>(bool isNullable = true)
         {
-            var type = objUnderTests?.GetType();
-            var name = getPropertyNameAfter(nameof(isProperty));
-            var propertyInfo = type?.GetProperty(name);
-            isNotNull(propertyInfo);
-            isTrue(propertyInfo.CanRead);
-            isTrue(propertyInfo.CanWrite);
+            var t = objUnderTests?.GetType();
+            var n = getPropertyNameAfter(nameof(isProperty));
+            var pi = t?.GetProperty(n);
+            isNotNull(pi, 
+                $"The class {t} does not have a property {n}");
+            isTrue(pi.CanRead, $"The property {n} does not have a getter");
+            isTrue(pi.CanWrite, $"The property {n} does not have a setter");
             var expectedValue = GetRandom.ValueOf(typeof(T));
-            propertyInfo.SetValue(objUnderTests, expectedValue);
-            var actual = propertyInfo.GetValue(objUnderTests);
-            areEqual(expectedValue, actual);
+            pi.SetValue(objUnderTests, expectedValue);
+            var actual = pi.GetValue(objUnderTests);
+            areEqual(expectedValue, actual,
+                $"For the property {n}.");
             if (!isNullable) return;
-            propertyInfo.SetValue(objUnderTests, null);
-            isNull(propertyInfo.GetValue(objUnderTests));
+            pi.SetValue(objUnderTests, null);
+            isNull(pi.GetValue(objUnderTests), $"Can not set null for the property {n}.");
+        }
+        protected void isProperty<T>(T expectedValue)
+        {
+            var t = objUnderTests?.GetType();
+            var n = getPropertyNameAfter(nameof(isProperty));
+            var pi = t?.GetProperty(n);
+            isNotNull(pi,
+                $"The class {t} does not have a property {n}");
+            isTrue(pi.CanRead, $"The property {n} does not have a getter");
+            var actual = pi.GetValue(objUnderTests);
+            areEqual(expectedValue, actual,
+                $"For the property {n}.");
         }
 
         private string getPropertyNameAfter(string methodName)

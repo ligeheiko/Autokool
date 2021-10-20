@@ -6,6 +6,7 @@ namespace Autokool.Domain
 {
     public sealed class Course : BaseEntity<CourseData>
     {
+        public Course(CourseData d) : base(d) { }
         public string Location => Data?.Location ?? "Unspecified";
         public string CourseTypeID => Data?.CourseTypeID ?? "Unspecified";
         public CourseType CourseType => new GetFrom<ICourseTypeRepo, CourseType>().ById(CourseTypeID);

@@ -2,7 +2,6 @@
 using Autokool.Data.DrivingSchool;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using Tests;
 
 namespace Autokool.Tests.DataTests.DrivingSchool
 {

@@ -15,7 +15,7 @@ namespace Tests
         protected abstract object createObject();
         protected virtual Type getBaseClass() => typeof(TBaseClass);
         [TestInitialize]
-        public void TestInitialize()
+        public virtual void TestInitialize()
         {
             type = getTestableClassType();
             obj = createObject();

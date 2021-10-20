@@ -1,8 +1,6 @@
-﻿using Autokool.Aids;
-using Autokool.Data.Common;
+﻿using Autokool.Data.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using Tests;
 
 namespace Autokool.Tests.DataTests.Common
 {

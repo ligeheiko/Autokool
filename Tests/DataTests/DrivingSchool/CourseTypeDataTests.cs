@@ -1,5 +1,4 @@
-﻿using Autokool.Data.DrivingSchool;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Autokool.Tests.DataTests.DrivingSchool
 {
