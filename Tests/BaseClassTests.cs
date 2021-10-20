@@ -5,19 +5,19 @@ using System;
 namespace Tests
 {
     [TestClass]
-    public abstract class BaseClassTests<TClass, TBaseClass>: BaseTests where TClass : class
+    public abstract class BaseClassTests<TBaseClass>: BaseTests
     {
-        protected TClass obj
+        protected object obj
         {
-            get => objUnderTests as TClass;
+            get => objUnderTests;
             set => objUnderTests = value;
         }
-        protected abstract TClass createObject();
+        protected abstract object createObject();
         protected virtual Type getBaseClass() => typeof(TBaseClass);
         [TestInitialize]
         public void TestInitialize()
         {
-            type = typeof(TClass);
+            type = getTestableClassType();
             obj = createObject();
         }
         [TestMethod]
@@ -30,14 +30,15 @@ namespace Tests
         {
             areEqual(getBaseClass(), type.BaseType);
         }
-        protected void TestProperty<TType>(string propertyName)
-        {
-            var properyInfo = obj.GetType().GetProperty(propertyName);
-            Assert.IsNotNull(properyInfo);
-            var expected = GetRandom.ValueOf<TType>();
-            properyInfo.SetValue(obj, expected);
-            var actual = properyInfo.GetValue(obj);
-            Assert.AreEqual(expected, actual);
-        }
+        //protected void TestProperty<TType>(string propertyName)
+        //{
+        //    var properyInfo = obj.GetType().GetProperty(propertyName);
+        //    Assert.IsNotNull(properyInfo);
+        //    var expected = GetRandom.ValueOf<TType>();
+        //    properyInfo.SetValue(obj, expected);
+        //    var actual = properyInfo.GetValue(obj);
+        //    Assert.AreEqual(expected, actual);
+        //}
+        // Vana test
     }
 }

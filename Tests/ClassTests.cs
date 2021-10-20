@@ -3,12 +3,12 @@ using Tests;
 
 namespace Autokool.Tests
 {
-    public abstract class ClassTests<TClass, TBaseClass> :
-        BaseClassTests<TClass, TBaseClass> where TClass : class
+    public abstract class ClassTests<TBaseClass> :
+        BaseClassTests<TBaseClass>
     {
-        protected override TClass createObject()
+        protected override object createObject()
         {
-            return GetRandom.ObjectOf<TClass>();
+            return GetRandom.ObjectOf(type);
         }
     }
 }

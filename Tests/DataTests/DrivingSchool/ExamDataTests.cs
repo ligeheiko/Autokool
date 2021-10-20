@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Autokool.Tests.DataTests.DrivingSchool
 {
     [TestClass]
-    public class ExamDataTests : SealedTests<ExamData, BaseData>
+    public class ExamDataTests : SealedTests<BaseData>
     {
         [TestMethod]
         public void PassedTest()

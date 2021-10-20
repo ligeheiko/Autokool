@@ -24,6 +24,19 @@ namespace Tests
             var testClassName = GetType().Name;
             isTrue(testClassName.StartsWith(testableClassName));
         }
+
+        protected Type getTestableClassType()
+        {
+            var testClassName = GetType().FullName;
+            var testableClassName = testClassName.Replace("Tests", string.Empty);
+            testableClassName = testableClassName.Replace("..", ".");
+            var solutionName = testableClassName.GetHead();
+            var projectName = testableClassName.GetTail().GetHead();
+            var l = GetSolution.TypesForAssembly($"{solutionName}.{projectName}");
+            var expectedType = l.Where(x => x.FullName == testableClassName).ToList()[0];
+            return expectedType;
+        }
+
         [TestMethod]
         public virtual void IsTested()
         {

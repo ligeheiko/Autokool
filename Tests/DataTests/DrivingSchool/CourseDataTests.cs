@@ -6,7 +6,7 @@ using Tests;
 namespace Autokool.Tests.DataTests.DrivingSchool
 {
     [TestClass]
-    public class CourseDataTests : SealedTests<CourseData, BaseData>
+    public class CourseDataTests : SealedTests<BaseData>
     {
         [TestMethod]
         public void LocationTest()

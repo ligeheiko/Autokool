@@ -6,12 +6,12 @@ using Tests;
 namespace Autokool.Tests.DataTests.DrivingSchool
 {
     [TestClass]
-    public class StudentDataTests : SealedTests<StudentData, PersonData>
+    public class StudentDataTests : SealedTests<PersonData>
     {
         [TestMethod]
-        public void CourseTest()
+        public void CourseIDTest()
         {
-            isProperty<CourseData>();
+            isProperty<string>();
         }
     }
 }

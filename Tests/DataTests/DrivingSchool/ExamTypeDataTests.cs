@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Autokool.Tests.DataTests.DrivingSchool
 {
     [TestClass]
-    public class ExamTypeDataTests : SealedTests<ExamTypeData, object>
+    public class ExamTypeDataTests : SealedTests<object>
     {
         [TestMethod]
         public void IDTest()

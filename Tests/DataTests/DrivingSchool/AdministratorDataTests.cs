@@ -6,7 +6,7 @@ using Tests;
 namespace Autokool.Tests.DataTests.DrivingSchool
 {
     [TestClass]
-    public class AdministratorDataTests : SealedTests<AdministratorData, PersonData>
+    public class AdministratorDataTests : SealedTests<PersonData>
     {
 
     }

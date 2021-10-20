@@ -6,7 +6,7 @@ using Tests;
 namespace Autokool.Tests.DataTests.DrivingSchool
 {
     [TestClass]
-    public class PersonRoleDataTests : SealedTests<PersonRoleData, BaseData>
+    public class PersonRoleDataTests : SealedTests<BaseData>
     {
         [TestMethod]
         public void PersonIDTest()

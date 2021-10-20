@@ -5,7 +5,7 @@ using Tests;
 namespace Autokool.Tests.DataTests.DrivingSchool
 {
     [TestClass]
-    public class RoleTypeDataTests : SealedTests<RoleTypeData, object>
+    public class RoleTypeDataTests : SealedTests<object>
     {
         [TestMethod]
         public void AdministratorIDTest()

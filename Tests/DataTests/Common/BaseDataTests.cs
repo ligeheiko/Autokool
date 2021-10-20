@@ -7,8 +7,9 @@ using Tests;
 namespace Autokool.Tests.DataTests.Common
 {
     [TestClass]
-    public class BaseDataTests : AbstractTests<BaseData, object>
+    public class BaseDataTests : AbstractTests<object>
     {
+        private class testClass : BaseData { }
         [TestMethod]
         public void IDTest()
         {
@@ -17,12 +18,17 @@ namespace Autokool.Tests.DataTests.Common
         [TestMethod]
         public void ValidToTest()
         {
-            isProperty<DateTime>();
+            isProperty<DateTime>(false);
         }
         [TestMethod]
         public void ValidFromTest()
         {
-            isProperty<DateTime>();
+            isProperty<DateTime>(false);
+        }
+
+        protected override object createObject()
+        {
+            return new testClass();
         }
     }
 }

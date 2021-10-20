@@ -6,8 +6,9 @@ using Tests;
 namespace Autokool.Tests.DataTests.Common
 {
     [TestClass]
-    public class PersonDataTests : AbstractTests<PersonData, BaseData>
+    public class PersonDataTests : AbstractTests<BaseData>
     {
+        private class testClass : PersonData { }
         [TestMethod]
         public void FirstNameTest()
         {
@@ -27,6 +28,11 @@ namespace Autokool.Tests.DataTests.Common
         public void PhoneNrTest()
         {
             isProperty<string>();
+        }
+
+        protected override object createObject()
+        {
+            return new testClass();
         }
     }
 }
