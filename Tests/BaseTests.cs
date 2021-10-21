@@ -33,8 +33,8 @@ namespace Tests
             var solutionName = testableClassName.GetHead();
             var projectName = testableClassName.GetTail().GetHead();
             var l = GetSolution.TypesForAssembly($"{solutionName}.{projectName}");
-            var expectedType = l.Where(x => x.FullName == testableClassName).ToList()[0];
-            return expectedType;
+            var list = l?.Where(x => x.FullName == testableClassName)?.ToList();
+            return (list?.Count() > 0)? list[0] : null;
         }
 
         [TestMethod]

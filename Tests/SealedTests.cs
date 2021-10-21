@@ -8,7 +8,7 @@ namespace Autokool.Tests
         [TestMethod]
         public void IsSealed()
         {
-            isTrue(type.IsSealed);
+            isTrue(type?.IsSealed ?? false);
         }
     }
 }

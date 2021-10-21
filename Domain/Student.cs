@@ -7,7 +7,7 @@ namespace Autokool.Domain
     public sealed class Student : Person<StudentData>
     {
         public Student(StudentData d) : base(d) { }
-        public string CourseID => Data.CourseID;
+        public string CourseID => Data?.CourseID ?? "Unspecified";
         public Course Course => new GetFrom<ICourseRepo, Course>().ById(CourseID);
     }
 }

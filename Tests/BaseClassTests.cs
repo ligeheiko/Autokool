@@ -28,7 +28,7 @@ namespace Tests
         [TestMethod]
         public void IsInheritedFrom()
         {
-            areEqual(getBaseClass(), type.BaseType);
+            areEqual(getBaseClass(), type?.BaseType);
         }
         //protected void TestProperty<TType>(string propertyName)
         //{
