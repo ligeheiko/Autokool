@@ -4,6 +4,7 @@ using System;
 
 namespace Autokool.Domain.Common
 {
+    // Valid from ja ValidTo tuleb siit eemale viia
     public abstract class BaseEntity<TData>  where TData
         : class , IEntityData, new ()
     {

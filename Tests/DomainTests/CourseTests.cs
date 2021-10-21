@@ -24,5 +24,10 @@ namespace Autokool.Tests.DomainTests
         public void LocationTest() => isProperty(data.Location);
         [TestMethod]
         public void CourseTypeIDTest() => isProperty(data.CourseTypeID);
+        [TestMethod]
+        public void CourseTypeTest()
+        {
+            notTested();
+        }
     }
 }
