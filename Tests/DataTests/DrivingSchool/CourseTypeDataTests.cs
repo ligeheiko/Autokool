@@ -1,9 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Autokool.Data.Common;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Autokool.Tests.DataTests.DrivingSchool
 {
     [TestClass]
-    public class CourseTypeDataTests : SealedTests<object>
+    public class CourseTypeDataTests : SealedTests<BaseData>
     {
         [TestMethod]
         public void IDTest()

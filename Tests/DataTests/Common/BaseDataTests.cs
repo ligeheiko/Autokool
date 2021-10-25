@@ -13,16 +13,6 @@ namespace Autokool.Tests.DataTests.Common
         {
             isProperty<string>();
         }
-        [TestMethod]
-        public void ValidToTest()
-        {
-            isProperty<DateTime>(false);
-        }
-        [TestMethod]
-        public void ValidFromTest()
-        {
-            isProperty<DateTime>(false);
-        }
 
         protected override object createObject()
         {

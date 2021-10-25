@@ -3,7 +3,7 @@ using Autokool.Core;
 
 namespace Autokool.Domain.Common
 {
-    public abstract class Person<TData> : BaseEntity<TData>,
+    public abstract class Person<TData> : DateEntity<TData>,
         IPersonEntity where TData : PersonData, new()
     {
         protected Person() : this(null) { }

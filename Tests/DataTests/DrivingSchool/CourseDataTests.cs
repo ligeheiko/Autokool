@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Autokool.Tests.DataTests.DrivingSchool
 {
     [TestClass]
-    public class CourseDataTests : SealedTests<BaseData>
+    public class CourseDataTests : SealedTests<DateData>
     {
         [TestMethod]
         public void LocationTest()

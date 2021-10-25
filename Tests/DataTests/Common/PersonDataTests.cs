@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Autokool.Tests.DataTests.Common
 {
     [TestClass]
-    public class PersonDataTests : AbstractTests<BaseData>
+    public class PersonDataTests : AbstractTests<DateData>
     {
         private class testClass : PersonData { }
         [TestMethod]

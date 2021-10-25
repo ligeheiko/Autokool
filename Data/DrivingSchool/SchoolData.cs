@@ -8,6 +8,5 @@ namespace Autokool.Data.DrivingSchool
         public StudentData Student { get; set; }
         public TeacherData Teacher { get; set; }
         public CourseData Course { get; set; }
-
     }
 }

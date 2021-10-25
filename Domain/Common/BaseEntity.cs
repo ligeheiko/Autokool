@@ -13,7 +13,5 @@ namespace Autokool.Domain.Common
         public BaseEntity(TData d) => data = d;
         public TData Data => Copy.Members(data, new TData()) ?? new TData();
         public string ID => Data?.ID;
-        public DateTime ValidFrom => Data.ValidFrom;
-        public DateTime ValidTo => Data.ValidTo;
     }
 }

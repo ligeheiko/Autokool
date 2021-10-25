@@ -1,6 +1,6 @@
 ﻿namespace Autokool.Data.Common
 {
-    public abstract class PersonData : BaseData
+    public abstract class PersonData : DateData
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
