@@ -4,7 +4,7 @@ using Autokool.Domain.Repos;
 
 namespace Autokool.Domain
 {
-    public sealed class Exam : BaseEntity<ExamData>
+    public sealed class Exam : DateEntity<ExamData>
     {
         public Exam(ExamData d) : base(d) { }
         public bool Passed => Data?.Passed ?? default;

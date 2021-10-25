@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Autokool.Tests.DomainTests
 {
     [TestClass]
-    public class ExamTests : SealedTests<BaseEntity<ExamData>>
+    public class ExamTests : SealedTests<DateEntity<ExamData>>
     {
         private ExamData data;
         protected override object createObject()
