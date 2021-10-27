@@ -1,9 +1,10 @@
-﻿using Facade.Common;
+﻿using Autokool.Facade.Common;
+using Facade.Common;
 using System.ComponentModel;
 
 namespace Facade
 {
-    public class ExamView : BaseView
+    public class ExamView : DateView
     {
         public bool Passed { get; set; }
 

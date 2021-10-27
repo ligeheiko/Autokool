@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Soft.Data;
 
-namespace Infra.Migrations
+namespace Autokool.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -16,10 +16,10 @@ namespace Infra.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.10")
+                .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Data.AdministratorData", b =>
+            modelBuilder.Entity("Autokool.Data.DrivingSchool.AdministratorData", b =>
                 {
                     b.Property<string>("ID")
                         .HasColumnType("nvarchar(450)");
@@ -31,9 +31,6 @@ namespace Infra.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PersonID")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNr")
@@ -50,10 +47,13 @@ namespace Infra.Migrations
                     b.ToTable("Administrator");
                 });
 
-            modelBuilder.Entity("Data.CourseData", b =>
+            modelBuilder.Entity("Autokool.Data.DrivingSchool.CourseData", b =>
                 {
                     b.Property<string>("ID")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CourseTypeID")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Location")
                         .HasColumnType("nvarchar(max)");
@@ -69,10 +69,13 @@ namespace Infra.Migrations
                     b.ToTable("Course");
                 });
 
-            modelBuilder.Entity("Data.ExamData", b =>
+            modelBuilder.Entity("Autokool.Data.DrivingSchool.ExamData", b =>
                 {
                     b.Property<string>("ID")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ExamTypeID")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Passed")
                         .HasColumnType("bit");
@@ -88,7 +91,7 @@ namespace Infra.Migrations
                     b.ToTable("Exam");
                 });
 
-            modelBuilder.Entity("Data.SchoolData", b =>
+            modelBuilder.Entity("Autokool.Data.DrivingSchool.SchoolData", b =>
                 {
                     b.Property<string>("ID")
                         .HasColumnType("nvarchar(450)");
@@ -105,12 +108,6 @@ namespace Infra.Migrations
                     b.Property<string>("TeacherID")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("ValidFrom")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("ValidTo")
-                        .HasColumnType("datetime2");
-
                     b.HasKey("ID");
 
                     b.HasIndex("AdministratorID");
@@ -124,13 +121,13 @@ namespace Infra.Migrations
                     b.ToTable("School");
                 });
 
-            modelBuilder.Entity("Data.StudentData", b =>
+            modelBuilder.Entity("Autokool.Data.DrivingSchool.StudentData", b =>
                 {
                     b.Property<string>("ID")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CourseID")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -139,9 +136,6 @@ namespace Infra.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PersonID")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNr")
@@ -158,14 +152,12 @@ namespace Infra.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("CourseID");
-
                     b.HasIndex("TeacherDataID");
 
                     b.ToTable("Student");
                 });
 
-            modelBuilder.Entity("Data.TeacherData", b =>
+            modelBuilder.Entity("Autokool.Data.DrivingSchool.TeacherData", b =>
                 {
                     b.Property<string>("ID")
                         .HasColumnType("nvarchar(450)");
@@ -177,9 +169,6 @@ namespace Infra.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PersonID")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNr")
@@ -396,21 +385,21 @@ namespace Infra.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Data.SchoolData", b =>
+            modelBuilder.Entity("Autokool.Data.DrivingSchool.SchoolData", b =>
                 {
-                    b.HasOne("Data.AdministratorData", "Administrator")
+                    b.HasOne("Autokool.Data.DrivingSchool.AdministratorData", "Administrator")
                         .WithMany()
                         .HasForeignKey("AdministratorID");
 
-                    b.HasOne("Data.CourseData", "Course")
+                    b.HasOne("Autokool.Data.DrivingSchool.CourseData", "Course")
                         .WithMany()
                         .HasForeignKey("CourseID");
 
-                    b.HasOne("Data.StudentData", "Student")
+                    b.HasOne("Autokool.Data.DrivingSchool.StudentData", "Student")
                         .WithMany()
                         .HasForeignKey("StudentID");
 
-                    b.HasOne("Data.TeacherData", "Teacher")
+                    b.HasOne("Autokool.Data.DrivingSchool.TeacherData", "Teacher")
                         .WithMany()
                         .HasForeignKey("TeacherID");
 
@@ -423,17 +412,11 @@ namespace Infra.Migrations
                     b.Navigation("Teacher");
                 });
 
-            modelBuilder.Entity("Data.StudentData", b =>
+            modelBuilder.Entity("Autokool.Data.DrivingSchool.StudentData", b =>
                 {
-                    b.HasOne("Data.CourseData", "Course")
-                        .WithMany()
-                        .HasForeignKey("CourseID");
-
-                    b.HasOne("Data.TeacherData", null)
+                    b.HasOne("Autokool.Data.DrivingSchool.TeacherData", null)
                         .WithMany("Student")
                         .HasForeignKey("TeacherDataID");
-
-                    b.Navigation("Course");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -487,7 +470,7 @@ namespace Infra.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Data.TeacherData", b =>
+            modelBuilder.Entity("Autokool.Data.DrivingSchool.TeacherData", b =>
                 {
                     b.Navigation("Student");
                 });

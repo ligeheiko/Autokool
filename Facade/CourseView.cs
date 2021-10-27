@@ -1,9 +1,10 @@
-﻿using Facade.Common;
+﻿using Autokool.Facade.Common;
+using Facade.Common;
 using System.ComponentModel;
 
 namespace Facade
 {
-    public class CourseView : BaseView
+    public class CourseView : DateView
     {
         public string Location { get; set; }
 

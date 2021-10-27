@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Infra.Migrations
+namespace Autokool.Infra.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,6 @@ namespace Infra.Migrations
                     ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ValidTo = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PersonID = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -70,6 +69,7 @@ namespace Infra.Migrations
                 {
                     ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CourseTypeID = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ValidTo = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -84,6 +84,7 @@ namespace Infra.Migrations
                 {
                     ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Passed = table.Column<bool>(type: "bit", nullable: false),
+                    ExamTypeID = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ValidTo = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -99,7 +100,6 @@ namespace Infra.Migrations
                     ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ValidTo = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PersonID = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -221,11 +221,10 @@ namespace Infra.Migrations
                 columns: table => new
                 {
                     ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CourseID = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    CourseID = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TeacherDataID = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ValidTo = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PersonID = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -234,12 +233,6 @@ namespace Infra.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Student", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_Student_Course_CourseID",
-                        column: x => x.CourseID,
-                        principalTable: "Course",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Student_Teacher_TeacherDataID",
                         column: x => x.TeacherDataID,
@@ -256,9 +249,7 @@ namespace Infra.Migrations
                     AdministratorID = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     StudentID = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     TeacherID = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    CourseID = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ValidTo = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    CourseID = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -349,11 +340,6 @@ namespace Infra.Migrations
                 column: "TeacherID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Student_CourseID",
-                table: "Student",
-                column: "CourseID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Student_TeacherDataID",
                 table: "Student",
                 column: "TeacherDataID");
@@ -392,10 +378,10 @@ namespace Infra.Migrations
                 name: "Administrator");
 
             migrationBuilder.DropTable(
-                name: "Student");
+                name: "Course");
 
             migrationBuilder.DropTable(
-                name: "Course");
+                name: "Student");
 
             migrationBuilder.DropTable(
                 name: "Teacher");

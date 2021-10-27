@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Autokool.Facade.Common;
+using System.ComponentModel.DataAnnotations;
 
 namespace Facade.Common
 {
-    public class PersonView : BaseView
+    public abstract class PersonView : DateView
     {
         [Required]
         [StringLength(50, ErrorMessage = "First name cannot be longer than 50 characters.")]
