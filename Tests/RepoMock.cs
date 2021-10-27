@@ -25,6 +25,10 @@ namespace Autokool.Tests
 
         public bool HasPreviousPage { get; set; }
 
+        public string ErrorMessage => throw new NotImplementedException();
+
+        public TDomainObject EntityInDb => throw new NotImplementedException();
+
         public async Task Add(TDomainObject obj)
         {
             await Update(obj);
