@@ -27,7 +27,7 @@ namespace Autokool.Tests.DomainTests
         [TestMethod]
         public void CourseTypeTest()
         {
-            notTested();
+            var repo = new RepoMock<CourseType>();
         }
     }
 }

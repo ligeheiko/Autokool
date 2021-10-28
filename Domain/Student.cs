@@ -4,7 +4,7 @@ using Autokool.Domain.Repos;
 
 namespace Autokool.Domain
 {
-    public sealed class Student : Person<StudentData>
+    public sealed class Student : PersonEntity<StudentData>
     {
         public Student(StudentData d) : base(d) { }
         public string CourseID => Data?.CourseID ?? "Unspecified";

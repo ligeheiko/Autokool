@@ -1,16 +1,14 @@
-﻿using Autokool.Aids;
-using Autokool.Core;
-using System;
+﻿using System;
 
 namespace Autokool.Domain.Common
 {
-    public abstract class BaseEntity<TData> : IBaseEntity  where TData
-        : class , IEntityData, new ()
+    public abstract class BaseEntity
     {
-        private readonly TData data;
-        protected BaseEntity() : this(null) { }
-        public BaseEntity(TData d) => data = d;
-        public TData Data => Copy.Members(data, new TData()) ?? new TData();
-        public string ID => Data?.ID ?? "Unspecified";
+        public static string Unspecified => Aids.Constants.Word.Unspecified;
+        public static DateTime UnspecifiedValidFrom => DateTime.MinValue;
+        public static DateTime UnspecifiedValidTo => DateTime.MaxValue;
+        public static double UnspecifiedDouble => double.NaN;
+        public static decimal UnspecifiedDecimal => decimal.MaxValue;
+        public static int UnspecifiedInteger => 0;
     }
 }

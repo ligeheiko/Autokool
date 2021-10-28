@@ -5,7 +5,7 @@ using Autokool.Data.DrivingSchool;
 
 namespace Autokool.Domain
 {
-    public sealed class School : BaseEntity<SchoolData>
+    public sealed class School : UniqueEntity<SchoolData>
     {
         public List<Administrator> Administrators { get; }
         public List<Exam> Exams { get; }
@@ -19,7 +19,5 @@ namespace Autokool.Domain
         public void RemoveStudent(Student s, Administrator a) { throw new NotImplementedException(); }
         public void UpdateTeacher(Teacher oldT, Teacher newT, Administrator a) { throw new NotImplementedException(); }
         public void UpdateCourse(Course oldC, Course newC, Administrator a) { throw new NotImplementedException(); }
-
-
     }
 }

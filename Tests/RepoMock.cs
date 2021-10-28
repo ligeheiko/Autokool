@@ -1,4 +1,5 @@
 ﻿using Autokool.Core;
+using Autokool.Domain.Common;
 using Autokool.Domain.Repos;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 namespace Autokool.Tests
 {
     internal class RepoMock<TDomainObject> : IRepo<TDomainObject> 
-        where TDomainObject: IEntityData
+        where TDomainObject: IUniqueEntity
     {
         private readonly List<TDomainObject> list = new();
 
