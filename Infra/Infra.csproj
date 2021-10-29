@@ -22,8 +22,4 @@
     <ProjectReference Include="..\Facade\Facade.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="AutoKool\" />
-  </ItemGroup>
-
 </Project>

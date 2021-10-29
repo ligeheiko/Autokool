@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Autokool.Infra.Common
 {
 
-    public abstract class BaseRepository<TDomain, TData> : ICrudMethods<TDomain>, IRepo
+    public abstract class BaseRepo<TDomain, TData> : ICrudMethods<TDomain>, IRepo
         where TDomain : IUniqueEntity<TData>
         where TData : BaseData, new()
     {
@@ -18,7 +18,7 @@ namespace Autokool.Infra.Common
         protected internal DbContext db;
         protected internal DbSet<TData> dbSet;
 
-        protected BaseRepository(DbContext c, DbSet<TData> s)
+        protected BaseRepo(DbContext c, DbSet<TData> s)
         {
             db = c;
             dbSet = s;

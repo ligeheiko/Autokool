@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Autokool.Infra.Common
 {
 
-    public abstract class FilteredRepository<TDomain, TData> : SortedRepository<TDomain, TData>, IFiltering
+    public abstract class FilteredRepo<TDomain, TData> : SortedRepo<TDomain, TData>, IFiltering
         where TDomain : IUniqueEntity<TData>
         where TData : BaseData, new()
     {
@@ -19,7 +19,7 @@ namespace Autokool.Infra.Common
         public string FixedFilter { get; set; }
         public string FixedValue { get; set; }
 
-        protected FilteredRepository(DbContext c, DbSet<TData> s) : base(c, s) { }
+        protected FilteredRepo(DbContext c, DbSet<TData> s) : base(c, s) { }
 
         protected internal override IQueryable<TData> createSqlQuery()
         {

@@ -10,7 +10,7 @@ using Autokool.Domain.Repos;
 namespace Autokool.Infra.Common
 {
 
-    public abstract class SortedRepository<TDomain, TData> : BaseRepository<TDomain, TData>, ISorting
+    public abstract class SortedRepo<TDomain, TData> : BaseRepo<TDomain, TData>, ISorting
         where TDomain : IUniqueEntity<TData>
         where TData : BaseData, new()
     {
@@ -18,7 +18,7 @@ namespace Autokool.Infra.Common
         public virtual string SortOrder { get; set; }
         public string DescendingString => "_desc";
 
-        protected SortedRepository(DbContext c, DbSet<TData> s) : base(c, s) { }
+        protected SortedRepo(DbContext c, DbSet<TData> s) : base(c, s) { }
 
         protected internal override IQueryable<TData> createSqlQuery()
         {

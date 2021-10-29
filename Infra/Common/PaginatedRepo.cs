@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Autokool.Infra.Common
 {
 
-    public abstract class PaginatedRepository<TDomain, TData> : FilteredRepository<TDomain, TData>, IPaging
+    public abstract class PaginatedRepo<TDomain, TData> : FilteredRepo<TDomain, TData>, IPaging
         where TDomain : IUniqueEntity<TData>
         where TData : BaseData, new()
     {
@@ -19,7 +19,7 @@ namespace Autokool.Infra.Common
         public bool HasPreviousPage => PageIndex > 1;
         public int PageSize { get; set; } = DefaultPageSize;
 
-        protected PaginatedRepository(DbContext c, DbSet<TData> s) : base(c, s) { }
+        protected PaginatedRepo(DbContext c, DbSet<TData> s) : base(c, s) { }
 
         internal int getTotalPages(in int pageSize)
         {
