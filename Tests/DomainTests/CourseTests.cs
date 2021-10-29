@@ -32,6 +32,7 @@ namespace Autokool.Tests.DomainTests
             var d = GetRandom.ObjectOf<CourseTypeData>();
             d.ID = data.CourseTypeID;
             await repo.Add(new CourseType(d));
+            GetRepo.SetServiceProvider(new ServiceProviderMock(repo));
             var p = (obj as Course).CourseType;
             isNotNull(p);
             areEqual(d.ID, p.ID);

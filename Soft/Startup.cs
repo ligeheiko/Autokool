@@ -1,5 +1,7 @@
+using Autokool.Domain.Common;
 using Autokool.Domain.Repos;
 using Autokool.Infra;
+using Autokool.Infra.AutoKool;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,9 +36,19 @@ namespace Soft
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
+            RegisterRepos(services);
         }
         private static void RegisterRepos(IServiceCollection s)
         {
+            s.AddScoped<ICourseRepo, CourseRepo>();
+            s.AddScoped<ICourseTypeRepo, CourseTypeRepo>();
+            s.AddScoped<IExamRepo, ExamRepo>();
+            s.AddScoped<IExamTypeRepo, ExamTypeRepo>();
+            s.AddScoped<IPersonRoleRepo, PersonRoleRepo>();
+            s.AddScoped<ISchoolRepo, SchoolRepo>();
+            s.AddScoped<IStudentRepo, StudentRepo>();
+            s.AddScoped<ITeacherRepo, TeacherRepo>();
+            GetRepo.SetServiceProvider(s.BuildServiceProvider());
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
