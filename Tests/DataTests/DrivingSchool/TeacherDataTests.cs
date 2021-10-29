@@ -1,7 +1,5 @@
 ﻿using Autokool.Data.Common;
-using Autokool.Data.DrivingSchool;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
 
 namespace Autokool.Tests.DataTests.DrivingSchool
 {
@@ -9,9 +7,9 @@ namespace Autokool.Tests.DataTests.DrivingSchool
     public class TeacherDataTests : SealedTests<PersonData>
     {
         [TestMethod]
-        public void StudentTest()
+        public void StudentIDTest()
         {
-            isProperty<List<StudentData>>();
+            isProperty<string>();
         }
     }
 }

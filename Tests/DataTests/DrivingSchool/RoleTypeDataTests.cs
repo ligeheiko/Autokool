@@ -1,9 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Autokool.Data.Common;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Autokool.Tests.DataTests.DrivingSchool
 {
     [TestClass]
-    public class RoleTypeDataTests : SealedTests<object>
+    public class RoleTypeDataTests : SealedTests<BaseData>
     {
         [TestMethod]
         public void AdministratorIDTest()

@@ -2,7 +2,7 @@
 using Facade.Common;
 using System.ComponentModel;
 
-namespace Facade
+namespace Autokool.Facade.DrivingSchool
 {
     public class ExamView : DateView
     {

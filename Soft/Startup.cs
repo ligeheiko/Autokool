@@ -35,6 +35,9 @@ namespace Soft
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
         }
+        private static void RegisterRepos(IServiceCollection s)
+        {
+        }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

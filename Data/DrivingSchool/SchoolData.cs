@@ -4,9 +4,9 @@ namespace Autokool.Data.DrivingSchool
 {
     public sealed class SchoolData : BaseData
     {
-        public AdministratorData Administrator { get; set; }
-        public StudentData Student { get; set; }
-        public TeacherData Teacher { get; set; }
-        public CourseData Course { get; set; }
+        public string AdministratorID { get; set; }
+        public string StudentID { get; set; }
+        public string TeacherID { get; set; }
+        public string CourseID { get; set; }
     }
 }

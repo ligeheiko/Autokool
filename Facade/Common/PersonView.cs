@@ -7,14 +7,12 @@ namespace Facade.Common
     {
         [Required]
         [StringLength(50, ErrorMessage = "First name cannot be longer than 50 characters.")]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z '-]*$")]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [Required]
         [StringLength(50)]
         [Display(Name = "Last Name")]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z '-]*$")]
         public string LastName { get; set; }
 
         [Required]

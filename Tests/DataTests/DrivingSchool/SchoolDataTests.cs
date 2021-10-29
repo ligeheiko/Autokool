@@ -8,24 +8,24 @@ namespace Autokool.Tests.DataTests.DrivingSchool
     public class SchoolDataTests : SealedTests<BaseData>
     {
         [TestMethod]
-        public void AdministratorTest()
+        public void AdministratorIDTest()
         {
-            isProperty<AdministratorData>();
+            isProperty<string>();
         }
         [TestMethod]
-        public void TeacherTest()
+        public void TeacherIDTest()
         {
-            isProperty<TeacherData>();
+            isProperty<string>();
         }
         [TestMethod]
-        public void StudentTest()
+        public void StudentIDTest()
         {
-            isProperty<StudentData>();
+            isProperty<string>();
         }
         [TestMethod]
-        public void CourseTest()
+        public void CourseIDTest()
         {
-            isProperty<CourseData>();
+            isProperty<string>();
         }
     }
 }

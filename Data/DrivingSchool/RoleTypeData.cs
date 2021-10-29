@@ -1,7 +1,8 @@
-﻿
+﻿using Autokool.Data.Common;
+
 namespace Autokool.Data.DrivingSchool
 {
-    public sealed class RoleTypeData
+    public sealed class RoleTypeData : BaseData
     {
         public string AdministratorID{ get; set; }
         public string StudentID { get; set; }

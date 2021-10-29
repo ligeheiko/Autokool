@@ -6,7 +6,6 @@ namespace Autokool.Data.DrivingSchool
     {
         public string PersonID { get; set; }
         public string RoleTypeID { get; set; }
-
     }
 }
 

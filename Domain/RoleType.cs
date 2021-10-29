@@ -3,12 +3,12 @@ using Autokool.Data.DrivingSchool;
 
 namespace Autokool.Domain
 {
-    public sealed class School : UniqueEntity<SchoolData>
+    public sealed class RoleType : UniqueEntity<RoleTypeData>
     {
-        public School(SchoolData d) : base(d) { }
+        public RoleType(RoleTypeData d = null) : base(d) { }
+
         public string AdministratorID => Data?.AdministratorID ?? Unspecified;
         public string StudentID => Data?.StudentID ?? Unspecified;
         public string TeacherID => Data?.TeacherID ?? Unspecified;
-        public string CourseID => Data?.CourseID ?? Unspecified;
     }
 }
