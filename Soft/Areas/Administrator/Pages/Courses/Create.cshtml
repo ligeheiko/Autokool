@@ -1,6 +1,9 @@
 ﻿@page
+@using Autokool.Pages.Common.Extensions
 @model Autokool.Pages.Autokool.CoursesPage
+
 @{
     Layout = "_Create";
-    ViewData["Title"] = Model.PageTitle;
 }
+
+<partial name="_EditCourse" />

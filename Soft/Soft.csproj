@@ -24,6 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Student\" />
+    <Folder Include="Areas\Teacher\" />
     <Folder Include="Pages\CoursesPage\" />
   </ItemGroup>
 

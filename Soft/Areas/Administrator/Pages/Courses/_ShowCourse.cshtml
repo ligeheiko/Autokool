@@ -1,0 +1,11 @@
+﻿@using Autokool.Pages.Common.Extensions;
+@model Autokool.Pages.Autokool.CoursesPage
+
+<body>
+    @Html.Show(m => m.Item.ID)
+    @Html.Show(m => m.Item.CourseTypeID)
+    @Html.Show(m => m.Item.CourseName)
+    @Html.Show(m => m.Item.ValidFrom)
+    @Html.Show(m => m.Item.ValidTo)
+    @Html.Show(m => m.Item.Location)
+</body>
