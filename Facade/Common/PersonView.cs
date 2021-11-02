@@ -24,5 +24,8 @@ namespace Facade.Common
         [StringLength(50)]
         [Display(Name = "Phone number")]
         public string PhoneNr { get; set; }
+
+        [Display(Name = "Full Name")]
+        public string FullName { get; set; }
     }
 }

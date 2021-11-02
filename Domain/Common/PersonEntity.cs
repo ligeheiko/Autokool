@@ -7,9 +7,16 @@ namespace Autokool.Domain.Common
     {
         protected PersonEntity(TData d = null) : base(d) { }
 
-        public string FirstName => Data?.FirstName;
-        public string LastName => Data?.LastName;
-        public string Email => Data?.Email;
-        public string PhoneNr => Data?.PhoneNr;
+        public string FirstName => Data?.FirstName ?? Unspecified;
+        public string LastName => Data?.LastName ?? Unspecified;
+        public string Email => Data?.Email ?? Unspecified;
+        public string PhoneNr => Data?.PhoneNr ?? Unspecified;
+        public string FullName
+        {
+            get
+            {
+                return LastName + ", " + FirstName;
+            }
+        }
     }
 }
