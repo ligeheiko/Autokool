@@ -23,4 +23,8 @@
     <ProjectReference Include="..\Pages\Pages.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\CoursesPage\" />
+  </ItemGroup>
+
 </Project>

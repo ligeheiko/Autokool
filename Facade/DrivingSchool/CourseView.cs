@@ -1,5 +1,4 @@
 ﻿using Autokool.Facade.Common;
-using Facade.Common;
 using System.ComponentModel;
 
 namespace Autokool.Facade.DrivingSchool
@@ -8,7 +7,7 @@ namespace Autokool.Facade.DrivingSchool
     {
         public string Location { get; set; }
 
-        [DisplayName("Course")]
+        [DisplayName("Course Type")]
         public string CourseTypeID { get; set; }
 
         [DisplayName("Course")]
