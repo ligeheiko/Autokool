@@ -16,6 +16,7 @@ namespace Autokool.Infra.Migrations
                     ValidTo = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PhoneNr = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -79,6 +80,19 @@ namespace Autokool.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CourseType",
+                columns: table => new
+                {
+                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    TheoryCourse = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DrivingCourse = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CourseType", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Exam",
                 columns: table => new
                 {
@@ -94,14 +108,76 @@ namespace Autokool.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Teacher",
+                name: "ExamType",
                 columns: table => new
                 {
                     ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    TheoryExam = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DrivingExam = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ExamType", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PersonRole",
+                columns: table => new
+                {
+                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    PersonID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RoleTypeID = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PersonRole", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "School",
+                columns: table => new
+                {
+                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    AdministratorID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StudentID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TeacherID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CourseID = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_School", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Student",
+                columns: table => new
+                {
+                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CourseID = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ValidTo = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNr = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Student", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Teacher",
+                columns: table => new
+                {
+                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    StudentID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ValidTo = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PhoneNr = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -216,70 +292,6 @@ namespace Autokool.Infra.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Student",
-                columns: table => new
-                {
-                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CourseID = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TeacherDataID = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ValidTo = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNr = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Student", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_Student_Teacher_TeacherDataID",
-                        column: x => x.TeacherDataID,
-                        principalTable: "Teacher",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "School",
-                columns: table => new
-                {
-                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    AdministratorID = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    StudentID = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    TeacherID = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    CourseID = table.Column<string>(type: "nvarchar(450)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_School", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_School_Administrator_AdministratorID",
-                        column: x => x.AdministratorID,
-                        principalTable: "Administrator",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_School_Course_CourseID",
-                        column: x => x.CourseID,
-                        principalTable: "Course",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_School_Student_StudentID",
-                        column: x => x.StudentID,
-                        principalTable: "Student",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_School_Teacher_TeacherID",
-                        column: x => x.TeacherID,
-                        principalTable: "Teacher",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -318,35 +330,13 @@ namespace Autokool.Infra.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_School_AdministratorID",
-                table: "School",
-                column: "AdministratorID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_School_CourseID",
-                table: "School",
-                column: "CourseID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_School_StudentID",
-                table: "School",
-                column: "StudentID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_School_TeacherID",
-                table: "School",
-                column: "TeacherID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Student_TeacherDataID",
-                table: "Student",
-                column: "TeacherDataID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Administrator");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -363,28 +353,34 @@ namespace Autokool.Infra.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Course");
+
+            migrationBuilder.DropTable(
+                name: "CourseType");
+
+            migrationBuilder.DropTable(
                 name: "Exam");
 
             migrationBuilder.DropTable(
+                name: "ExamType");
+
+            migrationBuilder.DropTable(
+                name: "PersonRole");
+
+            migrationBuilder.DropTable(
                 name: "School");
-
-            migrationBuilder.DropTable(
-                name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "Administrator");
-
-            migrationBuilder.DropTable(
-                name: "Course");
 
             migrationBuilder.DropTable(
                 name: "Student");
 
             migrationBuilder.DropTable(
                 name: "Teacher");
+
+            migrationBuilder.DropTable(
+                name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
         }
     }
 }

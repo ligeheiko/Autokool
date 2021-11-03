@@ -10,7 +10,7 @@ namespace Autokool.Facade.DrivingSchool
         [DisplayName("Course Type")]
         public string CourseTypeID { get; set; }
 
-        [DisplayName("Course")]
+        [DisplayName("Course Name")]
         public string CourseName { get; set; }
     }
 }

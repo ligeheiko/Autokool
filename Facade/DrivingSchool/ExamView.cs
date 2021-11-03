@@ -8,10 +8,10 @@ namespace Autokool.Facade.DrivingSchool
     {
         public bool Passed { get; set; }
 
-        [DisplayName("Exam")]
+        [DisplayName("Exam Type")]
         public string ExamTypeID { get; set; }
 
-        [DisplayName("Exam")]
+        [DisplayName("Exam Name")]
         public string ExamName { get; set; }
     }
 }

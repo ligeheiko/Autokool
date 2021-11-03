@@ -1,0 +1,11 @@
+﻿@using Autokool.Pages.Common.Extensions;
+@model Autokool.Pages.Autokool.ExamsPage
+
+<body>
+    @Html.Editor(m => m.Item.ID)
+    @Html.Editor(m => m.Item.ExamTypeID)
+    @Html.Editor(m => m.Item.ExamName)
+    @*@Html.Editor(m => m.Item.Passed)*@
+    @Html.Editor(m => m.Item.ValidFrom)
+    @Html.Editor(m => m.Item.ValidTo)
+</body>
