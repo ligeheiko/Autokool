@@ -22,6 +22,20 @@ namespace Autokool.Pages.Common.Extensions
             return new HtmlContentBuilder(s);
         }
 
+        public static IHtmlContent ShowTableNoEdit<TPage>(this IHtmlHelper<TPage> h,
+           IIndexTable<TPage> page, string select = null,
+           string details = "Details", string register = "Register")
+        {
+            var buttons = new RowButtons
+            {
+                Select = select,
+                Details = details,
+                Register = register,
+            };
+            var s = h.HtmlStrings(page, buttons);
+            return new HtmlContentBuilder(s);
+        }
+
         internal static List<object> HtmlStrings<TPage>(this IHtmlHelper<TPage> h,
             IIndexTable<TPage> page, RowButtons buttons)
         {

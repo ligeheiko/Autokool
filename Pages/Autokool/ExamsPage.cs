@@ -13,7 +13,7 @@ namespace Autokool.Pages.Autokool
     public class ExamsPage : ViewPage<ExamsPage, IExamRepo, Exam, ExamView, ExamData>
     {
         public ExamsPage(IExamRepo r) : base(r, "Exams") { }
-        protected internal override Uri pageUrl() => new Uri("/Administrator/Exams", UriKind.Relative);
+        protected override Uri pageUrl() => new Uri("/Administrator/Exams", UriKind.Relative);
         protected internal override Exam toObject(ExamView v) => new ExamViewFactory().Create(v);
         protected internal override ExamView toView(Exam o) => new ExamViewFactory().Create(o);
         protected override void createTableColumns()

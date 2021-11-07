@@ -6,5 +6,6 @@
         public string Details { get; set; }
         public string Edit { get; set; }
         public string Delete { get; set; }
+        public string Register { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace Autokool.Pages.Autokool
     public class CoursesPage : ViewPage<CoursesPage, ICourseRepo, Course, CourseView, CourseData>
     {
         public CoursesPage(ICourseRepo r) : base(r, "Courses") { }
-        protected internal override Uri pageUrl() => new Uri("/Administrator/Courses", UriKind.Relative);
+        protected override Uri pageUrl() => new Uri("/Administrator/Courses", UriKind.Relative);
         protected internal override Course toObject(CourseView v) => new CourseViewFactory().Create(v);
         protected internal override CourseView toView(Course o) => new CourseViewFactory().Create(o);
         protected override void createTableColumns()

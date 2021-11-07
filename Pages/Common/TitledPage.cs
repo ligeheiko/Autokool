@@ -40,7 +40,7 @@ namespace Autokool.Pages.Common
                        $"&fixedFilter={FixedFilter}" +
                        $"&fixedValue={FixedValue}", UriKind.Relative);
 
-        protected internal abstract Uri pageUrl();
+        protected abstract Uri pageUrl();
 
         public Uri IndexUrl => indexUrl();
 
