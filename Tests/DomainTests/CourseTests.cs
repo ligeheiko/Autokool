@@ -54,8 +54,6 @@ namespace Autokool.Tests.DomainTests
             var p = (obj as Course).CourseType;
             isNotNull(p);
             areEqual(courseTypeData.ID, p.ID);
-            areEqual(courseTypeData.DrivingCourse, p.DrivingCourse);
-            areEqual(courseTypeData.TheoryCourse, p.TheoryCourse);
         }
         [TestMethod]
         public void CourseTypeIsNullTest()

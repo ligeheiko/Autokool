@@ -3,7 +3,7 @@ using System;
 
 namespace Autokool.Domain.Common
 {
-    public abstract class DateEntity<TData> : UniqueEntity<TData>, IDateEntity<TData> where 
+    public abstract class DateEntity<TData> : NamedEntity<TData>, IDateEntity<TData> where 
         TData : DateData, new()
     {
         protected DateEntity(TData d = null) : base(d) { }

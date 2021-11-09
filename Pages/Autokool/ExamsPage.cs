@@ -6,7 +6,6 @@ using Autokool.Pages.Common;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
-using System.Linq.Expressions;
 
 namespace Autokool.Pages.Autokool
 {
@@ -27,19 +26,19 @@ namespace Autokool.Pages.Autokool
         }
         public override string GetName(IHtmlHelper<ExamsPage> html, int i)
         {
-            if (i == 3 || i == 4)
+            return i switch
             {
-                return html.DisplayNameFor(Columns[i] as Expression<Func<ExamsPage, DateTime>>);
-            }
-            return base.GetName(html, i);
+                3 or 4 => getName<DateTime>(html, i),
+                _ => base.GetName(html, i)
+            };
         }
         public override IHtmlContent GetValue(IHtmlHelper<ExamsPage> html, int i)
         {
-            if (i == 3 || i == 4)
+            return i switch
             {
-                return html.DisplayFor(Columns[i] as Expression<Func<ExamsPage, DateTime>>);
-            }
-            return base.GetValue(html, i);
+                3 or 4 => getValue<DateTime>(html, i),
+                _ => base.GetValue(html, i)
+            };
         }
     }
 }

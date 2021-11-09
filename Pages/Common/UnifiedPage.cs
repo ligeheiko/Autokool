@@ -35,16 +35,24 @@ namespace Autokool.Pages.Common
 
         private bool isCorrectIndex<TList>(int i, IList<TList> l) => i >= 0 && i < l?.Count;
 
-        public virtual string GetName(IHtmlHelper<TPage> html, int i)
+        public virtual string GetName(IHtmlHelper<TPage> html, int i) => getName<string>(html, i);
+       
+        protected string getName<TResult>(IHtmlHelper<TPage> h, int i)
         {
             if (isCorrectIndex(i, Columns))
-                return html.DisplayNameFor(Columns[i] as Expression<Func<TPage, string>>);
+                return h.DisplayNameFor(Columns[i] as Expression<Func<TPage, TResult>>);
             return Undefined;
         }
 
         public virtual IHtmlContent GetValue(IHtmlHelper<TPage> html, int i)
-            => html.DisplayFor(Columns[i] as Expression<Func<TPage, string>>);
-
+            => getValue<string>(html, i);
+        protected IHtmlContent getValue<TResult>(IHtmlHelper<TPage> h, int i)
+        {
+            if (isCorrectIndex(i, Columns))
+                return h.DisplayFor(Columns[i] as Expression<Func<TPage, TResult>>);
+            return null;
+        }
+        protected IHtmlContent getRaw<TResult>(IHtmlHelper<TPage> h, TResult r) => h.Raw(r.ToString());
 
         public virtual Uri GetSortStringExpression(int i)
                     => isCorrectIndex(i, Columns)

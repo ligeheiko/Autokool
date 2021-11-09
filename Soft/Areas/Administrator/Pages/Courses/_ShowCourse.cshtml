@@ -3,8 +3,8 @@
 
 <body>
     @Html.Show(m => m.Item.ID)
-    @Html.Show(m => m.Item.CourseTypeID)
-    @Html.Show(m => m.Item.CourseName)
+    @Html.Show(m => m.Item.Name)
+    @Html.Show(m => m.Item.CourseTypeID, Model.CourseTypeName(Model.Item.CourseTypeID))
     @Html.Show(m => m.Item.Location)
     @Html.Show(m => m.Item.ValidFrom)
     @Html.Show(m => m.Item.ValidTo)

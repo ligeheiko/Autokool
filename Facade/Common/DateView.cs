@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Autokool.Facade.Common
 {
-    public abstract class DateView : BaseView
+    public abstract class DateView : NamedView
     {
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
