@@ -6,7 +6,5 @@ namespace Autokool.Data.DrivingSchool
     {
         public string Location { get; set; }
         public string CourseTypeID { get; set; }
-
-        //public List<CourseType> CourseType { get; set; }
     }
 }

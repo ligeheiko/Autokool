@@ -52,9 +52,9 @@ namespace Autokool.Pages.Common
             Func<TTDomain, bool> condition = null,
             Func<TTData, string> getName = null)
             where TTDomain : IUniqueEntity<TTData>
-            where TTData : BaseData, new()
+            where TTData : NamedEntityData, new()
         {
-            Func<TTData, string> name = d => getName is null ? (d as INamedEntityData)?.Name : getName(d);
+            Func<TTData, string> name = d => (getName is null) ? (d as INamedEntityData)?.Name : getName(d);
             var items = r?.Get().GetAwaiter().GetResult();
             var l = items is null
                 ? new List<SelectListItem>()

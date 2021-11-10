@@ -120,7 +120,5 @@ namespace Autokool.Infra.Common
 
             return x;
         }
-
     }
-
 }

@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 
 namespace Autokool.Pages.Autokool
 {
@@ -25,6 +24,7 @@ namespace Autokool.Pages.Autokool
         protected override void createTableColumns()
         {
             createColumn(x => Item.ID);
+            createColumn(x => Item.Name);
             createColumn(x => Item.CourseTypeID);
             createColumn(x => Item.Location);
             createColumn(x => Item.ValidFrom);
@@ -42,7 +42,7 @@ namespace Autokool.Pages.Autokool
         {
             return i switch
             {
-                1 => getRaw(html, CourseTypeName(Item.CourseTypeID)),
+                2 => getRaw(html, CourseTypeName(Item.CourseTypeID)),
                 4 or 5 => getValue<DateTime>(html, i),
                 _ => base.GetValue(html, i)
             };
