@@ -32,11 +32,14 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="Administrator" asp-page="/Exams/Index" asp-page-handler="index">Exams</a>
                         </li>
-                        <li class="nav-item">
+                        @*<li class="nav-item">
                             <a class="nav-link text-dark" asp-area="Student" asp-page="/Courses/Index" asp-page-handler="index">CoursesStudent</a>
-                        </li>
+                        </li>*@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="Administrator" asp-page="/CourseTypes/Index" asp-page-handler="index">Course Types</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Administrator" asp-page="/ExamTypes/Index" asp-page-handler="index">Exam Types</a>
                         </li>
                         @*@Html.DropMenu("Admin",
         new Link("Courses", new Uri("/Administrator/Courses/Index?handler=index", UriKind.Relative)))*@
