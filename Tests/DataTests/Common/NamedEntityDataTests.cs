@@ -5,22 +5,17 @@ using System;
 namespace Autokool.Tests.DataTests.Common
 {
     [TestClass]
-    public class DateDataTests : AbstractTests<NamedEntityData>
+    public class NamedEntityDataTests : AbstractTests<BaseData>
     {
-        private class testClass : DateData { }
+        private class testClass : NamedEntityData { }
         protected override object createObject()
         {
             return new testClass();
         }
         [TestMethod]
-        public void ValidToTest()
+        public void NameTest()
         {
-            isProperty<DateTime>(false);
-        }
-        [TestMethod]
-        public void ValidFromTest()
-        {
-            isProperty<DateTime>(false);
+            isProperty<string>();
         }
     }
 }

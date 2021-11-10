@@ -4,20 +4,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Autokool.Tests.DataTests.DrivingSchool
 {
     [TestClass]
-    public class CourseTypeDataTests : SealedTests<BaseData>
+    public class CourseTypeDataTests : SealedTests<NamedEntityData>
     {
         [TestMethod]
         public void IDTest()
-        {
-            isProperty<string>();
-        }
-        [TestMethod]
-        public void TheoryCourseTest()
-        {
-            isProperty<string>();
-        }
-        [TestMethod]
-        public void DrivingCourseTest()
         {
             isProperty<string>();
         }
