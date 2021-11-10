@@ -2,22 +2,23 @@
 using Autokool.Data.DrivingSchool;
 using Autokool.Domain;
 using Autokool.Domain.Common;
+using Autokool.Domain.Repos;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Autokool.Tests.DomainTests
 {
     [TestClass]
-    public class AdministratorTests : SealedTests<PersonEntity<AdministratorData>>
+    public class ExamTypeTests : SealedTests<NamedEntity<ExamTypeData>>
     {
-        private AdministratorData data;
+        private ExamTypeData data;
         protected override object createObject()
         {
-            return new Administrator(data);
+            return new ExamType(data);
         }
         [TestInitialize]
         public override void TestInitialize()
         {
-            data = GetRandom.ObjectOf<AdministratorData>();
+            data = GetRandom.ObjectOf<ExamTypeData>();
             base.TestInitialize();
         }
     }
