@@ -113,8 +113,6 @@ namespace Autokool.Infra.Migrations
                 columns: table => new
                 {
                     ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    TheoryExam = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DrivingExam = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>

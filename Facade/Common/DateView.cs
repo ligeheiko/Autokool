@@ -1,5 +1,4 @@
-﻿using Facade.Common;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Autokool.Facade.Common

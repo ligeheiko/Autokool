@@ -1,7 +1,6 @@
-﻿using Autokool.Facade.Common;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Facade.Common
+namespace Autokool.Facade.Common
 {
     public abstract class PersonView : DateView
     {

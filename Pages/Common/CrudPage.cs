@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Autokool.Domain.Repos;
 using Autokool.Facade.Common;
-using Facade.Common;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Autokool.Pages.Common

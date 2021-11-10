@@ -1,13 +1,9 @@
-﻿using Facade.Common;
-using System.ComponentModel;
+﻿using Autokool.Facade.Common;
 
 namespace Autokool.Facade.DrivingSchool
 {
-    public class ExamTypeView : BaseView
+    public class ExamTypeView : NamedView
     {
-        [DisplayName("Theory Exam")]
-        public string TheoryExam { get; set; }
-        [DisplayName("Driving Exam")]
-        public string DrivingExam { get; set; }
+
     }
 }

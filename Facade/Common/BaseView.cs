@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Facade.Common
+namespace Autokool.Facade.Common
 {
     public abstract class BaseView
     {
