@@ -1,5 +1,5 @@
 using Autokool.Domain.Common;
-using Autokool.Domain.Repos;
+using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Infra;
 using Autokool.Infra.AutoKool;
 using Microsoft.AspNetCore.Builder;

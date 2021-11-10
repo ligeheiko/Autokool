@@ -1,7 +1,7 @@
 ﻿using Autokool.Domain.Common;
 using Autokool.Data.DrivingSchool;
 
-namespace Autokool.Domain
+namespace Autokool.Domain.DrivingSchool.Model
 {
     public sealed class School : UniqueEntity<SchoolData>
     {

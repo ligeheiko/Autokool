@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Autokool.Domain.Repos
+﻿namespace Autokool.Domain.DrivingSchool.Repos
 {
     public interface IRepo<TDomainObject> : ICrudMethods<TDomainObject>, ISorting, IFiltering, IPaging, IRepo
     {

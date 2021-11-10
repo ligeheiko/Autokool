@@ -1,7 +1,7 @@
 ﻿using Autokool.Data.DrivingSchool;
 using Autokool.Domain.Common;
 
-namespace Autokool.Domain
+namespace Autokool.Domain.DrivingSchool.Model
 {
     public sealed class Teacher : PersonEntity<TeacherData>
     {

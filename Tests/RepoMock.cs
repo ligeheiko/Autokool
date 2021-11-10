@@ -1,6 +1,5 @@
-﻿using Autokool.Core;
-using Autokool.Domain.Common;
-using Autokool.Domain.Repos;
+﻿using Autokool.Domain.Common;
+using Autokool.Domain.DrivingSchool.Repos;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

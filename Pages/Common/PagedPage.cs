@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Autokool.Domain.Repos;
+using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Facade.Common;
 
 namespace Autokool.Pages.Common

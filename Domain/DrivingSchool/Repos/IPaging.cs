@@ -1,4 +1,4 @@
-﻿namespace Autokool.Domain.Repos
+﻿namespace Autokool.Domain.DrivingSchool.Repos
 {
     public interface IPaging
     {

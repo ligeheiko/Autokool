@@ -1,5 +1,5 @@
 ﻿using Autokool.Aids;
-using Autokool.Domain.Repos;
+using Autokool.Domain.DrivingSchool.Repos;
 using System.Collections.Generic;
 
 namespace Autokool.Domain.Common

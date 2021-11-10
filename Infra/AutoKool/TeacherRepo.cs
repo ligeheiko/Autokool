@@ -1,6 +1,6 @@
 ﻿using Autokool.Data.DrivingSchool;
-using Autokool.Domain;
-using Autokool.Domain.Repos;
+using Autokool.Domain.DrivingSchool.Model;
+using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Infra.Common;
 
 namespace Autokool.Infra.AutoKool

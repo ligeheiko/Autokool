@@ -2,7 +2,7 @@
 using System.Linq;
 using Autokool.Data.Common;
 using Autokool.Domain.Common;
-using Autokool.Domain.Repos;
+using Autokool.Domain.DrivingSchool.Repos;
 using Microsoft.EntityFrameworkCore;
 
 namespace Autokool.Infra.Common

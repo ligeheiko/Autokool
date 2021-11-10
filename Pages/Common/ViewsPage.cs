@@ -1,7 +1,7 @@
 ﻿using System;
 using Autokool.Data.Common;
 using Autokool.Domain.Common;
-using Autokool.Domain.Repos;
+using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Facade.Common;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 

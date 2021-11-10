@@ -1,5 +1,6 @@
 ﻿using Autokool.Data.DrivingSchool;
 using Autokool.Domain;
+using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Facade.Common;
 
 namespace Autokool.Facade.DrivingSchool

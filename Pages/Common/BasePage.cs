@@ -1,5 +1,5 @@
 ﻿using Autokool.Aids;
-using Autokool.Domain.Repos;
+using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Facade.Common;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;

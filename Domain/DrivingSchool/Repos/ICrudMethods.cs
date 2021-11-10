@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Autokool.Domain.Repos
+namespace Autokool.Domain.DrivingSchool.Repos
 {
     public interface ICrudMethods<T>
     {

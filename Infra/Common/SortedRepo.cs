@@ -5,7 +5,7 @@ using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Autokool.Data.Common;
 using Autokool.Domain.Common;
-using Autokool.Domain.Repos;
+using Autokool.Domain.DrivingSchool.Repos;
 
 namespace Autokool.Infra.Common
 {

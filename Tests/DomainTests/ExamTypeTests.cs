@@ -1,8 +1,7 @@
 ﻿using Autokool.Aids;
 using Autokool.Data.DrivingSchool;
-using Autokool.Domain;
 using Autokool.Domain.Common;
-using Autokool.Domain.Repos;
+using Autokool.Domain.DrivingSchool.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Autokool.Tests.DomainTests
