@@ -2,6 +2,7 @@
 using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Facade.DrivingSchool;
+using Autokool.Facade.DrivingSchool.Factories;
 using Autokool.Pages.Common;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;

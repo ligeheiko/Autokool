@@ -3,7 +3,7 @@ using Autokool.Domain;
 using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Facade.Common;
 
-namespace Autokool.Facade.DrivingSchool
+namespace Autokool.Facade.DrivingSchool.Factories
 {
     public sealed class ExamViewFactory : AbstractViewFactory<ExamData, Exam, ExamView>
     {

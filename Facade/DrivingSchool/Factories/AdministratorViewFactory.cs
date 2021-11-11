@@ -1,13 +1,9 @@
 ﻿using Autokool.Data.DrivingSchool;
 using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Facade.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Autokool.Facade.DrivingSchool.ViewModels;
 
-namespace Autokool.Facade.DrivingSchool
+namespace Autokool.Facade.DrivingSchool.Factories
 {
     public sealed class AdministratorViewFactory : AbstractViewFactory<AdministratorData, Administrator, AdministratorView>
     {

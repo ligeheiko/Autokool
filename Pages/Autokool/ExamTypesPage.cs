@@ -1,7 +1,8 @@
 ﻿using Autokool.Data.DrivingSchool;
 using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Domain.DrivingSchool.Repos;
-using Autokool.Facade.DrivingSchool;
+using Autokool.Facade.DrivingSchool.Factories;
+using Autokool.Facade.DrivingSchool.ViewModels;
 using Autokool.Pages.Common;
 using System;
 

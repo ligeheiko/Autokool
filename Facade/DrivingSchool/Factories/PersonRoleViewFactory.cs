@@ -2,7 +2,7 @@
 using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Facade.Common;
 
-namespace Autokool.Facade.DrivingSchool
+namespace Autokool.Facade.DrivingSchool.Factories
 {
     public sealed class PersonRoleViewFactory : AbstractViewFactory<PersonRoleData, PersonRole, PersonRoleView>
     {

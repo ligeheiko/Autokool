@@ -1,9 +1,9 @@
 ﻿using Autokool.Facade.Common;
 using System.ComponentModel;
 
-namespace Autokool.Facade.DrivingSchool
+namespace Autokool.Facade.DrivingSchool.ViewModels
 {
-    public sealed class SchoolView : BaseView
+    public sealed class RoleTypeView : BaseView
     {
         [DisplayName("Admin")]
         public string AdministratorID { get; set; }
@@ -11,7 +11,5 @@ namespace Autokool.Facade.DrivingSchool
         public string StudentID { get; set; }
         [DisplayName("Teacher")]
         public string TeacherID { get; set; }
-        [DisplayName("Course")]
-        public string CourseID { get; set; }
     }
 }

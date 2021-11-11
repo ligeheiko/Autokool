@@ -1,8 +1,9 @@
 ﻿using Autokool.Data.DrivingSchool;
 using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Facade.Common;
+using Autokool.Facade.DrivingSchool.ViewModels;
 
-namespace Autokool.Facade.DrivingSchool
+namespace Autokool.Facade.DrivingSchool.Factories
 {
     public sealed class CourseTypeViewFactory : AbstractViewFactory<CourseTypeData, CourseType, CourseTypeView>
     {
