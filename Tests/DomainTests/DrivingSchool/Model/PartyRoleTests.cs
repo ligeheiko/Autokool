@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Autokool.Tests.DomainTests
+namespace Autokool.Tests.DomainTests.DrivingSchool.Model
 {
     internal class PartyRoleTests : BaseDomainTests
     {

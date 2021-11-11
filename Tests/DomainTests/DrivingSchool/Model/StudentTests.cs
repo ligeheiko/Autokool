@@ -5,7 +5,7 @@ using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Domain.DrivingSchool.Repos;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Autokool.Tests.DomainTests
+namespace Autokool.Tests.DomainTests.DrivingSchool.Model
 {
     [TestClass]
     public class StudentTests : SealedTests<PersonEntity<StudentData>>

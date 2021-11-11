@@ -5,23 +5,21 @@ using Autokool.Domain.Common;
 using Autokool.Domain.DrivingSchool.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Autokool.Tests.DomainTests
+namespace Autokool.Tests.DomainTests.DrivingSchool.Model
 {
     [TestClass]
-    public class TeacherTests : SealedTests<PersonEntity<TeacherData>>
+    public class AdministratorTests : SealedTests<PersonEntity<AdministratorData>>
     {
-        private TeacherData data;
+        private AdministratorData data;
         protected override object createObject()
         {
-            return new Teacher(data);
+            return new Administrator(data);
         }
         [TestInitialize]
         public override void TestInitialize()
         {
-            data = GetRandom.ObjectOf<TeacherData>();
+            data = GetRandom.ObjectOf<AdministratorData>();
             base.TestInitialize();
         }
-        [TestMethod]
-        public void StudentIDTest() => isProperty(data.StudentID);
     }
 }

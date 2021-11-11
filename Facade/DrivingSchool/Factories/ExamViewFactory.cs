@@ -2,6 +2,7 @@
 using Autokool.Domain;
 using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Facade.Common;
+using Autokool.Facade.DrivingSchool.ViewModels;
 
 namespace Autokool.Facade.DrivingSchool.Factories
 {

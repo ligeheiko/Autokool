@@ -1,7 +1,7 @@
 ﻿using Autokool.Facade.Common;
 using System.ComponentModel;
 
-namespace Autokool.Facade.DrivingSchool
+namespace Autokool.Facade.DrivingSchool.ViewModels
 {
     public class ExamView : DateView
     {
