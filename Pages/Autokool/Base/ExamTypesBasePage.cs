@@ -4,14 +4,16 @@ using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Facade.DrivingSchool.Factories;
 using Autokool.Facade.DrivingSchool.ViewModels;
 using Autokool.Pages.Common;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 
 
-namespace Autokool.Pages.Autokool
+namespace Autokool.Pages.Autokool.Base
 {
-    public class ExamTypesPage : ViewPage<ExamTypesPage, IExamTypeRepo, ExamType, ExamTypeView, ExamTypeData>
+    public class ExamTypesBasePage<Tpage> : ViewPage<Tpage, IExamTypeRepo, ExamType, ExamTypeView, ExamTypeData>
+        where Tpage : PageModel
     {
-        public ExamTypesPage(IExamTypeRepo r) : base(r, "ExamTypes") { }
+        public ExamTypesBasePage(IExamTypeRepo r) : base(r, "ExamTypes") { }
         protected override Uri pageUrl() => new Uri("/Administrator/ExamTypes", UriKind.Relative);
         protected internal override ExamType toObject(ExamTypeView v) => new ExamTypeViewFactory().Create(v);
         protected internal override ExamTypeView toView(ExamType o) => new ExamTypeViewFactory().Create(o);

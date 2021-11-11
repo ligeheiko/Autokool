@@ -6,46 +6,47 @@ using Autokool.Facade.DrivingSchool.Factories;
 using Autokool.Facade.DrivingSchool.ViewModels;
 using Autokool.Pages.Common;
 using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 
-namespace Autokool.Pages.Autokool
+namespace Autokool.Pages.Autokool.Base
 {
-    public class CoursesPage : ViewPage<CoursesPage, ICourseRepo, Course, CourseView, CourseData>
+    public abstract class CoursesBasePage<TPage> : ViewPage<TPage, ICourseRepo, Course, CourseView, CourseData>
+        where TPage : PageModel
     {
         public IEnumerable<SelectListItem> CourseTypes { get; }
-        public CoursesPage(ICourseRepo r, ICourseTypeRepo c) : base(r, "Courses") 
+        public CoursesBasePage(ICourseRepo r, ICourseTypeRepo c) : base(r, "Courses")
         {
             CourseTypes = newItemsList<CourseType, CourseTypeData>(c);
         }
-        public string CourseTypeName(string id) => itemName(CourseTypes, id);
         protected override Uri pageUrl() => new Uri("/Administrator/Courses", UriKind.Relative);
+        public string CourseTypeName(string id) => itemName(CourseTypes, id);
         protected internal override Course toObject(CourseView v) => new CourseViewFactory().Create(v);
         protected internal override CourseView toView(Course o) => new CourseViewFactory().Create(o);
         protected override void createTableColumns()
         {
-            createColumn(x => Item.ID);
             createColumn(x => Item.Name);
             createColumn(x => Item.CourseTypeID);
             createColumn(x => Item.Location);
             createColumn(x => Item.ValidFrom);
             createColumn(x => Item.ValidTo);
         }
-        public override string GetName(IHtmlHelper<CoursesPage> html, int i)
+        public override string GetName(IHtmlHelper<TPage> html, int i)
         {
             return i switch
             {
-                4 or 5 => getName<DateTime>(html, i),
+                3 or 4 => getName<DateTime>(html, i),
                 _ => base.GetName(html, i)
             };
         }
-        public override IHtmlContent GetValue(IHtmlHelper<CoursesPage> html, int i)
+        public override IHtmlContent GetValue(IHtmlHelper<TPage> html, int i)
         {
             return i switch
             {
-                2 => getRaw(html, CourseTypeName(Item.CourseTypeID)),
-                4 or 5 => getValue<DateTime>(html, i),
+                1 => getRaw(html, CourseTypeName(Item.CourseTypeID)),
+                3 or 4 => getValue<DateTime>(html, i),
                 _ => base.GetValue(html, i)
             };
         }

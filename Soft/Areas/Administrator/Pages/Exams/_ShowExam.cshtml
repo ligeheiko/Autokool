@@ -1,11 +1,12 @@
 ﻿@using Autokool.Pages.Common.Extensions;
-@model Autokool.Pages.Autokool.ExamsPage
+@model Autokool.Pages.Autokool.Administrator.ExamsAdminPage
 
 <body>
     @Html.Show(m => m.Item.ID)
     @Html.Show(m => m.Item.Name)
     @Html.Show(m => m.Item.ExamTypeID, Model.ExamTypeName(Model.Item.ExamTypeID))
     @*@Html.Show(m => m.Item.Passed)*@
+    @*@Html.CheckBox("Passed",Model.Item.Passed)*@
     @Html.Show(m => m.Item.ValidFrom)
     @Html.Show(m => m.Item.ValidTo)
 </body>

@@ -26,23 +26,15 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Administrator" asp-page="/Courses/Index" asp-page-handler="index">Courses</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Administrator" asp-page="/Exams/Index" asp-page-handler="index">Exams</a>
-                        </li>
-                        @*<li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Student" asp-page="/Courses/Index" asp-page-handler="index">CoursesStudent</a>
-                        </li>*@
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Administrator" asp-page="/CourseTypes/Index" asp-page-handler="index">Course Types</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Administrator" asp-page="/ExamTypes/Index" asp-page-handler="index">Exam Types</a>
-                        </li>
-                        @*@Html.DropMenu("Admin",
-        new Link("Courses", new Uri("/Administrator/Courses/Index?handler=index", UriKind.Relative)))*@
+                        @Html.DropMenu("Admin",
+                             new Link("Courses", new Uri("/Administrator/Courses/Index?handler=index", UriKind.Relative)),
+                             new Link("Exams", new Uri("/Administrator/Exams/Index?handler=index", UriKind.Relative)),
+                             new Link("CourseTypes", new Uri("/Administrator/CourseTypes/Index?handler=index", UriKind.Relative)),
+                             new Link("ExamTypes", new Uri("/Administrator/CourseTypes/Index?handler=index", UriKind.Relative))
+                             )
+                        @Html.DropMenu("Student",
+                             new Link("Courses", new Uri("/Student/Courses/Index?handler=index", UriKind.Relative))
+                             )
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

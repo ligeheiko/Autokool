@@ -5,16 +5,18 @@ using Autokool.Facade.DrivingSchool.Factories;
 using Autokool.Facade.DrivingSchool.ViewModels;
 using Autokool.Pages.Common;
 using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 
-namespace Autokool.Pages.Autokool
+namespace Autokool.Pages.Autokool.Base
 {
-    public class ExamsPage : ViewPage<ExamsPage, IExamRepo, Exam, ExamView, ExamData>
+    public class ExamsBasePage<Tpage> : ViewPage<Tpage, IExamRepo, Exam, ExamView, ExamData>
+        where Tpage : PageModel
     {
         public IEnumerable<SelectListItem> ExamTypes { get; }
-        public ExamsPage(IExamRepo r, IExamTypeRepo e) : base(r, "Exams") 
+        public ExamsBasePage(IExamRepo r, IExamTypeRepo e) : base(r, "Exams")
         {
             ExamTypes = newItemsList<ExamType, ExamTypeData>(e);
         }
@@ -27,11 +29,11 @@ namespace Autokool.Pages.Autokool
             createColumn(x => Item.ID);
             createColumn(x => Item.Name);
             createColumn(x => Item.ExamTypeID);
-            //createColumn(x => Item.Passed);
+            //createColumn(x => Item.Passed); //ToDo tee checkbox passedile
             createColumn(x => Item.ValidFrom);
             createColumn(x => Item.ValidTo);
         }
-        public override string GetName(IHtmlHelper<ExamsPage> html, int i)
+        public override string GetName(IHtmlHelper<Tpage> html, int i)
         {
             return i switch
             {
@@ -39,7 +41,7 @@ namespace Autokool.Pages.Autokool
                 _ => base.GetName(html, i)
             };
         }
-        public override IHtmlContent GetValue(IHtmlHelper<ExamsPage> html, int i)
+        public override IHtmlContent GetValue(IHtmlHelper<Tpage> html, int i)
         {
             return i switch
             {
