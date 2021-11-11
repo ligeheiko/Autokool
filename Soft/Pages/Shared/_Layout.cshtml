@@ -33,7 +33,8 @@
                              new Link("ExamTypes", new Uri("/Administrator/CourseTypes/Index?handler=index", UriKind.Relative))
                              )
                         @Html.DropMenu("Student",
-                             new Link("Courses", new Uri("/Student/Courses/Index?handler=index", UriKind.Relative))
+                             new Link("Courses", new Uri("/Student/Courses/Index?handler=index", UriKind.Relative)),
+                             new Link("Exams", new Uri("/Student/Exams/Index?handler=index", UriKind.Relative))
                              )
                     </ul>
                     <partial name="_LoginPartial" />

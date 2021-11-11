@@ -26,7 +26,6 @@ namespace Autokool.Pages.Autokool.Base
         protected internal override ExamView toView(Exam o) => new ExamViewFactory().Create(o);
         protected override void createTableColumns()
         {
-            createColumn(x => Item.ID);
             createColumn(x => Item.Name);
             createColumn(x => Item.ExamTypeID);
             //createColumn(x => Item.Passed); //ToDo tee checkbox passedile
@@ -37,7 +36,7 @@ namespace Autokool.Pages.Autokool.Base
         {
             return i switch
             {
-                3 or 4 => getName<DateTime>(html, i),
+                2 or 3 => getName<DateTime>(html, i),
                 _ => base.GetName(html, i)
             };
         }
@@ -45,8 +44,8 @@ namespace Autokool.Pages.Autokool.Base
         {
             return i switch
             {
-                2 => getRaw(html, ExamTypeName(Item.ExamTypeID)),
-                3 or 4 => getValue<DateTime>(html, i),
+                1 => getRaw(html, ExamTypeName(Item.ExamTypeID)),
+                2 or 3 => getValue<DateTime>(html, i),
                 _ => base.GetValue(html, i)
             };
         }
