@@ -2,7 +2,7 @@
 @model Autokool.Pages.Autokool.Admin.CoursesAdminPage
 
 <body>
-    @*@Html.Editor(m => m.Item.ID)*@
+    @Html.Editor(m => m.Item.ID)
     @Html.Editor(m => m.Item.Name)
     @Html.DropDown(m => m.Item.CourseTypeID, Model.CourseTypes)
     @Html.Editor(m => m.Item.Location)

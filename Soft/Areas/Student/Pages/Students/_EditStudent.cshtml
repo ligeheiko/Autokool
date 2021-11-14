@@ -2,6 +2,7 @@
 @model Autokool.Pages.Autokool.Students.StudentsPage
 
 <body>
+    @Html.Editor(m => m.Item.ID)
     @Html.Editor(m => m.Item.FirstName)
     @Html.Editor(m => m.Item.LastName)
     @Html.DropDown(m => m.Item.CourseID, Model.Courses)

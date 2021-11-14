@@ -1,4 +1,5 @@
 ﻿using Autokool.Data.Common;
+using System.ComponentModel.DataAnnotations;
 
 namespace Autokool.Domain.Common
 {
@@ -11,6 +12,9 @@ namespace Autokool.Domain.Common
         public string LastName => Data?.LastName ?? Unspecified;
         public string Email => Data?.Email ?? Unspecified;
         public string PhoneNr => Data?.PhoneNr ?? Unspecified;
+
+
+        [Display(Name = "Full Name")]
         public string FullName
         {
             get
