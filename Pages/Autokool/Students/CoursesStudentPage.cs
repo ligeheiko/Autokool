@@ -6,14 +6,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Threading.Tasks;
 
-namespace Autokool.Pages.Autokool.Student
+namespace Autokool.Pages.Autokool.Students
 {
     public class CoursesStudentPage : CoursesBasePage<CoursesStudentPage>
     {
         public CoursesStudentPage(ICourseRepo c, ICourseTypeRepo ct) : base(c, ct) { }
         protected override Uri pageUrl() => new Uri("/Student/Courses", UriKind.Relative);
 
-        
+
         //public override async Task<IActionResult> OnGetDetailsAsync(string id, string sortOrder, string searchString,
         //   int pageIndex,
         //   string fixedFilter, string fixedValue)

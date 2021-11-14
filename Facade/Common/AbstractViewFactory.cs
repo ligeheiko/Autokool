@@ -17,7 +17,7 @@ namespace Autokool.Facade.Common
         }
         internal protected abstract TObject toObject(TData d);
 
-        public TView Create(TObject o)
+        public virtual TView Create(TObject o)
         {
             var v = new TView();
             Copy.Members(o.Data, v);

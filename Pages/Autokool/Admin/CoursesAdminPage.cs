@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Autokool.Pages.Autokool.Administrator
+namespace Autokool.Pages.Autokool.Admin
 {
     public class CoursesAdminPage : CoursesBasePage<CoursesAdminPage>
     {

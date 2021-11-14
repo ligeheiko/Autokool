@@ -2,7 +2,7 @@
 using Autokool.Pages.Autokool.Base;
 using System;
 
-namespace Autokool.Pages.Autokool.Student
+namespace Autokool.Pages.Autokool.Students
 {
     public class ExamsStudentPage : ExamsBasePage<ExamsStudentPage>
     {

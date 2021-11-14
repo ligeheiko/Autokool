@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Autokool\Teacher\" />
+    <Folder Include="Autokool\Teachers\" />
   </ItemGroup>
 
 </Project>
