@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace Autokool.Facade.DrivingSchool.ViewModels
 {
-    public sealed class RoleTypeView : BaseView
+    public sealed class RoleTypeView : NamedView
     {
         [DisplayName("Admin")]
         public string AdministratorID { get; set; }

@@ -13,7 +13,7 @@ namespace Tests
             set => objUnderTests = value;
         }
         protected abstract object createObject();
-        protected virtual Type getBaseClass() => typeof(TBaseClass);
+        protected virtual Type getBaseClass() => type?.BaseType;
         [TestInitialize]
         public virtual void TestInitialize()
         {
@@ -28,17 +28,7 @@ namespace Tests
         [TestMethod]
         public void IsInheritedFrom()
         {
-            areEqual(getBaseClass(), type?.BaseType);
+            areEqual(typeof(TBaseClass), getBaseClass());
         }
-        //protected void TestProperty<TType>(string propertyName)
-        //{
-        //    var properyInfo = obj.GetType().GetProperty(propertyName);
-        //    Assert.IsNotNull(properyInfo);
-        //    var expected = GetRandom.ValueOf<TType>();
-        //    properyInfo.SetValue(obj, expected);
-        //    var actual = properyInfo.GetValue(obj);
-        //    Assert.AreEqual(expected, actual);
-        //}
-        // Vana test
     }
 }

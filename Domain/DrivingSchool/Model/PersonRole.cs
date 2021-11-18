@@ -3,6 +3,7 @@ using Autokool.Data.DrivingSchool;
 
 namespace Autokool.Domain.DrivingSchool.Model
 {
+    //TODO teha 2 FKga mitte uniqueID
     public sealed class PersonRole : UniqueEntity<PersonRoleData>
     {
         public PersonRole(PersonRoleData d = null) : base(d) { }

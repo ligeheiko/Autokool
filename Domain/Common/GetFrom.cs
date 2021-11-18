@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace Autokool.Domain.Common
 {
-    public sealed class GetFrom<TRepository, TObject>
-        where TRepository : IRepo<TObject>
+    public sealed class GetFrom<TIRepository, TObject>
+        where TIRepository : IRepo<TObject>
     {
 
-        internal TRepository repository
-            => GetRepo.Instance<TRepository>();
+        internal TIRepository repository
+            => GetRepo.Instance<TIRepository>();
 
         public TObject ById(string id)
             => Safe.Run(() => repository.Get(id).GetAwaiter().GetResult(), default(TObject));
@@ -29,7 +29,7 @@ namespace Autokool.Domain.Common
             return list(r, field, value);
         }
 
-        private static IReadOnlyList<TObject> list(TRepository r, string field, string value)
+        private static IReadOnlyList<TObject> list(TIRepository r, string field, string value)
         {
             r.FixedFilter = field;
             r.FixedValue = value;

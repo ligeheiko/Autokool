@@ -7,6 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Autokool.Tests.DomainTests.DrivingSchool.Model
 {
+    //TODO createRepo teha abstraktseks kuskil baas klassis
     [TestClass]
     public class StudentTests : SealedTests<PersonEntity<StudentData>>
     {
