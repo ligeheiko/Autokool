@@ -21,5 +21,6 @@ namespace Autokool.Tests.DomainTests.Common
         public void ValidFromTest() => isProperty(data.ValidFrom);
         [TestMethod]
         public void ValidToTest() => isProperty(data.ValidTo);
+        
     }
 }

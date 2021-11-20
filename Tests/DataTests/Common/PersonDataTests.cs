@@ -27,6 +27,11 @@ namespace Autokool.Tests.DataTests.Common
         {
             isProperty<string>();
         }
+        [TestMethod]
+        public void RoleTypeIDTest()
+        {
+            isProperty<string>();
+        }
 
         protected override object createObject()
         {

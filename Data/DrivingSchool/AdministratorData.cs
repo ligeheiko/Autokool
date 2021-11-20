@@ -4,6 +4,5 @@ namespace Autokool.Data.DrivingSchool
 {
     public sealed class AdministratorData : PersonData
     {
-
     }
 }

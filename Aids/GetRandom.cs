@@ -130,11 +130,19 @@ namespace Autokool.Aids
             return array;
         }
 
-        public static T ObjectOf<T>() => (T)ObjectOf(typeof(T));
+        public static T ObjectOf<T>()
+        {
+            var o = CreateNew.Instance<T>();
+            SetRandom.Values(o);
+
+            return o;
+        }
+
         public static object ObjectOf(Type t)
         {
             var o = CreateNew.Instance(t);
             SetRandom.Values(o);
+
             return o;
         }
         public static string Email()
