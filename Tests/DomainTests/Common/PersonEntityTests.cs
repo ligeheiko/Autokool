@@ -27,5 +27,11 @@ namespace Autokool.Tests.DomainTests.Common
         public void PhoneNrTest() => isProperty(data.PhoneNr);
         [TestMethod]
         public void EmailTest() => isProperty(data.Email);
+        [TestMethod]
+        public void FullNameTest()
+        {
+            var r = Safe.Run(() => data.LastName + ", " + data.FirstName, BaseEntity.Unspecified);
+            isProperty(r);
+        }
     }
 }

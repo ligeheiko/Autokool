@@ -1,18 +1,19 @@
 ﻿using Autokool.Aids;
+using System;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace Autokool.Tests
 {
     public abstract class TestAids : TestAssertions
     {
         protected object objUnderTests;
+        protected Type type;
+
         protected void isProperty<T>(bool isNullable = true)
         {
-            var t = objUnderTests?.GetType();
             var n = getPropertyNameAfter(nameof(isProperty));
-            var pi = t?.GetProperty(n);
-            isNotNull(pi, 
-                $"The class {t} does not have a property {n}");
+            var pi = getPropertyInfo(n);
             isTrue(pi.CanRead, $"The property {n} does not have a getter");
             isTrue(pi.CanWrite, $"The property {n} does not have a setter");
             var expectedValue = GetRandom.ValueOf(typeof(T));
@@ -26,15 +27,24 @@ namespace Autokool.Tests
         }
         protected void isProperty<T>(T expectedValue)
         {
-            var t = objUnderTests?.GetType();
             var n = getPropertyNameAfter(nameof(isProperty));
-            var pi = t?.GetProperty(n);
-            isNotNull(pi,
-                $"The class {t} does not have a property {n}");
+            var pi = getPropertyInfo(n);
             isTrue(pi.CanRead, $"The property {n} does not have a getter");
             var actual = pi.GetValue(objUnderTests);
             areEqual(expectedValue, actual,
                 $"For the property {n}.");
+        }
+
+        private PropertyInfo getPropertyInfo(string propertyName)
+        {
+            var t = objUnderTests?.GetType() ?? type;
+            var pi = t?.GetProperty(propertyName);
+            if (pi == null)
+            {
+                pi = type?.GetProperty(propertyName);
+            }
+            isNotNull(pi,$"The class {t} does not have a property {propertyName}");
+            return pi;
         }
 
         private string getPropertyNameAfter(string methodName)

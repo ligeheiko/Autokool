@@ -9,7 +9,6 @@ namespace Tests
 {
     public class BaseTests : TestAids
     {
-        protected Type type;
 
         [TestCleanup]
         public virtual void TestCleanup()
