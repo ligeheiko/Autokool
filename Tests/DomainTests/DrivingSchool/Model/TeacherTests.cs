@@ -12,6 +12,8 @@ namespace Autokool.Tests.DomainTests.DrivingSchool.Model
     {
         private StudentData studentData;
         private TeacherData data;
+        private MockStudentRepo studentRepo;
+        private Teacher teacher;
         private class MockStudentRepo : RepoMock<Student>, IStudentRepo { }
         protected override object createObject()
         {
@@ -21,34 +23,23 @@ namespace Autokool.Tests.DomainTests.DrivingSchool.Model
         public override void TestInitialize()
         {
             data = GetRandom.ObjectOf<TeacherData>();
-            createMockStudentRepo();
+            studentRepo = createMockStudentRepo();
             base.TestInitialize();
+            teacher = obj as Teacher;
         }
-        private void createMockStudentRepo()
-        {
-            var count = GetRandom.UInt8(10, 20);
-            var index = GetRandom.UInt8(0, count);
-            var repo = new MockStudentRepo();
-            for (var i = 0; i < count; i++)
-            {
-                var d = GetRandom.ObjectOf<StudentData>();
-                if (index == i)
-                {
-                    d.ID = data.StudentID;
-                    studentData = d;
-                }
-                repo.Add(new Student(studentData)).GetAwaiter();
-            }
-            GetRepo.SetServiceProvider(new ServiceProviderMock(repo));
-        }
+        private MockStudentRepo createMockStudentRepo() 
+            =>createMockRepo<MockStudentRepo, Student, StudentData>
+            (data.StudentID, d => new Student(d), out studentData);
         [TestMethod]
         public void StudentIDTest() => isProperty(data.StudentID);
         [TestMethod]
         public void StudentTest()
         {
-            var p = (obj as Teacher).Student;
+            isNull(teacher.Student);
+            GetRepo.SetServiceProvider(new ServiceProviderMock(studentRepo));
+            var p = teacher.Student;
             isNotNull(p);
-            areEqual(studentData.ID, p.ID);
+            areEqualProperties(studentData, p.Data);
         }
     }
 }

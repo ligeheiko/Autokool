@@ -6,13 +6,14 @@ namespace Autokool.Domain.Common
 {
     public sealed class GetFrom<TIRepository, TObject>
         where TIRepository : IRepo<TObject>
+        where TObject : class
     {
 
         internal TIRepository repository
             => GetRepo.Instance<TIRepository>();
 
         public TObject ById(string id)
-            => Safe.Run(() => repository.Get(id).GetAwaiter().GetResult(), default(TObject));
+            => Safe.Run(() => repository?.Get(id)?.GetAwaiter().GetResult(), default(TObject));
 
         public IReadOnlyList<TObject> ListBy(string field, string value)
         {
