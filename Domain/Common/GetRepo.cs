@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Autokool.Aids;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 
 namespace Autokool.Domain.Common
@@ -13,16 +14,19 @@ namespace Autokool.Domain.Common
         public static object Instance(Type t) => instance(services, t);
 
         internal static T instance<T>(IServiceProvider h)
-        {
-            if (h is null) return default;
-            var i = h.GetRequiredService<T>();
-            return i;
-        }
+            => Safe.Run(() => {
+                if (h is null) return default;
+                var i = h.GetRequiredService<T>();
+                return i;
+            }, null);
 
         internal static object instance(IServiceProvider h, Type t)
         {
-            var i = h?.GetRequiredService(t);
-            return i;
+            return Safe.Run(() =>
+            {
+                var i = h?.GetRequiredService(t);
+                return i;
+            }, null);
         }
     }
 }

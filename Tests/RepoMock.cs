@@ -10,7 +10,6 @@ namespace Autokool.Tests
         where TDomainObject: IUniqueEntity
     {
         private readonly List<TDomainObject> list = new();
-
         public string SortOrder { get; set;}
         public string SearchString { get; set;}
         public string CurrentFilter { get; set; }
@@ -18,16 +17,9 @@ namespace Autokool.Tests
         public string FixedValue { get; set; }
         public int PageIndex { get; set; }
         public int PageSize { get; set; }
-
         public int TotalPages { get; set; }
-
         public bool HasNextPage { get; set; }
-
         public bool HasPreviousPage { get; set; }
-
-        public string ErrorMessage => throw new NotImplementedException();
-
-        public TDomainObject EntityInDb => throw new NotImplementedException();
 
         public async Task Add(TDomainObject obj)
         {
@@ -40,9 +32,21 @@ namespace Autokool.Tests
             if (item is not null )list.Remove(item);
         }
 
-        public Task<List<TDomainObject>> Get()
+        public async Task<List<TDomainObject>> Get()
         {
-            throw new NotImplementedException();
+            await Task.CompletedTask;
+            var propertyInfo = typeof(TDomainObject).GetProperty(FixedFilter);
+            if (propertyInfo is null) return new List<TDomainObject>(list);
+            var l = new List<TDomainObject>();
+            foreach (var item in list)
+            {
+                var v = propertyInfo?.GetValue(item)?.ToString();
+                if (v == FixedValue)
+                {
+                    l.Add(item);
+                }
+            }
+            return new List<TDomainObject>(l);
         }
 
         public async Task<TDomainObject> Get(string id)

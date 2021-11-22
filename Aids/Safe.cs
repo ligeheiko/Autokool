@@ -1,36 +1,68 @@
-﻿using System;
+﻿using Autokool.Aids.Logging;
+using System;
 namespace Autokool.Aids
 {
     public static class Safe
     {
-        public static T Run<T>(Func<T> function, T valueOnException)
+        private static readonly object key = new object();
+
+        public static T Run<T>(Func<T> function, T valueOnExeption,
+            bool useLock = false) => useLock
+                ? lockedRun(function, valueOnExeption)
+                : run(function, valueOnExeption);
+
+        public static T Run<T>(Func<T> function, Func<string, T> valueOnExeption,
+            bool useLock = false) => useLock
+                ? lockedRun(function, valueOnExeption)
+                : run(function, valueOnExeption);
+
+        public static void Run(Action action, bool useLock = false)
         {
-            try
-            {
-                return function();
-            }
+            if (useLock) lockedRun(action);
+            else run(action);
+        }
+
+        private static T lockedRun<T>(Func<T> function, T valueOnExeption)
+        {
+            lock (key) { return run(function, valueOnExeption); }
+        }
+
+        private static T lockedRun<T>(Func<T> function, Func<string, T> valueOnExeption)
+        {
+            lock (key) { return run(function, valueOnExeption); }
+        }
+
+        private static void lockedRun(Action action)
+        {
+            lock (key) { run(action); }
+        }
+
+        private static T run<T>(Func<T> function, T valueOnExeption)
+        {
+            try { return function(); }
             catch (Exception e)
             {
-                logException(e);
-                return valueOnException;
+                Log.Exception(e);
+
+                return valueOnExeption;
             }
         }
 
-        public static void Run(Action action)
+        private static T run<T>(Func<T> function, Func<string, T> valueOnExeption)
         {
-            try
-            {
-                action();
-            }
+            try { return function(); }
             catch (Exception e)
             {
-                logException(e);
+                Log.Exception(e);
+
+                return valueOnExeption is null ? default : valueOnExeption(e.Message);
             }
         }
 
-        private static void logException(Exception e)
+        private static void run(Action action)
         {
-            Console.WriteLine(e.ToString());
+            try { action(); } catch (Exception e) { Log.Exception(e); }
         }
+
     }
 }
