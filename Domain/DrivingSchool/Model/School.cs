@@ -1,5 +1,6 @@
 ﻿using Autokool.Domain.Common;
 using Autokool.Data.DrivingSchool;
+using Autokool.Domain.DrivingSchool.Repos;
 
 namespace Autokool.Domain.DrivingSchool.Model
 {
@@ -10,5 +11,6 @@ namespace Autokool.Domain.DrivingSchool.Model
         public string StudentID => Data?.StudentID ?? Unspecified;
         public string TeacherID => Data?.TeacherID ?? Unspecified;
         public string CourseID => Data?.CourseID ?? Unspecified;
+        public Course Course => new GetFrom<ICourseRepo, Course>().ById(CourseID);
     }
 }

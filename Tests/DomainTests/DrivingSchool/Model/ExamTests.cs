@@ -12,9 +12,8 @@ namespace Autokool.Tests.DomainTests.DrivingSchool.Model
     {
         private ExamData data;
         private ExamTypeData examTypeData;
-        private MockExamTypeRepo examTypeRepo;
+        private IExamTypeRepo examTypeRepo;
         private Exam exam;
-        private class MockExamTypeRepo : RepoMock<ExamType>, IExamTypeRepo { }
         protected override object createObject()
         {
             return new Exam(data);
@@ -23,13 +22,10 @@ namespace Autokool.Tests.DomainTests.DrivingSchool.Model
         public override void TestInitialize()
         {
             data = GetRandom.ObjectOf<ExamData>();
-            examTypeRepo = createMockExamTypeRepo();
+            examTypeRepo = MockRepos.ExamTypeRepos(data.ExamTypeID, out examTypeData);
             base.TestInitialize();
             exam = obj as Exam;
         }
-        private MockExamTypeRepo createMockExamTypeRepo()
-            => createMockRepo<MockExamTypeRepo, ExamType, ExamTypeData>
-            (data.ExamTypeID, d => new ExamType(d), out examTypeData);
         [TestMethod]
         public void PassedTest() => isProperty(data.Passed);
         [TestMethod]

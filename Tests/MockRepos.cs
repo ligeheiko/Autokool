@@ -1,0 +1,50 @@
+﻿using Autokool.Aids;
+using Autokool.Data.Common;
+using Autokool.Data.DrivingSchool;
+using Autokool.Domain.DrivingSchool.Model;
+using Autokool.Domain.DrivingSchool.Repos;
+using System;
+
+namespace Autokool.Tests
+{
+    internal static class MockRepos
+    {
+        private static TRepo createMockRepo<TRepo, TObj, TData>(string id, Func<TData, TObj> toObject, out TData data)
+         where TRepo : IRepo<TObj>, new()
+         where TData : BaseData
+        {
+            data = null;
+            var count = GetRandom.UInt8(10, 20);
+            var idx = GetRandom.UInt8(0, count);
+            var repo = new TRepo();
+            for (var i = 0; i < count; i++)
+            {
+                var d = GetRandom.ObjectOf<TData>();
+                if (idx == i)
+                {
+                    d.ID = id;
+                    data = d;
+                }
+                repo.Add(toObject(d)).GetAwaiter();
+            }
+            return repo;
+        }
+        private class MockCourseTypeRepo : RepoMock<CourseType>, ICourseTypeRepo { }
+        private class MockCourseRepo : RepoMock<Course>, ICourseRepo { }
+        private class MockExamTypeRepo : RepoMock<ExamType>, IExamTypeRepo { }
+        private class MockStudentRepo : RepoMock<Student>, IStudentRepo { }
+        public static ICourseRepo CourseRepos(string id, out CourseData data)
+            => createMockRepo<MockCourseRepo, Course, CourseData>(
+                id, d => new Course(d), out data);
+
+        public static ICourseTypeRepo CourseTypeRepos(string id, out CourseTypeData data)
+       => createMockRepo<MockCourseTypeRepo, CourseType, CourseTypeData>(
+               id, d => new CourseType(d), out data);
+        public static IExamTypeRepo ExamTypeRepos(string id, out ExamTypeData data)
+      => createMockRepo<MockExamTypeRepo, ExamType, ExamTypeData>(
+              id, d => new ExamType(d), out data);
+        public static IStudentRepo StudentRepos(string id, out StudentData data)
+     => createMockRepo<MockStudentRepo, Student, StudentData>(
+             id, d => new Student(d), out data);
+    }
+}

@@ -12,10 +12,9 @@ namespace Autokool.Tests.DomainTests.DrivingSchool.Model
     {
         private CourseData data;
         private CourseTypeData courseTypeData;
-        private MockCourseTypeRepo courseTypeRepo;
+        private ICourseTypeRepo courseTypeRepo;
         private Course course;
 
-        private class MockCourseTypeRepo : RepoMock<CourseType>, ICourseTypeRepo { }
         protected override object createObject()
         {
             return new Course(data);
@@ -24,14 +23,10 @@ namespace Autokool.Tests.DomainTests.DrivingSchool.Model
         public override void TestInitialize()
         {
             data = GetRandom.ObjectOf<CourseData>();
-            courseTypeRepo = createMockCourseTypeRepo();
+            courseTypeRepo = MockRepos.CourseTypeRepos(data.CourseTypeID, out courseTypeData);
             base.TestInitialize();
             course = obj as Course;
         }
-
-        private MockCourseTypeRepo createMockCourseTypeRepo()
-        => createMockRepo<MockCourseTypeRepo, CourseType, CourseTypeData>(
-                data.CourseTypeID, d => new CourseType(d), out courseTypeData);
 
         [TestMethod]
         public void LocationTest() => isProperty(data.Location);
