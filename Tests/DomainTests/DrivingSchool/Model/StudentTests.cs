@@ -31,9 +31,9 @@ namespace Autokool.Tests.DomainTests.DrivingSchool.Model
         [TestMethod]
         public void CourseTest()
         {
-            isNull((student).Course);
+            isNull(student.Course);
             GetRepo.SetServiceProvider(new ServiceProviderMock(courseRepo));
-            var p = (student).Course;
+            var p = student.Course;
             isNotNull(p);
             areEqualProperties(courseData, p.Data);
         }

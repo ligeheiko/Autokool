@@ -33,11 +33,11 @@ namespace Autokool.Tests.DomainTests.DrivingSchool.Model
         [TestMethod]
         public void ExamTypeTest()
         {
-            isNull((exam).ExamType);
+            isNull(exam.ExamType);
             GetRepo.SetServiceProvider(new ServiceProviderMock(examTypeRepo));
-            var p = (exam).ExamType;
+            var p = exam.ExamType;
             isNotNull(p);
-            areEqual(examTypeData.ID, p.ID);
+            areEqualProperties(examTypeData, p.Data);
         }
     }
 }

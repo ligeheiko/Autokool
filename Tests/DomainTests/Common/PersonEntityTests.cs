@@ -13,9 +13,10 @@ namespace Autokool.Tests.DomainTests.Common
     public class PersonEntityTests : AbstractTests<DateEntity<TestData>>
     {
         private TestData data;
-        public RoleTypeData roleTypeData;
+        private RoleTypeData roleTypeData;
+        private IRoleTypeRepo roleTypeRepo;
+        private PersonEntity<TestData> person;
 
-        private class MockRoleTypeRepo : RepoMock<RoleType>, IRoleTypeRepo { }
         private class testClass : PersonEntity<TestData>
         {
             public testClass(TestData d) : base(d) { }
@@ -23,26 +24,11 @@ namespace Autokool.Tests.DomainTests.Common
         protected override object createObject()
         {
             data = GetRandom.ObjectOf<TestData>();
-            createMockRoleTypeRepo();
+            roleTypeRepo = MockRepos.RoleTypeRepos(data.RoleTypeID, out roleTypeData);
+            person = obj as PersonEntity<TestData>;
             return new testClass(data);
         }
-        protected void createMockRoleTypeRepo()
-        {
-            var count = GetRandom.UInt8(10, 20);
-            var index = GetRandom.UInt8(0, count);
-            var repo = new MockRoleTypeRepo();
-            for (var i = 0; i < count; i++)
-            {
-                var d = GetRandom.ObjectOf<RoleTypeData>();
-                if (index == i)
-                {
-                    d.ID = data.RoleTypeID;
-                    roleTypeData = d;
-                }
-                repo.Add(new RoleType(roleTypeData)).GetAwaiter();
-            }
-            GetRepo.SetServiceProvider(new ServiceProviderMock(repo));
-        }
+       
         [TestMethod]
         public void FirstNameTest() => isProperty(data.FirstName);
         [TestMethod]
@@ -62,9 +48,11 @@ namespace Autokool.Tests.DomainTests.Common
         [TestMethod]
         public void RoleTypeTest()
         {
+            isNull((obj as PersonEntity<TestData>).RoleType);
+            GetRepo.SetServiceProvider(new ServiceProviderMock(roleTypeRepo));
             var p = (obj as PersonEntity<TestData>).RoleType;
             isNotNull(p);
-            areEqual(roleTypeData.ID, p.ID);
+            areEqualProperties(roleTypeData, p.Data);
         }
     }
 }
