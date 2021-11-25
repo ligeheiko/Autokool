@@ -5,9 +5,21 @@
 @{
     Layout = "_Index";
     var page = Model.PageUrl;
+    string reg = "Register";
+    bool isRegistered = Model.registered;
 }
 
 @section Create {
 }
 
-@Html.ShowTable(Model, null, null, "Register", null)
+@if (Model.IsRegistered)
+{
+    reg = "Cancel registration";
+    @Html.ShowTable(Model, null, reg, null, null)
+}
+else
+{
+    reg = "Register";
+    @Html.ShowTable(Model, null, null, reg, null)
+}
+

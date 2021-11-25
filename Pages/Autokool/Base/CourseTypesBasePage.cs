@@ -12,7 +12,7 @@ namespace Autokool.Pages.Autokool.Base
     public class CourseTypesBasePage<Tpage> : ViewPage<Tpage, ICourseTypeRepo, CourseType, CourseTypeView, CourseTypeData>
         where Tpage : PageModel
     {
-        public CourseTypesBasePage(ICourseTypeRepo r) : base(r, "CourseTypes") { }
+        public CourseTypesBasePage(ICourseTypeRepo r) : base(r, "Course Types") { }
         protected override Uri pageUrl() => new Uri("/Administrator/CourseTypes", UriKind.Relative);
         protected internal override CourseType toObject(CourseTypeView v) => new CourseTypeViewFactory().Create(v);
         protected internal override CourseTypeView toView(CourseType o) => new CourseTypeViewFactory().Create(o);

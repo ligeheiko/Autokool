@@ -20,6 +20,7 @@ namespace Autokool.Tests
         public int TotalPages { get; set; }
         public bool HasNextPage { get; set; }
         public bool HasPreviousPage { get; set; }
+        public bool IsRegistered { get; set; }
 
         public async Task Add(TDomainObject obj)
         {

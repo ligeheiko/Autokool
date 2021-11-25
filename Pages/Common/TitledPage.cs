@@ -37,6 +37,7 @@ namespace Autokool.Pages.Common
                        $"&sortOrder={SortOrder}" +
                        $"&searchString={SearchString}" +
                        $"&fixedFilter={FixedFilter}" +
+                       $"&registered={IsRegistered}"+
                        $"&fixedValue={FixedValue}", UriKind.Relative);
 
         protected abstract Uri pageUrl();
@@ -44,7 +45,7 @@ namespace Autokool.Pages.Common
         public Uri IndexUrl => indexUrl();
 
         protected internal Uri indexUrl() =>
-            new Uri($"{PageUrl}/Index?handler=Index&fixedFilter={FixedFilter}&fixedValue={FixedValue}", UriKind.Relative);
+            new Uri($"{PageUrl}/Index?handler=Index&fixedFilter={FixedFilter}&fixedValue={FixedValue}&registered={IsRegistered}", UriKind.Relative);
 
         protected internal static IEnumerable<SelectListItem> newItemsList<TTDomain, TTData>(
             IRepo<TTDomain> r,

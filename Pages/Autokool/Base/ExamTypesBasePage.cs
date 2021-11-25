@@ -13,7 +13,7 @@ namespace Autokool.Pages.Autokool.Base
     public class ExamTypesBasePage<Tpage> : ViewPage<Tpage, IExamTypeRepo, ExamType, ExamTypeView, ExamTypeData>
         where Tpage : PageModel
     {
-        public ExamTypesBasePage(IExamTypeRepo r) : base(r, "ExamTypes") { }
+        public ExamTypesBasePage(IExamTypeRepo r) : base(r, "Exam Types") { }
         protected override Uri pageUrl() => new Uri("/Administrator/ExamTypes", UriKind.Relative);
         protected internal override ExamType toObject(ExamTypeView v) => new ExamTypeViewFactory().Create(v);
         protected internal override ExamTypeView toView(ExamType o) => new ExamTypeViewFactory().Create(o);

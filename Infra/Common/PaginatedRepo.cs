@@ -18,6 +18,7 @@ namespace Autokool.Infra.Common
         public bool HasNextPage => PageIndex < TotalPages;
         public bool HasPreviousPage => PageIndex > 1;
         public int PageSize { get; set; } = DefaultPageSize;
+        public bool IsRegistered { get; set; }
 
         protected PaginatedRepo(DbContext c, DbSet<TData> s) : base(c, s) { }
 

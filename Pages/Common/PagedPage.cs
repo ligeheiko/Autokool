@@ -42,13 +42,13 @@ namespace Autokool.Pages.Common
         protected internal async Task getList(string sortOrder, string currentFilter, string searchString,
             int? pageIndex, string fixedFilter, string fixedValue)
         {
-
             FixedFilter = fixedFilter;
             FixedValue = fixedValue;
             SortOrder = sortOrder;
             SearchString = searchString;
             CurrentFilter = getCurrentFilter(currentFilter, searchString, ref pageIndex);
             PageIndex = pageIndex ?? 1;
+            IsRegistered = getRegistered();
             Items = await getList().ConfigureAwait(true);
         }
 

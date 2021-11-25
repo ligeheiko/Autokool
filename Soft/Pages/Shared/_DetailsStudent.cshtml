@@ -11,31 +11,32 @@
 </p>
 
 <div>
-    <h4>Details</h4>
+    <h4>Confirm Registration</h4>
     <hr />
     <dl class="row">
         @RenderBody()
     </dl>
 </div>
 <div>
-    <a id="editButton" 
-       asp-page="./Edit" 
-       asp-route-handler="Edit"
+    <a 
+       id="button"
+       asp-page="./Index"
+       asp-route-handler="Index"
        asp-route-sortorder="@Model.SortOrder"
        asp-route-fixedFilter="@Model.FixedFilter"
        asp-route-fixedValue="@Model.FixedValue"
        asp-route-pageIndex="@Model.PageIndex"
-       
-       asp-route-id="@itemId">Edit</a> |
-    
+       asp-route-IsRegistered="@Model.IsRegistered"
+       asp-route-id="@itemId">Confirm</a> |
+
     @Html.BackTo(
         new Args(
-            null, 
-            null, 
-            Model.FixedFilter, 
-            Model.FixedValue, 
-            Model.SortOrder, 
-            Model.SearchString, 
+            null,
+            null,
+            Model.FixedFilter,
+            Model.FixedValue,
+            Model.SortOrder,
+            Model.SearchString,
             Model.PageIndex))
 
     @RenderSection("Details")

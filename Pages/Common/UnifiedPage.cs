@@ -63,10 +63,11 @@ namespace Autokool.Pages.Common
         {
             var name = GetMember.Name(e);
             var sortOrder = getSortOrder(name);
+            var registered = getRegistered();
 
             return new Uri(
                 $"{page}?handler=Index&sortOrder={sortOrder}&currentFilter={CurrentFilter}&searchString={SearchString}"
-                + $"&fixedFilter={FixedFilter}&fixedValue={FixedValue}", UriKind.Relative);
+                + $"&fixedFilter={FixedFilter}&fixedValue={FixedValue}&registered={registered}", UriKind.Relative);
         }
 
         protected Expression<Func<TPage, TResult>> toExpr<TResult>(LambdaExpression e)

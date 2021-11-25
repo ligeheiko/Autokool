@@ -45,6 +45,15 @@ namespace Autokool.Pages.Common
             get => db.FixedFilter;
             set => db.FixedFilter = value;
         }
+        public bool IsRegistered
+        {
+            get => db.IsRegistered;
+            set => db.IsRegistered = value;
+        }
+        protected internal void setIsRegistered(bool isRegistered)
+        {
+            IsRegistered = isRegistered;
+        }
 
         protected internal void setFixedFilter(string fixedFilter, string fixedValue)
         {
@@ -80,6 +89,10 @@ namespace Autokool.Pages.Common
 
             return searchString;
 
+        }
+        internal bool getRegistered()
+        {
+            return IsRegistered;
         }
 
         internal static void loadDetails<TDetailObj, TDetailView, TMasterView>(IList<TDetailView> list,

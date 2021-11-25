@@ -22,7 +22,7 @@ namespace Autokool.Pages.Common
 
         public virtual async Task OnGetIndexAsync(string sortOrder,
             string id, string currentFilter, string searchString, int? pageIndex,
-            string fixedFilter, string fixedValue)
+            string fixedFilter, string fixedValue, bool isRegistered)
         {
             SelectedId = id;
             await getList(sortOrder, currentFilter, searchString, pageIndex,
@@ -80,7 +80,7 @@ namespace Autokool.Pages.Common
 
         public virtual async Task<IActionResult> OnGetDetailsAsync(string id, string sortOrder, string searchString,
             int pageIndex,
-            string fixedFilter, string fixedValue)
+            string fixedFilter, string fixedValue, bool register = false)
         {
             await getObject(id, sortOrder, searchString, pageIndex, fixedFilter, fixedValue).ConfigureAwait(true);
 
