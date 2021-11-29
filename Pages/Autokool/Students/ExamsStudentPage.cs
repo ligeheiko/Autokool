@@ -10,8 +10,6 @@ namespace Autokool.Pages.Autokool.Students
     {
         public ExamsStudentPage(IExamRepo e, IExamTypeRepo et) : base(e, et) { }
         protected override Uri pageUrl() => new Uri("/Student/Exams", UriKind.Relative);
-        protected string buttonText = "";
-        public bool registered;
 
         public override async Task OnGetIndexAsync(string sortOrder,
            string id, string currentFilter, string searchString, int? pageIndex,
@@ -32,7 +30,7 @@ namespace Autokool.Pages.Autokool.Students
             register = true;
             setIsRegistered(register);
             return Page();
+            //TODO registreerimis nupule vajutades saab admin vaadata kes on registreerinud
         }
     }
-
 }
