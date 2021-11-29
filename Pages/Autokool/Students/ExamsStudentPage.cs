@@ -33,7 +33,6 @@ namespace Autokool.Pages.Autokool.Students
             setIsRegistered(register);
             return Page();
         }
-        //TODO override see et kui klikkida register nuppu saab opilane registreerida ja saab vastava lehe
     }
 
 }

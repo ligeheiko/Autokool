@@ -18,7 +18,8 @@ namespace Autokool.Infra.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNr = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    PhoneNr = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RoleTypeID = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -160,7 +161,8 @@ namespace Autokool.Infra.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNr = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    PhoneNr = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RoleTypeID = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -179,7 +181,8 @@ namespace Autokool.Infra.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNr = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    PhoneNr = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RoleTypeID = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

@@ -27,24 +27,14 @@ namespace Autokool.Pages.Autokool.Students
             createColumn(x => Item.FirstName);
             createColumn(x => Item.LastName);
             createColumn(x => Item.CourseID);
-            createColumn(x => Item.ValidFrom);
-            createColumn(x => Item.ValidTo);
             createColumn(x => Item.Email);
-        }
-        public override string GetName(IHtmlHelper<StudentsPage> html, int i)
-        {
-            return i switch
-            {
-                3 or 4 => getName<DateTime>(html, i),
-                _ => base.GetName(html, i)
-            };
+            createColumn(x => Item.PhoneNr);
         }
         public override IHtmlContent GetValue(IHtmlHelper<StudentsPage> html, int i)
         {
             return i switch
             {
                 2 => getRaw(html, CourseName(Item.CourseID)),
-                3 or 4 => getValue<DateTime>(html, i),
                 _ => base.GetValue(html, i)
             };
         }

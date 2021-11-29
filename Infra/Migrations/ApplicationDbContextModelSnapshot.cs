@@ -39,6 +39,9 @@ namespace Autokool.Infra.Migrations
                     b.Property<string>("PhoneNr")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("RoleTypeID")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("ValidFrom")
                         .HasColumnType("datetime2");
 
@@ -187,6 +190,9 @@ namespace Autokool.Infra.Migrations
                     b.Property<string>("PhoneNr")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("RoleTypeID")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("ValidFrom")
                         .HasColumnType("datetime2");
 
@@ -216,6 +222,9 @@ namespace Autokool.Infra.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoleTypeID")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StudentID")
