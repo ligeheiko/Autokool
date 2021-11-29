@@ -91,6 +91,28 @@ namespace Autokool.Infra.Migrations
                     b.ToTable("CourseType");
                 });
 
+            modelBuilder.Entity("Autokool.Data.DrivingSchool.DrivingPracticeData", b =>
+                {
+                    b.Property<string>("ID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TeacherID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ValidFrom")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ValidTo")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("DrivingPractice");
+                });
+
             modelBuilder.Entity("Autokool.Data.DrivingSchool.ExamData", b =>
                 {
                     b.Property<string>("ID")

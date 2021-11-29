@@ -20,6 +20,7 @@ namespace Autokool.Infra
         public DbSet<SchoolData> Schools { get; set; }
         public DbSet<StudentData> Students { get; set; }
         public DbSet<TeacherData> Teachers { get; set; }
+        public DbSet<DrivingPracticeData> DrivingPractices { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -33,6 +34,7 @@ namespace Autokool.Infra
             builder.Entity<PersonRoleData>().ToTable("PersonRole");
             builder.Entity<StudentData>().ToTable("Student");
             builder.Entity<TeacherData>().ToTable("Teacher");
+            builder.Entity<DrivingPracticeData>().ToTable("DrivingPractice");
             //builder.Entity<PersonData>().ToTable("Person");???
         }
     }

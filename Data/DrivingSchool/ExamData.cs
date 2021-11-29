@@ -6,6 +6,5 @@ namespace Autokool.Data.DrivingSchool
     {
         public bool Passed { get; set; }
         public string ExamTypeID { get; set; }
-        //public List<ExamTypeData> ExamType { get; set; }
     }
 }

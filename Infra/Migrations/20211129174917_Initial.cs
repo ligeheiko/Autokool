@@ -94,6 +94,21 @@ namespace Autokool.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DrivingPractice",
+                columns: table => new
+                {
+                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    TeacherID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ValidTo = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DrivingPractice", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Exam",
                 columns: table => new
                 {
@@ -360,6 +375,9 @@ namespace Autokool.Infra.Migrations
 
             migrationBuilder.DropTable(
                 name: "CourseType");
+
+            migrationBuilder.DropTable(
+                name: "DrivingPractice");
 
             migrationBuilder.DropTable(
                 name: "Exam");

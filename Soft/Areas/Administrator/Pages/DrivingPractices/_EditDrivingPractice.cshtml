@@ -1,0 +1,9 @@
+﻿@using Autokool.Pages.Common.Extensions;
+@model Autokool.Pages.Autokool.Admin.DrivingPracticeAdminPage
+
+<body>
+    @Html.Editor(m => m.Item.ID)
+    @Html.DropDown(m => m.Item.TeacherID, Model.Teachers)
+    @Html.Editor(m => m.Item.ValidFrom)
+    @Html.Editor(m => m.Item.ValidTo)
+</body>
