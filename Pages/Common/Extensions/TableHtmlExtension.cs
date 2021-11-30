@@ -21,20 +21,6 @@ namespace Autokool.Pages.Common.Extensions
             var s = h.HtmlStrings(page, buttons);
             return new HtmlContentBuilder(s);
         }
-        public static IHtmlContent ShowTableStudent<TPage>(this IHtmlHelper<TPage> h,
-            IIndexTable<TPage> page, string select = null, string edit = "Edit",
-            string details = "Details", string delete = "Delete")
-        {
-            var buttons = new RowButtons
-            {
-                Select = select,
-                Edit = edit,
-                Details = details,
-                Delete = delete
-            };
-            var s = h.HtmlStrings(page, buttons);
-            return new HtmlContentBuilder(s);
-        }
 
         internal static List<object> HtmlStrings<TPage>(this IHtmlHelper<TPage> h,
             IIndexTable<TPage> page, RowButtons buttons)

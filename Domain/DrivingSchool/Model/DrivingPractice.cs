@@ -4,7 +4,7 @@ using Autokool.Domain.DrivingSchool.Repos;
 
 namespace Autokool.Domain.DrivingSchool.Model
 {
-    public class DrivingPractice : DateEntity<DrivingPracticeData>
+    public sealed class DrivingPractice : DateEntity<DrivingPracticeData>
     {
         public DrivingPractice(DrivingPracticeData d) : base(d) { }
         public string TeacherID => Data?.TeacherID ?? Unspecified;

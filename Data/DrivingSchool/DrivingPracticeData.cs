@@ -2,7 +2,7 @@
 
 namespace Autokool.Data.DrivingSchool
 {
-    public class DrivingPracticeData : DateData
+    public sealed class DrivingPracticeData : DateData
     {
         public string TeacherID { get; set; }
     }
