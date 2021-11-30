@@ -3,5 +3,6 @@
 
 <body>
     @Html.Show(m => m.Item.Name)
+    @Html.Show(m => m.Item.ExamTypeID, Model.ExamTypeName(Model.Item.ExamTypeID))
     @Html.Show(m => m.Item.ValidTo)
 </body>

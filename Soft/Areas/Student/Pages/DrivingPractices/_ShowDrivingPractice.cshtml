@@ -1,0 +1,8 @@
+﻿@using Autokool.Pages.Common.Extensions;
+@model Autokool.Pages.Autokool.Students.DrivingPracticeStudentPage
+
+<body>
+    @Html.Show(m => m.Item.TeacherID, Model.TeacherName(Model.Item.TeacherID))
+    @Html.Show(m => m.Item.ValidFrom)
+    @Html.Show(m => m.Item.ValidTo)
+</body>
