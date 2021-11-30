@@ -16,14 +16,6 @@ namespace Autokool.Domain.Common
         public string PhoneNr => Data?.PhoneNr ?? Unspecified;
         public string RoleTypeID => Data?.RoleTypeID ?? Unspecified;
         public RoleType RoleType => new GetFrom<IRoleTypeRepo, RoleType>().ById(RoleTypeID);
-
-        [Display(Name = "Full Name")]
-        public string FullName
-        {
-            get
-            {
-                return LastName + ", " + FirstName;
-            }
-        }
+        public string FullName => $"{Name} {LastName}";
     }
 }
