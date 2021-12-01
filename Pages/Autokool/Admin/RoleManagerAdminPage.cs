@@ -30,14 +30,5 @@ namespace Autokool.Pages.Autokool.Admin
             }
             return Page();
         }
-        //[HttpPost]
-        //public async Task<IActionResult> AddRole(string roleName)
-        //{
-        //    if (roleName != null)
-        //    {
-        //        await _roleManager.CreateAsync(new IdentityRole(roleName.Trim()));
-        //    }
-        //    return RedirectToAction("Index");
-        //}
     }
 }

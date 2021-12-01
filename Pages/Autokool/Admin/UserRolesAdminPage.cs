@@ -18,6 +18,8 @@ namespace Autokool.Pages.Autokool.Admin
         private readonly RoleManager<IdentityRole> _roleManager;
         public List<ApplicationUser> users;
         public List<UserRolesData> usersData;
+        public List<ManageUserRolesData> model;
+        public ManageUserRolesData manageUserRolesData;
 
         public UserRolesAdminPage(UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager)
@@ -44,6 +46,55 @@ namespace Autokool.Pages.Autokool.Admin
         private async Task<List<string>> GetUserRoles(ApplicationUser user)
         {
             return new List<string>(await _userManager.GetRolesAsync(user));
+        }
+        public async Task<IActionResult> OnGetManageAsync(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            model = new List<ManageUserRolesData>();
+            foreach (var role in _roleManager.Roles)
+            {
+                manageUserRolesData = new ManageUserRolesData
+                {
+                    RoleId = role.Id,
+                    RoleName = role.Name
+                };
+                if (await _userManager.IsInRoleAsync(user, role.Name))
+                {
+                    manageUserRolesData.Selected = true;
+                }
+                else
+                {
+                    manageUserRolesData.Selected = false;
+                }
+                model.Add(manageUserRolesData);
+            }
+            return Page();
+        }
+        public async Task<IActionResult> OnPostManageAsync(List<ManageUserRolesData> model, string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return Page();
+            }
+            var roles = await _userManager.GetRolesAsync(user);
+            var result = await _userManager.RemoveFromRolesAsync(user, roles);
+            if (!result.Succeeded)
+            {
+                ModelState.AddModelError("", "Cannot remove user existing roles");
+                return Page();
+            }
+            result = await _userManager.AddToRolesAsync(user, model.Where(x => x.Selected).Select(y => y.RoleName));
+            if (!result.Succeeded)
+            {
+                ModelState.AddModelError("", "Cannot add selected roles to user");
+                return Page();
+            }
+            return RedirectToAction("Index");
         }
     }
 }
