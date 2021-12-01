@@ -1,3 +1,4 @@
+using Autokool.Data.Common;
 using Autokool.Domain.Common;
 using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Infra;
@@ -33,8 +34,10 @@ namespace Soft
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+           .AddEntityFrameworkStores<ApplicationDbContext>()
+           .AddDefaultUI()
+           .AddDefaultTokenProviders();
             services.AddRazorPages();
             RegisterRepos(services);
         }

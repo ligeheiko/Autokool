@@ -1,10 +1,11 @@
-﻿using Autokool.Data.DrivingSchool;
+﻿using Autokool.Data.Common;
+using Autokool.Data.DrivingSchool;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Autokool.Infra
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
