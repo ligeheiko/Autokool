@@ -29,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Administrator\Pages\asd\" />
     <Folder Include="Areas\Teacher\" />
     <Folder Include="Pages\CoursesPage\" />
   </ItemGroup>
