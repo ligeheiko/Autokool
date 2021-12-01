@@ -24,8 +24,7 @@ namespace Autokool.Pages.Autokool.Students
         protected internal override StudentView toView(Student o) => new StudentViewFactory().Create(o);
         protected override void createTableColumns()
         {
-            createColumn(x => Item.FirstName);
-            createColumn(x => Item.LastName);
+            createColumn(x => Item.FullName);
             createColumn(x => Item.CourseID);
             createColumn(x => Item.Email);
             createColumn(x => Item.PhoneNr);
@@ -34,7 +33,7 @@ namespace Autokool.Pages.Autokool.Students
         {
             return i switch
             {
-                2 => getRaw(html, CourseName(Item.CourseID)),
+                1 => getRaw(html, CourseName(Item.CourseID)),
                 _ => base.GetValue(html, i)
             };
         }

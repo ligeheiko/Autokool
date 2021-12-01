@@ -1,5 +1,4 @@
 ﻿using Autokool.Facade.Common;
-using Autokool.Facade.DrivingSchool.Factories;
 using System.ComponentModel;
 
 namespace Autokool.Facade.DrivingSchool.ViewModels
@@ -8,5 +7,7 @@ namespace Autokool.Facade.DrivingSchool.ViewModels
     {
         [DisplayName("Course")]
         public string CourseID { get; set; }
+        [DisplayName("Last Name")]
+        public new string Name { get; set; }
     }
 }

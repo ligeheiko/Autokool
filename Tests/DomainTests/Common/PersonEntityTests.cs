@@ -2,7 +2,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Autokool.Aids;
 using Autokool.Data.Common;
-using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Data.DrivingSchool;
 using Autokool.Domain.DrivingSchool.Repos;
 
@@ -15,7 +14,6 @@ namespace Autokool.Tests.DomainTests.Common
         private TestData data;
         private RoleTypeData roleTypeData;
         private IRoleTypeRepo roleTypeRepo;
-        private PersonEntity<TestData> person;
 
         private class testClass : PersonEntity<TestData>
         {
@@ -25,7 +23,6 @@ namespace Autokool.Tests.DomainTests.Common
         {
             data = GetRandom.ObjectOf<TestData>();
             roleTypeRepo = MockRepos.RoleTypeRepos(data.RoleTypeID, out roleTypeData);
-            person = obj as PersonEntity<TestData>;
             return new testClass(data);
         }
        
@@ -42,7 +39,7 @@ namespace Autokool.Tests.DomainTests.Common
         [TestMethod]
         public void FullNameTest()
         {
-            var r = Safe.Run(() => data.LastName + ", " + data.FirstName, BaseEntity.Unspecified);
+            var r = Safe.Run(() => data.FirstName + " " + data.Name, BaseEntity.Unspecified);
             isProperty(r);
         }
         [TestMethod]

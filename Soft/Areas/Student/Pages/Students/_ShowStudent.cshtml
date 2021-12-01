@@ -2,8 +2,7 @@
 @model Autokool.Pages.Autokool.Students.StudentsPage
 
 <body>
-    @Html.Show(m => m.Item.FirstName)
-    @Html.Show(m => m.Item.LastName)
+    @Html.Show(m => m.Item.FullName)
     @Html.Show(m => m.Item.CourseID, Model.CourseName(Model.Item.CourseID))
     @Html.Show(m => m.Item.Email)
     @Html.Show(m => m.Item.PhoneNr)

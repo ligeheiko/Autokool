@@ -1,0 +1,13 @@
+﻿@page
+@using Autokool.Pages.Common.Extensions
+@model Autokool.Pages.Autokool.Students.TeachersStudentPage
+
+@{
+    Layout = "_Index";
+    var page = Model.PageUrl;
+}
+
+@section Create {
+}
+
+@Html.ShowTable(Model, null, null, null, null)

@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Soft</title>
+    <title>@ViewData["Title"] - Driving School</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -38,6 +38,7 @@
                              new Link("Courses", new Uri("/Student/Courses/Index?handler=index", UriKind.Relative)),
                              new Link("Exams", new Uri("/Student/Exams/Index?handler=index", UriKind.Relative)),
                              new Link("Driving practice reservation", new Uri("/Student/DrivingPractices/Index?handler=index", UriKind.Relative)),
+                             new Link("Teachers Info", new Uri("/Student/Teachers/Index?handler=index", UriKind.Relative)),
                              new Link("My Data", new Uri("/Student/Students/Index?handler=index", UriKind.Relative))
                              )
                     </ul>
@@ -54,7 +55,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - Soft - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2021 - Driving School - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
 
