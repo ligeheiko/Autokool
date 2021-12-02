@@ -69,6 +69,28 @@ namespace Autokool.Pages.Common
             l.Insert(0, new SelectListItem(Word.Unspecified, null));
             return l;
         }
+        protected internal static IEnumerable<SelectListItem> newItemsListUser<TTDomain, TTData>(
+            IRepo<TTDomain> r,
+            Func<TTDomain, bool> condition = null,
+            Func<TTData, string> getName = null)
+            where TTDomain : IUniqueEntity<TTData>
+            where TTData : BaseData, new()
+        {
+            Func<TTData, string> name = d => (getName is null) ? (d as INamedEntityData)?.Name : getName(d);
+            var items = r?.Get().GetAwaiter().GetResult();
+            var l = items is null
+                ? new List<SelectListItem>()
+                : condition is null ?
+                    items
+                    .Select(m => new SelectListItem(name(m.Data), m.Data.ID))
+                    .ToList() :
+                    items
+                    .Where(condition)
+                    .Select(m => new SelectListItem(name(m.Data), m.Data.ID))
+                    .ToList();
+            l.Insert(0, new SelectListItem(Word.Unspecified, null));
+            return l;
+        }
 
         protected internal static string itemName(IEnumerable<SelectListItem> list, string id)
         {

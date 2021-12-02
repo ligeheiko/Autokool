@@ -140,6 +140,20 @@ namespace Autokool.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ManageUserRoles",
+                columns: table => new
+                {
+                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    RoleId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RoleName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Selected = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ManageUserRoles", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "PersonRole",
                 columns: table => new
                 {
@@ -216,7 +230,8 @@ namespace Autokool.Infra.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ManageUserRolesID = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -403,6 +418,9 @@ namespace Autokool.Infra.Migrations
 
             migrationBuilder.DropTable(
                 name: "ExamType");
+
+            migrationBuilder.DropTable(
+                name: "ManageUserRoles");
 
             migrationBuilder.DropTable(
                 name: "PersonRole");

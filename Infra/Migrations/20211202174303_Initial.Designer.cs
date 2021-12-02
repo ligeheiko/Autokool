@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Autokool.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211202145814_Initial")]
+    [Migration("20211202174303_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -227,6 +227,25 @@ namespace Autokool.Infra.Migrations
                     b.ToTable("ExamType");
                 });
 
+            modelBuilder.Entity("Autokool.Data.DrivingSchool.ManageUserRolesData", b =>
+                {
+                    b.Property<string>("ID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoleName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Selected")
+                        .HasColumnType("bit");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("ManageUserRoles");
+                });
+
             modelBuilder.Entity("Autokool.Data.DrivingSchool.PersonRoleData", b =>
                 {
                     b.Property<string>("ID")
@@ -351,6 +370,9 @@ namespace Autokool.Infra.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ManageUserRolesID")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")

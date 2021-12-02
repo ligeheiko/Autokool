@@ -24,6 +24,7 @@ namespace Autokool.Infra
         public DbSet<TeacherData> Teachers { get; set; }
         public DbSet<DrivingPracticeData> DrivingPractices { get; set; }
         public DbSet<UserRolesData> RolesUser { get; set; } //teisiti ei saanud nimetata kuna identityDb juba on userRoles
+        public DbSet<ManageUserRolesData> ManageUserRoles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -39,6 +40,7 @@ namespace Autokool.Infra
             builder.Entity<TeacherData>().ToTable("Teacher");
             builder.Entity<DrivingPracticeData>().ToTable("DrivingPractice");
             builder.Entity<UserRolesData>().ToTable("UserRole");
+            builder.Entity<ManageUserRolesData>().ToTable("ManageUserRoles");
             //builder.Entity<PersonData>().ToTable("Person");???
         }
     }

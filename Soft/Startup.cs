@@ -53,6 +53,7 @@ namespace Soft
             s.AddScoped<ITeacherRepo, TeacherRepo>();
             s.AddScoped<IDrivingPracticeRepo, DrivingPracticeRepo>();
             s.AddScoped<IUserRolesRepo, UserRolesRepo>();
+            s.AddScoped<IManageUserRolesRepo, ManageUserRolesRepo>();
             GetRepo.SetServiceProvider(s.BuildServiceProvider());
         }
 

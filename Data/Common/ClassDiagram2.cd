@@ -70,5 +70,48 @@
       <FileName>Common\BaseData.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Autokool.Data.DrivingSchool.UserRolesData">
+    <Position X="10.5" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAAAAAAAAAABAgAAgAAAAAAAQAAAAAAAAg=</HashCode>
+      <FileName>DrivingSchool\UserRolesData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Autokool.Data.DrivingSchool.ManageUserRolesData">
+    <Position X="7.25" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAI=</HashCode>
+      <FileName>DrivingSchool\ManageUserRolesData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Autokool.Data.Common.BaseData" Collapsed="true">
+    <Position X="5.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\BaseData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Autokool.Data.DrivingSchool.CourseData">
+    <Position X="13" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>DrivingSchool\CourseData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Autokool.Data.DrivingSchool.CourseTypeData">
+    <Position X="14.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DrivingSchool\CourseTypeData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Autokool.Data.Common.NamedEntityData" Collapsed="true">
+    <Position X="15.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\NamedEntityData.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

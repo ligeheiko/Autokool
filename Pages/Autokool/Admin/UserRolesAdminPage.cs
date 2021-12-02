@@ -22,18 +22,22 @@ namespace Autokool.Pages.Autokool.Admin
     public class UserRolesAdminPage : ViewPage<UserRolesAdminPage, IUserRolesRepo, UserRoles, UserRolesView, UserRolesData>
         
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
+        public readonly UserManager<ApplicationUser> _userManager;
+        public readonly RoleManager<IdentityRole> _roleManager;
         public List<ApplicationUser> users;
         public List<UserRolesData> usersData;
-        public List<ManageUserRolesData> model;
+        public List<ManageUserRolesData> UserRolesList;
         public ManageUserRolesData manageUserRolesData;
+        public IEnumerable<SelectListItem> ManageUserRolesList { get; set; }
+        public IManageUserRolesRepo rolesRepo;
 
         public UserRolesAdminPage(UserManager<ApplicationUser> userManager,
-            RoleManager<IdentityRole> roleManager, IUserRolesRepo r) : base(r, "UserRoles")
+            RoleManager<IdentityRole> roleManager, IUserRolesRepo r, IManageUserRolesRepo m) : base(r, "UserRoles")
         {
+            rolesRepo = m;
             _roleManager = roleManager;
             _userManager = userManager;
+            
         }
         protected override Uri pageUrl() => new Uri("/Administrator/UserRoles", UriKind.Relative);
         protected internal override UserRoles toObject(UserRolesView v) => new UserRolesViewFactory().Create(v);
@@ -46,7 +50,6 @@ namespace Autokool.Pages.Autokool.Admin
             string id, string currentFilter, string searchString, int? pageIndex,
             string fixedFilter, string fixedValue, bool isRegistered)
         {
-            await base.OnGetIndexAsync(sortOrder, id, currentFilter, searchString, pageIndex, fixedFilter, fixedValue, isRegistered);
             users = await _userManager.Users.ToListAsync();
             usersData = new List<UserRolesData>();
             foreach (ApplicationUser user in users)
@@ -59,6 +62,9 @@ namespace Autokool.Pages.Autokool.Admin
                 thisViewModel.Roles = await GetUserRoles(user);
                 usersData.Add(thisViewModel);
             }
+            SelectedId = id;
+            await getList(sortOrder, currentFilter, searchString, pageIndex,
+               fixedFilter, fixedValue).ConfigureAwait(true);
             return Page();
         }
         private async Task<List<string>> GetUserRoles(ApplicationUser user)
@@ -72,14 +78,13 @@ namespace Autokool.Pages.Autokool.Admin
             {
                 return NotFound();
             }
-            model = new List<ManageUserRolesData>();
+            UserRolesList = new List<ManageUserRolesData>();
+            
             foreach (var role in _roleManager.Roles)
             {
-                manageUserRolesData = new ManageUserRolesData
-                {
-                    RoleId = role.Id,
-                    RoleName = role.Name
-                };
+                manageUserRolesData = new ManageUserRolesData();
+                manageUserRolesData.RoleId = role.Id;
+                manageUserRolesData.RoleName = role.Name;
                 if (await _userManager.IsInRoleAsync(user, role.Name))
                 {
                     manageUserRolesData.Selected = true;
@@ -88,7 +93,7 @@ namespace Autokool.Pages.Autokool.Admin
                 {
                     manageUserRolesData.Selected = false;
                 }
-                model.Add(manageUserRolesData);
+                UserRolesList.Add(manageUserRolesData);
             }
             return Page();
         }
