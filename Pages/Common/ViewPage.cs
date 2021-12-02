@@ -20,13 +20,14 @@ namespace Autokool.Pages.Common
 
         protected ViewPage(TRepository r, string title) : base(r, title) { }
 
-        public virtual async Task OnGetIndexAsync(string sortOrder,
+        public virtual async Task<IActionResult> OnGetIndexAsync(string sortOrder,
             string id, string currentFilter, string searchString, int? pageIndex,
             string fixedFilter, string fixedValue, bool isRegistered)
         {
             SelectedId = id;
             await getList(sortOrder, currentFilter, searchString, pageIndex,
                 fixedFilter, fixedValue).ConfigureAwait(true);
+            return Page();
         }
 
         public virtual IActionResult OnGetCreate(

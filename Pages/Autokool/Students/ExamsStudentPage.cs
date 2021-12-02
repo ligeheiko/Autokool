@@ -11,7 +11,7 @@ namespace Autokool.Pages.Autokool.Students
         public ExamsStudentPage(IExamRepo e, IExamTypeRepo et) : base(e, et) { }
         protected override Uri pageUrl() => new Uri("/Student/Exams", UriKind.Relative);
 
-        public override async Task OnGetIndexAsync(string sortOrder,
+        public override async Task<IActionResult> OnGetIndexAsync(string sortOrder,
            string id, string currentFilter, string searchString, int? pageIndex,
            string fixedFilter, string fixedValue, bool isRegistered)
         {
@@ -20,6 +20,7 @@ namespace Autokool.Pages.Autokool.Students
             setIsRegistered(isRegistered);
             await getList(sortOrder, currentFilter, searchString, pageIndex,
                 fixedFilter, fixedValue).ConfigureAwait(true);
+            return Page();
         }
 
         public override async Task<IActionResult> OnGetDetailsAsync(string id, string sortOrder, string searchString,

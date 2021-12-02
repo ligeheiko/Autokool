@@ -4,15 +4,23 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Autokool.Domain;
+using Autokool.Domain.DrivingSchool.Model;
+using Autokool.Domain.DrivingSchool.Repos;
+using Autokool.Facade.DrivingSchool.Factories;
+using Autokool.Facade.DrivingSchool.ViewModels;
+using Autokool.Pages.Common;
+using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Autokool.Pages.Autokool.Admin
 {
-    public class UserRolesAdminPage : PageModel
+    public class UserRolesAdminPage : ViewPage<UserRolesAdminPage, IUserRolesRepo, UserRoles, UserRolesView, UserRolesData>
+        
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
@@ -22,13 +30,23 @@ namespace Autokool.Pages.Autokool.Admin
         public ManageUserRolesData manageUserRolesData;
 
         public UserRolesAdminPage(UserManager<ApplicationUser> userManager,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<IdentityRole> roleManager, IUserRolesRepo r) : base(r, "UserRoles")
         {
             _roleManager = roleManager;
             _userManager = userManager;
         }
-        public async Task<IActionResult> OnGetIndexAsync()
+        protected override Uri pageUrl() => new Uri("/Administrator/UserRoles", UriKind.Relative);
+        protected internal override UserRoles toObject(UserRolesView v) => new UserRolesViewFactory().Create(v);
+        protected internal override UserRolesView toView(UserRoles o) => new UserRolesViewFactory().Create(o);
+        protected override void createTableColumns()
         {
+            
+        }
+        public override async Task<IActionResult> OnGetIndexAsync(string sortOrder,
+            string id, string currentFilter, string searchString, int? pageIndex,
+            string fixedFilter, string fixedValue, bool isRegistered)
+        {
+            await base.OnGetIndexAsync(sortOrder, id, currentFilter, searchString, pageIndex, fixedFilter, fixedValue, isRegistered);
             users = await _userManager.Users.ToListAsync();
             usersData = new List<UserRolesData>();
             foreach (ApplicationUser user in users)
