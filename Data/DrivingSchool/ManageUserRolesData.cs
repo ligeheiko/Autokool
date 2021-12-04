@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Autokool.Data.DrivingSchool
 {
-    public class ManageUserRolesData : BaseData
+    public class ManageUserRolesData : NamedEntityData
     {
         public string RoleId { get; set; }
         public string RoleName { get; set; }

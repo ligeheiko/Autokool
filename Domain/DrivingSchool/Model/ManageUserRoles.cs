@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Autokool.Domain.DrivingSchool.Model
 {
-    public sealed class ManageUserRoles : UniqueEntity<ManageUserRolesData>
+    public sealed class ManageUserRoles : NamedEntity<ManageUserRolesData>
     {
         public ManageUserRoles(ManageUserRolesData d) : base(d) { }
         public string RoleId => Data?.RoleId ?? Unspecified;

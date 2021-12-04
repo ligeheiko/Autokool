@@ -25,7 +25,8 @@ namespace Autokool.Pages.Autokool.Admin
         public readonly UserManager<ApplicationUser> _userManager;
         public readonly RoleManager<IdentityRole> _roleManager;
         public List<ApplicationUser> users;
-        public List<UserRolesData> usersData;
+        public UserRolesData userRolesData;
+        public List<UserRolesData> usersDataList;
         public List<ManageUserRolesData> UserRolesList;
         public ManageUserRolesData manageUserRolesData;
         public IEnumerable<SelectListItem> ManageUserRolesList { get; set; }
@@ -37,7 +38,7 @@ namespace Autokool.Pages.Autokool.Admin
             rolesRepo = m;
             _roleManager = roleManager;
             _userManager = userManager;
-            
+            ManageUserRolesList = newItemsList<ManageUserRoles, ManageUserRolesData>(m);
         }
         protected override Uri pageUrl() => new Uri("/Administrator/UserRoles", UriKind.Relative);
         protected internal override UserRoles toObject(UserRolesView v) => new UserRolesViewFactory().Create(v);
@@ -51,7 +52,7 @@ namespace Autokool.Pages.Autokool.Admin
             string fixedFilter, string fixedValue, bool isRegistered)
         {
             users = await _userManager.Users.ToListAsync();
-            usersData = new List<UserRolesData>();
+            usersDataList = new List<UserRolesData>();
             foreach (ApplicationUser user in users)
             {
                 var thisViewModel = new UserRolesData();
@@ -60,7 +61,7 @@ namespace Autokool.Pages.Autokool.Admin
                 thisViewModel.FirstName = user.FirstName;
                 thisViewModel.LastName = user.LastName;
                 thisViewModel.Roles = await GetUserRoles(user);
-                usersData.Add(thisViewModel);
+                usersDataList.Add(thisViewModel);
             }
             SelectedId = id;
             await getList(sortOrder, currentFilter, searchString, pageIndex,
@@ -104,6 +105,23 @@ namespace Autokool.Pages.Autokool.Admin
             {
                 return Page();
             }
+            foreach (var role in _roleManager.Roles)
+            {
+                manageUserRolesData = new ManageUserRolesData();
+                manageUserRolesData.RoleId = role.Id;
+                manageUserRolesData.RoleName = role.Name;
+                if (await _userManager.IsInRoleAsync(user, role.Name))
+                {
+                    manageUserRolesData.Selected = true;
+                }
+                else
+                {
+                    manageUserRolesData.Selected = false;
+                }
+                model.Add(manageUserRolesData);
+            }
+            UserRolesList = model;
+            //ManageUserRolesToList(model, user);
             var roles = await _userManager.GetRolesAsync(user);
             var result = await _userManager.RemoveFromRolesAsync(user, roles);
             if (!result.Succeeded)
@@ -117,7 +135,25 @@ namespace Autokool.Pages.Autokool.Admin
                 ModelState.AddModelError("", "Cannot add selected roles to user");
                 return Page();
             }
-            return RedirectToAction("Index");
+            return Redirect(IndexUrl.ToString());
+        }
+        public async void ManageUserRolesToList(List<ManageUserRolesData> list, ApplicationUser user)
+        {
+            foreach (var role in _roleManager.Roles)
+            {
+                manageUserRolesData = new ManageUserRolesData();
+                manageUserRolesData.RoleId = role.Id;
+                manageUserRolesData.RoleName = role.Name;
+                if (await _userManager.IsInRoleAsync(user, role.Name))
+                {
+                    manageUserRolesData.Selected = true;
+                }
+                else
+                {
+                    manageUserRolesData.Selected = false;
+                }
+                list.Add(manageUserRolesData);
+            }
         }
     }
 }

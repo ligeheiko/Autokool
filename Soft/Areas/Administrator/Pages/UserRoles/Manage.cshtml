@@ -17,8 +17,8 @@
                 <div class="form-check m-1">
                     <input type="hidden" asp-for=@role.RoleId />
                     <input type="hidden" asp-for="@role.RoleName" />
-                    <input asp-for="@role.Selected" class="form-check-input" />
-                    <label class="form-check-label" asp-for="@role.Selected">
+                    <input id="checkbox" asp-for="@role.Selected" class="form-check-input" />
+                    <label id="checkbox " class="form-check-label" asp-for="@role.Selected">
                         @role.RoleName
                     </label>
                 </div>
@@ -37,7 +37,6 @@
                Model.SortOrder,
                Model.SearchString,
                Model.PageIndex))
-
         </div>
     </div>
     <div>
