@@ -1,5 +1,6 @@
 ﻿using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Pages.Autokool.Base;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Autokool.Pages.Autokool.Students
 {
+    [Authorize(Roles = "Student")]
     public class CoursesStudentPage : CoursesBasePage<CoursesStudentPage>
     {
         public CoursesStudentPage(ICourseRepo c, ICourseTypeRepo ct) : base(c, ct) { }

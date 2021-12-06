@@ -16,9 +16,11 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Autokool.Pages.Autokool.Admin
 {
+    [Authorize(Roles = "SuperAdmin")]
     public class UserRolesAdminPage : ViewPage<UserRolesAdminPage, IUserRolesRepo, UserRoles, UserRolesView, UserRolesData>
         
     {

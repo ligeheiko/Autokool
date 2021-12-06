@@ -1,11 +1,13 @@
 ﻿using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Pages.Autokool.Base;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 
 namespace Autokool.Pages.Autokool.Students
 {
+    [Authorize(Roles = "Student")]
     public class ExamsStudentPage : ExamsBasePage<ExamsStudentPage>
     {
         public ExamsStudentPage(IExamRepo e, IExamTypeRepo et) : base(e, et) { }

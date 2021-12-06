@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace Autokool.Pages.Autokool.Admin
 {
+    [Authorize(Roles = "SuperAdmin")]
     public class RoleManagerAdminPage : PageModel
     {
         private readonly RoleManager<IdentityRole> _roleManager;
