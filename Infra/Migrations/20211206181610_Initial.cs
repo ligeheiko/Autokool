@@ -146,7 +146,8 @@ namespace Autokool.Infra.Migrations
                     ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     RoleId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RoleName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Selected = table.Column<bool>(type: "bit", nullable: false)
+                    Selected = table.Column<bool>(type: "bit", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

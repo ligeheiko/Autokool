@@ -8,9 +8,9 @@ namespace Autokool.Data.Common
 {
     public enum Roles
     {
-        SuperAdmin,
-        Administrator,
+        Student,
         Teacher,
-        Student
+        Administrator,
+        SuperAdmin
     }
 }

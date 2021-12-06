@@ -230,6 +230,9 @@ namespace Autokool.Infra.Migrations
                     b.Property<string>("ID")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("RoleId")
                         .HasColumnType("nvarchar(max)");
 

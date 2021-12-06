@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Autokool.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211202174303_Initial")]
+    [Migration("20211206181610_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -231,6 +231,9 @@ namespace Autokool.Infra.Migrations
                 {
                     b.Property<string>("ID")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RoleId")
                         .HasColumnType("nvarchar(max)");

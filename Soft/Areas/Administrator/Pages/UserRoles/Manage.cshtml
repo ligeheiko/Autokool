@@ -10,6 +10,7 @@
         <div class="card-header">
             <h2>Manage User Roles</h2>
             Add/Remove Roles for User
+            1=Student, 2=Teacher, 3=Administrator, 4=SuperAdmin
         </div>
         <div class="card-body">
             @foreach (var role in Model.UserRolesList)
@@ -17,11 +18,12 @@
                 <div class="form-check m-1">
                     <input type="hidden" asp-for=@role.RoleId />
                     <input type="hidden" asp-for="@role.RoleName" />
-                    <input id="checkbox" asp-for="@role.Selected" class="form-check-input" />
-                    <label id="checkbox " class="form-check-label" asp-for="@role.Selected">
+                    <input name="selected" checked="@role.Selected" asp-for="@role.Selected" class="form-check-input" />
+                    <label id="checkbox" name="selected" class="form-check-label" asp-for="@role.Selected">
                         @role.RoleName
                     </label>
                 </div>
+                
             }
             <div asp-validation-summary="All" class="text-danger"></div>
         </div>
@@ -42,3 +44,25 @@
     <div>
     </div>
 </form>
+@*<form method="post">
+    <table class="table">
+        <tr>
+            <th>Role Id</th>
+            <th>Role Name</th>
+            <th>Selected</th>
+        </tr>
+        @foreach (var order in Model.UserRolesList)
+        {
+            <tr>
+                <td>
+                    <input type="hidden" name="UserRolesList.Index" value="@order.RoleId" />
+                    <input type="hidden" name="UserRolesLIst[@order.RoleId].OrderId" value="@order.RoleId" />
+                    @order.RoleId
+                </td>
+                <td>@order.RoleName</td>
+                <td><input name="UserRolesList[@order.RoleId].Selected" value="true" /></td>
+            </tr>
+        }
+    </table>
+    <button>Update</button>*@
+@*</form>*@
