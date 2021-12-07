@@ -102,7 +102,7 @@ namespace Autokool.Pages.Common
         }
 
         public virtual async Task<IActionResult> OnPostEditAsync(string sortOrder, string searchString, int pageIndex,
-            string fixedFilter, string fixedValue)
+            string fixedFilter, string fixedValue, string userId = null)
         {
             await updateObject(sortOrder, searchString, pageIndex, fixedFilter, fixedValue).ConfigureAwait(true);
 

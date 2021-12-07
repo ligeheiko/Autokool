@@ -12,6 +12,8 @@ namespace Autokool.Pages.Autokool.Admin
     public class TeachersAdminPage : TeachersBasePage<TeachersAdminPage>
     {
         private readonly UserManager<ApplicationUser> _userManager;
+        public ApplicationUser applicationUser;
+        public string UserId;
 
         public TeachersAdminPage(ITeacherRepo t/*, IStudentRepo s*/, UserManager<ApplicationUser> userManager) : base(t/*, s*/) 
         {
@@ -24,6 +26,34 @@ namespace Autokool.Pages.Autokool.Admin
                .ConfigureAwait(true)) return Page();
             var user = new ApplicationUser
             {
+                Id = Item.ID,
+                UserName = Item.FirstName,
+                Email = Item.Email,
+                FirstName = Item.FirstName,
+                LastName = Item.Name
+            };
+            UserId = user.Id;//vaata!!!
+            var result = await _userManager.CreateAsync(user, user.FirstName.ToString() + user.LastName.ToString() + "1'");
+            if (result.Succeeded)
+            {
+                 await _userManager.AddToRoleAsync(user, Roles.Teacher.ToString());
+            }
+            return Redirect(IndexUrl.ToString());
+        }
+        public override Task<IActionResult> OnGetEditAsync(string id, string sortOrder, string searchString, int pageIndex, string fixedFilter, string fixedValue)
+        {
+            UserId = id;
+            return base.OnGetEditAsync(id, sortOrder, searchString, pageIndex, fixedFilter, fixedValue);
+        }
+        public override async Task<IActionResult> OnPostEditAsync(string sortOrder, string searchString, int pageIndex, string fixedFilter, string fixedValue, string id)
+        {
+            var oldUser = await _userManager.FindByIdAsync(id);
+            await _userManager.DeleteAsync(oldUser);
+            await updateObject(sortOrder, searchString, pageIndex, fixedFilter, fixedValue).ConfigureAwait(true);
+
+            var user = new ApplicationUser
+            {
+                Id = Item.ID,
                 UserName = Item.FirstName,
                 Email = Item.Email,
                 FirstName = Item.FirstName,
@@ -32,8 +62,19 @@ namespace Autokool.Pages.Autokool.Admin
             var result = await _userManager.CreateAsync(user, user.FirstName.ToString() + user.LastName.ToString() + "1'");
             if (result.Succeeded)
             {
-                 await _userManager.AddToRoleAsync(user, Roles.Teacher.ToString());
+                await _userManager.AddToRoleAsync(user, Roles.Teacher.ToString());
             }
+            return Redirect(IndexUrl.ToString());
+        }
+        public override Task<IActionResult> OnGetDeleteAsync(string id, string sortOrder, string searchString, int? pageIndex, string fixedFilter, string fixedValue)
+        {
+            return base.OnGetDeleteAsync(id, sortOrder, searchString, pageIndex, fixedFilter, fixedValue);
+        }
+        public override async Task<IActionResult> OnPostDeleteAsync(string id, string sortOrder, string searchString, int pageIndex, string fixedFilter, string fixedValue)
+        {
+            await deleteObject(id, sortOrder, searchString, pageIndex, fixedFilter, fixedValue).ConfigureAwait(true);
+            var userToDelete = await _userManager.FindByIdAsync(id);
+            await _userManager.DeleteAsync(userToDelete);
             return Redirect(IndexUrl.ToString());
         }
     }
