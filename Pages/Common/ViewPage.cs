@@ -108,8 +108,5 @@ namespace Autokool.Pages.Common
 
             return Redirect(IndexUrl.ToString());
         }
-
-
     }
-
 }
