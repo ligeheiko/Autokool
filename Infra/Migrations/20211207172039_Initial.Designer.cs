@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Autokool.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211206181610_Initial")]
+    [Migration("20211207172039_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

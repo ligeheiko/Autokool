@@ -13,6 +13,8 @@ namespace Autokool.Facade.Common
         public string LastName { get; set; }
 
         [StringLength(50)]
+        [Required]
+        [EmailAddress]
         [Display(Name = "Email address")]
         public string Email { get; set; }
 
@@ -22,6 +24,5 @@ namespace Autokool.Facade.Common
 
         [Display(Name = "Full Name")]
         public string FullName { get; set; }
-
     }
 }
