@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Autokool.Data.Common;
+using Microsoft.AspNetCore.Identity;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Autokool.Data.Common
+namespace Autokool.Infra
 {
     public static class ContextSeed
     {
