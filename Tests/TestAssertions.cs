@@ -19,13 +19,14 @@ namespace Autokool.Tests
         protected static void isNotNull<TExpected>(TExpected e, string message = null) => Assert.IsNotNull(e, message);
         protected static void isTrue(bool e, string message = null) => Assert.IsTrue(e, message);
         protected static void isFalse(bool e, string message = null) => Assert.IsFalse(e, message);
-        protected static void areEqualProperties<TObject>(TObject e, TObject a)
+        protected static void areEqualProperties<TObjectE, TObjectA>(TObjectE e, TObjectA a)
         {
             Assert.AreNotSame(e, a);
-            foreach (var pi in e.GetType().GetProperties())
+            foreach (var piExpected in e.GetType().GetProperties())
             {
-                var expected = pi.GetValue(e);
-                var actual = pi.GetValue(a);
+                var expected = piExpected.GetValue(e);
+                var piActual = a.GetType().GetProperty(piExpected.Name);
+                var actual = piActual.GetValue(a);
                 areEqual(expected, actual);
             }
         }

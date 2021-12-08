@@ -16,7 +16,7 @@ namespace Autokool.Pages.Common
 
         [BindProperty]
         public TView Item { get; set; }
-        public string ItemId => Item?.GetId() ?? string.Empty;
+        public string ItemId => Item?.GetID() ?? string.Empty;
 
         protected internal async Task<bool> addObject(string fixedFilter, string fixedValue)
         {

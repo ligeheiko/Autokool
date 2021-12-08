@@ -1,4 +1,5 @@
 ﻿using Autokool.Aids;
+using Autokool.Aids.Reflection;
 using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Facade.Common;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -101,7 +102,7 @@ namespace Autokool.Pages.Common
             where TMasterView : DateView
         {
 
-            loadDetails(list, data, item?.GetId(), filter, create);
+            loadDetails(list, data, item?.GetID(), filter, create);
         }
 
         internal static void loadDetails<TDetailObj, TDetailView>(IList<TDetailView> list,

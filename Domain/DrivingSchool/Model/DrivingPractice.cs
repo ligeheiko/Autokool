@@ -8,6 +8,6 @@ namespace Autokool.Domain.DrivingSchool.Model
     {
         public DrivingPractice(DrivingPracticeData d) : base(d) { }
         public string TeacherID => Data?.TeacherID ?? Unspecified;
-        public Teacher Teacher => new GetFrom<ITeacherRepo, Teacher>().ById(TeacherID);
+        public Teacher Teacher => new GetFrom<ITeacherRepo, Teacher>()?.ById(TeacherID);
     }
 }

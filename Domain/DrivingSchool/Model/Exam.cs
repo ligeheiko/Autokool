@@ -9,6 +9,6 @@ namespace Autokool.Domain.DrivingSchool.Model
         public Exam(ExamData d) : base(d) { }
         public bool Passed => Data?.Passed ?? false;
         public string ExamTypeID => Data?.ExamTypeID ?? Unspecified;
-        public ExamType ExamType => new GetFrom<IExamTypeRepo,ExamType>().ById(ExamTypeID);
+        public ExamType ExamType => new GetFrom<IExamTypeRepo,ExamType>()?.ById(ExamTypeID);
     }
 }

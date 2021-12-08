@@ -6,7 +6,8 @@ namespace Autokool.Facade.Common
     public abstract class BaseView
     {
         protected BaseView() => ID = Guid.NewGuid().ToString();
+        [Required]
         public string ID { get; set; }
-        public string GetId() => ID;
+        public string GetID() => ID;
     }
 }

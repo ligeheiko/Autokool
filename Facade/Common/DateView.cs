@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Autokool.Facade.Common
@@ -7,12 +8,12 @@ namespace Autokool.Facade.Common
     {
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Valid From")]
-        public DateTime ValidFrom { get; set; }
+        [DisplayName("Valid From")]
+        public DateTime? ValidFrom { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Valid To")]
-        public DateTime ValidTo { get; set; }
+        [DisplayName("Valid To")]
+        public DateTime? ValidTo { get; set; }
     }
 }

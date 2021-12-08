@@ -2,7 +2,7 @@
 
 namespace Autokool.Facade.DrivingSchool.ViewModels
 {
-    public class ExamTypeView : NamedView
+    public sealed class ExamTypeView : NamedView
     {
 
     }

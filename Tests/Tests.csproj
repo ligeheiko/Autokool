@@ -33,7 +33,7 @@
   <ItemGroup>
     <Folder Include="AidsTests\" />
     <Folder Include="CoreTests\" />
-    <Folder Include="FacadeTests\" />
+    <Folder Include="FacadeTests\DrivingSchool\Factories\" />
     <Folder Include="InfraTests\" />
     <Folder Include="PagesTests\" />
   </ItemGroup>

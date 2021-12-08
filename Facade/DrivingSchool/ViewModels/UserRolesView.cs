@@ -1,11 +1,10 @@
-﻿using Autokool.Data.Common;
-using Autokool.Facade.Common;
+﻿using Autokool.Facade.Common;
 using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace Autokool.Facade.DrivingSchool.ViewModels
 {
-    public class UserRolesView : BaseView
+    public sealed class UserRolesView : BaseView
     {
         public string UserId { get; set; }
         [DisplayName("First Name")]
@@ -15,6 +14,5 @@ namespace Autokool.Facade.DrivingSchool.ViewModels
         public string UserName { get; set; }
         public string Email { get; set; }
         public IEnumerable<string> Roles { get; set; }
-        public string ManageUserRolesID { get; set; }
     }
 }

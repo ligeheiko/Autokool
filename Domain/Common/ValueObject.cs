@@ -7,7 +7,7 @@ namespace Autokool.Domain.Common
     public abstract class ValueObject<TData> : BaseEntity where TData : class, new()
     {
 
-        public readonly TData data;
+        internal protected readonly TData data;
         internal static Guid guid;
         protected internal ValueObject(TData d = null) => data = d ?? new TData();
 

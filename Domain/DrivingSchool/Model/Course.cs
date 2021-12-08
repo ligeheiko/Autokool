@@ -9,6 +9,6 @@ namespace Autokool.Domain.DrivingSchool.Model
         public Course(CourseData d) : base(d) { }
         public string Location => Data?.Location ?? Unspecified;
         public string CourseTypeID => Data?.CourseTypeID ?? Unspecified;
-        public CourseType CourseType => new GetFrom<ICourseTypeRepo, CourseType>().ById(CourseTypeID);
+        public CourseType CourseType => new GetFrom<ICourseTypeRepo, CourseType>()?.ById(CourseTypeID);
     }
 }

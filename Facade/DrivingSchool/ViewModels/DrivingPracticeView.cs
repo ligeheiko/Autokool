@@ -5,17 +5,17 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Autokool.Facade.DrivingSchool.ViewModels
 {
-    public class DrivingPracticeView : DateView
+    public sealed class DrivingPracticeView : DateView
     {
         [DisplayName("Teacher's Name")]
         public string TeacherID { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
-        [Display(Name = "Ends")]
-        public new DateTime ValidTo { get; set; }
+        [DisplayName("Ends")]
+        public new DateTime? ValidTo { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Starts")]
-        public new DateTime ValidFrom { get; set; }
+        [DisplayName("Starts")]
+        public new DateTime? ValidFrom { get; set; }
     }
 }
