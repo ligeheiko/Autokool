@@ -10,5 +10,6 @@ namespace Autokool.Tests.FacadeTests.DrivingSchool.ViewModels
         public void StudentIDTest() => isDisplayProperty<string>("Student");
         [TestMethod]
         public void NameTest() => isDisplayProperty<string>("Last Name");
+
     }
 }

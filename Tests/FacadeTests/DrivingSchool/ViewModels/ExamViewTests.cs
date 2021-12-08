@@ -13,5 +13,7 @@ namespace Autokool.Tests.FacadeTests.DrivingSchool.ViewModels
         public void ValidFromTest() => isDateProperty<DateTime?>("Added");
         [TestMethod]
         public void ValidToTest() => isDisplayProperty<DateTime?>("Starts");
+        [TestMethod]
+        public void PassedTest() => isDisplayProperty<bool>("Passed", false);
     }
 }

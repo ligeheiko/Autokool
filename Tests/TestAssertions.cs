@@ -3,6 +3,7 @@ using Autokool.Data.Common;
 using Autokool.Domain.DrivingSchool.Repos;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Linq;
 
 namespace Autokool.Tests
 {
@@ -19,15 +20,18 @@ namespace Autokool.Tests
         protected static void isNotNull<TExpected>(TExpected e, string message = null) => Assert.IsNotNull(e, message);
         protected static void isTrue(bool e, string message = null) => Assert.IsTrue(e, message);
         protected static void isFalse(bool e, string message = null) => Assert.IsFalse(e, message);
-        protected static void areEqualProperties<TObjectE, TObjectA>(TObjectE e, TObjectA a)
+        protected static void areEqualProperties<TObjectE, TObjectA>(TObjectE e, TObjectA a, params string[] excludeProperties)
         {
             Assert.AreNotSame(e, a);
             foreach (var piExpected in e.GetType().GetProperties())
             {
                 var expected = piExpected.GetValue(e);
-                var piActual = a.GetType().GetProperty(piExpected.Name);
+                var name = piExpected.Name;
+                var piActual = a.GetType().GetProperty(name);
+                if (excludeProperties?.Contains(name) ?? false) continue;
+                if (piActual is null) notTested($"Type {typeof(TObjectA)} has no property with name {name}");
                 var actual = piActual.GetValue(a);
-                areEqual(expected, actual);
+                areEqual(expected, actual, $"Not equal values for the property \"{name}\"");
             }
         }
         protected static TRepo createMockRepo<TRepo, TObj, TData>(string id, Func<TData, TObj> toObject, out TData data)

@@ -12,5 +12,11 @@ namespace Autokool.Facade.DrivingSchool.Factories
         {
             return v.FullName = o.FirstName + " " + o.Name;
         }
+        //public override TeacherView Create(Teacher o)
+        //{
+        //    var v = base.Create(o);
+        //    v.FullName = o.FirstName + o.LastName;
+        //    return v;
+        //} //TODO tee ule
     }
 }
