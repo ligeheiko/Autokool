@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Autokool.Data.Common
 {
-    public class ApplicationUser : IdentityUser
+    public sealed class ApplicationUser : IdentityUser
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Autokool.Data.DrivingSchool
 {
-    public class UserRolesData : BaseData
+    public sealed class UserRolesData : BaseData
     {
         public string UserId { get; set; }
         public string FirstName { get; set; }
