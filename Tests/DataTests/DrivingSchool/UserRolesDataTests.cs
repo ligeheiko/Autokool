@@ -37,10 +37,5 @@ namespace Autokool.Tests.DataTests.DrivingSchool
         {
             isProperty<IEnumerable<string>>();
         }
-        [TestMethod]
-        public void ManageUserRolesIDTest()
-        {
-            isProperty<string>();
-        }
     }
 }

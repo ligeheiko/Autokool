@@ -18,13 +18,10 @@ namespace Autokool.Domain.Common
                 if (data is null) return null;
                 var d = new TData();
                 Copy.Members(data, d);
-
                 return d;
             }
         }
-
         public bool IsUnspecified => isUnspecified();
-
         private bool isUnspecified()
         {
             return data is null || arePropertiesEqual(data, new TData());
@@ -35,7 +32,6 @@ namespace Autokool.Domain.Common
             foreach (var property in a.GetType().GetProperties())
             {
                 var name = property.Name;
-
                 var p = b.GetType().GetProperty(name);
 
                 if (p is null) return false;
@@ -55,7 +51,6 @@ namespace Autokool.Domain.Common
 
                 if (!expected.Equals(actual)) return false;
             }
-
             return true;
         }
 

@@ -9,6 +9,9 @@ namespace Autokool.Tests
 {
     internal static class MockRepos
     {
+        private static TRepo createMockRepo<TRepo, TObj, TData>()
+         where TRepo : IRepo<TObj>, new()
+         where TData : BaseData => new TRepo();
         private static TRepo createMockRepo<TRepo, TObj, TData>(string id, Func<TData, TObj> toObject, out TData data)
          where TRepo : IRepo<TObj>, new()
          where TData : BaseData
@@ -32,13 +35,20 @@ namespace Autokool.Tests
         private class MockCourseTypeRepo : RepoMock<CourseType>, ICourseTypeRepo { }
         private class MockCourseRepo : RepoMock<Course>, ICourseRepo { }
         private class MockExamTypeRepo : RepoMock<ExamType>, IExamTypeRepo { }
+        private class MockExamRepo : RepoMock<Exam>, IExamRepo { }
         private class MockStudentRepo : RepoMock<Student>, IStudentRepo { }
         private class MockRoleTypeRepo : RepoMock<RoleType>, IRoleTypeRepo { }
         private class MockTeacherRepo : RepoMock<Teacher>, ITeacherRepo { }
+
         public static ICourseRepo CourseRepos(string id, out CourseData data)
             => createMockRepo<MockCourseRepo, Course, CourseData>(
                 id, d => new Course(d), out data);
-
+        public static ICourseRepo CourseRepos()
+           => createMockRepo<MockCourseRepo, Course, CourseData>();
+        public static IExamRepo ExamRepos()
+           => createMockRepo<MockExamRepo, Exam, ExamData>();
+        public static ITeacherRepo TeacherRepos()
+           => createMockRepo<MockTeacherRepo, Teacher, TeacherData>();
         public static ICourseTypeRepo CourseTypeRepos(string id, out CourseTypeData data)
        => createMockRepo<MockCourseTypeRepo, CourseType, CourseTypeData>(
                id, d => new CourseType(d), out data);

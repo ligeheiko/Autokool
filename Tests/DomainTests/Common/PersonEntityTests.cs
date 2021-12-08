@@ -25,7 +25,6 @@ namespace Autokool.Tests.DomainTests.Common
             roleTypeRepo = MockRepos.RoleTypeRepos(data.RoleTypeID, out roleTypeData);
             return new testClass(data);
         }
-       
         [TestMethod]
         public void FirstNameTest() => isProperty(data.FirstName);
         [TestMethod]

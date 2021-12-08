@@ -7,7 +7,7 @@ namespace Autokool.Domain.Common
         TData : DateData, new()
     {
         protected DateEntity(TData d = null) : base(d) { }
-        public DateTime ValidFrom => Data?.ValidFrom ?? DateTime.MinValue;
-        public DateTime ValidTo => Data?.ValidTo ?? DateTime.MaxValue;
+        public DateTime ValidFrom => Data?.ValidFrom ?? UnspecifiedValidFrom;
+        public DateTime ValidTo => Data?.ValidTo ?? UnspecifiedValidTo;
     }
 }

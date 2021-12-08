@@ -13,9 +13,26 @@ namespace Autokool.Tests.DomainTests.Common
             public testClass(TestData d) : base(d) { }
         }
         protected override object createObject()
+           => new testClass(data);
+        [TestInitialize]
+        public override void TestInitialize()
         {
             data = GetRandom.ObjectOf<TestData>();
-            return new testClass(data);
+            base.TestInitialize();
+        }
+        [TestMethod]
+        public void DataTest()
+        {
+            Assert.AreSame(data, (obj as testClass).data);
+            Assert.AreNotSame(data, (obj as testClass).Data);
+            areEqualProperties(data, (obj as testClass).Data);
+        }
+        [TestMethod]
+        public void IsUnspecifiedTest()
+        {
+            isFalse((obj as testClass).IsUnspecified);
+            obj = new testClass(null);
+            isTrue((obj as testClass).IsUnspecified);
         }
     }
 }

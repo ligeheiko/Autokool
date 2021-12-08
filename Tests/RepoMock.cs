@@ -36,7 +36,7 @@ namespace Autokool.Tests
         public async Task<List<TDomainObject>> Get()
         {
             await Task.CompletedTask;
-            var propertyInfo = typeof(TDomainObject).GetProperty(FixedFilter);
+            var propertyInfo = (FixedFilter is null) ? null : typeof(TDomainObject).GetProperty(FixedFilter);
             if (propertyInfo is null) return new List<TDomainObject>(list);
             var l = new List<TDomainObject>();
             foreach (var item in list)
