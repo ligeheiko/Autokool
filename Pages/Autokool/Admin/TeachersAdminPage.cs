@@ -29,7 +29,7 @@ namespace Autokool.Pages.Autokool.Admin
                 UserName = Item.FirstName,
                 Email = Item.Email,
                 FirstName = Item.FirstName,
-                LastName = Item.Name
+                LastName = Item.LastName
             };
             var result = await _userManager.CreateAsync(user, user.FirstName.ToString() + user.LastName.ToString() + "1'");
             if (result.Succeeded)
@@ -55,7 +55,7 @@ namespace Autokool.Pages.Autokool.Admin
                 UserName = Item.FirstName,
                 Email = Item.Email,
                 FirstName = Item.FirstName,
-                LastName = Item.Name
+                LastName = Item.LastName
             };
             if (user == null)
             {

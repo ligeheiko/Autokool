@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Autokool.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211207172039_Initial")]
+    [Migration("20211209145500_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -118,10 +118,10 @@ namespace Autokool.Infra.Migrations
                     b.Property<string>("RoleTypeID")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("ValidFrom")
+                    b.Property<DateTime?>("ValidFrom")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("ValidTo")
+                    b.Property<DateTime?>("ValidTo")
                         .HasColumnType("datetime2");
 
                     b.HasKey("ID");
@@ -143,10 +143,10 @@ namespace Autokool.Infra.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("ValidFrom")
+                    b.Property<DateTime?>("ValidFrom")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("ValidTo")
+                    b.Property<DateTime?>("ValidTo")
                         .HasColumnType("datetime2");
 
                     b.HasKey("ID");
@@ -178,10 +178,10 @@ namespace Autokool.Infra.Migrations
                     b.Property<string>("TeacherID")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("ValidFrom")
+                    b.Property<DateTime?>("ValidFrom")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("ValidTo")
+                    b.Property<DateTime?>("ValidTo")
                         .HasColumnType("datetime2");
 
                     b.HasKey("ID");
@@ -203,10 +203,10 @@ namespace Autokool.Infra.Migrations
                     b.Property<bool>("Passed")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("ValidFrom")
+                    b.Property<DateTime?>("ValidFrom")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("ValidTo")
+                    b.Property<DateTime?>("ValidTo")
                         .HasColumnType("datetime2");
 
                     b.HasKey("ID");
@@ -313,10 +313,10 @@ namespace Autokool.Infra.Migrations
                     b.Property<string>("RoleTypeID")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("ValidFrom")
+                    b.Property<DateTime?>("ValidFrom")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("ValidTo")
+                    b.Property<DateTime?>("ValidTo")
                         .HasColumnType("datetime2");
 
                     b.HasKey("ID");
@@ -350,10 +350,10 @@ namespace Autokool.Infra.Migrations
                     b.Property<string>("StudentID")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("ValidFrom")
+                    b.Property<DateTime?>("ValidFrom")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("ValidTo")
+                    b.Property<DateTime?>("ValidTo")
                         .HasColumnType("datetime2");
 
                     b.HasKey("ID");
@@ -373,9 +373,6 @@ namespace Autokool.Infra.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ManageUserRolesID")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")

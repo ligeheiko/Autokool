@@ -38,7 +38,7 @@ namespace Autokool.Tests.DomainTests.Common
         [TestMethod]
         public void FullNameTest()
         {
-            var r = Safe.Run(() => data.FirstName + " " + data.Name, BaseEntity.Unspecified);
+            var r = Safe.Run(() => data.FirstName + " " + data.LastName, BaseEntity.Unspecified);
             isProperty(r);
         }
         [TestMethod]

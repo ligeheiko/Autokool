@@ -36,7 +36,7 @@ namespace Autokool.Pages.Autokool.Base
         {
             return i switch
             {
-                2 or 3 => getName<DateTime>(html, i),
+                2 or 3 => getName<DateTime?>(html, i),
                 _ => base.GetName(html, i)
             };
         }
@@ -45,7 +45,7 @@ namespace Autokool.Pages.Autokool.Base
             return i switch
             {
                 1 => getRaw(html, ExamTypeName(Item.ExamTypeID)),
-                2 or 3 => getValue<DateTime>(html, i),
+                2 or 3 => getValue<DateTime?>(html, i),
                 _ => base.GetValue(html, i)
             };
         }

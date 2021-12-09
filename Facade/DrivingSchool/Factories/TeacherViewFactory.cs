@@ -5,18 +5,14 @@ using Autokool.Facade.DrivingSchool.ViewModels;
 
 namespace Autokool.Facade.DrivingSchool.Factories
 {
-    public sealed class TeacherViewFactory : PersonViewFactory<TeacherData, Teacher, TeacherView>
+    public sealed class TeacherViewFactory : AbstractViewFactory<TeacherData, Teacher, TeacherView>
     {
         protected internal override Teacher toObject(TeacherData d) => new Teacher(d);
-        public override string GetName(TeacherView v, Teacher o)
+        public override TeacherView Create(Teacher o)
         {
-            return v.FullName = o.FirstName + " " + o.Name;
+            var v = base.Create(o);
+            v.FullName = o.FirstName +" "+ o.LastName;
+            return v;
         }
-        //public override TeacherView Create(Teacher o)
-        //{
-        //    var v = base.Create(o);
-        //    v.FullName = o.FirstName + o.LastName;
-        //    return v;
-        //} //TODO tee ule
     }
 }
