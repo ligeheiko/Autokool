@@ -28,8 +28,6 @@ namespace Autokool.Tests.DomainTests.Common
         [TestMethod]
         public void FirstNameTest() => isProperty(data.FirstName);
         [TestMethod]
-        public void LastNameTest() => isProperty(data.LastName);
-        [TestMethod]
         public void PhoneNrTest() => isProperty(data.PhoneNr);
         [TestMethod]
         public void EmailTest() => isProperty(data.Email);
@@ -38,7 +36,7 @@ namespace Autokool.Tests.DomainTests.Common
         [TestMethod]
         public void FullNameTest()
         {
-            var r = Safe.Run(() => data.FirstName + " " + data.LastName, BaseEntity.Unspecified);
+            var r = Safe.Run(() => data.FirstName + " " + data.Name, BaseEntity.Unspecified);
             isProperty(r);
         }
         [TestMethod]

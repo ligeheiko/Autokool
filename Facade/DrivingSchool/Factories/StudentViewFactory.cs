@@ -12,7 +12,7 @@ namespace Autokool.Facade.DrivingSchool.Factories
         public override StudentView Create(Student o)
         {
             var v = base.Create(o);
-            v.FullName = o.FirstName + " " + o.LastName;
+            v.FullName = o.FirstName + " " + o.Name;
             return v;
         }
     }

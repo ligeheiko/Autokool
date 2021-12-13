@@ -11,7 +11,7 @@ namespace Autokool.Facade.Common
 
         [StringLength(50)]
         [DisplayName("Last Name")]
-        public string LastName { get; set; }
+        public new string Name { get; set; }
 
         [StringLength(50)]
         [Required]

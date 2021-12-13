@@ -8,8 +8,5 @@ namespace Autokool.Tests.FacadeTests.DrivingSchool.ViewModels
     {
         [TestMethod]
         public void StudentIDTest() => isDisplayProperty<string>("Student");
-        [TestMethod]
-        public void NameTest() => isDisplayProperty<string>("Last Name");
-
     }
 }

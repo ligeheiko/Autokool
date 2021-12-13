@@ -7,8 +7,5 @@ namespace Autokool.Facade.DrivingSchool.ViewModels
     {
         [DisplayName("Student")]
         public string StudentID { get; set; }
-
-        [DisplayName("Last Name")]
-        public new string Name { get; set; }
     }
 }

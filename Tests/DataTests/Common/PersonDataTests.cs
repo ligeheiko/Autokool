@@ -13,11 +13,6 @@ namespace Autokool.Tests.DataTests.Common
             isProperty<string>();
         }
         [TestMethod]
-        public void LastNameTest()
-        {
-            isProperty<string>();
-        }
-        [TestMethod]
         public void EmailTest()
         {
             isProperty<string>();
