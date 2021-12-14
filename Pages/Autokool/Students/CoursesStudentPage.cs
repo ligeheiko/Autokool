@@ -55,6 +55,14 @@ namespace Autokool.Pages.Autokool.Students
             setIsRegistered(register);
             return Page();
         }
+        public override async Task<IActionResult> OnPostEditAsync(string sortOrder, string searchString, int pageIndex, string fixedFilter, string fixedValue, string userId = null)
+        {
+            var currentUser = await GetCurrentUserAsync();
+            register1 = await _registerRepo.Get(currentUser.Id);
+            await _registerRepo.Update(register1);
+
+            return Redirect(IndexUrl.ToString());
+        }
         public async Task<IActionResult> OnPostRegisterAsync(string id, string sortOrder, string searchString,
            int pageIndex,
            string fixedFilter, string fixedValue, bool register)
@@ -65,7 +73,7 @@ namespace Autokool.Pages.Autokool.Students
             registerData.CourseID = id;
             registerData.UserId = currentUser.Id;
             registerData.IsRegisteredCourse = true;
-            var reg =  toObject(registerData);
+            var reg = toObject(registerData);
             await _registerRepo.Add(reg).ConfigureAwait(true);
             return Redirect(IndexUrl.ToString());
         }

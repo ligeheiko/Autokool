@@ -17,10 +17,20 @@
         @RenderBody()
     </dl>
 </div>
+<a id="button"
+   asp-page="./Index"
+   asp-route-handler="Index"
+   asp-route-sortorder="@Model.SortOrder"
+   asp-route-fixedFilter="@Model.FixedFilter"
+   asp-route-fixedValue="@Model.FixedValue"
+   asp-route-pageIndex="@Model.PageIndex"
+   asp-route-IsRegistered="@Model.IsRegistered"
+   asp-route-id="@itemId">Confirm</a> |
+
 <div class="row">
     <div class="col-md-4">
         <form id="createForm"
-              asp-page-handler="Register"
+              asp-page-handler="Details"
               asp-route-sortorder="@Model.SortOrder"
               asp-route-fixedFilter="@Model.FixedFilter"
               asp-route-fixedValue="@Model.FixedValue"
@@ -31,7 +41,7 @@
 
             @RenderBody()
 
-            <input id="createButton" type="submit" value="Create" class="btn btn-primary" />
+            <input id="createButton" type="submit" value="Confirm" class="btn btn-primary" />
         </form>
     </div>
 </div>
