@@ -38,7 +38,9 @@ namespace Autokool.Pages.Autokool.Admin
         {
             _roleManager = roleManager;
             _userManager = userManager;
+            
         }
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
         protected override Uri pageUrl() => new Uri("/Administrator/UserRoles", UriKind.Relative);
         protected internal override UserRoles toObject(UserRolesView v) => new UserRolesViewFactory().Create(v);
         protected internal override UserRolesView toView(UserRoles o) => new UserRolesViewFactory().Create(o);
@@ -49,6 +51,7 @@ namespace Autokool.Pages.Autokool.Admin
             string id, string currentFilter, string searchString, int? pageIndex,
             string fixedFilter, string fixedValue, bool isRegistered)
         {
+            var Currentuser = await GetCurrentUserAsync();
             users = await _userManager.Users.ToListAsync();
             foreach (ApplicationUser user in users)
             {

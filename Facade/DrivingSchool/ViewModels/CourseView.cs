@@ -20,5 +20,7 @@ namespace Autokool.Facade.DrivingSchool.ViewModels
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dddd HH:mm}")]
         [DisplayName("Every week at")]
         public new DateTime? ValidTo { get; set; }
+        [DisplayName("RegisterID")]
+        public string RegisterID { get; set; }
     }
 }

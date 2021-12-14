@@ -16,7 +16,6 @@ namespace Autokool.Infra.Migrations
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ValidTo = table.Column<DateTime>(type: "datetime2", nullable: true),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PhoneNr = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RoleTypeID = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -75,6 +74,7 @@ namespace Autokool.Infra.Migrations
                     ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CourseTypeID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RegisterID = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ValidTo = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -168,6 +168,20 @@ namespace Autokool.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "RegisterData",
+                columns: table => new
+                {
+                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CourseID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsRegisteredCourse = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RegisterData", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "School",
                 columns: table => new
                 {
@@ -192,7 +206,6 @@ namespace Autokool.Infra.Migrations
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ValidTo = table.Column<DateTime>(type: "datetime2", nullable: true),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PhoneNr = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RoleTypeID = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -212,7 +225,6 @@ namespace Autokool.Infra.Migrations
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ValidTo = table.Column<DateTime>(type: "datetime2", nullable: true),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PhoneNr = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RoleTypeID = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -424,6 +436,9 @@ namespace Autokool.Infra.Migrations
 
             migrationBuilder.DropTable(
                 name: "PersonRole");
+
+            migrationBuilder.DropTable(
+                name: "RegisterData");
 
             migrationBuilder.DropTable(
                 name: "School");
