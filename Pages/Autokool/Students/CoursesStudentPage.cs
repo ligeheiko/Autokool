@@ -65,7 +65,7 @@ namespace Autokool.Pages.Autokool.Students
         {
             var Currentuser = await GetCurrentUserAsync();
             var regData = new RegisterData();
-            regData.CourseID = Item.ID;
+            regData.CourseID = id;
             regData.UserId = Currentuser.Id;
             regData.IsRegisteredCourse = true;
             var reg =  toObject(regData);

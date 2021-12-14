@@ -29,7 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Administrator\Pages\dewd\" />
     <Folder Include="Areas\Teacher\" />
     <Folder Include="Pages\CoursesPage\" />
   </ItemGroup>
