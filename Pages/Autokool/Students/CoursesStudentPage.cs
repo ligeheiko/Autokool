@@ -19,15 +19,15 @@ namespace Autokool.Pages.Autokool.Students
     public class CoursesStudentPage : CoursesBasePage<CoursesStudentPage>
     {
         public readonly UserManager<ApplicationUser> _userManager;
+        public ApplicationUser _applicationUser;
         public RegisterData registerData;
-        public ApplicationDbContext _context;
+        public Register register1;
         public IRegisterRepo _registerRepo;
 
-        public CoursesStudentPage(ApplicationDbContext context, UserManager<ApplicationUser> userManager
+        public CoursesStudentPage(UserManager<ApplicationUser> userManager
             , ICourseRepo c, ICourseTypeRepo ct, IRegisterRepo r) : base(c, ct) 
         {
             _registerRepo = r;
-            _context = context;
             _userManager = userManager;
         }
         protected override Uri pageUrl() => new Uri("/Student/Courses", UriKind.Relative);
@@ -36,7 +36,8 @@ namespace Autokool.Pages.Autokool.Students
            string id, string currentFilter, string searchString, int? pageIndex,
            string fixedFilter, string fixedValue, bool isRegistered)
         {
-            
+            var currentUser = await GetCurrentUserAsync();
+            register1 = await _registerRepo.Get(currentUser.Id);
             getRegistered();
             SelectedId = id;
             setIsRegistered(isRegistered);
@@ -49,26 +50,22 @@ namespace Autokool.Pages.Autokool.Students
            int pageIndex,
            string fixedFilter, string fixedValue, bool register)
         {
-            var Currentuser = await GetCurrentUserAsync();
-            var regData = new RegisterData();
-            regData.CourseID = id;
-            regData.UserId = Currentuser.Id;
             await getObject(id, sortOrder, searchString, pageIndex, fixedFilter, fixedValue).ConfigureAwait(true);
             register = true;
             setIsRegistered(register);
             return Page();
-            //TODO registreerimis nupule vajutades saab admin vaadata kes on registreerinud
         }
         public async Task<IActionResult> OnPostRegisterAsync(string id, string sortOrder, string searchString,
            int pageIndex,
            string fixedFilter, string fixedValue, bool register)
         {
-            var Currentuser = await GetCurrentUserAsync();
-            var regData = new RegisterData();
-            regData.CourseID = id;
-            regData.UserId = Currentuser.Id;
-            regData.IsRegisteredCourse = true;
-            var reg =  toObject(regData);
+            var currentUser = await GetCurrentUserAsync();
+            registerData = new RegisterData();
+            registerData.ID = currentUser.Id;
+            registerData.CourseID = id;
+            registerData.UserId = currentUser.Id;
+            registerData.IsRegisteredCourse = true;
+            var reg =  toObject(registerData);
             await _registerRepo.Add(reg).ConfigureAwait(true);
             return Redirect(IndexUrl.ToString());
         }

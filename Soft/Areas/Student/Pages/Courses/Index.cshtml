@@ -11,7 +11,17 @@
 @section Create {
 }
 
-@if (Model.IsRegistered)
+@*@if (Model.IsRegistered)
+{
+    reg = "Cancel registration";
+    @Html.ShowTable(Model, null, reg, null, null)
+}
+else
+{
+    reg = "Register";
+    @Html.ShowTable(Model, null, null, reg, null)
+}*@
+@if (Model.register1.IsRegisteredCourse)
 {
     reg = "Cancel registration";
     @Html.ShowTable(Model, null, reg, null, null)
