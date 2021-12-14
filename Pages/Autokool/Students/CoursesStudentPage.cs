@@ -1,15 +1,10 @@
 ﻿using Autokool.Data.Common;
 using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Domain.DrivingSchool.Repos;
-using Autokool.Infra;
-using Autokool.Infra.AutoKool;
 using Autokool.Pages.Autokool.Base;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
 
@@ -59,6 +54,7 @@ namespace Autokool.Pages.Autokool.Students
         {
             var currentUser = await GetCurrentUserAsync();
             register1 = await _registerRepo.Get(currentUser.Id);
+            register1.Data.IsRegisteredCourse = false;
             await _registerRepo.Update(register1);
 
             return Redirect(IndexUrl.ToString());
