@@ -1,6 +1,5 @@
 ﻿using Autokool.Data.Common;
 using Autokool.Data.DrivingSchool;
-using Autokool.Domain;
 using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Facade.DrivingSchool.Factories;
@@ -8,7 +7,6 @@ using Autokool.Facade.DrivingSchool.ViewModels;
 using Autokool.Pages.Common;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
@@ -33,12 +31,7 @@ namespace Autokool.Pages.Autokool.Admin
         {
             createColumn(x => Item.CourseID);
             createColumn(x => Item.UserId);
-            //createColumn(x => getUserName(Item.UserId));
-        }
-        protected Task<ApplicationUser> getUserName(string userId)
-        {
-            var userName = _userManager.FindByIdAsync(userId);
-            return userName;
+            createColumn(x => Item.UserName);
         }
         public override IHtmlContent GetValue(IHtmlHelper<RegisteredUsersAdminPage> html, int i)
         {

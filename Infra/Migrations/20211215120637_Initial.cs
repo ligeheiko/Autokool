@@ -173,6 +173,7 @@ namespace Autokool.Infra.Migrations
                 {
                     ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CourseID = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsRegisteredCourse = table.Column<bool>(type: "bit", nullable: false)
                 },

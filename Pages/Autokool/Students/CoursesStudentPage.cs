@@ -74,6 +74,7 @@ namespace Autokool.Pages.Autokool.Students
             registerData.ID = currentUser.Id;
             registerData.CourseID = id;
             registerData.UserId = currentUser.Id;
+            registerData.UserName = currentUser.UserName;
             registerData.IsRegisteredCourse = true;
             var reg = toObject(registerData);
             await _registerRepo.Add(reg).ConfigureAwait(true);

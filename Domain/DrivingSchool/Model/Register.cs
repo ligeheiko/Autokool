@@ -10,6 +10,7 @@ namespace Autokool.Domain.DrivingSchool.Model
         public bool IsRegisteredCourse => Data?.IsRegisteredCourse ?? false;
         public string CourseID => Data?.CourseID ?? Unspecified;
         public string UserId => Data?.UserId ?? Unspecified;
+        public string UserName => Data?.UserName ?? Unspecified;
         public Course Course => new GetFrom<ICourseRepo, Course>()?.ById(CourseID);
     }
 }
