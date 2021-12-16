@@ -16,5 +16,10 @@ namespace Autokool.Tests.DataTests.DrivingSchool
         {
             isProperty<string>();
         }
+        [TestMethod]
+        public void RegisterCourseIDTest()
+        {
+            isProperty<string>();
+        }
     }
 }

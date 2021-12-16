@@ -6,7 +6,7 @@ namespace Autokool.Domain.Common
         where TData : RegisterData, new()
     {
         public RegisterEntity(TData d = null) : base(d) { }
-        public bool IsRegisteredCourse => Data?.IsRegisteredCourse ?? false;
+        public bool IsRegistered => Data?.IsRegistered ?? false;
         public string UserId => Data?.UserId ?? Unspecified;
         public string UserName => Data?.UserName ?? Unspecified;
     }

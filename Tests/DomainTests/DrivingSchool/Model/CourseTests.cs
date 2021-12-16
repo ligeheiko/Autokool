@@ -12,7 +12,9 @@ namespace Autokool.Tests.DomainTests.DrivingSchool.Model
     {
         private CourseData data;
         private CourseTypeData courseTypeData;
+        private RegisterCourseData registerCourseData;
         private ICourseTypeRepo courseTypeRepo;
+        private IRegisterCourseRepo registerCourseRepo;
         private Course course;
 
         protected override object createObject()
@@ -24,6 +26,7 @@ namespace Autokool.Tests.DomainTests.DrivingSchool.Model
         {
             data = GetRandom.ObjectOf<CourseData>();
             courseTypeRepo = MockRepos.CourseTypeRepos(data.CourseTypeID, out courseTypeData);
+            registerCourseRepo = MockRepos.RegisterCourseRepos(data.RegisterCourseID, out registerCourseData);
             base.TestInitialize();
             course = obj as Course;
         }
@@ -33,6 +36,8 @@ namespace Autokool.Tests.DomainTests.DrivingSchool.Model
         [TestMethod]
         public void CourseTypeIDTest() => isProperty(data.CourseTypeID);
         [TestMethod]
+        public void RegisterCourseIDTest() => isProperty(data.RegisterCourseID);
+        [TestMethod]
         public void CourseTypeTest()
         {
             isNull(course.CourseType);
@@ -40,6 +45,15 @@ namespace Autokool.Tests.DomainTests.DrivingSchool.Model
             var p = course.CourseType;
             isNotNull(p);
             areEqualProperties(courseTypeData, p.Data);
+        }
+        [TestMethod]
+        public void RegisterCourseTest()
+        {
+            isNull(course.RegisterCourse);
+            GetRepo.SetServiceProvider(new ServiceProviderMock(registerCourseRepo));
+            var p = course.RegisterCourse;
+            isNotNull(p);
+            areEqualProperties(registerCourseData, p.Data);
         }
     }
 }

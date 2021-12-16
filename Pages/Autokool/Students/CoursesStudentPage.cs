@@ -63,7 +63,7 @@ namespace Autokool.Pages.Autokool.Students
             _registerCourseData.CourseID = id;
             _registerCourseData.UserId = currentUser.Id;
             _registerCourseData.UserName = currentUser.UserName;
-            _registerCourseData.IsRegisteredCourse = true;
+            _registerCourseData.IsRegistered = true;
             var reg = toObject(_registerCourseData);
             await _registerRepo.Add(reg).ConfigureAwait(true);
             return Redirect(IndexUrl.ToString());

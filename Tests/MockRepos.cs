@@ -39,6 +39,7 @@ namespace Autokool.Tests
         private class MockStudentRepo : RepoMock<Student>, IStudentRepo { }
         private class MockRoleTypeRepo : RepoMock<RoleType>, IRoleTypeRepo { }
         private class MockTeacherRepo : RepoMock<Teacher>, ITeacherRepo { }
+        private class MockRegisterCourseRepo : RepoMock<RegisterCourse>, IRegisterCourseRepo { }
 
         public static ICourseRepo CourseRepos(string id, out CourseData data)
             => createMockRepo<MockCourseRepo, Course, CourseData>(
@@ -55,6 +56,9 @@ namespace Autokool.Tests
         public static IExamTypeRepo ExamTypeRepos(string id, out ExamTypeData data)
       => createMockRepo<MockExamTypeRepo, ExamType, ExamTypeData>(
               id, d => new ExamType(d), out data);
+        public static IExamRepo ExamRepos(string id, out ExamData data)
+    => createMockRepo<MockExamRepo, Exam, ExamData>(
+            id, d => new Exam(d), out data);
         public static IStudentRepo StudentRepos(string id, out StudentData data)
      => createMockRepo<MockStudentRepo, Student, StudentData>(
              id, d => new Student(d), out data);
@@ -64,5 +68,8 @@ namespace Autokool.Tests
         public static ITeacherRepo TeacherRepos(string id, out TeacherData data)
      => createMockRepo<MockTeacherRepo, Teacher, TeacherData>(
              id, d => new Teacher(d), out data);
+        public static IRegisterCourseRepo RegisterCourseRepos(string id, out RegisterCourseData data)
+    => createMockRepo<MockRegisterCourseRepo, RegisterCourse, RegisterCourseData>(
+            id, d => new RegisterCourse(d), out data);
     }
 }
