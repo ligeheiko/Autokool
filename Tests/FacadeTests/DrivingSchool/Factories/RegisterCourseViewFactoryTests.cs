@@ -7,8 +7,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Autokool.Tests.FacadeTests.DrivingSchool.Factories
 {
     [TestClass]
-    public class CourseViewFactoryTests : FactoryBaseTests<CourseViewFactory, CourseData, Course, CourseView>
+    public class RegisterCourseViewFactoryTests : FactoryBaseTests<RegisterCourseViewFactory, RegisterCourseData, RegisterCourse, RegisterCourseView>
     {
-        protected override Course createObject(CourseData d) => new Course(d);
+        protected override RegisterCourse createObject(RegisterCourseData d) => new RegisterCourse(d);
     }
 }

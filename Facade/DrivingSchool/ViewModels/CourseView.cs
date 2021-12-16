@@ -21,6 +21,6 @@ namespace Autokool.Facade.DrivingSchool.ViewModels
         [DisplayName("Every week at")]
         public new DateTime? ValidTo { get; set; }
         [DisplayName("RegisterID")]
-        public string RegisterID { get; set; }
+        public string RegisterCourseID { get; set; }
     }
 }

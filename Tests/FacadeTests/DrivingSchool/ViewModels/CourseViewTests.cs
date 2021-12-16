@@ -12,6 +12,8 @@ namespace Autokool.Tests.FacadeTests.DrivingSchool.ViewModels
         [TestMethod]
         public void CourseTypeIDTest() => isDisplayProperty<string>("Course Type");
         [TestMethod]
+        public void RegisterCourseIDTest() => isDisplayProperty<string>("RegisterID");
+        [TestMethod]
         public void ValidFromTest() => isDateProperty<DateTime?>("Added");
         [TestMethod]
         public void ValidToTest() => isDisplayProperty<DateTime?>("Every week at");
