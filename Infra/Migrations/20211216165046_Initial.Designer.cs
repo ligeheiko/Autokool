@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Autokool.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211215120637_Initial")]
+    [Migration("20211216165046_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -95,28 +95,6 @@ namespace Autokool.Infra.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Autokool.Data.Common.RegisterData", b =>
-                {
-                    b.Property<string>("ID")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CourseID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsRegisteredCourse")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("RegisterData");
-                });
-
             modelBuilder.Entity("Autokool.Data.DrivingSchool.AdministratorData", b =>
                 {
                     b.Property<string>("ID")
@@ -162,7 +140,7 @@ namespace Autokool.Infra.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RegisterID")
+                    b.Property<string>("RegisterCourseID")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ValidFrom")
@@ -285,6 +263,28 @@ namespace Autokool.Infra.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("PersonRole");
+                });
+
+            modelBuilder.Entity("Autokool.Data.DrivingSchool.RegisterCourseData", b =>
+                {
+                    b.Property<string>("ID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CourseID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsRegisteredCourse")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("RegisterCourseData");
                 });
 
             modelBuilder.Entity("Autokool.Data.DrivingSchool.SchoolData", b =>

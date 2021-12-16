@@ -21,7 +21,7 @@ else
     reg = "Register";
     @Html.ShowTable(Model, null, null, reg, null)
 }*@
-@if (Model.register1.IsRegisteredCourse)
+@if (Model._registerCourse.IsRegisteredCourse)
 {
     reg = "Cancel registration";
     @Html.ShowTable(Model, null, reg, null, null)

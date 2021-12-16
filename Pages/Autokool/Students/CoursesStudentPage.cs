@@ -1,4 +1,5 @@
 ﻿using Autokool.Data.Common;
+using Autokool.Data.DrivingSchool;
 using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Pages.Autokool.Base;
@@ -14,13 +15,12 @@ namespace Autokool.Pages.Autokool.Students
     public class CoursesStudentPage : CoursesBasePage<CoursesStudentPage>
     {
         public readonly UserManager<ApplicationUser> _userManager;
-        public ApplicationUser _applicationUser;
-        public RegisterData registerData;
-        public Register register1;
-        public IRegisterRepo _registerRepo;
+        public RegisterCourseData _registerCourseData;
+        public RegisterCourse _registerCourse;
+        public IRegisterCourseRepo _registerRepo;
 
         public CoursesStudentPage(UserManager<ApplicationUser> userManager
-            , ICourseRepo c, ICourseTypeRepo ct, IRegisterRepo r) : base(c, ct) 
+            , ICourseRepo c, ICourseTypeRepo ct, IRegisterCourseRepo r) : base(c, ct) 
         {
             _registerRepo = r;
             _userManager = userManager;
@@ -32,36 +32,24 @@ namespace Autokool.Pages.Autokool.Students
            string fixedFilter, string fixedValue, bool isRegistered)
         {
             var currentUser = await GetCurrentUserAsync();
-            register1 = await _registerRepo.Get(currentUser.Id);
-            getRegistered();
+            _registerCourse = await _registerRepo.Get(currentUser.Id);
             SelectedId = id;
-            setIsRegistered(isRegistered);
             await getList(sortOrder, currentFilter, searchString, pageIndex,
                 fixedFilter, fixedValue).ConfigureAwait(true);
             return Page();
         }
-
-        public override async Task<IActionResult> OnGetDetailsAsync(string id, string sortOrder, string searchString,
-           int pageIndex,
-           string fixedFilter, string fixedValue, bool register)
-        {
-            await getObject(id, sortOrder, searchString, pageIndex, fixedFilter, fixedValue).ConfigureAwait(true);
-            register = true;
-            setIsRegistered(register);
-            return Page();
-        }
+        //public override async Task<IActionResult> OnGetDetailsAsync(string id, string sortOrder, string searchString,
+        //   int pageIndex,
+        //   string fixedFilter, string fixedValue, bool isRegistered)
+        //{
+        //    await getObject(id, sortOrder, searchString, pageIndex, fixedFilter, fixedValue).ConfigureAwait(true);
+        //    return Page();
+        //}
         public override async Task<IActionResult> OnPostEditAsync(string sortOrder, string searchString, int pageIndex, string fixedFilter, string fixedValue, string Id)
         {
             var currentUser = await GetCurrentUserAsync();
-            register1 = await _registerRepo.Get(currentUser.Id);
-            //registerData = new RegisterData();
-            //registerData.ID = register1.ID;
-            //registerData.CourseID = register1.CourseID;
-            //registerData.UserId = register1.UserId;
-            //registerData.IsRegisteredCourse = false;
-            //var update = toObject(registerData);
-            //await _registerRepo.Update(update);
-            await _registerRepo.Delete(register1.ID);
+            _registerCourse = await _registerRepo.Get(currentUser.Id);
+            await _registerRepo.Delete(_registerCourse.ID);
 
             return Redirect(IndexUrl.ToString());
         }
@@ -70,16 +58,16 @@ namespace Autokool.Pages.Autokool.Students
            string fixedFilter, string fixedValue, bool register)
         {
             var currentUser = await GetCurrentUserAsync();
-            registerData = new RegisterData();
-            registerData.ID = currentUser.Id;
-            registerData.CourseID = id;
-            registerData.UserId = currentUser.Id;
-            registerData.UserName = currentUser.UserName;
-            registerData.IsRegisteredCourse = true;
-            var reg = toObject(registerData);
+            _registerCourseData = new RegisterCourseData();
+            _registerCourseData.ID = currentUser.Id;
+            _registerCourseData.CourseID = id;
+            _registerCourseData.UserId = currentUser.Id;
+            _registerCourseData.UserName = currentUser.UserName;
+            _registerCourseData.IsRegisteredCourse = true;
+            var reg = toObject(_registerCourseData);
             await _registerRepo.Add(reg).ConfigureAwait(true);
             return Redirect(IndexUrl.ToString());
         }
-        protected internal Register toObject(RegisterData d) => new Register(d);
+        protected internal RegisterCourse toObject(RegisterCourseData d) => new RegisterCourse(d);
     }
 }

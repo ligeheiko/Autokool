@@ -2,7 +2,7 @@
 
 namespace Autokool.Domain.DrivingSchool.Repos
 {
-    public interface IRegisterRepo : IRepo<Register>
+    public interface IRegisterCourseRepo : IRepo<RegisterCourse>
     {
     }
 }
