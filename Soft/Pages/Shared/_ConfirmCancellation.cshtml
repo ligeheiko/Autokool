@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Autokool.Pages.Common.Aids
+@using Autokool.Pages.Common.Extensions
+@{
     Layout = "_Layout";
     ViewData["Title"] = Model.PageTitle;
     var itemId = Model.ItemId;
@@ -15,24 +17,31 @@
         @RenderBody()
     </dl>
 </div>
-<div>
-    <a id="button"
-       asp-page="./Index"
-       asp-route-handler="Index"
-       asp-route-sortorder="@Model.SortOrder"
-       asp-route-fixedFilter="@Model.FixedFilter"
-       asp-route-fixedValue="@Model.FixedValue"
-       asp-route-pageIndex="@Model.PageIndex"
-       asp-route-IsRegistered="@Model.IsRegistered"
-       asp-route-id="@itemId">Confirm</a> |
+<div class="row">
+    <div class="col-md-4">
+        <form id="createForm"
+              asp-page-handler="Edit"
+              asp-route-sortorder="@Model.SortOrder"
+              asp-route-fixedFilter="@Model.FixedFilter"
+              asp-route-fixedValue="@Model.FixedValue"
+              asp-route-pageIndex="@Model.PageIndex"
+              asp-route-id="@itemId"
+              method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    <a id="button"
-       asp-page="./Index"
-       asp-route-handler="Index"
-       asp-route-sortorder="@Model.SortOrder"
-       asp-route-fixedFilter="@Model.FixedFilter"
-       asp-route-fixedValue="@Model.FixedValue"
-       asp-route-pageIndex="@Model.PageIndex"
-       asp-route-IsRegistered=True
-       asp-route-id="@itemId">Cancel</a>
+            @RenderBody()
+
+            <input id="createButton" type="submit" value="Confirm" class="btn btn-primary" />
+        </form>
+        @Html.BackTo(
+    new Args(
+        null,
+        null,
+        Model.FixedFilter,
+        Model.FixedValue,
+        Model.SortOrder,
+        Model.SearchString,
+        Model.PageIndex
+    ))
+    </div>
 </div>

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Autokool.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211216165046_Initial")]
+    [Migration("20211216172603_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -284,7 +284,29 @@ namespace Autokool.Infra.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("RegisterCourseData");
+                    b.ToTable("RegisterCourse");
+                });
+
+            modelBuilder.Entity("Autokool.Data.DrivingSchool.RegisterExamData", b =>
+                {
+                    b.Property<string>("ID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ExamID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsRegisteredCourse")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("RegisterExam");
                 });
 
             modelBuilder.Entity("Autokool.Data.DrivingSchool.SchoolData", b =>

@@ -282,7 +282,29 @@ namespace Autokool.Infra.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("RegisterCourseData");
+                    b.ToTable("RegisterCourse");
+                });
+
+            modelBuilder.Entity("Autokool.Data.DrivingSchool.RegisterExamData", b =>
+                {
+                    b.Property<string>("ID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ExamID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsRegisteredCourse")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("RegisterExam");
                 });
 
             modelBuilder.Entity("Autokool.Data.DrivingSchool.SchoolData", b =>

@@ -168,7 +168,7 @@ namespace Autokool.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RegisterCourseData",
+                name: "RegisterCourse",
                 columns: table => new
                 {
                     ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -179,7 +179,22 @@ namespace Autokool.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RegisterCourseData", x => x.ID);
+                    table.PrimaryKey("PK_RegisterCourse", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RegisterExam",
+                columns: table => new
+                {
+                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ExamID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsRegisteredCourse = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RegisterExam", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -439,7 +454,10 @@ namespace Autokool.Infra.Migrations
                 name: "PersonRole");
 
             migrationBuilder.DropTable(
-                name: "RegisterCourseData");
+                name: "RegisterCourse");
+
+            migrationBuilder.DropTable(
+                name: "RegisterExam");
 
             migrationBuilder.DropTable(
                 name: "School");
