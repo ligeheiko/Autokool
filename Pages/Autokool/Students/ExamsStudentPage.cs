@@ -28,7 +28,7 @@ namespace Autokool.Pages.Autokool.Students
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
         public override async Task<IActionResult> OnGetIndexAsync(string sortOrder,
            string id, string currentFilter, string searchString, int? pageIndex,
-           string fixedFilter, string fixedValue, bool isRegistered)
+           string fixedFilter, string fixedValue)
         {
             var currentUser = await GetCurrentUserAsync();
             _registerExam = await _registerRepo.Get(currentUser.Id);
@@ -58,7 +58,7 @@ namespace Autokool.Pages.Autokool.Students
         }
         public async Task<IActionResult> OnPostRegisterAsync(string id, string sortOrder, string searchString,
            int pageIndex,
-           string fixedFilter, string fixedValue, bool register)
+           string fixedFilter, string fixedValue)
         {
             var currentUser = await GetCurrentUserAsync();
             _registerExamData = new RegisterExamData();

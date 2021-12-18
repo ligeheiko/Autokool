@@ -19,6 +19,5 @@ namespace Autokool.Pages.Common.Extensions
         int PageIndex { get; }
         string FixedFilter { get; }
         string FixedValue { get; }
-        bool IsRegistered { get; }
     }
 }

@@ -48,7 +48,6 @@ namespace Autokool.Pages.Common
             SearchString = searchString;
             CurrentFilter = getCurrentFilter(currentFilter, searchString, ref pageIndex);
             PageIndex = pageIndex ?? 1;
-            IsRegistered = getRegistered();
             Items = await getList().ConfigureAwait(true);
         }
 

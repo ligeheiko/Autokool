@@ -48,7 +48,7 @@ namespace Autokool.Pages.Autokool.Admin
         }
         public override async Task<IActionResult> OnGetIndexAsync(string sortOrder,
             string id, string currentFilter, string searchString, int? pageIndex,
-            string fixedFilter, string fixedValue, bool isRegistered)
+            string fixedFilter, string fixedValue)
         {
             users = await _userManager.Users.ToListAsync();
             foreach (ApplicationUser user in users)

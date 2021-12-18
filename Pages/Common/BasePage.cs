@@ -14,9 +14,7 @@ namespace Autokool.Pages.Common
         PageModel
         where TRepository : class, ICrudMethods<TDomain>, ISorting, IFiltering, IPaging
     {
-
         protected TRepository db { get; }
-
         protected internal BasePage(TRepository r) => db = r;
 
         public string SortOrder
@@ -45,15 +43,6 @@ namespace Autokool.Pages.Common
         {
             get => db.FixedFilter;
             set => db.FixedFilter = value;
-        }
-        public bool IsRegistered
-        {
-            get => db.IsRegistered;
-            set => db.IsRegistered = value;
-        }
-        protected internal void setIsRegistered(bool isRegistered)
-        {
-            IsRegistered = isRegistered;
         }
 
         protected internal void setFixedFilter(string fixedFilter, string fixedValue)
@@ -91,11 +80,6 @@ namespace Autokool.Pages.Common
             return searchString;
 
         }
-        internal bool getRegistered()
-        {
-            return IsRegistered;
-        }
-
         internal static void loadDetails<TDetailObj, TDetailView, TMasterView>(IList<TDetailView> list,
             IRepo<TDetailObj> data, TMasterView item,
             string filter, Func<TDetailObj, TDetailView> create)
@@ -104,7 +88,6 @@ namespace Autokool.Pages.Common
 
             loadDetails(list, data, item?.GetID(), filter, create);
         }
-
         internal static void loadDetails<TDetailObj, TDetailView>(IList<TDetailView> list,
             IRepo<TDetailObj> data, string value,
             string filter, Func<TDetailObj, TDetailView> create)
@@ -118,7 +101,5 @@ namespace Autokool.Pages.Common
 
             foreach (var e in l) { list.Add(create(e)); }
         }
-
     }
-
 }

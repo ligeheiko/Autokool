@@ -27,6 +27,7 @@ namespace Autokool.Infra
         public DbSet<ManageUserRolesData> ManageUserRoles { get; set; }
         public DbSet<RegisterCourseData> RegisterCourses { get; set; }
         public DbSet<RegisterExamData> RegisterExams { get; set; }
+        public DbSet<RegisterDrivingPracticeData> RegisterDrivingPractices { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -45,6 +46,7 @@ namespace Autokool.Infra
             builder.Entity<ManageUserRolesData>().ToTable("ManageUserRoles");
             builder.Entity<RegisterCourseData>().ToTable("RegisterCourse");
             builder.Entity<RegisterExamData>().ToTable("RegisterExam");
+            builder.Entity<RegisterExamData>().ToTable("RegisterDrivingPractice");
             //builder.Entity<PersonData>().ToTable("Person");???
         }
     }

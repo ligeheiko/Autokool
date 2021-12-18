@@ -175,7 +175,7 @@ namespace Autokool.Infra.Migrations
                     CourseID = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsRegisteredCourse = table.Column<bool>(type: "bit", nullable: false)
+                    IsRegistered = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -183,18 +183,34 @@ namespace Autokool.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RegisterExam",
+                name: "RegisterDrivingPractice",
                 columns: table => new
                 {
                     ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ExamID = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsRegisteredCourse = table.Column<bool>(type: "bit", nullable: false)
+                    IsRegistered = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RegisterExam", x => x.ID);
+                    table.PrimaryKey("PK_RegisterDrivingPractice", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RegisterDrivingPractices",
+                columns: table => new
+                {
+                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    DrivingPracticeID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TeacherID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsRegistered = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RegisterDrivingPractices", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -457,7 +473,10 @@ namespace Autokool.Infra.Migrations
                 name: "RegisterCourse");
 
             migrationBuilder.DropTable(
-                name: "RegisterExam");
+                name: "RegisterDrivingPractice");
+
+            migrationBuilder.DropTable(
+                name: "RegisterDrivingPractices");
 
             migrationBuilder.DropTable(
                 name: "School");

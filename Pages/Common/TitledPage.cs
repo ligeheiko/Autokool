@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Autokool.Aids.Constants;
 using Autokool.Data.Common;
+using Autokool.Data.DrivingSchool;
 using Autokool.Domain.Common;
+using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Facade.Common;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -37,7 +39,6 @@ namespace Autokool.Pages.Common
                        $"&sortOrder={SortOrder}" +
                        $"&searchString={SearchString}" +
                        $"&fixedFilter={FixedFilter}" +
-                       $"&registered={IsRegistered}"+
                        $"&fixedValue={FixedValue}", UriKind.Relative);
 
         protected abstract Uri pageUrl();
@@ -45,7 +46,7 @@ namespace Autokool.Pages.Common
         public Uri IndexUrl => indexUrl();
 
         protected internal Uri indexUrl() =>
-            new Uri($"{PageUrl}/Index?handler=Index&fixedFilter={FixedFilter}&fixedValue={FixedValue}&registered={IsRegistered}", UriKind.Relative);
+            new Uri($"{PageUrl}/Index?handler=Index&fixedFilter={FixedFilter}&fixedValue={FixedValue}", UriKind.Relative);
 
         protected internal static IEnumerable<SelectListItem> newItemsList<TTDomain, TTData>(
             IRepo<TTDomain> r,
@@ -69,6 +70,29 @@ namespace Autokool.Pages.Common
             l.Insert(0, new SelectListItem(Word.Unspecified, null));
             return l;
             
+        }
+        protected internal static IEnumerable<SelectListItem> newItemsListTeacherID<TTDomain, TTData>(
+            IRepo<TTDomain> r,
+            Func<TTDomain, bool> condition = null,
+            Func<TTData, string> getName = null)
+            where TTDomain : IUniqueEntity<TTData>
+            where TTData : NamedEntityData, new()
+        {
+            Func<TTData, string> name = d => (getName is null) ? (d as DrivingPracticeData)?.TeacherID : getName(d);
+            var items = r?.Get().GetAwaiter().GetResult();
+            var l = items is null
+                ? new List<SelectListItem>()
+                : condition is null ?
+                    items
+                    .Select(m => new SelectListItem(name(m.Data), m.Data.ID))
+                    .ToList() :
+                    items
+                    .Where(condition)
+                    .Select(m => new SelectListItem(name(m.Data), m.Data.ID))
+                    .ToList();
+            l.Insert(0, new SelectListItem(Word.Unspecified, null));
+            return l;
+
         }
 
         protected internal static string itemName(IEnumerable<SelectListItem> list, string id)
