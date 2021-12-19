@@ -14,7 +14,7 @@ namespace Autokool.Tests.InfraTests.Common
         {
             public testClass(DbContext c, DbSet<CourseData> s) : base(c, s) { }
 
-            protected override Course toDomainObject(CourseData d) => new Course(d);
+            protected internal override Course toDomainObject(CourseData d) => new Course(d);
         }
         private ApplicationDbContext AppDb;
         [TestInitialize]

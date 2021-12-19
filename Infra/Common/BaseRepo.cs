@@ -68,22 +68,20 @@ namespace Autokool.Infra.Common
         {
             var d = getData(obj);
             d = copyData(d);
-            db.Attach(d).State = EntityState.Modified;
-
-            //TODO Midagi tuleb selle väljakommenteeritud asjadega teha
-            //try {
+            db.Attach(d).State = EntityState.Modified;  
+            try {
             await db.SaveChangesAsync();
-            //}
-            //catch (DbUpdateConcurrencyException) {
-            //    //if (!MeasureViewExists(MeasureView.Id))
-            //    //{
-            //    //    return NotFound();
-            //    //}
-            //    //else
-            //    //{
-            //    throw;
-            //    //}
-            //}
+            }
+            catch (DbUpdateConcurrencyException) {
+                //if (!MeasureViewExists(MeasureView.Id))
+                //{
+                //    return NotFound();
+                //}
+                //else
+                //{
+                //    throw;
+                //}
+            }
         }
 
         public object GetById(string id) => Get(id).GetAwaiter().GetResult();

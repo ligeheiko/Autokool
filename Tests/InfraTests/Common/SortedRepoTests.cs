@@ -17,9 +17,9 @@ namespace Autokool.Tests.InfraTests.Common
 
             protected override async Task<CourseData> getData(string id) => await dbSet.FirstOrDefaultAsync(x => x.ID == id);
 
-            protected override CourseData getDataById(CourseData d) => dbSet.Find(d);
+            protected override CourseData getDataById(CourseData d) => dbSet.Find(d.ID);
 
-            protected override Course toDomainObject(CourseData d) => new Course(d);
+            protected internal override Course toDomainObject(CourseData d) => new Course(d);
         }
         private ApplicationDbContext AppDb;
         [TestInitialize]
