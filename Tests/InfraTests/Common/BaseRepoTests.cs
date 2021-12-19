@@ -1,11 +1,11 @@
 ﻿using Autokool.Aids;
 using Autokool.Data.DrivingSchool;
 using Autokool.Domain.DrivingSchool.Model;
-using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Infra;
 using Autokool.Infra.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Autokool.Tests.InfraTests.Common
@@ -24,95 +24,113 @@ namespace Autokool.Tests.InfraTests.Common
             protected internal override Course toDomainObject(CourseData d) => new Course(d);
         }
         private ApplicationDbContext AppDb;
-        private CourseData d;
-        private Course o;
+        private Course item;
         private int count;
+        private BaseRepo<Course, CourseData> repo;
+        private DbSet<CourseData> dbSet;
 
         [TestInitialize]
         public override void TestInitialize()
         {
-            var inMemory = new InMemoryApplicationDbContext();
-            AppDb = inMemory.AppDb;
+            initInMemoryDatabase();
             base.TestInitialize();
-            var dbSet = (obj as testClass).dbSet;
-            areEqual(0, dbSet.CountAsync().GetAwaiter().GetResult());
-
-            d = random<CourseData>();
-            o = new Course(d);
-            count = GetRandom.Int8(10, 20);
-            for (int i = 0; i < count; i++)
-            {
-                (obj as ICrudMethods<Course>).Add(new Course(random<CourseData>())).GetAwaiter();
-            }
-            areEqual(count, dbSet.CountAsync().GetAwaiter().GetResult());
+            initRepoAndDbSet();
+            initDatabaseItems();
+            IsInDb(item);
         }
         [TestCleanup]
         public override void TestCleanup()
         {
-            var dbSet = (obj as testClass).dbSet;
-            foreach (var p in dbSet)
-            {
-                AppDb.Entry(p).State = EntityState.Deleted;
-            }
-            AppDb.SaveChanges();
+            CleanDbSet();
             base.TestCleanup();
-
         }
         protected override object createObject() => new testClass(AppDb, AppDb.Courses);
         [TestMethod]
         public async Task GetTest()
         {
-            var l = await (obj as ICrudMethods<Course>).Get();
+            var l = await repo.Get();
             areEqual(count, l.Count);
         }
         [TestMethod] public void GetByIdAsyncTest() { }
         [TestMethod]
-        public async Task GetByIdTest()
+        public void GetByIdTest()
         {
-            var actual = await(obj as ICrudMethods<Course>).Get(d.ID);
-            areEqualProperties(new CourseData(), actual.Data, nameof(d.ID));
-            var count = await(obj as testClass).dbSet.CountAsync();
-            await(obj as ICrudMethods<Course>).Add(o);
-            actual = (obj as testClass).GetById(d.ID) as Course;
-            areEqualProperties(d, actual.Data);
-            areEqual(count + 1, await(obj as testClass).dbSet.CountAsync());
+            var o = repo.GetById(item.ID) as Course;
+            areEqualProperties(o.Data, item.Data);
+            areEqual(count, dbSet.Count());
         }
         [TestMethod]
         public async Task DeleteTest()
         {
-            await (obj as ICrudMethods<Course>).Add(o);
-            var actual = await (obj as ICrudMethods<Course>).Get(d.ID);
-            areEqualProperties(d, actual.Data);
-            var count = await (obj as testClass).dbSet.CountAsync();
-            await (obj as ICrudMethods<Course>).Delete(o.ID);
-            actual = await (obj as ICrudMethods<Course>).Get(d.ID);
-            areEqualProperties(new CourseData(), actual.Data, nameof(d.ID));
-            areEqual(count - 1, await (obj as testClass).dbSet.CountAsync());
+            await repo.Delete(item.ID);
+            IsNotInDb(item.ID);
+            areEqual(count - 1, dbSet.Count());
         }
         [TestMethod]
         public async Task AddTest()
         {
-            var actual = await (obj as ICrudMethods<Course>).Get(d.ID);
-            areEqualProperties(new CourseData(), actual.Data, nameof(d.ID));
-            var count = await (obj as testClass).dbSet.CountAsync();
-            await (obj as ICrudMethods<Course>).Add(o);
-            actual = await (obj as ICrudMethods<Course>).Get(d.ID);
-            areEqualProperties(d, actual.Data);
-            areEqual(count + 1, await (obj as testClass).dbSet.CountAsync());
+            item = GetRandomItem();
+            IsNotInDb(item.ID);
+            await repo.Add(item);
+            IsInDb(item);
+            areEqual(count + 1, dbSet.Count());
         }
         [TestMethod]
         public async Task UpdateTest()
         {
-            await (obj as ICrudMethods<Course>).Add(o);
-            var actual = await (obj as ICrudMethods<Course>).Get(d.ID);
-            areEqualProperties(d, actual.Data);
-            var count = await (obj as testClass).dbSet.CountAsync();
             var d1 = random<CourseData>();
-            d1.ID = d.ID;
-            await (obj as ICrudMethods<Course>).Update(new Course(d1));
-            actual = await (obj as ICrudMethods<Course>).Get(d.ID);
-            areEqualProperties(d1, actual.Data);
-            areEqual(count, await (obj as testClass).dbSet.CountAsync());
+            d1.ID = item.ID;
+            item = new Course(d1);
+            await repo.Update(item);
+            IsInDb(item);
+            areEqual(count,dbSet.Count());
+        }
+        private void CleanDbSet()
+        {
+            foreach (var p in dbSet)
+            {
+                AppDb.Entry(p).State = EntityState.Deleted;
+            }
+            AppDb.SaveChanges();
+        }
+        private Course GetRandomItem()
+        {
+           return new Course(random<CourseData>());
+        }
+        private void initRepoAndDbSet()
+        {
+            repo = obj as BaseRepo<Course, CourseData>;
+            dbSet = repo.dbSet;
+            areEqual(0, dbSet.CountAsync().GetAwaiter().GetResult());
+        }
+        private void initDatabaseItems()
+        {
+            count = GetRandom.UInt8(10, 20);
+            var idx = GetRandom.UInt8(0, (byte)count);
+            for (int i = 0; i < count; i++)
+            {
+                var o = GetRandomItem();
+                dbSet.Add(o.Data);
+                if (i != idx) continue;
+                item = o;
+            }
+            AppDb.SaveChanges();
+            areEqual(count, dbSet.Count());
+        }
+        private void initInMemoryDatabase()
+        {
+            var inMemory = new InMemoryApplicationDbContext();
+            AppDb = inMemory.AppDb;
+        }
+        private void IsNotInDb(string id)
+        {
+            var actual = dbSet.Find(id);
+            isNull(actual);
+        }
+        private void IsInDb(Course i)
+        {
+            var actual = dbSet.Find(i.ID);
+            areEqualProperties(i.Data, actual);
         }
     }
 }
