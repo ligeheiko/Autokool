@@ -1,6 +1,5 @@
 ﻿using Autokool.Facade.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace Autokool.Tests.FacadeTests.DrivingSchool.ViewModels
 {

@@ -7,5 +7,6 @@ namespace Autokool.Facade.DrivingSchool.ViewModels
     {
         [DisplayName("Teacher's Name")]
         public string TeacherID { get; set; }
+        public string DrivingPracticeID { get; set; }
     }
 }
