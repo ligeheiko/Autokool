@@ -1,18 +1,15 @@
 ﻿using Autokool.Data.DrivingSchool;
 using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Infra.AutoKool;
-using Autokool.Infra.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Autokool.Tests.InfraTests.AutoKool
 {
     [TestClass]
     public class ExamRepoTests :
-        SealedTests<UniqueEntitiesRepo<Exam, ExamData>>
+        SealedRepoTests<ExamRepo, Exam, ExamData>
     {
-        protected override object createObject()
-        {
-            return new ExamRepo(new InMemoryApplicationDbContext().AppDb);
-        }
+        protected override object createObject() => new ExamRepo(new InMemoryApplicationDbContext().AppDb);
+        protected override Exam toObject(ExamData data) => new(data);
     }
 }
