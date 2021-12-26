@@ -5,10 +5,12 @@ using Autokool.Facade.DrivingSchool.Factories;
 using Autokool.Facade.DrivingSchool.ViewModels;
 using Autokool.Pages.Common;
 using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Autokool.Pages.Autokool.Base
 {

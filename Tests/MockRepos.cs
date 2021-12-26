@@ -4,6 +4,7 @@ using Autokool.Data.DrivingSchool;
 using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Domain.DrivingSchool.Repos;
 using System;
+using System.Threading.Tasks;
 
 namespace Autokool.Tests
 {
@@ -33,12 +34,30 @@ namespace Autokool.Tests
             return repo;
         }
         private class MockCourseTypeRepo : RepoMock<CourseType>, ICourseTypeRepo { }
-        private class MockCourseRepo : RepoMock<Course>, ICourseRepo { }
+        private class MockCourseRepo : RepoMock<Course>, ICourseRepo 
+        {
+            public Task Added(Course c)
+            {
+                throw new NotImplementedException();
+            }
+        }
         private class MockExamTypeRepo : RepoMock<ExamType>, IExamTypeRepo { }
-        private class MockExamRepo : RepoMock<Exam>, IExamRepo { }
+        private class MockExamRepo : RepoMock<Exam>, IExamRepo
+        {
+            public Task Added(Exam e)
+            {
+                throw new NotImplementedException();
+            }
+        }
         private class MockStudentRepo : RepoMock<Student>, IStudentRepo { }
         private class MockRoleTypeRepo : RepoMock<RoleType>, IRoleTypeRepo { }
-        private class MockTeacherRepo : RepoMock<Teacher>, ITeacherRepo { }
+        private class MockTeacherRepo : RepoMock<Teacher>, ITeacherRepo
+        {
+            public Task Added(Teacher t)
+            {
+                throw new NotImplementedException();
+            }
+        }
         private class MockRegisterCourseRepo : RepoMock<RegisterCourse>, IRegisterCourseRepo { }
         private class MockDrivingPracticeRepo : RepoMock<DrivingPractice>, IDrivingPracticeRepo { }
 

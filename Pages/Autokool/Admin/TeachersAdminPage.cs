@@ -1,4 +1,5 @@
 ﻿using Autokool.Data.Common;
+using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Pages.Autokool.Base;
 using Microsoft.AspNetCore.Authorization;
@@ -23,6 +24,8 @@ namespace Autokool.Pages.Autokool.Admin
         {
             if (!await addObject(sortOrder, searchString, pageIndex, fixedFilter, fixedValue)
                .ConfigureAwait(true)) return Page();
+            Teacher t = await db.Get(Item.ID);
+            await db.Added(t);
             var user = new ApplicationUser
             {
                 Id = Item.ID,

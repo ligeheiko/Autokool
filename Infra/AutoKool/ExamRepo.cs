@@ -2,6 +2,8 @@
 using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Infra.Common;
+using System;
+using System.Threading.Tasks;
 
 namespace Autokool.Infra.AutoKool
 {
@@ -11,5 +13,12 @@ namespace Autokool.Infra.AutoKool
         public ExamRepo(ApplicationDbContext c) : base(c, c.Exams) { }
         protected internal override Exam toDomainObject(ExamData d)
             => new Exam(d);
+        public async Task Added(Exam e)
+        {
+            var d = e?.Data;
+            if (d == null) return;
+            d.ValidFrom = DateTime.Now;
+            await Update(new Exam(d));
+        }
     }
 }

@@ -5,10 +5,12 @@ using Autokool.Facade.DrivingSchool.Factories;
 using Autokool.Facade.DrivingSchool.ViewModels;
 using Autokool.Pages.Common;
 using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Autokool.Pages.Autokool.Base
 {
@@ -48,6 +50,13 @@ namespace Autokool.Pages.Autokool.Base
                 2 or 3 => getValue<DateTime?>(html, i),
                 _ => base.GetValue(html, i)
             };
+        }
+        public override async Task<IActionResult> OnPostCreateAsync(string sortOrder, string searchString, int? pageIndex, string fixedFilter, string fixedValue)
+        {
+            await addObject(sortOrder, searchString, pageIndex, fixedFilter, fixedValue);
+            Exam e = await db.Get(Item.ID);
+            await db.Added(e);
+            return Redirect(IndexUrl.ToString());
         }
     }
 }

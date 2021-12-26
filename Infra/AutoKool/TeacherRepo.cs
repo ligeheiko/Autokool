@@ -2,6 +2,8 @@
 using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Infra.Common;
+using System;
+using System.Threading.Tasks;
 
 namespace Autokool.Infra.AutoKool
 {
@@ -11,5 +13,12 @@ namespace Autokool.Infra.AutoKool
         public TeacherRepo(ApplicationDbContext c) : base(c, c.Teachers) { }
         protected internal override Teacher toDomainObject(TeacherData d)
             => new Teacher(d);
+        public async Task Added(Teacher t)
+        {
+            var d = t?.Data;
+            if (d == null) return;
+            d.ValidFrom = DateTime.Now;
+            await Update(new Teacher(d));
+        }
     }
 }
