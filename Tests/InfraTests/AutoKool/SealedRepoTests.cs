@@ -16,11 +16,11 @@ namespace Autokool.Tests.InfraTests.AutoKool
         where TDomain : UniqueEntity<TData>
         where TData : BaseData, new()
     {
-        private ApplicationDbContext appDb;
-        private TDomain item;
-        private int count;
-        private TRepo repo;
-        private DbSet<TData> dbSet;
+        protected ApplicationDbContext appDb;
+        protected TDomain item;
+        protected int count;
+        protected TRepo repo;
+        protected DbSet<TData> dbSet;
         [TestInitialize]
         public override void TestInitialize()
         {

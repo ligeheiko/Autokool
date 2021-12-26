@@ -73,14 +73,7 @@ namespace Autokool.Infra.Common
             await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException) {
-                //if (!MeasureViewExists(MeasureView.Id))
-                //{
-                //    return NotFound();
-                //}
-                //else
-                //{
-                //    throw;
-                //}
+
             }
         }
 
