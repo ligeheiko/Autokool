@@ -7,7 +7,7 @@ namespace Autokool.Tests.InfraTests.AutoKool
 {
     [TestClass]
     public class DrivingPracticeRepoTests :
-        SealedRepoTests<DrivingPracticeRepo,DrivingPractice, DrivingPracticeData>
+        RepoTests<DrivingPracticeRepo,DrivingPractice, DrivingPracticeData>
     {
         protected override object createObject() => new DrivingPracticeRepo(new InMemoryApplicationDbContext().AppDb);
         protected override DrivingPractice toObject(DrivingPracticeData data) => new(data);

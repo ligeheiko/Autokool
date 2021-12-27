@@ -9,12 +9,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Autokool.Infra.Common
 {
-
     public abstract class BaseRepo<TDomain, TData> : ICrudMethods<TDomain>, IRepo
         where TDomain : IUniqueEntity<TData>
         where TData : BaseData, new()
     {
-        public const byte DefaultPageSize = 5;
         protected internal DbContext db;
         protected internal DbSet<TData> dbSet;
 
@@ -23,7 +21,6 @@ namespace Autokool.Infra.Common
             db = c;
             dbSet = s;
         }
-
         public virtual async Task<List<TDomain>> Get()
         {
             var query = createSqlQuery();
@@ -31,18 +28,13 @@ namespace Autokool.Infra.Common
 
             return toDomainObjectsList(set);
         }
-
         public async Task<TDomain> Get(string id)
         {
             if (id is null) return toDomainObject(new TData());
-
             var d = await getData(id);
-
             var obj = toDomainObject(d);
-
             return obj;
         }
-
         public async Task Delete(string id)
         {
             if (id is null) return;
@@ -51,19 +43,14 @@ namespace Autokool.Infra.Common
             dbSet?.Remove(v);
             await db?.SaveChangesAsync();
         }
-
         public async Task Add(TDomain obj)
         {
             var d = getData(obj);
-
             if (d is null) return;
-
             if (isInDatabase(d)) await Update(obj);
             else await dbSet.AddAsync(d);
-
             await db.SaveChangesAsync();
         }
-
         public async Task Update(TDomain obj)
         {
             var d = getData(obj);
@@ -73,19 +60,15 @@ namespace Autokool.Infra.Common
             await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException) {
-
             }
         }
-
         public object GetById(string id) => Get(id).GetAwaiter().GetResult();
 
         protected internal virtual IQueryable<TData> createSqlQuery()
         {
             var query = from s in dbSet select s;
-
             return query;
         }
-
         protected internal abstract TDomain toDomainObject(TData periodData);
 
         protected abstract Task<TData> getData(string id);
@@ -101,14 +84,11 @@ namespace Autokool.Infra.Common
 
         internal List<TDomain> toDomainObjectsList(List<TData> set)
             => set.Select(toDomainObject).ToList();
-
         private TData copyData(TData d)
         {
             var x = getDataById(d);
-
             if (x is null) return d;
             Copy.Members(d, x);
-
             return x;
         }
     }

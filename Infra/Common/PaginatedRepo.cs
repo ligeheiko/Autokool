@@ -7,18 +7,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Autokool.Infra.Common
 {
-
     public abstract class PaginatedRepo<TDomain, TData> : FilteredRepo<TDomain, TData>, IPaging
         where TDomain : IUniqueEntity<TData>
         where TData : BaseData, new()
     {
-
         public int PageIndex { get; set; }
         public int TotalPages => getTotalPages(PageSize);
         public bool HasNextPage => PageIndex < TotalPages;
         public bool HasPreviousPage => PageIndex > 1;
-        public int PageSize { get; set; } = DefaultPageSize;
-        public bool IsRegistered { get; set; }
+        public int PageSize { get; set; } = Constants.DefaultPageSize;
 
         protected PaginatedRepo(DbContext c, DbSet<TData> s) : base(c, s) { }
 
@@ -26,10 +23,8 @@ namespace Autokool.Infra.Common
         {
             var count = getItemsCount();
             var pages = countTotalPages(count, pageSize);
-
             return pages;
         }
-
         internal int countTotalPages(int count, in int pageSize) => (int)Math.Ceiling(count / (double)pageSize);
 
         internal int getItemsCount() => base.createSqlQuery().CountAsync().Result;
@@ -44,7 +39,5 @@ namespace Autokool.Infra.Common
                 .Skip((PageIndex - 1) * PageSize)
                 .Take(PageSize);
         }
-
     }
-
 }

@@ -8,9 +8,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Autokool.Tests.InfraTests.AutoKool
+namespace Autokool.Tests.InfraTests
 {
-    public abstract class SealedRepoTests<TRepo, TDomain, TData> 
+    public abstract class RepoTests<TRepo, TDomain, TData>
         : SealedTests<UniqueEntitiesRepo<TDomain, TData>>
          where TRepo : UniqueEntitiesRepo<TDomain, TData>
         where TDomain : UniqueEntity<TData>

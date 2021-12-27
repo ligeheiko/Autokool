@@ -10,7 +10,7 @@ namespace Autokool.Tests.InfraTests
         public void IsCommonTested()
             => isAllTested(assembly, nameSpace("Common"));
         [TestMethod]
-        public void IsShopTested()
+        public void IsAutokoolTested()
             => isAllTested(assembly, nameSpace("AutoKool"));
     }
 }

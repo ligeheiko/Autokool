@@ -145,5 +145,14 @@ namespace Autokool.Tests
             var actual = GetMember.DisplayName(n, objUnderTests.GetType());
             areEqual(displayName, actual);
         }
+        protected void isBooleanProperty(bool expectedValue)
+        {
+            var n = getPropertyNameAfter(nameof(isBooleanProperty));
+            var pi = getPropertyInfo(n);
+            isTrue(pi.CanRead, $"The property {n} does not have a getter");
+            var actual = pi.GetValue(objUnderTests);
+            areEqual(expectedValue, actual,
+                $"For the property {n}.");
+        }
     }
 }

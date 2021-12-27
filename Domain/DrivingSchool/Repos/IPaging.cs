@@ -7,6 +7,5 @@
         int TotalPages { get; }
         bool HasNextPage { get; }
         bool HasPreviousPage { get; }
-        bool IsRegistered { get; set; }
     }
 }

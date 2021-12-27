@@ -7,7 +7,7 @@ namespace Autokool.Tests.InfraTests.AutoKool
 {
     [TestClass]
     public class ExamTypeRepoTests :
-        SealedRepoTests<ExamTypeRepo, ExamType, ExamTypeData>
+        RepoTests<ExamTypeRepo, ExamType, ExamTypeData>
     {
         protected override object createObject() => new ExamTypeRepo(new InMemoryApplicationDbContext().AppDb);
         protected override ExamType toObject(ExamTypeData data) => new(data);

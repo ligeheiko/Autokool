@@ -21,12 +21,9 @@ namespace Tests
             obj = createObject();
         }
         [TestMethod]
-        public void CanCreateTest()
-        {
-            isNotNull(createObject());
-        }
+        public void CanCreateTest() => isNotNull(createObject());
         [TestMethod]
-        public void IsInheritedFrom()
+        public virtual void IsInheritedTest()
         {
             areEqual(typeof(TBaseClass), getBaseClass());
         }

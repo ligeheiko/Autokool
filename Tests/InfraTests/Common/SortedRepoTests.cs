@@ -1,34 +1,27 @@
 ﻿using Autokool.Data.DrivingSchool;
 using Autokool.Domain.DrivingSchool.Model;
-using Autokool.Infra;
+using Autokool.Infra.AutoKool;
 using Autokool.Infra.Common;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Threading.Tasks;
 
 namespace Autokool.Tests.InfraTests.Common
 {
     [TestClass]
-    public class SortedRepoTests : AbstractTests<BaseRepo<Course, CourseData>>
+    public class SortedRepoTests : AbstractRepoTests<CourseRepo, Course, CourseData>
     {
-        private class testClass : SortedRepo<Course, CourseData>
+        protected override object createObject()
+            => new CourseRepo(new InMemoryApplicationDbContext().AppDb);
+
+        protected override Course toObject(CourseData d) => new(d);
+
+        [TestMethod]
+        public override void IsInheritedTest()
         {
-            public testClass(DbContext c, DbSet<CourseData> s) : base(c, s) { }
-
-            protected override async Task<CourseData> getData(string id) => await dbSet.FirstOrDefaultAsync(x => x.ID == id);
-
-            protected override CourseData getDataById(CourseData d) => dbSet.Find(d.ID);
-
-            protected internal override Course toDomainObject(CourseData d) => new Course(d);
+            var b = getBaseClass();
+            isTrue(b.Name.StartsWith(nameof(BaseRepo<Course, CourseData>)));
         }
-        private ApplicationDbContext AppDb;
-        [TestInitialize]
-        public override void TestInitialize()
-        {
-            var inMemory = new InMemoryApplicationDbContext();
-            AppDb = inMemory.AppDb;
-            base.TestInitialize();
-        }
-        protected override object createObject() => new testClass(AppDb, AppDb.Courses);
+
+        [TestMethod] public void SortOrderTest() => isProperty<string>();
+        [TestMethod] public void DescendingStringTest() => isProperty("_desc");
     }
 }

@@ -187,7 +187,8 @@ namespace Autokool.Infra.Migrations
                 columns: table => new
                 {
                     ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ExamID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DrivingPracticeID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TeacherID = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsRegistered = table.Column<bool>(type: "bit", nullable: false)
@@ -198,19 +199,18 @@ namespace Autokool.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RegisterDrivingPractices",
+                name: "RegisterExam",
                 columns: table => new
                 {
                     ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    DrivingPracticeID = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TeacherID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ExamID = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsRegistered = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RegisterDrivingPractices", x => x.ID);
+                    table.PrimaryKey("PK_RegisterExam", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -476,7 +476,7 @@ namespace Autokool.Infra.Migrations
                 name: "RegisterDrivingPractice");
 
             migrationBuilder.DropTable(
-                name: "RegisterDrivingPractices");
+                name: "RegisterExam");
 
             migrationBuilder.DropTable(
                 name: "School");

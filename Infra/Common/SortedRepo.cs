@@ -9,15 +9,12 @@ using Autokool.Domain.DrivingSchool.Repos;
 
 namespace Autokool.Infra.Common
 {
-
     public abstract class SortedRepo<TDomain, TData> : BaseRepo<TDomain, TData>, ISorting
         where TDomain : IUniqueEntity<TData>
         where TData : BaseData, new()
     {
-
         public virtual string SortOrder { get; set; }
         public string DescendingString => "_desc";
-
         protected SortedRepo(DbContext c, DbSet<TData> s) : base(c, s) { }
 
         protected internal override IQueryable<TData> createSqlQuery()
@@ -27,7 +24,6 @@ namespace Autokool.Infra.Common
 
             return query;
         }
-
         protected internal IQueryable<TData> addSorting(IQueryable<TData> query)
         {
             var expression = createExpression();
@@ -36,14 +32,12 @@ namespace Autokool.Infra.Common
 
             return r;
         }
-
         internal Expression<Func<TData, object>> createExpression()
         {
             var property = findProperty();
 
             return property is null ? null : lambdaExpression(property);
         }
-
         internal Expression<Func<TData, object>> lambdaExpression(PropertyInfo p)
         {
             var param = Expression.Parameter(typeof(TData), "x");
@@ -52,14 +46,12 @@ namespace Autokool.Infra.Common
 
             return Expression.Lambda<Func<TData, object>>(body, param);
         }
-
         internal PropertyInfo findProperty()
         {
             var name = getName();
 
             return typeof(TData).GetProperty(name);
         }
-
         internal string getName()
         {
             if (string.IsNullOrEmpty(SortOrder)) return string.Empty;
@@ -67,7 +59,6 @@ namespace Autokool.Infra.Common
 
             return idx > 0 ? SortOrder.Remove(idx) : SortOrder;
         }
-
         internal IQueryable<TData> addOrderBy(IQueryable<TData> query, Expression<Func<TData, object>> e)
         {
             if (query is null) return null;
@@ -76,9 +67,6 @@ namespace Autokool.Infra.Common
             try { return isDescending() ? query.OrderByDescending(e) : query.OrderBy(e); }
             catch { return query; }
         }
-
         internal bool isDescending() => !string.IsNullOrEmpty(SortOrder) && SortOrder.EndsWith(DescendingString);
-
     }
-
 }

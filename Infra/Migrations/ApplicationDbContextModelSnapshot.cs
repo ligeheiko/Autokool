@@ -307,7 +307,7 @@ namespace Autokool.Infra.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("RegisterDrivingPractices");
+                    b.ToTable("RegisterDrivingPractice");
                 });
 
             modelBuilder.Entity("Autokool.Data.DrivingSchool.RegisterExamData", b =>
@@ -329,7 +329,7 @@ namespace Autokool.Infra.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("RegisterDrivingPractice");
+                    b.ToTable("RegisterExam");
                 });
 
             modelBuilder.Entity("Autokool.Data.DrivingSchool.SchoolData", b =>

@@ -7,7 +7,7 @@ namespace Autokool.Tests.InfraTests.AutoKool
 {
     [TestClass]
     public class UserRolesRepoTests :
-        SealedRepoTests<UserRolesRepo,UserRoles, UserRolesData>
+        RepoTests<UserRolesRepo,UserRoles, UserRolesData>
     {
         protected override object createObject() => new UserRolesRepo(new InMemoryApplicationDbContext().AppDb);
         protected override UserRoles toObject(UserRolesData data) => new(data);

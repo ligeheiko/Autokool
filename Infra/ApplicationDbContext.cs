@@ -32,22 +32,25 @@ namespace Autokool.Infra
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.Entity<AdministratorData>().ToTable("Administrator");
-            builder.Entity<CourseData>().ToTable("Course");
-            builder.Entity<CourseTypeData>().ToTable("CourseType");
-            builder.Entity<ExamData>().ToTable("Exam");
-            builder.Entity<ExamTypeData>().ToTable("ExamType");
-            builder.Entity<SchoolData>().ToTable("School");
-            builder.Entity<PersonRoleData>().ToTable("PersonRole");
-            builder.Entity<StudentData>().ToTable("Student");
-            builder.Entity<TeacherData>().ToTable("Teacher");
-            builder.Entity<DrivingPracticeData>().ToTable("DrivingPractice");
-            builder.Entity<UserRolesData>().ToTable("UserRole");
-            builder.Entity<ManageUserRolesData>().ToTable("ManageUserRoles");
-            builder.Entity<RegisterCourseData>().ToTable("RegisterCourse");
-            builder.Entity<RegisterExamData>().ToTable("RegisterExam");
-            builder.Entity<RegisterExamData>().ToTable("RegisterDrivingPractice");
-            //builder.Entity<PersonData>().ToTable("Person");???
+            InitializeTables(builder);
+        }
+        public static void InitializeTables(ModelBuilder b)
+        {
+            b.Entity<AdministratorData>().ToTable("Administrator");
+            b.Entity<CourseData>().ToTable("Course");
+            b.Entity<CourseTypeData>().ToTable("CourseType");
+            b.Entity<ExamData>().ToTable("Exam");
+            b.Entity<ExamTypeData>().ToTable("ExamType");
+            b.Entity<SchoolData>().ToTable("School");
+            b.Entity<PersonRoleData>().ToTable("PersonRole");
+            b.Entity<StudentData>().ToTable("Student");
+            b.Entity<TeacherData>().ToTable("Teacher");
+            b.Entity<DrivingPracticeData>().ToTable("DrivingPractice");
+            b.Entity<UserRolesData>().ToTable("UserRole");
+            b.Entity<ManageUserRolesData>().ToTable("ManageUserRoles");
+            b.Entity<RegisterCourseData>().ToTable("RegisterCourse");
+            b.Entity<RegisterExamData>().ToTable("RegisterExam");
+            b.Entity<RegisterDrivingPracticeData>().ToTable("RegisterDrivingPractice");
         }
     }
 }

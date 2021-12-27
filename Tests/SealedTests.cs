@@ -6,7 +6,7 @@ namespace Autokool.Tests
         : ClassTests<TBaseClass>
     {
         [TestMethod]
-        public void IsSealed()
+        public virtual void IsSealed()
         {
             isTrue(type?.IsSealed ?? false);
         }

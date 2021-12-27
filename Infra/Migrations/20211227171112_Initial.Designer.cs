@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Autokool.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211218120750_Initial")]
+    [Migration("20211227171112_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -309,7 +309,7 @@ namespace Autokool.Infra.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("RegisterDrivingPractices");
+                    b.ToTable("RegisterDrivingPractice");
                 });
 
             modelBuilder.Entity("Autokool.Data.DrivingSchool.RegisterExamData", b =>
@@ -331,7 +331,7 @@ namespace Autokool.Infra.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("RegisterDrivingPractice");
+                    b.ToTable("RegisterExam");
                 });
 
             modelBuilder.Entity("Autokool.Data.DrivingSchool.SchoolData", b =>
