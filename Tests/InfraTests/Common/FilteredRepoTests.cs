@@ -23,5 +23,14 @@ namespace Autokool.Tests.InfraTests.Common
         [TestMethod] public void CurrentFilterTest() => isProperty<string>();
         [TestMethod] public void FixedFilterTest() => isProperty<string>();
         [TestMethod] public void FixedValueTest() => isProperty<string>();
+        [TestMethod]
+        public void SqlQueryTest()
+        {
+            var b = repo.createSqlQuery().Expression.ToString();
+            isFalse(b.Contains("Where"));
+            repo.SearchString = random<string>();
+            b = repo.createSqlQuery().Expression.ToString();
+            isTrue(b.Contains(".Where"));
+        }
     }
 }

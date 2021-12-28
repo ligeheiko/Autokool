@@ -20,8 +20,19 @@ namespace Autokool.Tests.InfraTests.Common
             var b = getBaseClass();
             isTrue(b.Name.StartsWith(nameof(BaseRepo<Course, CourseData>)));
         }
-
         [TestMethod] public void SortOrderTest() => isProperty<string>();
         [TestMethod] public void DescendingStringTest() => isProperty("_desc");
+
+        [DataTestMethod]
+        [DataRow(null, false, false)]
+        [DataRow(nameof(CourseData.Name), true, false)]
+        [DataRow(nameof(CourseData.Name) + "_desc", true, true)]
+        public void SqlQueryTest(string s, bool hasOrderBy, bool HasDescending)
+        {
+            repo.SortOrder = s;
+            var b = repo.createSqlQuery().Expression.ToString();
+            areEqual(hasOrderBy, b.Contains(".OrderBy"));
+            areEqual(HasDescending, b.Contains("OrderByDescending"));
+        }
     }
 }

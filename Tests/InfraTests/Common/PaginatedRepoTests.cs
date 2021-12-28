@@ -1,11 +1,8 @@
 ﻿using Autokool.Data.DrivingSchool;
 using Autokool.Domain.DrivingSchool.Model;
-using Autokool.Infra;
 using Autokool.Infra.AutoKool;
 using Autokool.Infra.Common;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Threading.Tasks;
 
 namespace Autokool.Tests.InfraTests.Common
 {
@@ -26,5 +23,16 @@ namespace Autokool.Tests.InfraTests.Common
         [TestMethod] public void HasNextPageTest() => isBooleanProperty(repo.PageIndex < repo.TotalPages);
         [TestMethod] public void HasPreviousPageTest() => isBooleanProperty(repo.PageIndex > 1);
         [TestMethod] public void PageSizeTest() => isProperty<int>(false);
+        [TestMethod]
+        public void SqlQueryTest()
+        {
+            var b = repo.createSqlQuery().Expression.ToString();
+            isFalse(b.Contains(".Skip"));
+            isFalse(b.Contains(".Take"));
+            repo.PageIndex = 1;
+            b = repo.createSqlQuery().Expression.ToString();
+            isTrue(b.Contains(".Skip"));
+            isTrue(b.Contains(".Take"));
+        }
     }
 }

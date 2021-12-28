@@ -19,5 +19,11 @@ namespace Autokool.Tests.InfraTests.Common
             var b = getBaseClass();
             areEqual(typeof(object), b);
         }
+        [TestMethod]
+        public void SqlQueryTest()
+        {
+            var b = repo.createSqlQuery().Expression.ToString();
+            isTrue(b.Contains(".Select"));
+        }
     }
 }
