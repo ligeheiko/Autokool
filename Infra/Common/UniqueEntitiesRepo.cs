@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Autokool.Data.Common;
 using Autokool.Domain.Common;
+using Autokool.Domain.DrivingSchool.Model;
 
 namespace Autokool.Infra.Common
 {

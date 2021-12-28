@@ -5,12 +5,14 @@ namespace Autokool.Facade.Common
 {
     public abstract class PersonView : DateView
     {
-        [StringLength(50, ErrorMessage = "First name cannot be longer than 50 characters.")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
         [DisplayName("First Name")]
+        [Required]
         public string FirstName { get; set; }
 
-        [StringLength(50)]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
         [DisplayName("Last Name")]
+        [Required]
         public new string Name { get; set; }
 
         [StringLength(50)]

@@ -23,7 +23,6 @@
                         @role.RoleName
                     </label>
                 </div>
-                
             }
             <div asp-validation-summary="All" class="text-danger"></div>
         </div>
@@ -44,25 +43,3 @@
     <div>
     </div>
 </form>
-@*<form method="post">
-    <table class="table">
-        <tr>
-            <th>Role Id</th>
-            <th>Role Name</th>
-            <th>Selected</th>
-        </tr>
-        @foreach (var order in Model.UserRolesList)
-        {
-            <tr>
-                <td>
-                    <input type="hidden" name="UserRolesList.Index" value="@order.RoleId" />
-                    <input type="hidden" name="UserRolesLIst[@order.RoleId].OrderId" value="@order.RoleId" />
-                    @order.RoleId
-                </td>
-                <td>@order.RoleName</td>
-                <td><input name="UserRolesList[@order.RoleId].Selected" value="true" /></td>
-            </tr>
-        }
-    </table>
-    <button>Update</button>*@
-@*</form>*@

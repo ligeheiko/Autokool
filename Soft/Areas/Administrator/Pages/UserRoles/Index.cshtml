@@ -3,8 +3,10 @@
 @model Autokool.Pages.Autokool.Admin.UserRolesAdminPage
 
 @{
-    Layout = "_Index";
+    Layout = "_Layout";
+    var page = Model.PageUrl;
 }
+<h2>Manage Roles</h2>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -30,6 +32,3 @@
         }
     </tbody>
 </table>
-@section Create {
-    
-}
