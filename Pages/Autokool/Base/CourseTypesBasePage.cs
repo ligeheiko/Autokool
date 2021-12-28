@@ -9,7 +9,7 @@ using System;
 
 namespace Autokool.Pages.Autokool.Base
 {
-    public class CourseTypesBasePage<Tpage> : ViewPage<Tpage, ICourseTypeRepo, CourseType, CourseTypeView, CourseTypeData>
+    public abstract class CourseTypesBasePage<Tpage> : ViewPage<Tpage, ICourseTypeRepo, CourseType, CourseTypeView, CourseTypeData>
         where Tpage : PageModel
     {
         public CourseTypesBasePage(ICourseTypeRepo r) : base(r, "Course Types") { }

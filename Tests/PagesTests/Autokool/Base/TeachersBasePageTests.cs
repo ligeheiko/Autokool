@@ -1,4 +1,5 @@
-﻿using Autokool.Pages.Common;
+﻿using Autokool.Pages.Autokool.Base;
+using Autokool.Pages.Common;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 namespace Autokool.Tests.PagesTests.Autokool.Base
 {
     [TestClass]
-    public class TeachersBasePageTests : AbstractTests<ViewPage<>>
+    public class TeachersBasePageTests : AbstractTests<PageModel>
     {
         protected override object createObject()
         {

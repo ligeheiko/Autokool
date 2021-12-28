@@ -13,7 +13,7 @@ using System.Collections.Generic;
 namespace Autokool.Pages.Autokool.Students
 {
     [Authorize(Roles = "Student")]
-    public class StudentsPage : ViewPage<StudentsPage, IStudentRepo, Student, StudentView, StudentData>
+    public sealed class StudentsPage : ViewPage<StudentsPage, IStudentRepo, Student, StudentView, StudentData>
     {
         public IEnumerable<SelectListItem> Courses { get; }
         public StudentsPage(IStudentRepo s, ICourseRepo c) : base(s, "My Data")

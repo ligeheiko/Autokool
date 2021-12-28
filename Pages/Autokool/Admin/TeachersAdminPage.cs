@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Autokool.Pages.Autokool.Admin
 {
     [Authorize(Roles = "Administrator")]
-    public class TeachersAdminPage : TeachersBasePage<TeachersAdminPage>
+    public sealed class TeachersAdminPage : TeachersBasePage<TeachersAdminPage>
     {
         private readonly UserManager<ApplicationUser> _userManager;
         public string UserId;

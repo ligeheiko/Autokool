@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Autokool.Pages.Autokool.Base
 {
-    public class ExamsBasePage<Tpage> : ViewPage<Tpage, IExamRepo, Exam, ExamView, ExamData>
+    public abstract class ExamsBasePage<Tpage> : ViewPage<Tpage, IExamRepo, Exam, ExamView, ExamData>
         where Tpage : PageModel
     {
         public IEnumerable<SelectListItem> ExamTypes { get; }

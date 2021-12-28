@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Autokool.Pages.Autokool.Students
 {
     [Authorize(Roles = "Student")]
-    public class ExamsStudentPage : ExamsBasePage<ExamsStudentPage>
+    public sealed class ExamsStudentPage : ExamsBasePage<ExamsStudentPage>
     {
         public readonly UserManager<ApplicationUser> _userManager;
         public IRegisterExamRepo _registerRepo;

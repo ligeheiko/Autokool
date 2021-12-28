@@ -59,6 +59,8 @@ namespace Autokool.Tests
             }
         }
         private class MockRegisterCourseRepo : RepoMock<RegisterCourse>, IRegisterCourseRepo { }
+        private class MockRegisterExamRepo : RepoMock<RegisterExam>, IRegisterExamRepo { }
+        private class MockRegisterDrivingPracticeRepo : RepoMock<RegisterDrivingPractice>, IRegisterDrivingPracticeRepo { }
         private class MockDrivingPracticeRepo : RepoMock<DrivingPractice>, IDrivingPracticeRepo { }
 
         public static ICourseRepo CourseRepos(string id, out CourseData data)
@@ -66,10 +68,20 @@ namespace Autokool.Tests
                 id, d => new Course(d), out data);
         public static ICourseRepo CourseRepos()
            => createMockRepo<MockCourseRepo, Course, CourseData>();
+        public static IRegisterCourseRepo RegisterCourseRepos()
+           => createMockRepo<MockRegisterCourseRepo, RegisterCourse, RegisterCourseData>();
         public static IExamRepo ExamRepos()
            => createMockRepo<MockExamRepo, Exam, ExamData>();
+        public static IRegisterExamRepo RegisterExamRepos()
+           => createMockRepo<MockRegisterExamRepo, RegisterExam, RegisterExamData>();
+        public static IExamTypeRepo ExamTypeRepos()
+          => createMockRepo<MockExamTypeRepo, ExamType, ExamTypeData>();
         public static ITeacherRepo TeacherRepos()
            => createMockRepo<MockTeacherRepo, Teacher, TeacherData>();
+        public static IDrivingPracticeRepo DrivingPracticeRepos()
+           => createMockRepo<MockDrivingPracticeRepo, DrivingPractice, DrivingPracticeData>();
+        public static IRegisterDrivingPracticeRepo RegisterDrivingPracticeRepos()
+           => createMockRepo<MockRegisterDrivingPracticeRepo, RegisterDrivingPractice, RegisterDrivingPracticeData>();
         public static ICourseTypeRepo CourseTypeRepos()
            => createMockRepo<MockCourseTypeRepo, CourseType, CourseTypeData>();
         public static ICourseTypeRepo CourseTypeRepos(string id, out CourseTypeData data)

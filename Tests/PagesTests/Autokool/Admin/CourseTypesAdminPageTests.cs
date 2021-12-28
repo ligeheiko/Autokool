@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Autokool.Pages.Autokool.Admin;
+using Autokool.Pages.Autokool.Base;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Autokool.Tests.PagesTests.Autokool.Admin
 {
-    class CourseTypesAdminPageTests
+    [TestClass]
+    public class CourseTypesAdminPageTests : SealedTests<CourseTypesBasePage<CourseTypesAdminPage>>
     {
+        protected override object createObject()
+        {
+            return new CourseTypesAdminPage(MockRepos.CourseTypeRepos());
+        }
     }
 }

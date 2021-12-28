@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace Autokool.Pages.Autokool.Admin
 {
-    public class RegisteredExamAdminPage : ViewPage<RegisteredExamAdminPage, IRegisterExamRepo, RegisterExam, RegisterExamView, RegisterExamData>
+    public sealed class RegisteredExamAdminPage : ViewPage<RegisteredExamAdminPage, IRegisterExamRepo, RegisterExam, RegisterExamView, RegisterExamData>
     {
         public IEnumerable<SelectListItem> Exams { get; }
         public RegisteredExamAdminPage(IRegisterExamRepo r, IExamRepo c) : base(r, "Users registered for Exam")

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Autokool.Tests.PagesTests.Autokool.Base
 {
     [TestClass]
-    public class DrivingPracticeBasePageTests : AbstractTests<ViewPage<>>
+    public class DrivingPracticeBasePageTests : AbstractTests<PageModel>
     {
         protected override object createObject()
         {

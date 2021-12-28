@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Autokool.Pages.Autokool.Admin
 {
     [Authorize(Roles = "SuperAdmin")]
-    public class UserRolesAdminPage : ViewPage<UserRolesAdminPage, IUserRolesRepo, UserRoles, UserRolesView, UserRolesData>
+    public sealed class UserRolesAdminPage : ViewPage<UserRolesAdminPage, IUserRolesRepo, UserRoles, UserRolesView, UserRolesData>
     {
         public readonly UserManager<ApplicationUser> _userManager;
         public readonly RoleManager<IdentityRole> _roleManager;

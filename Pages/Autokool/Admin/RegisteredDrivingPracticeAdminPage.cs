@@ -11,10 +11,10 @@ using System.Collections.Generic;
 
 namespace Autokool.Pages.Autokool.Admin
 {
-    public class RegisterDrivingPracticeAdminPage : ViewPage<RegisterDrivingPracticeAdminPage, IRegisterDrivingPracticeRepo, RegisterDrivingPractice, RegisterDrivingPracticeView, RegisterDrivingPracticeData>
+    public sealed class RegisteredDrivingPracticeAdminPage : ViewPage<RegisteredDrivingPracticeAdminPage, IRegisterDrivingPracticeRepo, RegisterDrivingPractice, RegisterDrivingPracticeView, RegisterDrivingPracticeData>
     {
         public IEnumerable<SelectListItem> Teachers { get; }
-        public RegisterDrivingPracticeAdminPage(IRegisterDrivingPracticeRepo r, ITeacherRepo t) : base(r, "Users registered for Driving Practice")
+        public RegisteredDrivingPracticeAdminPage(IRegisterDrivingPracticeRepo r, ITeacherRepo t) : base(r, "Users registered for Driving Practice")
         {
             Teachers = newItemsList<Teacher, TeacherData>(t);
         }
@@ -28,7 +28,7 @@ namespace Autokool.Pages.Autokool.Admin
             createColumn(x => Item.UserId);
             createColumn(x => Item.UserName);
         }
-        public override IHtmlContent GetValue(IHtmlHelper<RegisterDrivingPracticeAdminPage> html, int i)
+        public override IHtmlContent GetValue(IHtmlHelper<RegisteredDrivingPracticeAdminPage> html, int i)
         {
             return i switch
             {

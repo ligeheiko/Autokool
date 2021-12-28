@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Autokool.Pages.Autokool.Admin
 {
     [Authorize(Roles = "SuperAdmin")]
-    public class RoleManagerAdminPage : PageModel
+    public sealed class RoleManagerAdminPage : PageModel
     {
         private readonly RoleManager<IdentityRole> _roleManager;
         public List<IdentityRole> identityRoles;

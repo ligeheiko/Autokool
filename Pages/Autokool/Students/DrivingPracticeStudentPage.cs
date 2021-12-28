@@ -2,8 +2,6 @@
 using Autokool.Data.DrivingSchool;
 using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Domain.DrivingSchool.Repos;
-using Autokool.Facade.DrivingSchool.Factories;
-using Autokool.Facade.DrivingSchool.ViewModels;
 using Autokool.Pages.Autokool.Base;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -14,13 +12,12 @@ using System.Threading.Tasks;
 namespace Autokool.Pages.Autokool.Students
 {
     [Authorize(Roles = "Student")]
-    public class DrivingPracticeStudentPage : DrivingPracticeBasePage<DrivingPracticeStudentPage>
+    public sealed class DrivingPracticeStudentPage : DrivingPracticeBasePage<DrivingPracticeStudentPage>
     {
         public IRegisterDrivingPracticeRepo _registerRepo;
         public readonly UserManager<ApplicationUser> _userManager;
         public RegisterDrivingPracticeData _registerDrivingPracticeData;
         public RegisterDrivingPractice _registerDrivingPractice;
-        public RegisterDrivingPracticeView _registerDrivingPracticeView;
 
         public DrivingPracticeStudentPage(UserManager<ApplicationUser> userManager, 
             IDrivingPracticeRepo d, ITeacherRepo t, 
@@ -68,6 +65,6 @@ namespace Autokool.Pages.Autokool.Students
             await _registerRepo.Add(reg).ConfigureAwait(true);
             return Redirect(IndexUrl.ToString());
         }
-        protected internal RegisterDrivingPractice toObject(RegisterDrivingPracticeData d) => new RegisterDrivingPractice(d);
+        public RegisterDrivingPractice toObject(RegisterDrivingPracticeData d) => new RegisterDrivingPractice(d);
     }
 }

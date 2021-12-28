@@ -5,11 +5,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Autokool.Tests.PagesTests.Autokool.Admin
 {
     [TestClass]
-    public class CoursesAdminPageTests : SealedTests<CoursesBasePage<CoursesAdminPage>>
+    public class DrivingPracticeAdminPageTests : SealedTests<DrivingPracticeBasePage<DrivingPracticeAdminPage>>
     {
         protected override object createObject()
         {
-            return new CoursesAdminPage(MockRepos.CourseRepos(), MockRepos.CourseTypeRepos());
+            return new DrivingPracticeAdminPage(MockRepos.DrivingPracticeRepos(), MockRepos.TeacherRepos());
         }
     }
 }

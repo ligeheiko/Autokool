@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Autokool.Pages.Autokool.Students
 {
     [Authorize(Roles = "Student")]
-    public class TeachersStudentPage : TeachersBasePage<TeachersStudentPage>
+    public sealed class TeachersStudentPage : TeachersBasePage<TeachersStudentPage>
     {
         public TeachersStudentPage(ITeacherRepo t) : base(t) { }
         protected override Uri pageUrl() => new Uri("/Student/Teachers", UriKind.Relative);

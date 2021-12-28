@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Autokool.Pages.Autokool.Admin
 {
     [Authorize(Roles = "Teacher, Administrator")]
-    public class ExamTypesAdminPage : ExamTypesBasePage<ExamTypesAdminPage>
+    public sealed class ExamTypesAdminPage : ExamTypesBasePage<ExamTypesAdminPage>
     {
         public ExamTypesAdminPage(IExamTypeRepo et) : base(et) { }
     }
