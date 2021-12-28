@@ -33,7 +33,6 @@
   <ItemGroup>
     <Folder Include="AidsTests\" />
     <Folder Include="CoreTests\" />
-    <Folder Include="PagesTests\" />
   </ItemGroup>
 
 </Project>

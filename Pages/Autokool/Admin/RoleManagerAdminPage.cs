@@ -24,13 +24,14 @@ namespace Autokool.Pages.Autokool.Admin
         {
             identityRoles = await _roleManager.Roles.ToListAsync();
         }
-        public async Task<IActionResult> OnPostCreateAsync(string roleName)
-        {
-            if (roleName != null)
-            {
-                await _roleManager.CreateAsync(new IdentityRole(roleName.Trim()));
-            }
-            return Page();
-        }
+        //public async Task<IActionResult> OnPostCreateAsync(string roleName)
+        //{
+        //    if (roleName != null)
+        //    {
+        //        await _roleManager.CreateAsync(new IdentityRole(roleName.Trim()));
+        //    }
+        //    identityRoles = await _roleManager.Roles.ToListAsync();
+        //    return Page();
+        //}
     }
 }

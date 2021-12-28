@@ -70,6 +70,8 @@ namespace Autokool.Tests
            => createMockRepo<MockExamRepo, Exam, ExamData>();
         public static ITeacherRepo TeacherRepos()
            => createMockRepo<MockTeacherRepo, Teacher, TeacherData>();
+        public static ICourseTypeRepo CourseTypeRepos()
+           => createMockRepo<MockCourseTypeRepo, CourseType, CourseTypeData>();
         public static ICourseTypeRepo CourseTypeRepos(string id, out CourseTypeData data)
        => createMockRepo<MockCourseTypeRepo, CourseType, CourseTypeData>(
                id, d => new CourseType(d), out data);
