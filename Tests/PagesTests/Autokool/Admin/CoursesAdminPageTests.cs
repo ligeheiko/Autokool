@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Autokool.Tests.PagesTests.Autokool.Admin
 {
     [TestClass]
-    public class CoursesAdminPageTests : SealedTests<CoursesBasePage<CoursesAdminPage>>
+    public class CoursesAdminPageTests : AuthorizedPageTests<CoursesBasePage<CoursesAdminPage>>
     {
         protected override object createObject()
         {

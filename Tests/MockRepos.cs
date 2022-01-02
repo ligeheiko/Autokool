@@ -62,7 +62,9 @@ namespace Autokool.Tests
         private class MockRegisterExamRepo : RepoMock<RegisterExam>, IRegisterExamRepo { }
         private class MockRegisterDrivingPracticeRepo : RepoMock<RegisterDrivingPractice>, IRegisterDrivingPracticeRepo { }
         private class MockDrivingPracticeRepo : RepoMock<DrivingPractice>, IDrivingPracticeRepo { }
-
+        private class MockUserRolesRepo : RepoMock<UserRoles>, IUserRolesRepo { }
+        public static IUserRolesRepo UserRolesRepos()
+           => createMockRepo<MockUserRolesRepo, UserRoles, UserRolesData>();
         public static ICourseRepo CourseRepos(string id, out CourseData data)
             => createMockRepo<MockCourseRepo, Course, CourseData>(
                 id, d => new Course(d), out data);

@@ -5,8 +5,8 @@ using Tests;
 namespace Autokool.Tests.Pages.Common.Consts
 {
     [TestClass]
-    public class RowButtonsTests : ClassTests<object> {
-
+    public class RowButtonsTests : ClassTests<object>
+    {
         //public string Select { get; set; }
         //public string Details { get; set; }
         //public string Edit { get; set; }

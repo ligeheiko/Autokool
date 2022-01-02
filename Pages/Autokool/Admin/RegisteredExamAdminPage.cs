@@ -4,6 +4,7 @@ using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Facade.DrivingSchool.Factories;
 using Autokool.Facade.DrivingSchool.ViewModels;
 using Autokool.Pages.Common;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -11,6 +12,7 @@ using System.Collections.Generic;
 
 namespace Autokool.Pages.Autokool.Admin
 {
+    [Authorize(Roles = "Teacher, Administrator")]
     public sealed class RegisteredExamAdminPage : ViewPage<RegisteredExamAdminPage, IRegisterExamRepo, RegisterExam, RegisterExamView, RegisterExamData>
     {
         public IEnumerable<SelectListItem> Exams { get; }

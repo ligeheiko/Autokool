@@ -11,7 +11,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Autokool.Tests.PagesTests.Autokool.Admin
 {
     [TestClass]
-    public class RegisteredExamAdminPageTests : SealedTests<ViewPage<RegisteredExamAdminPage,
+    public class RegisteredExamAdminPageTests : AuthorizedPageTests<ViewPage<RegisteredExamAdminPage,
         IRegisterExamRepo, RegisterExam, RegisterExamView, RegisterExamData>>
     {
         protected override object createObject()
