@@ -4,9 +4,11 @@ using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Pages.Autokool.Base;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Autokool.Pages.Autokool.Students
@@ -26,12 +28,16 @@ namespace Autokool.Pages.Autokool.Students
             _userManager = userManager;
         }
         protected override Uri pageUrl() => new Uri("/Student/Courses", UriKind.Relative);
-        public Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+        public Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext?.User);
         public override async Task<IActionResult> OnGetIndexAsync(string sortOrder,
            string id, string currentFilter, string searchString, int? pageIndex,
            string fixedFilter, string fixedValue)
         {
             var currentUser = await GetCurrentUserAsync();
+            if (currentUser == null)
+            {
+                return Page();
+            }
             _registerCourse = await _registerRepo.Get(currentUser.Id);
             SelectedId = id;
             await getList(sortOrder, currentFilter, searchString, pageIndex,

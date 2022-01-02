@@ -35,8 +35,6 @@ namespace Autokool.Tests.InfraTests
         [TestMethod]
         public void TeachersTest() => isProperty<DbSet<TeacherData>>();
         [TestMethod]
-        public void StudentsTest() => isProperty<DbSet<StudentData>>();
-        [TestMethod]
         public void DrivingPracticesTest() => isProperty<DbSet<DrivingPracticeData>>();
         [TestMethod]
         public void RolesUserTest() => isProperty<DbSet<UserRolesData>>();
@@ -57,7 +55,6 @@ namespace Autokool.Tests.InfraTests
             testEntity<ExamTypeData>(builder);
             testEntity<DrivingPracticeData>(builder);
             testEntity<TeacherData>(builder);
-            testEntity<StudentData>(builder);
             testEntity<UserRolesData>(builder);
             testEntity<RegisterCourseData>(builder);
             testEntity<RegisterExamData>(builder);

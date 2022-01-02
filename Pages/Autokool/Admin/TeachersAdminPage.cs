@@ -1,4 +1,5 @@
-﻿using Autokool.Data.Common;
+﻿using Autokool.Aids.Constants;
+using Autokool.Data.Common;
 using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Pages.Autokool.Base;
@@ -23,7 +24,7 @@ namespace Autokool.Pages.Autokool.Admin
         {
             if (!await addObject(sortOrder, searchString, pageIndex, fixedFilter, fixedValue)
                .ConfigureAwait(true)) return Page();
-            Teacher t = await db.Get(Item.ID);
+            Teacher t = await db.Get(Item?.ID?? Word.Unspecified);
             await db.Added(t);
             var user = GetApplicationUser();
             await AddUserToTeacherRole(user);

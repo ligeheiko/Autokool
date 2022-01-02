@@ -7,6 +7,7 @@ using Autokool.Pages.Autokool.Admin;
 using Autokool.Pages.Common;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace Autokool.Tests.PagesTests.Autokool.Admin
 {
@@ -20,5 +21,8 @@ namespace Autokool.Tests.PagesTests.Autokool.Admin
         {
             return new UserRolesAdminPage(user, roleManager, MockRepos.UserRolesRepos());
         }
+        protected override string expectedUrl => "/Administrator/UserRoles";
+        protected override List<string> expectedIndexTableColumns
+            => new() {  };
     }
 }

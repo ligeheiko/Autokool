@@ -49,8 +49,6 @@ namespace Autokool.Tests
                 throw new NotImplementedException();
             }
         }
-        private class MockStudentRepo : RepoMock<Student>, IStudentRepo { }
-        private class MockRoleTypeRepo : RepoMock<RoleType>, IRoleTypeRepo { }
         private class MockTeacherRepo : RepoMock<Teacher>, ITeacherRepo
         {
             public Task Added(Teacher t)
@@ -95,12 +93,6 @@ namespace Autokool.Tests
         public static IExamRepo ExamRepos(string id, out ExamData data)
     => createMockRepo<MockExamRepo, Exam, ExamData>(
             id, d => new Exam(d), out data);
-        public static IStudentRepo StudentRepos(string id, out StudentData data)
-     => createMockRepo<MockStudentRepo, Student, StudentData>(
-             id, d => new Student(d), out data);
-        public static IRoleTypeRepo RoleTypeRepos(string id, out RoleTypeData data)
-     => createMockRepo<MockRoleTypeRepo, RoleType, RoleTypeData>(
-             id, d => new RoleType(d), out data);
         public static ITeacherRepo TeacherRepos(string id, out TeacherData data)
      => createMockRepo<MockTeacherRepo, Teacher, TeacherData>(
              id, d => new Teacher(d), out data);

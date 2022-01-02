@@ -5,6 +5,5 @@
         public string FirstName { get; set; }
         public string Email { get; set; }
         public string PhoneNr { get; set; }
-        public string RoleTypeID { get; set; }
     }
 }

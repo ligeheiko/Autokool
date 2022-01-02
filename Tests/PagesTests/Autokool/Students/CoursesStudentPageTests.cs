@@ -11,6 +11,8 @@ using System.Security.Principal;
 using HttpContextMoq;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections.Generic;
 
 namespace Autokool.Tests.PagesTests.Autokool.Students
 {
@@ -19,7 +21,10 @@ namespace Autokool.Tests.PagesTests.Autokool.Students
     {
         private CoursesStudentPage page;
         private UserManager<ApplicationUser> userManager;
-        private ClaimsPrincipal claims;
+        public ClaimsPrincipal claims;
+        protected override string expectedUrl => "/Student/Courses";
+        protected override List<string> expectedIndexTableColumns
+            => new() { "Name", "CourseTypeID", "Location", "ValidFrom", "ValidTo" };
         [TestInitialize]
         public override void TestInitialize()
         {
@@ -45,10 +50,11 @@ namespace Autokool.Tests.PagesTests.Autokool.Students
             int? pageIndex = random<int>();
             string fixedFilter = random<string>();
             string fixedValue = random<string>();
+            isNull(page.Item);
             var result = await page.OnGetIndexAsync(
-                                id, sortOrder, currentFilter, searchString, pageIndex, fixedFilter, fixedValue);
+                                id, sortOrder, currentFilter, searchString, pageIndex, fixedFilter, fixedValue) as PageResult;
+            isNotNull(page.Item);
             notTested(); //TODO mocki httpcontext et saada praegu kasutaja
-
         }
         public UserManager<ApplicationUser> MockUser()
         {

@@ -5,7 +5,5 @@ namespace Autokool.Facade.DrivingSchool.ViewModels
 {
     public sealed class TeacherView : PersonView
     {
-        [DisplayName("Student")]
-        public string StudentID { get; set; }
     }
 }

@@ -7,6 +7,7 @@ using Autokool.Pages.Autokool.Admin;
 using Autokool.Pages.Autokool.Base;
 using Autokool.Pages.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace Autokool.Tests.PagesTests.Autokool.Admin
 {
@@ -18,5 +19,8 @@ namespace Autokool.Tests.PagesTests.Autokool.Admin
         {
             return new RegisteredDrivingPracticeAdminPage(MockRepos.RegisterDrivingPracticeRepos(), MockRepos.TeacherRepos());
         }
+        protected override string expectedUrl => "/Administrator/RegisterDrivingPractice";
+        protected override List<string> expectedIndexTableColumns
+            => new() { "TeacherID", "UserId", "UserName" };
     }
 }

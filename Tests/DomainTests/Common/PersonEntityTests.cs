@@ -12,8 +12,6 @@ namespace Autokool.Tests.DomainTests.Common
     public class PersonEntityTests : AbstractTests<DateEntity<TestData>>
     {
         private TestData data;
-        private RoleTypeData roleTypeData;
-        private IRoleTypeRepo roleTypeRepo;
 
         private class testClass : PersonEntity<TestData>
         {
@@ -22,7 +20,6 @@ namespace Autokool.Tests.DomainTests.Common
         protected override object createObject()
         {
             data = GetRandom.ObjectOf<TestData>();
-            roleTypeRepo = MockRepos.RoleTypeRepos(data.RoleTypeID, out roleTypeData);
             return new testClass(data);
         }
         [TestMethod]
@@ -32,21 +29,10 @@ namespace Autokool.Tests.DomainTests.Common
         [TestMethod]
         public void EmailTest() => isProperty(data.Email);
         [TestMethod]
-        public void RoleTypeIDTest() => isProperty(data.RoleTypeID);
-        [TestMethod]
         public void FullNameTest()
         {
             var r = Safe.Run(() => data.FirstName + " " + data.Name, BaseEntity.Unspecified);
             isProperty(r);
-        }
-        [TestMethod]
-        public void RoleTypeTest()
-        {
-            isNull((obj as PersonEntity<TestData>).RoleType);
-            GetRepo.SetServiceProvider(new ServiceProviderMock(roleTypeRepo));
-            var p = (obj as PersonEntity<TestData>).RoleType;
-            isNotNull(p);
-            areEqualProperties(roleTypeData, p.Data);
         }
     }
 }

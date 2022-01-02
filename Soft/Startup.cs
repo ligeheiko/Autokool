@@ -49,9 +49,6 @@ namespace Soft
             s.AddScoped<ICourseTypeRepo, CourseTypeRepo>();
             s.AddScoped<IExamRepo, ExamRepo>();
             s.AddScoped<IExamTypeRepo, ExamTypeRepo>();
-            s.AddScoped<IPersonRoleRepo, PersonRoleRepo>();
-            s.AddScoped<ISchoolRepo, SchoolRepo>();
-            s.AddScoped<IStudentRepo, StudentRepo>();
             s.AddScoped<ITeacherRepo, TeacherRepo>();
             s.AddScoped<IDrivingPracticeRepo, DrivingPracticeRepo>();
             s.AddScoped<IUserRolesRepo, UserRolesRepo>();

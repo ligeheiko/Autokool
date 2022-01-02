@@ -1,6 +1,8 @@
 ﻿using Autokool.Pages.Autokool.Admin;
 using Autokool.Pages.Autokool.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+
 namespace Autokool.Tests.PagesTests.Autokool.Admin
 {
     [TestClass]
@@ -10,5 +12,8 @@ namespace Autokool.Tests.PagesTests.Autokool.Admin
         {
             return new ExamTypesAdminPage(MockRepos.ExamTypeRepos());
         }
+        protected override string expectedUrl => "/Administrator/ExamTypes";
+        protected override List<string> expectedIndexTableColumns
+            => new() { "ID", "Name" };
     }
 }

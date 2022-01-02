@@ -6,7 +6,7 @@ using Autokool.Infra.AutoKool;
 using Autokool.Pages.Autokool.Admin;
 using Autokool.Pages.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+using System.Collections.Generic;
 
 namespace Autokool.Tests.PagesTests.Autokool.Admin
 {
@@ -18,5 +18,8 @@ namespace Autokool.Tests.PagesTests.Autokool.Admin
         {
             return new RegisteredExamAdminPage(MockRepos.RegisterExamRepos(), MockRepos.ExamRepos());
         }
+        protected override string expectedUrl => "/Administrator/RegisterExam";
+        protected override List<string> expectedIndexTableColumns
+            => new() { "ExamID", "UserId", "UserName" };
     }
 }
