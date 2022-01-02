@@ -26,7 +26,7 @@ namespace Autokool.Pages.Autokool.Students
             _userManager = userManager;
         }
         protected override Uri pageUrl() => new Uri("/Student/Courses", UriKind.Relative);
-        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+        public Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
         public override async Task<IActionResult> OnGetIndexAsync(string sortOrder,
            string id, string currentFilter, string searchString, int? pageIndex,
            string fixedFilter, string fixedValue)
@@ -43,7 +43,6 @@ namespace Autokool.Pages.Autokool.Students
             var currentUser = await GetCurrentUserAsync();
             _registerCourse = await _registerRepo.Get(currentUser.Id);
             await _registerRepo.Delete(_registerCourse.ID);
-
             return Redirect(IndexUrl.ToString());
         }
         public async Task<IActionResult> OnPostRegisterAsync(string id, string sortOrder, string searchString,
@@ -61,6 +60,6 @@ namespace Autokool.Pages.Autokool.Students
             await _registerRepo.Add(reg).ConfigureAwait(true);
             return Redirect(IndexUrl.ToString());
         }
-        protected internal RegisterCourse toObject(RegisterCourseData d) => new RegisterCourse(d);
+        public RegisterCourse toObject(RegisterCourseData d) => new RegisterCourse(d);
     }
 }

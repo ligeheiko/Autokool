@@ -7,6 +7,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 using System.Threading.Tasks;
 using Moq;
+using System.Security.Principal;
+using HttpContextMoq;
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 
 namespace Autokool.Tests.PagesTests.Autokool.Students
 {
@@ -15,17 +19,20 @@ namespace Autokool.Tests.PagesTests.Autokool.Students
     {
         private CoursesStudentPage page;
         private UserManager<ApplicationUser> userManager;
-        private ApplicationUser user;
+        private ClaimsPrincipal claims;
         [TestInitialize]
         public override void TestInitialize()
         {
             base.TestInitialize();
-            MockUser().ConfigureAwait(true);
-            MockUserManager<ApplicationUser>()
+            var httpContextMock = new HttpContextMock();
+            var testUserManager = MockHelpers.MockUserManager<ApplicationUser>();
         }
 
         protected override object createObject()
         {
+            userManager = MockUser();
+            var httpContextMock = new HttpContextMock();
+            claims = httpContextMock.User;
             return page = new CoursesStudentPage(userManager, MockRepos.CourseRepos(), MockRepos.CourseTypeRepos(), MockRepos.RegisterCourseRepos());
         }
         [TestMethod]
@@ -39,14 +46,14 @@ namespace Autokool.Tests.PagesTests.Autokool.Students
             string fixedFilter = random<string>();
             string fixedValue = random<string>();
             var result = await page.OnGetIndexAsync(
-                id, sortOrder, currentFilter, searchString, pageIndex, fixedFilter, fixedValue);
-            notTested();
+                                id, sortOrder, currentFilter, searchString, pageIndex, fixedFilter, fixedValue);
+            notTested(); //TODO mocki httpcontext et saada praegu kasutaja
 
         }
-        public async Task<ApplicationUser> MockUser()
+        public UserManager<ApplicationUser> MockUser()
         {
-            user = await userManager.FindByNameAsync("superadmin");
-            return user;
+            var testUser = MockHelpers.TestUserManager<ApplicationUser>();
+            return testUser;
         }
     }
 }
