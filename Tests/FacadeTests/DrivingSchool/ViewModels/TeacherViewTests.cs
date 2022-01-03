@@ -6,7 +6,5 @@ namespace Autokool.Tests.FacadeTests.DrivingSchool.ViewModels
     [TestClass]
     public class TeacherViewTests : SealedTests<PersonView>
     {
-        [TestMethod]
-        public void StudentIDTest() => isDisplayProperty<string>("Student");
     }
 }

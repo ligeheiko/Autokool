@@ -42,7 +42,7 @@ namespace Autokool.Pages.Autokool.Base
         {
             return i switch
             {
-                0 => getRaw(html, TeacherName(Item.TeacherID)),
+                0 => getRaw(html, TeacherName(Item?.TeacherID)),
                 1 or 2 => getValue<DateTime?>(html, i),
                 _ => base.GetValue(html, i)
             };

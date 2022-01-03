@@ -10,13 +10,12 @@ namespace Autokool.Tests.PagesTests.Autokool.Admin
 {
     [TestClass]
     public class TeachersAdminPageTests :
-       AuthorizedPageTests<TeachersBasePage<TeachersAdminPage>>
+       AuthorizedPageTests<TeachersAdminPage,TeachersBasePage<TeachersAdminPage>>
     {
         private UserManager<ApplicationUser> user;
-        private TeachersAdminPage page;
         protected override object createObject()
         {
-            return page = new TeachersAdminPage(MockRepos.TeacherRepos(), user);
+            return new TeachersAdminPage(MockRepos.TeacherRepos(), user);
         }
         protected override string expectedUrl => "/Administrator/Teachers";
         protected override List<string> expectedIndexTableColumns
@@ -24,8 +23,9 @@ namespace Autokool.Tests.PagesTests.Autokool.Admin
         [TestMethod]
         public async Task OnPostCreateAsync()
         {
-            var result = await page.OnPostCreateAsync(sortOrder, searchString, pageIndex, fixedFilter, fixedValue);
             notTested();
+            var result = await page.OnPostCreateAsync(sortOrder, searchString, pageIndex, fixedFilter, fixedValue);
+            
         }
     }
 }

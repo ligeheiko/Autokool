@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace Autokool.Tests.PagesTests.Autokool.Admin
 {
     [TestClass]
-    public class CoursesAdminPageTests : AuthorizedPageTests<CoursesBasePage<CoursesAdminPage>>
+    public class CoursesAdminPageTests : AuthorizedPageTests<CoursesAdminPage,CoursesBasePage<CoursesAdminPage>>
     {
         protected override object createObject()
         {
@@ -15,5 +15,16 @@ namespace Autokool.Tests.PagesTests.Autokool.Admin
         protected override string expectedUrl => "/Administrator/Courses";
         protected override List<string> expectedIndexTableColumns
             => new() { "Name", "CourseTypeID", "Location", "ValidFrom", "ValidTo" };
+        protected override void validateValue(string actual, string expected)
+        {
+            if (expected == "CourseTypeID")
+            {
+                areEqual("Unspecified", actual);
+            }
+            else
+            {
+                base.validateValue(actual, expected);
+            }
+        }
     }
 }

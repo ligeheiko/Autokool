@@ -19,7 +19,6 @@ namespace Autokool.Tests.InfraTests
                 var set = new ConventionSet();
                 var mb = new ModelBuilder(set);
                 OnModelCreating(mb);
-
                 return mb;
             }
         }

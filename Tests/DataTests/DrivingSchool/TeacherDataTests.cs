@@ -6,10 +6,5 @@ namespace Autokool.Tests.DataTests.DrivingSchool
     [TestClass]
     public class TeacherDataTests : SealedTests<PersonData>
     {
-        [TestMethod]
-        public void StudentIDTest()
-        {
-            isProperty<string>();
-        }
     }
 }

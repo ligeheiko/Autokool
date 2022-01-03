@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace Autokool.Tests.PagesTests.Autokool.Admin
 {
     [TestClass]
-    public class RegisteredExamAdminPageTests : AuthorizedPageTests<ViewPage<RegisteredExamAdminPage,
+    public class RegisteredExamAdminPageTests : AuthorizedPageTests<RegisteredExamAdminPage,ViewPage<RegisteredExamAdminPage,
         IRegisterExamRepo, RegisterExam, RegisterExamView, RegisterExamData>>
     {
         protected override object createObject()
@@ -21,5 +21,16 @@ namespace Autokool.Tests.PagesTests.Autokool.Admin
         protected override string expectedUrl => "/Administrator/RegisterExam";
         protected override List<string> expectedIndexTableColumns
             => new() { "ExamID", "UserId", "UserName" };
+        protected override void validateValue(string actual, string expected)
+        {
+            if (expected == "ExamID")
+            {
+                areEqual("Unspecified", actual);
+            }
+            else
+            {
+                base.validateValue(actual, expected);
+            }
+        }
     }
 }

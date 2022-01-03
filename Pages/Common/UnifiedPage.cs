@@ -13,7 +13,7 @@ using System.Linq.Expressions;
 namespace Autokool.Pages.Common
 {
     public abstract class UnifiedPage<TPage, TRepository, TDomain, TView, TData>
-        : TitledPage<TRepository, TDomain, TView, TData>, IIndexTable<TPage>
+        : TitledPage<TRepository, TDomain, TView, TData>, IIndexTable<TPage>, IUnifiedPage<TPage>
         where TPage : PageModel
         where TRepository : class, ICrudMethods<TDomain>, ISorting, IFiltering, IPaging
         where TView : BaseView
@@ -41,7 +41,9 @@ namespace Autokool.Pages.Common
         protected string getName<TResult>(IHtmlHelper<TPage> h, int i)
         {
             if (isCorrectIndex(i, Columns))
-                return h.DisplayNameFor(Columns[i] as Expression<Func<TPage, TResult>>);
+            {
+                return h?.DisplayNameFor(Columns[i] as Expression<Func<TPage, TResult>>) ?? Undefined;
+            }
             return Undefined;
         }
 
@@ -50,10 +52,12 @@ namespace Autokool.Pages.Common
         protected IHtmlContent getValue<TResult>(IHtmlHelper<TPage> h, int i)
         {
             if (isCorrectIndex(i, Columns))
-                return h.DisplayFor(Columns[i] as Expression<Func<TPage, TResult>>);
+            {
+                return h?.DisplayFor(Columns[i] as Expression<Func<TPage, TResult>>);
+            }
             return null;
         }
-        protected IHtmlContent getRaw<TResult>(IHtmlHelper<TPage> h, TResult r) => h.Raw(r.ToString());
+        protected IHtmlContent getRaw<TResult>(IHtmlHelper<TPage> h, TResult r) => h?.Raw(r.ToString());
 
         public virtual Uri GetSortStringExpression(int i)
                     => isCorrectIndex(i, Columns)

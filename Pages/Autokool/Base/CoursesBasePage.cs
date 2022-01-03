@@ -1,5 +1,4 @@
 ﻿using Autokool.Data.DrivingSchool;
-using Autokool.Domain;
 using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Facade.DrivingSchool.Factories;
@@ -47,7 +46,7 @@ namespace Autokool.Pages.Autokool.Base
         {
             return i switch
             {
-                1 => getRaw(html, CourseTypeName(Item.CourseTypeID)),
+                1 => getRaw(html, CourseTypeName(Item?.CourseTypeID)),
                 3 or 4 => getValue<DateTime?>(html, i),
                 _ => base.GetValue(html, i)
             };

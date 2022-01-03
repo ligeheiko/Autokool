@@ -34,7 +34,7 @@ namespace Autokool.Pages.Autokool.Admin
         {
             return i switch
             {
-                0 => getRaw(html, TeacherName(Item.TeacherID)),
+                0 => getRaw(html, TeacherName(Item?.TeacherID)),
                 _ => base.GetValue(html, i)
             };
         }

@@ -7,12 +7,11 @@ using System.Collections.Generic;
 namespace Autokool.Tests.PagesTests.Autokool.Students
 {
     [TestClass]
-    public class TeachersStudentPageTests : AuthorizedPageTests<TeachersBasePage<TeachersStudentPage>>
+    public class TeachersStudentPageTests : AuthorizedPageTests<TeachersStudentPage,TeachersBasePage<TeachersStudentPage>>
     {
-        private TeachersStudentPage page;
         protected override object createObject()
         {
-            return page =  new TeachersStudentPage(MockRepos.TeacherRepos());
+            return new TeachersStudentPage(MockRepos.TeacherRepos());
         }
         protected override string expectedUrl => "/Student/Teachers";
         protected override List<string> expectedIndexTableColumns

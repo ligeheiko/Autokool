@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace Autokool.Tests.PagesTests.Autokool.Students
 {
     [TestClass]
-    public class ExamsStudentPageTests : AuthorizedPageTests<ExamsBasePage<ExamsStudentPage>>
+    public class ExamsStudentPageTests : AuthorizedPageTests<ExamsStudentPage,ExamsBasePage<ExamsStudentPage>>
     {
         private UserManager<ApplicationUser> user;
         protected override object createObject()
@@ -18,5 +18,16 @@ namespace Autokool.Tests.PagesTests.Autokool.Students
         protected override string expectedUrl => "/Student/Exams";
         protected override List<string> expectedIndexTableColumns
             => new() { "Name", "ExamTypeID", "ValidFrom", "ValidTo" };
+        protected override void validateValue(string actual, string expected)
+        {
+            if (expected == "ExamTypeID")
+            {
+                areEqual("Unspecified", actual);
+            }
+            else
+            {
+                base.validateValue(actual, expected);
+            }
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace Autokool.Tests.PagesTests.Autokool.Admin
 {
     [TestClass]
-    public class CourseTypesAdminPageTests : AuthorizedPageTests<CourseTypesBasePage<CourseTypesAdminPage>>
+    public class CourseTypesAdminPageTests : AuthorizedPageTests<CourseTypesAdminPage,CourseTypesBasePage<CourseTypesAdminPage>>
     {
         protected override object createObject()
         {

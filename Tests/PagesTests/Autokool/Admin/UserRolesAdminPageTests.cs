@@ -12,7 +12,7 @@ using System.Collections.Generic;
 namespace Autokool.Tests.PagesTests.Autokool.Admin
 {
     [TestClass]
-    public class UserRolesAdminPageTests : AuthorizedPageTests<ViewPage<UserRolesAdminPage,
+    public class UserRolesAdminPageTests : AuthorizedPageTests<UserRolesAdminPage,ViewPage<UserRolesAdminPage,
         IUserRolesRepo, UserRoles, UserRolesView, UserRolesData>>
     {
         private UserManager<ApplicationUser> user;
