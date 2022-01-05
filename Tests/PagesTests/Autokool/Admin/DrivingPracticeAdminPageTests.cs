@@ -1,7 +1,11 @@
-﻿using Autokool.Pages.Autokool.Admin;
+﻿using Autokool.Data.DrivingSchool;
+using Autokool.Domain.DrivingSchool.Model;
+using Autokool.Domain.DrivingSchool.Repos;
+using Autokool.Pages.Autokool.Admin;
 using Autokool.Pages.Autokool.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Autokool.Tests.PagesTests.Autokool.Admin
 {

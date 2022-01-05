@@ -1,11 +1,12 @@
 ﻿using Autokool.Data.DrivingSchool;
 using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Domain.DrivingSchool.Repos;
-using Autokool.Facade.DrivingSchool.ViewModels;
 using Autokool.Pages.Autokool.Admin;
-using Autokool.Pages.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Autokool.Facade.DrivingSchool.ViewModels;
+using Autokool.Pages.Common;
 
 namespace Autokool.Tests.PagesTests.Autokool.Admin
 {
@@ -13,10 +14,17 @@ namespace Autokool.Tests.PagesTests.Autokool.Admin
     public class RegisteredCourseAdminPageTests : AuthorizedPageTests<RegisteredCourseAdminPage,ViewPage<RegisteredCourseAdminPage
         , IRegisterCourseRepo, RegisterCourse, RegisterCourseView, RegisterCourseData>>
     {
+        private ICourseRepo courses;
         protected override object createObject()
         {
-            return new RegisteredCourseAdminPage(MockRepos.RegisterCourseRepos(), MockRepos.CourseRepos());
+            courses = addItems<Course, CourseData>(MockRepos.CourseRepos(),
+                d => new Course(d)) as ICourseRepo;
+            return new RegisteredCourseAdminPage(MockRepos.RegisterCourseRepos(), courses);
         }
+        [TestMethod]
+        public async Task CoursesTest() =>
+            await selectListTest(page.Courses, courses);
+
         protected override string expectedUrl => "/Administrator/RegisterCourse";
         protected override List<string> expectedIndexTableColumns
             => new() { "CourseID", "UserId", "UserName" };

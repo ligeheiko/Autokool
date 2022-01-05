@@ -96,6 +96,7 @@ namespace Autokool.Tests
             return index;
         }
         public TClass random<TClass>() => GetRandom.ObjectOf<TClass>();
+        public int random(int min, int max) => GetRandom.Int32(min, max);
         protected void isDisplayProperty<T>(string displayName, bool isNullable = true)
         {
             var n = getPropertyNameAfter(nameof(isDisplayProperty));

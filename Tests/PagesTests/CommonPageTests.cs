@@ -1,4 +1,5 @@
 ﻿using Autokool.Aids;
+using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Pages.Common;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Autokool.Tests.PagesTests
 {
@@ -85,6 +87,19 @@ namespace Autokool.Tests.PagesTests
             var indexOutOfLimits = GetRandom.Int32(length);
             areEqual(default(IHtmlContent), page.GetValue(null, indexOutOfLimits));
             areEqual(default(IHtmlContent), page.GetValue(htmlHelper, indexOutOfLimits));
+        }
+        protected IRepo<TObj> addItems<TObj, TData>(IRepo<TObj> repo, Func<TData, TObj> func)
+        {
+            var count = random(5, 10);
+            for (int i = 0; i < count; i++)
+            {
+                repo.Add(func(random<TData>()));
+            }
+            return repo;
+        }
+        protected async Task selectListTest<TObj>(dynamic list, IRepo<TObj> repo)
+        {
+            areEqual((await repo.Get()).Count + 1, list.Count);
         }
         protected virtual void validateValue(string actual, string expected)
            => isTrue(actual.EndsWith(expected));

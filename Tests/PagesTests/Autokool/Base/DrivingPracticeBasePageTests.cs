@@ -6,19 +6,27 @@ using Autokool.Pages.Autokool.Admin;
 using Autokool.Pages.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Autokool.Tests.PagesTests.Autokool.Base
 {
     [TestClass]
     public class DrivingPracticeBasePageTests : CommonPageTests<DrivingPracticeAdminPage,ViewPage<DrivingPracticeAdminPage, IDrivingPracticeRepo, DrivingPractice, DrivingPracticeView, DrivingPracticeData>>
     {
+        private ITeacherRepo teachers;
         protected override string expectedUrl => "/Administrator/DrivingPractices";
         protected override List<string> expectedIndexTableColumns
             => new() { "TeacherID","ValidFrom", "ValidTo" };
         protected override object createObject()
         {
-            return new DrivingPracticeAdminPage(MockRepos.DrivingPracticeRepos(), MockRepos.TeacherRepos());
+            teachers = addItems<Teacher, TeacherData>(MockRepos.TeacherRepos(),
+               d => new Teacher(d)) as ITeacherRepo;
+            return new DrivingPracticeAdminPage(MockRepos.DrivingPracticeRepos(),teachers);
         }
+        [TestMethod]
+        public async Task TeacherTest() =>
+            await selectListTest(page.Teachers, teachers);
+
         protected override void validateValue(string actual, string expected)
         {
             if (expected == "TeacherID")

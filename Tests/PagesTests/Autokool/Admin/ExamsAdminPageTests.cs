@@ -1,7 +1,11 @@
-﻿using Autokool.Pages.Autokool.Admin;
+﻿using Autokool.Data.DrivingSchool;
+using Autokool.Domain.DrivingSchool.Model;
+using Autokool.Domain.DrivingSchool.Repos;
+using Autokool.Pages.Autokool.Admin;
 using Autokool.Pages.Autokool.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Autokool.Tests.PagesTests.Autokool.Admin
 {
@@ -12,6 +16,7 @@ namespace Autokool.Tests.PagesTests.Autokool.Admin
         {
             return new ExamsAdminPage(MockRepos.ExamRepos(), MockRepos.ExamTypeRepos());
         }
+
         protected override string expectedUrl => "/Administrator/Exams";
         protected override List<string> expectedIndexTableColumns
             => new() { "Name","ExamTypeID", "ValidFrom", "ValidTo" };
