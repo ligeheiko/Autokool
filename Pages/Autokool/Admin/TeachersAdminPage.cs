@@ -24,8 +24,7 @@ namespace Autokool.Pages.Autokool.Admin
         {
             if (!await addObject(sortOrder, searchString, pageIndex, fixedFilter, fixedValue)
                .ConfigureAwait(true)) return Page();
-            Teacher t = await db.Get(Item?.ID?? Word.Unspecified);
-            await db.Added(t);
+            await CreateAdded();
             var user = GetApplicationUser();
             await AddUserToTeacherRole(user);
             return Redirect(IndexUrl.ToString());
@@ -40,8 +39,7 @@ namespace Autokool.Pages.Autokool.Admin
             var oldUser = await _userManager.FindByIdAsync(id);
             await _userManager.DeleteAsync(oldUser);
             await updateObject(sortOrder, searchString, pageIndex, fixedFilter, fixedValue).ConfigureAwait(true);
-            Teacher t = await db.Get(Item.ID);
-            await db.Added(t);
+            await CreateAdded();
             var user = GetApplicationUser();
             if (user == null)
             {
@@ -60,6 +58,11 @@ namespace Autokool.Pages.Autokool.Admin
             }
             await _userManager.DeleteAsync(userToDelete);
             return Redirect(IndexUrl.ToString());
+        }
+        private async Task CreateAdded()
+        {
+            Teacher t = await db.Get(Item?.ID ?? Word.Unspecified);
+            await db.CreateValidFrom(t);
         }
         private ApplicationUser GetApplicationUser()
         {

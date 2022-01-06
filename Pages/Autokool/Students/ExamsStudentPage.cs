@@ -17,7 +17,6 @@ namespace Autokool.Pages.Autokool.Students
         public readonly UserManager<ApplicationUser> _userManager;
         public IRegisterExamRepo _registerRepo;
         public RegisterExam _registerExam;
-        public RegisterExamData _registerExamData;
         public ExamsStudentPage(UserManager<ApplicationUser> userManager, IExamRepo e,
             IExamTypeRepo et, IRegisterExamRepo r) : base(e, et) 
         {

@@ -4,11 +4,9 @@ using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Pages.Autokool.Base;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Autokool.Pages.Autokool.Students
@@ -17,7 +15,6 @@ namespace Autokool.Pages.Autokool.Students
     public sealed class CoursesStudentPage : CoursesBasePage<CoursesStudentPage>
     {
         public readonly UserManager<ApplicationUser> _userManager;
-        public RegisterCourseData _registerCourseData;
         public RegisterCourse _registerCourse;
         public IRegisterCourseRepo _registerRepo;
 

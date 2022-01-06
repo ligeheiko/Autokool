@@ -20,7 +20,6 @@ namespace Autokool.Pages.Autokool.Admin
     {
         public readonly UserManager<ApplicationUser> _userManager;
         public readonly RoleManager<IdentityRole> _roleManager;
-        public List<ApplicationUser> users;
         public List<UserRolesData> usersDataList = new List<UserRolesData>();
         public List<ManageUserRolesData> UserRolesList = new List<ManageUserRolesData>();
         public ManageUserRolesData manageUserRolesData;
@@ -39,17 +38,7 @@ namespace Autokool.Pages.Autokool.Admin
             string id, string currentFilter, string searchString, int? pageIndex,
             string fixedFilter, string fixedValue)
         {
-            users = await _userManager.Users.ToListAsync();
-            foreach (ApplicationUser user in users)
-            {
-                var thisViewModel = new UserRolesData();
-                thisViewModel.UserId = user.Id;
-                thisViewModel.Email = user.Email;
-                thisViewModel.FirstName = user.FirstName;
-                thisViewModel.LastName = user.LastName;
-                thisViewModel.Roles = await GetUserRoles(user);
-                usersDataList.Add(thisViewModel);
-            }
+            await UsersToList();
             SelectedId = id;
             await getList(sortOrder, currentFilter, searchString, pageIndex,
                fixedFilter, fixedValue).ConfigureAwait(true);
@@ -73,6 +62,11 @@ namespace Autokool.Pages.Autokool.Admin
             }
             var roles = await _userManager.GetRolesAsync(user);
             await _userManager.RemoveFromRolesAsync(user, roles);
+            await UserToRole(selected, user);
+            return Redirect(IndexUrl.ToString());
+        }
+        private async Task UserToRole(List<bool> selected, ApplicationUser user)
+        {
             switch (selected.Count)
             {
                 case 1:
@@ -88,11 +82,6 @@ namespace Autokool.Pages.Autokool.Admin
                     await _userManager.AddToRoleAsync(user, "SuperAdmin");
                     break;
             }//Ideaalne ei ole aga sellele kulus liiga palju aega ja ma ei saanud hakkama, lisaks ei toota filtreerimine
-            return Redirect(IndexUrl.ToString());
-        }
-        private async Task<List<string>> GetUserRoles(ApplicationUser user)
-        {
-            return new List<string>(await _userManager.GetRolesAsync(user));
         }
         private async Task UserRolesToList(string userId)
         {
@@ -112,6 +101,24 @@ namespace Autokool.Pages.Autokool.Admin
                 }
                 UserRolesList.Add(manageUserRolesData);
             }
+        }
+        private async Task UsersToList()
+        {
+            var users = await _userManager.Users.ToListAsync();
+            foreach (ApplicationUser user in users)
+            {
+                var thisViewModel = new UserRolesData();
+                thisViewModel.UserId = user.Id;
+                thisViewModel.Email = user.Email;
+                thisViewModel.FirstName = user.FirstName;
+                thisViewModel.LastName = user.LastName;
+                thisViewModel.Roles = await GetUserRoles(user);
+                usersDataList.Add(thisViewModel);
+            }
+        }
+        private async Task<List<string>> GetUserRoles(ApplicationUser user)
+        {
+            return new List<string>(await _userManager.GetRolesAsync(user));
         }
     }
 }
