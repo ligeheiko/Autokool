@@ -13,7 +13,7 @@ namespace Autokool.Infra.AutoKool
         public TeacherRepo(ApplicationDbContext c) : base(c, c.Teachers) { }
         protected internal override Teacher toDomainObject(TeacherData d)
             => new Teacher(d);
-        public async Task Added(Teacher t)
+        public async Task CreateValidFrom(Teacher t)
         {
             var d = t?.Data;
             if (d == null) return;

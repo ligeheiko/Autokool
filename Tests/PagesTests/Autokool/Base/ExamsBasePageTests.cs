@@ -28,6 +28,10 @@ namespace Autokool.Tests.PagesTests.Autokool.Base
         public async Task ExamTypesTest() =>
             await selectListTest(page.ExamTypes, examTypes);
 
+        [TestMethod]
+        public async Task ExamTypeNameTest() 
+            => await selectNameTest(examTypes, x => page.ExamTypeName(x));
+
         protected override void validateValue(string actual, string expected)
         {
             if (expected == "ExamTypeID")

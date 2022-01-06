@@ -88,6 +88,13 @@ namespace Autokool.Tests.PagesTests
             areEqual(default(IHtmlContent), page.GetValue(null, indexOutOfLimits));
             areEqual(default(IHtmlContent), page.GetValue(htmlHelper, indexOutOfLimits));
         }
+        protected async Task selectNameTest<TO>(IRepo<TO> repo, Func<string,string> func)
+        {
+            var list = await repo.Get();
+            var idx = random(0, list.Count);
+            dynamic obj = list[idx];
+            areEqual(obj.Name, func(obj.ID));
+        }
         protected IRepo<TObj> addItems<TObj, TData>(IRepo<TObj> repo, Func<TData, TObj> func)
         {
             var count = random(5, 10);

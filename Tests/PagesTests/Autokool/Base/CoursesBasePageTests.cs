@@ -1,10 +1,12 @@
 ﻿using Autokool.Data.DrivingSchool;
+using Autokool.Domain.Common;
 using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Facade.DrivingSchool.ViewModels;
 using Autokool.Pages.Autokool.Admin;
 using Autokool.Pages.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -24,6 +26,8 @@ namespace Autokool.Tests.PagesTests.Autokool.Base
         public async Task CourseTypesTest() =>
             await selectListTest(page.CourseTypes, courseTypes);
 
+        [TestMethod]
+        public async Task CourseTypeNameTest() => await selectNameTest(courseTypes, x => page.CourseTypeName(x));
         protected override List<string> expectedIndexTableColumns
             => new() { "Name", "CourseTypeID", "Location", "ValidFrom", "ValidTo" };
         protected override string expectedUrl => "/Administrator/Courses";

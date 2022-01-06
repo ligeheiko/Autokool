@@ -17,7 +17,7 @@ namespace Autokool.Tests.InfraTests.AutoKool
         public async Task AddedTest()
         {
             var dt1 = DateTime.Now.AddSeconds(-1);
-            await repo.Added(item);
+            await repo.CreateValidFrom(item);
             var dt2 = DateTime.Now.AddSeconds(1);
             var d = dbSet.Find(item.ID);
             areEqualProperties(d, item.Data, nameof(item.Data.ValidFrom));

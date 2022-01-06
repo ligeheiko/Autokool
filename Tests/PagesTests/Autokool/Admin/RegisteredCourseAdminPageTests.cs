@@ -25,6 +25,10 @@ namespace Autokool.Tests.PagesTests.Autokool.Admin
         public async Task CoursesTest() =>
             await selectListTest(page.Courses, courses);
 
+        [TestMethod]
+        public async Task CourseNameTest() 
+            => await selectNameTest(courses, x => page.CourseName(x));
+
         protected override string expectedUrl => "/Administrator/RegisterCourse";
         protected override List<string> expectedIndexTableColumns
             => new() { "CourseID", "UserId", "UserName" };

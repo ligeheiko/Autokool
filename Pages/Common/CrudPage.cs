@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Autokool.Aids.Constants;
 using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Facade.Common;
 using Microsoft.AspNetCore.Mvc;
@@ -72,7 +73,6 @@ namespace Autokool.Pages.Common
             setPageValues(sortOrder, searchString, pageIndex);
             await deleteObject(id, fixedFilter, fixedValue).ConfigureAwait(true);
         }
-
         protected internal abstract TDomain toObject(TView v);
 
         protected internal abstract TView toView(TDomain o);

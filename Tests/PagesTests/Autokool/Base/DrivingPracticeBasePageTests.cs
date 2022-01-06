@@ -24,8 +24,12 @@ namespace Autokool.Tests.PagesTests.Autokool.Base
             return new DrivingPracticeAdminPage(MockRepos.DrivingPracticeRepos(),teachers);
         }
         [TestMethod]
-        public async Task TeacherTest() =>
+        public async Task TeachersTest() =>
             await selectListTest(page.Teachers, teachers);
+
+        [TestMethod]
+        public async Task TeacherNameTest() 
+            => await selectNameTest(teachers, x => page.TeacherName(x));
 
         protected override void validateValue(string actual, string expected)
         {

@@ -5,6 +5,6 @@ namespace Autokool.Domain.DrivingSchool.Repos
 {
     public interface ITeacherRepo : IRepo<Teacher>
     {
-        public Task Added(Teacher t);
+        public Task CreateValidFrom(Teacher t);
     }
 }

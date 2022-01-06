@@ -12,7 +12,7 @@ namespace Autokool.Tests.InfraTests
 {
     public abstract class RepoTests<TRepo, TDomain, TData>
         : SealedTests<UniqueEntitiesRepo<TDomain, TData>>
-         where TRepo : UniqueEntitiesRepo<TDomain, TData>
+        where TRepo : UniqueEntitiesRepo<TDomain, TData>
         where TDomain : UniqueEntity<TData>
         where TData : BaseData, new()
     {
@@ -115,7 +115,7 @@ namespace Autokool.Tests.InfraTests
         }
         private void isInDb(TDomain i)
         {
-            var actual = dbSet.Find(i.ID);
+            var actual = dbSet.Find(i?.ID ?? "Unspecified");
             areEqualProperties(i.Data, actual);
         }
     }

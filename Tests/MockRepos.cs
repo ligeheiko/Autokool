@@ -51,12 +51,18 @@ namespace Autokool.Tests
         }
         private class MockTeacherRepo : RepoMock<Teacher>, ITeacherRepo
         {
-            public Task Added(Teacher t)
+            public Task CreateValidFrom(Teacher t)
             {
                 throw new NotImplementedException();
             }
         }
-        private class MockRegisterCourseRepo : RepoMock<RegisterCourse>, IRegisterCourseRepo { }
+        private class MockRegisterCourseRepo : RepoMock<RegisterCourse>, IRegisterCourseRepo
+        {
+            public Task RegisterDataToUser(RegisterCourseData rData, ApplicationUser currentUser, IRegisterCourseRepo r, string id)
+            {
+                throw new NotImplementedException();
+            }
+        }
         private class MockRegisterExamRepo : RepoMock<RegisterExam>, IRegisterExamRepo
         {
             public Task RegisterDataToUser(RegisterExamData rData, ApplicationUser currentUser, IRegisterExamRepo r, string id)
@@ -64,7 +70,13 @@ namespace Autokool.Tests
                 throw new NotImplementedException();
             }
         }
-        private class MockRegisterDrivingPracticeRepo : RepoMock<RegisterDrivingPractice>, IRegisterDrivingPracticeRepo { }
+        private class MockRegisterDrivingPracticeRepo : RepoMock<RegisterDrivingPractice>, IRegisterDrivingPracticeRepo
+        {
+            public Task RegisterDataToUser(RegisterDrivingPracticeData rData, ApplicationUser currentUser, IRegisterDrivingPracticeRepo r, string id)
+            {
+                throw new NotImplementedException();
+            }
+        }
         private class MockDrivingPracticeRepo : RepoMock<DrivingPractice>, IDrivingPracticeRepo { }
         private class MockUserRolesRepo : RepoMock<UserRoles>, IUserRolesRepo { }
         public static IUserRolesRepo UserRolesRepos()
