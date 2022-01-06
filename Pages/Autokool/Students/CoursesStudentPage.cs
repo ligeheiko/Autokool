@@ -48,7 +48,8 @@ namespace Autokool.Pages.Autokool.Students
         {
             var currentUser = await GetCurrentUserAsync();
             _registerCourse = await _registerRepo.Get(currentUser.Id);
-            await _registerRepo.Delete(_registerCourse.ID);
+            var regCourse = await _registerRepo.Get(currentUser.Id);
+            await _registerRepo.Delete(regCourse.ID);
             return Redirect(IndexUrl.ToString());
         }
         public async Task<IActionResult> OnPostRegisterAsync(string id, string sortOrder, string searchString,
@@ -56,16 +57,8 @@ namespace Autokool.Pages.Autokool.Students
            string fixedFilter, string fixedValue)
         {
             var currentUser = await GetCurrentUserAsync();
-            _registerCourseData = new RegisterCourseData();
-            _registerCourseData.ID = currentUser.Id;
-            _registerCourseData.CourseID = id;
-            _registerCourseData.UserId = currentUser.Id;
-            _registerCourseData.UserName = currentUser.UserName;
-            _registerCourseData.IsRegistered = true;
-            var reg = toObject(_registerCourseData);
-            await _registerRepo.Add(reg).ConfigureAwait(true);
+            await _registerRepo.RegisterDataToUser(new RegisterCourseData(), currentUser, _registerRepo, id);
             return Redirect(IndexUrl.ToString());
         }
-        public RegisterCourse toObject(RegisterCourseData d) => new RegisterCourse(d);
     }
 }

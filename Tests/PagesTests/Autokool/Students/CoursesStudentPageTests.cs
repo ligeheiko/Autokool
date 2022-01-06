@@ -24,7 +24,6 @@ namespace Autokool.Tests.PagesTests.Autokool.Students
     {
         private UserManager<ApplicationUser> userManager;
         public ClaimsPrincipal claims;
-        private IRegisterCourseRepo registerCourses;
         protected override string expectedUrl => "/Student/Courses";
         protected override List<string> expectedIndexTableColumns
             => new() { "Name", "CourseTypeID", "Location", "ValidFrom", "ValidTo" };
@@ -38,16 +37,11 @@ namespace Autokool.Tests.PagesTests.Autokool.Students
 
         protected override object createObject()
         {
-            registerCourses = addItems<RegisterCourse, RegisterCourseData>(MockRepos.RegisterCourseRepos(),
-                d => new RegisterCourse(d)) as IRegisterCourseRepo;
             userManager = MockUser();
             var httpContextMock = new HttpContextMock();
             claims = httpContextMock.User;
-            return new CoursesStudentPage(userManager, MockRepos.CourseRepos(), MockRepos.CourseTypeRepos(), registerCourses);
+            return new CoursesStudentPage(userManager, MockRepos.CourseRepos(), MockRepos.CourseTypeRepos(), MockRepos.RegisterCourseRepos());
         }
-        [TestMethod]
-        public async Task CourseTypesTest() =>
-            await selectListTest(page._registerCourse, registerCourses);
         protected override void validateValue(string actual, string expected)
         {
             if (expected == "CourseTypeID")

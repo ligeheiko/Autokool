@@ -16,7 +16,6 @@ namespace Autokool.Pages.Autokool.Students
     {
         public IRegisterDrivingPracticeRepo _registerRepo;
         public readonly UserManager<ApplicationUser> _userManager;
-        public RegisterDrivingPracticeData _registerDrivingPracticeData;
         public RegisterDrivingPractice _registerDrivingPractice;
 
         public DrivingPracticeStudentPage(UserManager<ApplicationUser> userManager, 
@@ -39,7 +38,8 @@ namespace Autokool.Pages.Autokool.Students
                 fixedFilter, fixedValue).ConfigureAwait(true);
             return Page();
         }
-        public override async Task<IActionResult> OnPostEditAsync(string sortOrder, string searchString, int pageIndex, string fixedFilter, string fixedValue, string Id)
+        public override async Task<IActionResult> OnPostEditAsync(string sortOrder, string searchString, 
+            int pageIndex, string fixedFilter, string fixedValue, string Id)
         {
             var currentUser = await GetCurrentUserAsync();
             _registerDrivingPractice = await _registerRepo.Get(currentUser.Id);
@@ -53,18 +53,10 @@ namespace Autokool.Pages.Autokool.Students
         {
             var currentUser = await GetCurrentUserAsync();
             var obj = db.GetById(ItemId);
-            _registerDrivingPracticeData = new RegisterDrivingPracticeData();
-            _registerDrivingPracticeData.ID = currentUser.Id;
-            _registerDrivingPracticeData.DrivingPracticeID = id;
-            _registerDrivingPracticeData.UserId = currentUser.Id;
-            _registerDrivingPracticeData.UserName = currentUser.UserName;
-            _registerDrivingPracticeData.TeacherID = (obj as DrivingPractice).TeacherID;
-            _registerDrivingPracticeData.IsRegistered = true;
-
-            var reg = toObject(_registerDrivingPracticeData);
-            await _registerRepo.Add(reg).ConfigureAwait(true);
+            var rData = new RegisterDrivingPracticeData();
+            rData.TeacherID = (obj as DrivingPractice).TeacherID;
+            await _registerRepo.RegisterDataToUser(rData, currentUser, _registerRepo, id);
             return Redirect(IndexUrl.ToString());
         }
-        public RegisterDrivingPractice toObject(RegisterDrivingPracticeData d) => new RegisterDrivingPractice(d);
     }
 }

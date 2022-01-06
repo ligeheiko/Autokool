@@ -57,7 +57,13 @@ namespace Autokool.Tests
             }
         }
         private class MockRegisterCourseRepo : RepoMock<RegisterCourse>, IRegisterCourseRepo { }
-        private class MockRegisterExamRepo : RepoMock<RegisterExam>, IRegisterExamRepo { }
+        private class MockRegisterExamRepo : RepoMock<RegisterExam>, IRegisterExamRepo
+        {
+            public Task RegisterDataToUser(RegisterExamData rData, ApplicationUser currentUser, IRegisterExamRepo r, string id)
+            {
+                throw new NotImplementedException();
+            }
+        }
         private class MockRegisterDrivingPracticeRepo : RepoMock<RegisterDrivingPractice>, IRegisterDrivingPracticeRepo { }
         private class MockDrivingPracticeRepo : RepoMock<DrivingPractice>, IDrivingPracticeRepo { }
         private class MockUserRolesRepo : RepoMock<UserRoles>, IUserRolesRepo { }

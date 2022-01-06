@@ -37,17 +37,6 @@ namespace Autokool.Pages.Autokool.Students
                 fixedFilter, fixedValue).ConfigureAwait(true);
             return Page();
         }
-
-        //public override async Task<IActionResult> OnGetDetailsAsync(string id, string sortOrder, string searchString,
-        //   int pageIndex,
-        //   string fixedFilter, string fixedValue, bool register)
-        //{
-        //    await getObject(id, sortOrder, searchString, pageIndex, fixedFilter, fixedValue).ConfigureAwait(true);
-        //    register = true;
-        //    setIsRegistered(register);
-        //    return Page();
-        //    //TODO registreerimis nupule vajutades saab admin vaadata kes on registreerinud
-        //}
         public override async Task<IActionResult> OnPostEditAsync(string sortOrder, string searchString, int pageIndex, string fixedFilter, string fixedValue, string Id)
         {
             var currentUser = await GetCurrentUserAsync();
@@ -61,16 +50,8 @@ namespace Autokool.Pages.Autokool.Students
            string fixedFilter, string fixedValue)
         {
             var currentUser = await GetCurrentUserAsync();
-            _registerExamData = new RegisterExamData();
-            _registerExamData.ID = currentUser.Id;
-            _registerExamData.ExamID = id;
-            _registerExamData.UserId = currentUser.Id;
-            _registerExamData.UserName = currentUser.UserName;
-            _registerExamData.IsRegistered = true;
-            var reg = toObject(_registerExamData);
-            await _registerRepo.Add(reg).ConfigureAwait(true);
+            await _registerRepo.RegisterDataToUser(new RegisterExamData(), currentUser, _registerRepo,id);
             return Redirect(IndexUrl.ToString());
         }
-        protected internal RegisterExam toObject(RegisterExamData d) => new RegisterExam(d);
     }
 }
