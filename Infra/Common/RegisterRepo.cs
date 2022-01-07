@@ -1,6 +1,7 @@
 ﻿using Autokool.Data.Common;
 using Autokool.Domain.Common;
 using Autokool.Domain.DrivingSchool.Repos;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
