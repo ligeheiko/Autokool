@@ -14,7 +14,7 @@ namespace Autokool.Tests.InfraTests.AutoKool
         protected override object createObject() => new TeacherRepo(new InMemoryApplicationDbContext().AppDb);
         protected override Teacher toObject(TeacherData data) => new(data);
         [TestMethod]
-        public async Task AddedTest()
+        public async Task CreateValidFromTest()
         {
             var dt1 = DateTime.Now.AddSeconds(-1);
             await repo.CreateValidFrom(item);
