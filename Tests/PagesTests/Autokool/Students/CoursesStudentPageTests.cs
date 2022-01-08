@@ -16,6 +16,10 @@ using System.Collections.Generic;
 using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Data.DrivingSchool;
+using System;
+using Autokool.Aids;
+using Autokool.Infra;
+using NSubstitute;
 
 namespace Autokool.Tests.PagesTests.Autokool.Students
 {
@@ -24,6 +28,8 @@ namespace Autokool.Tests.PagesTests.Autokool.Students
     {
         private UserManager<ApplicationUser> userManager;
         public ClaimsPrincipal claims;
+        private HttpContextMock httpContextMock;
+        public HttpContext HttpContext => page.HttpContext;
         protected override string expectedUrl => "/Student/Courses";
         protected override List<string> expectedIndexTableColumns
             => new() { "Name", "CourseTypeID", "Location", "ValidFrom", "ValidTo" };
@@ -37,9 +43,15 @@ namespace Autokool.Tests.PagesTests.Autokool.Students
 
         protected override object createObject()
         {
+
+           
+
             userManager = MockUser();
-            var httpContextMock = new HttpContextMock();
-            claims = httpContextMock.User;
+            //httpContextMock = random<HttpContextMock>();
+
+            //httpContextMock.User = user;
+            //httpContextMock.User = MockHttpContext(ApplicationUser)
+            //claims = httpContextMock.User;
             return new CoursesStudentPage(userManager, MockRepos.CourseRepos(), MockRepos.CourseTypeRepos(), MockRepos.RegisterCourseRepos());
         }
         protected override void validateValue(string actual, string expected)
@@ -56,8 +68,19 @@ namespace Autokool.Tests.PagesTests.Autokool.Students
         [TestMethod]
         public async Task OnGetIndexAsyncTest()
         {
+            notTested(); //TODO httpcontexti mockides ei saa result mingit tulemust
             isNull(page.Item);
-            notTested(); //TODO mocki httpcontext et saada praegu kasutaja
+            var user = new ClaimsPrincipal(new ClaimsIdentity(new Claim[]
+               {
+                 new Claim(ClaimTypes.Name, "Test"),
+
+             }, "mock"));
+            //var user = Substitute.For<ClaimsPrincipal>();
+            
+            page.PageContext.HttpContext = new DefaultHttpContext();
+            page.PageContext.HttpContext.User = user;
+            page.PageContext.HttpContext.Request.Headers["device-id"] = "20317";
+            await page.GetCurrentUserAsync(page.PageContext.HttpContext);
             var result = await page.OnGetIndexAsync(
                                 id, sortOrder, currentFilter, searchString, pageIndex, fixedFilter, fixedValue) as PageResult;
             isNotNull(page.Item);

@@ -64,7 +64,7 @@ namespace Soft
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseMigrationsEndPoint();
+                //app.UseMigrationsEndPoint();
             }
             else
             {
