@@ -20,6 +20,10 @@ namespace Autokool.Facade.Common
         public virtual TView Create(TObject o)
         {
             var v = new TView();
+            if (o == null)
+            {
+                return v;
+            }
             Copy.Members(o.Data, v);
             return v;
         }

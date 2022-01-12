@@ -56,12 +56,7 @@ namespace Autokool.Tests
                 var d = t?.Data;
                 if (d == null) return;
                 d.ValidFrom = DateTime.Now;
-                t = toObject(d);
                 await Update(t);
-            }
-            private Teacher toObject(TeacherData d)
-            {
-                return new Teacher(d);
             }
         }
         private class MockRegisterCourseRepo : RepoMock<RegisterCourse>, IRegisterCourseRepo

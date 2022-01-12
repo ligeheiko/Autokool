@@ -14,9 +14,8 @@ namespace Autokool.Pages.Autokool.Admin
     public sealed class TeachersAdminPage : TeachersBasePage<TeachersAdminPage>
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        public string UserId;
-        public Teacher teacher;
-        public ApplicationUser user;
+        public string UserId { get; set; }
+        public ApplicationUser user { get; set; }
 
         public TeachersAdminPage(ITeacherRepo t, UserManager<ApplicationUser> userManager) : base(t) 
         {
@@ -63,7 +62,7 @@ namespace Autokool.Pages.Autokool.Admin
         }
         private async Task CreateAdded()
         {
-            teacher = await db.Get(Item?.ID ?? Word.Unspecified);
+            var teacher = await db.Get(Item?.ID ?? Word.Unspecified);
             await db.CreateValidFrom(teacher);
         }
         private ApplicationUser GetApplicationUser()
