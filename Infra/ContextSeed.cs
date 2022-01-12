@@ -14,7 +14,7 @@ namespace Autokool.Infra
             await roleManager.CreateAsync(new IdentityRole(Roles.Teacher.ToString()));
             await roleManager.CreateAsync(new IdentityRole(Roles.Student.ToString()));
         }
-        public static async Task SeedSuperAdminAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+        public static async Task<ApplicationUser> SeedSuperAdminAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, ApplicationUser applicationUser)
         {
             var defaultUser = new ApplicationUser
             {
@@ -36,8 +36,8 @@ namespace Autokool.Infra
                     await userManager.AddToRoleAsync(defaultUser, Roles.Administrator.ToString());
                     await userManager.AddToRoleAsync(defaultUser, Roles.SuperAdmin.ToString());
                 }
-
             }
+            return defaultUser;
         }
     }
 }

@@ -13,13 +13,12 @@ using System.Threading.Tasks;
 
 namespace Autokool.Pages.Autokool.Students
 {
-    [Authorize/*(Roles = "Student")*/]
+    [Authorize(Roles = "Student")]
     public sealed class CoursesStudentPage : CoursesBasePage<CoursesStudentPage>
     {
         public readonly UserManager<ApplicationUser> _userManager;
         public RegisterCourse _registerCourse;
         public IRegisterCourseRepo _registerRepo;
-        public HttpContext httpContext;
 
         public CoursesStudentPage(UserManager<ApplicationUser> userManager
             , ICourseRepo c, ICourseTypeRepo ct, IRegisterCourseRepo r) : base(c, ct) 

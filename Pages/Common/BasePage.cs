@@ -1,5 +1,4 @@
-﻿using Autokool.Aids;
-using Autokool.Aids.Reflection;
+﻿using Autokool.Aids.Reflection;
 using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Facade.Common;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -9,7 +8,6 @@ using System.Linq.Expressions;
 
 namespace Autokool.Pages.Common
 {
-
     public abstract class BasePage<TRepository, TDomain, TView, TData> :
         PageModel
         where TRepository : class, ICrudMethods<TDomain>, ISorting, IFiltering, IPaging
@@ -38,21 +36,17 @@ namespace Autokool.Pages.Common
             set => db.FixedValue = value;
         }
         public bool HasFixedFilter => !string.IsNullOrWhiteSpace(FixedFilter);
-
         public string FixedFilter
         {
             get => db.FixedFilter;
             set => db.FixedFilter = value;
         }
-
         protected internal void setFixedFilter(string fixedFilter, string fixedValue)
         {
             FixedFilter = fixedFilter;
             FixedValue = fixedValue;
         }
-
         protected internal abstract void setPageValues(string sortOrder, string searchString, in int? pageIndex);
-
         public Uri GetSortString(Expression<Func<TData, object>> e, Uri page)
         {
             var name = GetMember.Name(e);
@@ -62,7 +56,6 @@ namespace Autokool.Pages.Common
                 $"{page}?handler=Index&sortOrder={sortOrder}&currentFilter={CurrentFilter}&searchString={SearchString}"
                 + $"&fixedFilter={FixedFilter}&fixedValue={FixedValue}", UriKind.Relative);
         }
-
         protected internal virtual string getSortOrder(string name)
         {
             if (string.IsNullOrEmpty(SortOrder)) return name;
@@ -71,7 +64,6 @@ namespace Autokool.Pages.Common
 
             return name + "_desc";
         }
-
         internal static string
             getCurrentFilter(string currentFilter, string searchString, ref int? pageIndex)
         {

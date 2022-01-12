@@ -4,6 +4,7 @@ using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Pages.Autokool.Base;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -26,12 +27,16 @@ namespace Autokool.Pages.Autokool.Students
             _userManager = userManager;
         }
         protected override Uri pageUrl() => new Uri("/Student/DrivingPractices", UriKind.Relative);
-        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+        public async Task<ApplicationUser> GetCurrentUserAsync(HttpContext c) => await _userManager.GetUserAsync(c.User);
         public override async Task<IActionResult> OnGetIndexAsync(string sortOrder,
            string id, string currentFilter, string searchString, int? pageIndex,
            string fixedFilter, string fixedValue)
         {
-            var currentUser = await GetCurrentUserAsync();
+            var currentUser = await GetCurrentUserAsync(HttpContext);
+            if (currentUser == null)
+            {
+                return Page();
+            }
             _registerDrivingPractice = await _registerRepo.Get(currentUser.Id);
             SelectedId = id;
             await getList(sortOrder, currentFilter, searchString, pageIndex,
@@ -41,7 +46,11 @@ namespace Autokool.Pages.Autokool.Students
         public override async Task<IActionResult> OnPostEditAsync(string sortOrder, string searchString, 
             int pageIndex, string fixedFilter, string fixedValue, string Id)
         {
-            var currentUser = await GetCurrentUserAsync();
+            var currentUser = await GetCurrentUserAsync(HttpContext);
+            if (currentUser == null)
+            {
+                return Page();
+            }
             _registerDrivingPractice = await _registerRepo.Get(currentUser.Id);
             await _registerRepo.Delete(_registerDrivingPractice.ID);
 
@@ -51,7 +60,11 @@ namespace Autokool.Pages.Autokool.Students
            int pageIndex,
            string fixedFilter, string fixedValue)
         {
-            var currentUser = await GetCurrentUserAsync();
+            var currentUser = await GetCurrentUserAsync(HttpContext);
+            if (currentUser == null)
+            {
+                return Page();
+            }
             var obj = db.GetById(ItemId);
             var rData = new RegisterDrivingPracticeData();
             rData.TeacherID = (obj as DrivingPractice).TeacherID;

@@ -63,16 +63,16 @@ namespace Autokool.Tests.InfraTests
         public async Task UpdateTest()
         {
             var d1 = random<TData>();
-            d1.ID = item.ID;
+            d1.ID = item?.ID;
             item = toObject(d1);
-            await repo.Update(item);
+            await repo?.Update(item);
             isInDb(item);
             areEqual(count, dbSet.Count());
         }
         [TestMethod]
         public void GetByIdTest()
         {
-            var o = repo.GetById(item.ID) as TDomain;
+            var o = repo.GetById(item?.ID) as TDomain;
             areEqualProperties(o.Data, item.Data);
             areEqual(count, dbSet.Count());
         }

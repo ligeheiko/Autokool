@@ -12,23 +12,18 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Autokool.Pages.Common
 {
-
     public abstract class TitledPage<TRepository, TDomain, TView, TData> :
         PagedPage<TRepository, TDomain, TView, TData>
         where TRepository : class, ICrudMethods<TDomain>, ISorting, IFiltering, IPaging
         where TView : BaseView
     {
-
         protected internal TitledPage(TRepository r, string title) : base(r) => PageTitle = title;
-
         public string PageTitle { get; }
-
         public string PageSubTitle => FixedValue is null
         ? string.Empty
         : $"{pageSubtitle()}";
 
         protected internal virtual string pageSubtitle() => string.Empty;
-
         public Uri PageUrl => pageUrl();
         public Uri CreateUrl => createUrl();
 
@@ -42,9 +37,7 @@ namespace Autokool.Pages.Common
                        $"&fixedValue={FixedValue}", UriKind.Relative);
 
         protected abstract Uri pageUrl();
-
         public Uri IndexUrl => indexUrl();
-
         protected internal Uri indexUrl() =>
             new Uri($"{PageUrl}/Index?handler=Index&fixedFilter={FixedFilter}&fixedValue={FixedValue}", UriKind.Relative);
 
@@ -69,7 +62,6 @@ namespace Autokool.Pages.Common
                     .ToList();
             l.Insert(0, new SelectListItem(Word.Unspecified, null));
             return l;
-            
         }
         protected internal static IEnumerable<SelectListItem> newItemsListTeacherID<TTDomain, TTData>(
             IRepo<TTDomain> r,
@@ -92,9 +84,7 @@ namespace Autokool.Pages.Common
                     .ToList();
             l.Insert(0, new SelectListItem(Word.Unspecified, null));
             return l;
-
         }
-
         protected internal static string itemName(IEnumerable<SelectListItem> list, string id)
         {
             if (list is null) return Word.Unspecified;
@@ -105,7 +95,6 @@ namespace Autokool.Pages.Common
 
             return Word.Unspecified;
         }
-
         public virtual bool IsMasterDetail() => PageSubTitle != string.Empty;
     }
 }

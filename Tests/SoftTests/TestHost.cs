@@ -6,13 +6,13 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using System;
 using System.Linq;
 using System.Security.Claims;
-using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization.Policy;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 
 namespace Autokool.Tests.SoftTests
 {
@@ -34,18 +34,15 @@ namespace Autokool.Tests.SoftTests
                     service.AddEntityFrameworkInMemoryDatabase();
                     addInMemoryDb<ApplicationDbContext>(service);
 
-                    if (isLogged) addAuthentication(service);
+                    if (isLogged)
+                    {
+                        service.AddSingleton<IPolicyEvaluator, FakePolicyEvaluator>();
+                    }
                     var serviceProvider = service.BuildServiceProvider();
                     ensureDbsAreCreated(serviceProvider);
                     GetRepo.SetServiceProvider(serviceProvider);
                 }
             );
-        }
-        private void addAuthentication(IServiceCollection s)
-        {
-            s.AddAuthentication("Test")
-                .AddScheme<AuthenticationSchemeOptions, TestAuthHandler>(
-                "Test", options => { });
         }
         private void ensureDbsAreCreated(ServiceProvider serviceProvider)
         {
@@ -84,23 +81,26 @@ namespace Autokool.Tests.SoftTests
                 s.Remove(descriptor);
             }
         }
-        public class TestAuthHandler : AuthenticationHandler<AuthenticationSchemeOptions>
+        public class FakePolicyEvaluator : IPolicyEvaluator
         {
-            public TestAuthHandler(IOptionsMonitor<AuthenticationSchemeOptions> options,
-                ILoggerFactory logger, UrlEncoder encoder, ISystemClock clock)
-                : base(options, logger, encoder, clock)
+            public virtual async Task<AuthenticateResult> AuthenticateAsync(AuthorizationPolicy policy, HttpContext context)
             {
+                var testScheme = "FakeScheme";
+                var principal = new ClaimsPrincipal();
+                principal.AddIdentity(new ClaimsIdentity(new[] {
+            new Claim("Permission", "CanViewPage"),
+            new Claim("Manager", "yes"),
+            new Claim(ClaimTypes.Role, "Administrator"),
+            new Claim(ClaimTypes.NameIdentifier, "John")
+        }, testScheme));
+                return await Task.FromResult(AuthenticateResult.Success(new AuthenticationTicket(principal,
+                    new AuthenticationProperties(), testScheme)));
             }
-            protected override Task<AuthenticateResult> HandleAuthenticateAsync()
+
+            public virtual async Task<PolicyAuthorizationResult> AuthorizeAsync(AuthorizationPolicy policy,
+                AuthenticateResult authenticationResult, HttpContext context, object resource)
             {
-                var claims = new[] { new Claim(ClaimTypes.Name, "Test user") };
-                var identity = new ClaimsIdentity(claims, "Test");
-                var principal = new ClaimsPrincipal(identity);
-                var ticket = new AuthenticationTicket(principal, "Test");
-
-                var result = AuthenticateResult.Success(ticket);
-
-                return Task.FromResult(result);
+                return await Task.FromResult(PolicyAuthorizationResult.Success());
             }
         }
     }

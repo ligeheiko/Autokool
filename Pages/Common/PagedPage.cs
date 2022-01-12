@@ -6,15 +6,12 @@ using Autokool.Facade.Common;
 
 namespace Autokool.Pages.Common
 {
-
     public abstract class PagedPage<TRepository, TDomain, TView, TData> :
         CrudPage<TRepository, TDomain, TView, TData>
         where TRepository : class, ICrudMethods<TDomain>, ISorting, IFiltering, IPaging
         where TView : BaseView
     {
-
         protected PagedPage(TRepository r) : base(r) { }
-
         public IList<TView> Items { get; private set; }
 
         public string SelectedId
@@ -29,7 +26,6 @@ namespace Autokool.Pages.Common
         }
         public bool HasPreviousPage => db.HasPreviousPage;
         public bool HasNextPage => db.HasNextPage;
-
         public int TotalPages => db.TotalPages;
 
         protected internal override void setPageValues(string sortOrder, string searchString, in int? pageIndex)
@@ -38,7 +34,6 @@ namespace Autokool.Pages.Common
             SearchString = searchString;
             PageIndex = pageIndex ?? 0;
         }
-
         protected internal async Task getList(string sortOrder, string currentFilter, string searchString,
             int? pageIndex, string fixedFilter, string fixedValue)
         {
@@ -50,14 +45,11 @@ namespace Autokool.Pages.Common
             PageIndex = pageIndex ?? 1;
             Items = await getList().ConfigureAwait(true);
         }
-
         internal async Task<List<TView>> getList()
         {
             var l = await db.Get().ConfigureAwait(true);
 
             return l.Select(toView).ToList();
         }
-
     }
-
 }

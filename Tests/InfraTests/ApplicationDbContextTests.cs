@@ -44,6 +44,9 @@ namespace Autokool.Tests.InfraTests
         [TestMethod]
         public void RegisterDrivingPracticesTest() => isProperty<DbSet<RegisterDrivingPracticeData>>();
         [TestMethod]
+        public void ManageUserRolesTest() => isProperty<DbSet<ManageUserRolesData>>();
+
+        [TestMethod]
         public void InitializeTablesTest() 
         {
             var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase("TestDb").Options;
@@ -55,6 +58,7 @@ namespace Autokool.Tests.InfraTests
             testEntity<DrivingPracticeData>(builder);
             testEntity<TeacherData>(builder);
             testEntity<UserRolesData>(builder);
+            testEntity<ManageUserRolesData>(builder);
             testEntity<RegisterCourseData>(builder);
             testEntity<RegisterExamData>(builder);
             testEntity<RegisterDrivingPracticeData>(builder);

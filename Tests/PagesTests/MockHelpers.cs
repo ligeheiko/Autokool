@@ -58,10 +58,11 @@ namespace Autokool.Tests.PagesTests
             store = store ?? new Mock<IRoleStore<TRole>>().Object;
             var roles = new List<IRoleValidator<TRole>>();
             roles.Add(new RoleValidator<TRole>());
-            return new RoleManager<TRole>(store, roles,
+            var mnr = new RoleManager<TRole>(store, roles,
                 MockLookupNormalizer(),
                 new IdentityErrorDescriber(),
                 null);
+            return mnr;
         }
 
         public static ILookupNormalizer MockLookupNormalizer()

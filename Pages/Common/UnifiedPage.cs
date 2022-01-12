@@ -18,9 +18,7 @@ namespace Autokool.Pages.Common
         where TRepository : class, ICrudMethods<TDomain>, ISorting, IFiltering, IPaging
         where TView : BaseView
     {
-
         protected UnifiedPage(TRepository r, string title) : base(r, title) => createTableColumns();
-
         protected abstract void createTableColumns();
 
         public List<LambdaExpression> Columns { get; }
@@ -33,7 +31,6 @@ namespace Autokool.Pages.Common
             Item = null;
             if (isCorrectIndex(i, Items)) Item = Items[i];
         }
-
         private bool isCorrectIndex<TList>(int i, IList<TList> l) => i >= 0 && i < l?.Count;
 
         public virtual string GetName(IHtmlHelper<TPage> html, int i) => getName<string>(html, i);
@@ -46,7 +43,6 @@ namespace Autokool.Pages.Common
             }
             return Undefined;
         }
-
         public virtual IHtmlContent GetValue(IHtmlHelper<TPage> html, int i)
             => getValue<string>(html, i);
         protected IHtmlContent getValue<TResult>(IHtmlHelper<TPage> h, int i)
@@ -73,16 +69,10 @@ namespace Autokool.Pages.Common
                 $"{page}?handler=Index&sortOrder={sortOrder}&currentFilter={CurrentFilter}&searchString={SearchString}"
                 + $"&fixedFilter={FixedFilter}&fixedValue={FixedValue}", UriKind.Relative);
         }
-
         protected Expression<Func<TPage, TResult>> toExpr<TResult>(LambdaExpression e)
             => e as Expression<Func<TPage, TResult>>;
-
-
         public int ColumnsCount => Columns?.Count ?? -1;
-
         public int RowsCount => Items?.Count ?? -1;
-
         public string Undefined => "Undefined";
-
     }
 }

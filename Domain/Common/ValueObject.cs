@@ -8,7 +8,6 @@ namespace Autokool.Domain.Common
     {
 
         internal protected readonly TData data;
-        internal static Guid guid;
         protected internal ValueObject(TData d = null) => data = d ?? new TData();
 
         public TData Data
@@ -45,7 +44,7 @@ namespace Autokool.Domain.Common
                     case null:
                         return false;
                 }
-                if (name == "Id"
+                if (name == "ID"
                     && isGuid(expected as string)
                     && isGuid(actual as string)) continue;
 
@@ -53,12 +52,11 @@ namespace Autokool.Domain.Common
             }
             return true;
         }
-
         private static bool isGuid(string s)
         {
             try
             {
-                guid = new Guid(s);
+                var guid = new Guid(s);
                 return true;
             }
             catch (FormatException) { return false; }

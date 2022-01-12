@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Tests;
 
-namespace Autokool.Tests.Pages.Common.Consts
+namespace Autokool.Tests.Pages.Common.Extensions
 {
     [TestClass]
     public class RowButtonsTests : ClassTests<object>
