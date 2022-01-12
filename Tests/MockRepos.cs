@@ -51,9 +51,17 @@ namespace Autokool.Tests
         }
         private class MockTeacherRepo : RepoMock<Teacher>, ITeacherRepo
         {
-            public Task CreateValidFrom(Teacher t)
+            public async Task CreateValidFrom(Teacher t)
             {
-                throw new NotImplementedException();
+                var d = t?.Data;
+                if (d == null) return;
+                d.ValidFrom = DateTime.Now;
+                t = toObject(d);
+                await Update(t);
+            }
+            private Teacher toObject(TeacherData d)
+            {
+                return new Teacher(d);
             }
         }
         private class MockRegisterCourseRepo : RepoMock<RegisterCourse>, IRegisterCourseRepo

@@ -22,7 +22,7 @@ namespace Autokool.Tests.PagesTests.Autokool.Admin
             return new RegisteredExamAdminPage(MockRepos.RegisterExamRepos(), exams);
         }
         [TestMethod]
-        public async Task ExamTest() =>
+        public async Task ExamsTest() =>
             await selectListTest(page.Exams, exams);
 
         [TestMethod]

@@ -15,6 +15,8 @@ namespace Autokool.Pages.Autokool.Admin
     {
         private readonly UserManager<ApplicationUser> _userManager;
         public string UserId;
+        public Teacher teacher;
+        public ApplicationUser user;
 
         public TeachersAdminPage(ITeacherRepo t, UserManager<ApplicationUser> userManager) : base(t) 
         {
@@ -25,7 +27,7 @@ namespace Autokool.Pages.Autokool.Admin
             if (!await addObject(sortOrder, searchString, pageIndex, fixedFilter, fixedValue)
                .ConfigureAwait(true)) return Page();
             await CreateAdded();
-            var user = GetApplicationUser();
+            user = GetApplicationUser();
             await AddUserToTeacherRole(user);
             return Redirect(IndexUrl.ToString());
         }
@@ -61,23 +63,27 @@ namespace Autokool.Pages.Autokool.Admin
         }
         private async Task CreateAdded()
         {
-            Teacher t = await db.Get(Item?.ID ?? Word.Unspecified);
-            await db.CreateValidFrom(t);
+            teacher = await db.Get(Item?.ID ?? Word.Unspecified);
+            await db.CreateValidFrom(teacher);
         }
         private ApplicationUser GetApplicationUser()
         {
-            var user = new ApplicationUser
+            user = new ApplicationUser
             {
-                Id = Item.ID,
-                UserName = Item.FirstName,
-                Email = Item.Email,
-                FirstName = Item.FirstName,
-                LastName = Item.Name,
+                Id = Item?.ID ?? "Unspecified",
+                UserName = Item?.FirstName ?? "Unspecified",
+                Email = Item?.Email ?? "Unspecified",
+                FirstName = Item?.FirstName ?? "Unspecified",
+                LastName = Item?.Name ?? "Unspecified",
             };
             return user;
         }
         private async Task AddUserToTeacherRole(ApplicationUser user)
         {
+            if (user == null || user.Id == "Unspecified")
+            {
+                return;
+            }
             var result = await _userManager.CreateAsync(user, user.FirstName.ToString() + user.LastName.ToString() + "1'");
             if (result.Succeeded)
             {
