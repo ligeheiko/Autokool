@@ -1,4 +1,5 @@
-﻿using Autokool.Data.Common;
+﻿using Autokool.Aids;
+using Autokool.Data.Common;
 using Autokool.Domain.Common;
 using Autokool.Facade.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -27,7 +28,8 @@ namespace Autokool.Tests.FacadeTests
         [TestMethod]
         public void CreateViewTest()
         {
-            var d = random<TData>();
+            var d = GetRandom.ObjectOf<TData>();
+            //var d = random<TData>();
             doBeforeCreateViewTest(d);
             var o = createObject(d);
             var v = (obj as TFactory).Create(o);

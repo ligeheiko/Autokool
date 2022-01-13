@@ -1,5 +1,4 @@
-﻿using Autokool.Core;
-using System;
+﻿using System;
 
 namespace Autokool.Data.Common
 {

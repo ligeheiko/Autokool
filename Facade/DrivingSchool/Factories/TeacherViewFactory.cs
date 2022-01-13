@@ -11,7 +11,7 @@ namespace Autokool.Facade.DrivingSchool.Factories
         public override TeacherView Create(Teacher o)
         {
             var v = base.Create(o);
-            v.FullName = o?.FirstName ?? "Unspecified" +" "+ o?.Name ?? "Unspecified";
+            v.FullName = o?.FirstName + " " + o?.Name;
             return v;
         }
     }

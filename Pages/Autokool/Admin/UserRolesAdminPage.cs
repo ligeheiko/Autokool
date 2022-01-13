@@ -18,11 +18,10 @@ namespace Autokool.Pages.Autokool.Admin
     [Authorize(Roles = "SuperAdmin")]
     public sealed class UserRolesAdminPage : ViewPage<UserRolesAdminPage, IUserRolesRepo, UserRoles, UserRolesView, UserRolesData>
     {
-        public readonly UserManager<ApplicationUser> _userManager;
-        public readonly RoleManager<IdentityRole> _roleManager;
-        public List<UserRolesData> usersDataList = new List<UserRolesData>();
-        public List<ManageUserRolesData> UserRolesList = new List<ManageUserRolesData>();
-        public ManageUserRolesData manageUserRolesData;
+        private UserManager<ApplicationUser> _userManager;
+        private RoleManager<IdentityRole> _roleManager;
+        public List<UserRolesData> usersDataList { get; set; }
+        public List<ManageUserRolesData> userRolesList { get; set; }
 
         public UserRolesAdminPage(UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager, IUserRolesRepo r) : base(r, "UserRoles")
@@ -86,9 +85,10 @@ namespace Autokool.Pages.Autokool.Admin
         private async Task UserRolesToList(string userId)
         {
             var user = await _userManager.FindByIdAsync(userId);
+            userRolesList = new List<ManageUserRolesData>();
             foreach (var role in _roleManager.Roles)
             {
-                manageUserRolesData = new ManageUserRolesData();
+                var manageUserRolesData = new ManageUserRolesData();
                 manageUserRolesData.RoleId = role.Id;
                 manageUserRolesData.RoleName = role.Name;
                 if (await _userManager.IsInRoleAsync(user, role.Name))
@@ -99,12 +99,13 @@ namespace Autokool.Pages.Autokool.Admin
                 {
                     manageUserRolesData.Selected = false;
                 }
-                UserRolesList.Add(manageUserRolesData);
+                userRolesList.Add(manageUserRolesData);
             }
         }
         private async Task UsersToList()
         {
             var users = await _userManager.Users.ToListAsync();
+            usersDataList = new List<UserRolesData>();
             foreach (ApplicationUser user in users)
             {
                 var thisViewModel = new UserRolesData();
