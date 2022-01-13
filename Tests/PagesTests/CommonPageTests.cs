@@ -1,6 +1,8 @@
 ﻿using Autokool.Aids;
 using Autokool.Domain.DrivingSchool.Repos;
+using Autokool.Infra;
 using Autokool.Pages.Common;
+using Autokool.Tests.InfraTests;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -23,6 +25,7 @@ namespace Autokool.Tests.PagesTests
         protected string fixedValue;
         protected string currentFilter;
         protected int switchOfCreate;
+        protected ApplicationDbContext appDb;
         protected virtual string expectedUrl => string.Empty;
         protected abstract List<string> expectedIndexTableColumns { get; }
         [TestInitialize]
@@ -110,5 +113,10 @@ namespace Autokool.Tests.PagesTests
         }
         protected virtual void validateValue(string actual, string expected)
            => isTrue(actual.EndsWith(expected));
+        protected void initInMemoryDatabase()
+        {
+            var im = new InMemoryApplicationDbContext();
+            appDb = im.AppDb;
+        }
     }
 }

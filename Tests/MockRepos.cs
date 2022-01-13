@@ -3,6 +3,7 @@ using Autokool.Data.Common;
 using Autokool.Data.DrivingSchool;
 using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Domain.DrivingSchool.Repos;
+using Autokool.Tests.PagesTests.Autokool.Base;
 using System;
 using System.Threading.Tasks;
 
@@ -36,17 +37,23 @@ namespace Autokool.Tests
         private class MockCourseTypeRepo : RepoMock<CourseType>, ICourseTypeRepo { }
         private class MockCourseRepo : RepoMock<Course>, ICourseRepo 
         {
-            public Task Added(Course c)
+            public async Task Added(Course c)
             {
-                throw new NotImplementedException();
+                var d = c?.Data;
+                if (d == null) return;
+                d.ValidFrom = DateTime.Now;
+                await Update(c);
             }
         }
         private class MockExamTypeRepo : RepoMock<ExamType>, IExamTypeRepo { }
         private class MockExamRepo : RepoMock<Exam>, IExamRepo
         {
-            public Task Added(Exam e)
+            public async Task Added(Exam e)
             {
-                throw new NotImplementedException();
+                var d = e?.Data;
+                if (d == null) return;
+                d.ValidFrom = DateTime.Now;
+                await Update(e);
             }
         }
         private class MockTeacherRepo : RepoMock<Teacher>, ITeacherRepo

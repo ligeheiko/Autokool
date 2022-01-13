@@ -21,7 +21,6 @@ namespace Autokool.Tests.PagesTests.Autokool.Admin
     {
         private UserManager<ApplicationUser> _userManager;
         private RoleManager<IdentityRole> roleManager;
-        private ApplicationDbContext appDb;
         [TestInitialize]
         public override void TestInitialize()
         {
@@ -94,11 +93,6 @@ namespace Autokool.Tests.PagesTests.Autokool.Admin
         {
             page.user = random<ApplicationUser>();
             isProperty(page.user);
-        }
-        private void initInMemoryDatabase()
-        {
-            var im = new InMemoryApplicationDbContext();
-            appDb = im.AppDb;
         }
     }
 }

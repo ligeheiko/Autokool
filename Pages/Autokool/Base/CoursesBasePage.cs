@@ -58,5 +58,12 @@ namespace Autokool.Pages.Autokool.Base
             await db.Added(c);
             return Redirect(IndexUrl.ToString());
         }
+        public override async Task<IActionResult> OnPostEditAsync(string sortOrder, string searchString, int pageIndex, string fixedFilter, string fixedValue, string userId = null)
+        {
+            await updateObject(sortOrder, searchString, pageIndex, fixedFilter, fixedValue).ConfigureAwait(true);
+            Course c = await db.Get(Item.ID);
+            await db.Added(c);
+            return Redirect(IndexUrl.ToString());
+        }
     }
 }
