@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Autokool.Infra.Common.BaseRepo&lt;TDomain, TData&gt;">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYQAAAAAAAQAABAAABAACAgAAEAgAAAGACAAAACAIA=</HashCode>
+      <FileName>Common\BaseRepo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Autokool.Infra.Common.FilteredRepo&lt;TDomain, TData&gt;">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAgAEgAAAAAAAAAEBAASAAAAA=</HashCode>
+      <FileName>Common\FilteredRepo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Autokool.Infra.Common.PaginatedRepo&lt;TDomain, TData&gt;">
+    <Position X="9.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgACAACAAEAAAAAAEAA0AAAAAAAAAAAAEgAAAAA=</HashCode>
+      <FileName>Common\PaginatedRepo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Autokool.Infra.Common.UniqueEntitiesRepo&lt;TDomain, TData&gt;">
+    <Position X="7.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\UniqueEntitiesRepo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Autokool.Infra.Common.SortedRepo&lt;TDomain, TData&gt;">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAQAAAAAAAQAAgABAkAAAAAQAEAIAAAAA=</HashCode>
+      <FileName>Common\SortedRepo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Autokool.Infra.Common.RegisterRepo&lt;TDomain, TData, TRepo&gt;">
+    <Position X="5.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\RegisterRepo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -2,7 +2,6 @@
 using Autokool.Data.DrivingSchool;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Autokool.Infra
 {

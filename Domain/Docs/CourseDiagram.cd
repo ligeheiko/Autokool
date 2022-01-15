@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Autokool.Domain.DrivingSchool.Model.Course">
+    <Position X="5.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAEAIAAAAAAAAAAAAAAAEAAABAAAA=</HashCode>
+      <FileName>DrivingSchool\Model\Course.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CourseType" />
+      <Property Name="RegisterCourse" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Autokool.Domain.DrivingSchool.Model.CourseType">
+    <Position X="8.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DrivingSchool\Model\CourseType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Autokool.Domain.DrivingSchool.Model.RegisterCourse">
+    <Position X="2.75" Y="2.25" Width="1.5" />
+    <InheritanceLine Type="Autokool.Domain.Common.RegisterEntity&lt;TData&gt;" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="3.5" Y="4.25" />
+        <Point X="3.5" Y="3.934" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>DrivingSchool\Model\RegisterCourse.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Course" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Autokool.Domain.Common.DateEntity&lt;TData&gt;" Collapsed="true">
+    <Position X="5.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAACAAAAAAAAA=</HashCode>
+      <FileName>Common\DateEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Autokool.Domain.Common.NamedEntity&lt;T&gt;" Collapsed="true">
+    <Position X="8.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\NamedEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Autokool.Domain.Common.RegisterEntity&lt;TData&gt;" Collapsed="true">
+    <Position X="2.75" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAQEAAAAAAAA=</HashCode>
+      <FileName>Common\RegisterEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Autokool.Domain.DrivingSchool.Repos.ICourseRepo">
+    <Position X="5.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DrivingSchool\Repos\ICourseRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Autokool.Domain.DrivingSchool.Repos.IRegisterCourseRepo">
+    <Position X="2.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DrivingSchool\Repos\IRegisterCourseRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Autokool.Domain.DrivingSchool.Repos.ICourseTypeRepo" Collapsed="true">
+    <Position X="8.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DrivingSchool\Repos\ICourseTypeRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Autokool.Domain.Common.BaseEntity" Collapsed="true">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAgAAQACAAAQQAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\BaseEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Autokool.Domain.Common.DateEntity&lt;TData&gt;" Collapsed="true">
+    <Position X="6.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAACAAAAAAAAA=</HashCode>
+      <FileName>Common\DateEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Autokool.Domain.Common.ValueObject&lt;TData&gt;" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACBAAAAAQAAABAAAAAQAAAAAAA=</HashCode>
+      <FileName>Common\ValueObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Autokool.Domain.Common.UniqueEntity&lt;TData&gt;" Collapsed="true">
+    <Position X="6.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\UniqueEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Autokool.Domain.Common.RegisterEntity&lt;TData&gt;" Collapsed="true">
+    <Position X="8.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAQEAAAAAAAA=</HashCode>
+      <FileName>Common\RegisterEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Autokool.Domain.Common.PersonEntity&lt;TData&gt;" Collapsed="true">
+    <Position X="4.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAAAIAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\PersonEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Autokool.Domain.Common.NamedEntity&lt;T&gt;" Collapsed="true">
+    <Position X="6.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\NamedEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Autokool.Domain.DrivingSchool.Model.UserRoles" Collapsed="true">
+    <Position X="3.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAAAAAAAAAAAAgAAgAAAAAAAQAAAAAAAAg=</HashCode>
+      <FileName>DrivingSchool\Model\UserRoles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Autokool.Domain.DrivingSchool.Model.Course" Collapsed="true">
+    <Position X="6.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAEAIAAAAAAAAAAAAAAAEAAABAAAA=</HashCode>
+      <FileName>DrivingSchool\Model\Course.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Autokool.Domain.DrivingSchool.Model.DrivingPractice" Collapsed="true">
+    <Position X="8" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DrivingSchool\Model\DrivingPractice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Autokool.Domain.DrivingSchool.Model.Exam" Collapsed="true">
+    <Position X="9.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DrivingSchool\Model\Exam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Autokool.Domain.DrivingSchool.Model.Teacher" Collapsed="true">
+    <Position X="2.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DrivingSchool\Model\Teacher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Autokool.Domain.DrivingSchool.Model.RegisterCourse" Collapsed="true">
+    <Position X="8.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>DrivingSchool\Model\RegisterCourse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Autokool.Domain.DrivingSchool.Model.RegisterDrivingPractice" Collapsed="true">
+    <Position X="10.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAEAAAAAAAAAAAAAAAAACAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DrivingSchool\Model\RegisterDrivingPractice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Autokool.Domain.DrivingSchool.Model.RegisterExam" Collapsed="true">
+    <Position X="10.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAACAAAA=</HashCode>
+      <FileName>DrivingSchool\Model\RegisterExam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

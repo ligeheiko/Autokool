@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Autokool.Domain.DrivingSchool.Model.DrivingPractice">
+    <Position X="11.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DrivingSchool\Model\DrivingPractice.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Teacher" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Autokool.Domain.DrivingSchool.Model.Teacher">
+    <Position X="10.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DrivingSchool\Model\Teacher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Autokool.Domain.DrivingSchool.Model.RegisterDrivingPractice">
+    <Position X="7.5" Y="3" Width="2" />
+    <InheritanceLine Type="Autokool.Domain.Common.RegisterEntity&lt;TData&gt;" FixedFromPoint="true">
+      <Path>
+        <Point X="8.771" Y="5.5" />
+        <Point X="8.771" Y="5.177" />
+        <Point X="8.5" Y="5.177" />
+        <Point X="8.5" Y="4.877" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>BAEAAAAAAAAAAAAAAAAACAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DrivingSchool\Model\RegisterDrivingPractice.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DrivingPractice" />
+      <Property Name="Teacher" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Autokool.Domain.Common.RegisterEntity&lt;TData&gt;" Collapsed="true">
+    <Position X="7.75" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAQEAAAAAAAA=</HashCode>
+      <FileName>Common\RegisterEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Autokool.Domain.Common.DateEntity&lt;TData&gt;" Collapsed="true">
+    <Position X="13.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAACAAAAAAAAA=</HashCode>
+      <FileName>Common\DateEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Autokool.Domain.Common.PersonEntity&lt;TData&gt;" Collapsed="true">
+    <Position X="13.25" Y="5.5" Width="1.75" />
+    <InheritanceLine Type="Autokool.Domain.Common.DateEntity&lt;TData&gt;" ManuallyRouted="true">
+      <Path>
+        <Point X="14" Y="2.691" />
+        <Point X="14" Y="5.5" />
+        <Point X="14.125" Y="5.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAAAIAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\PersonEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Autokool.Domain.DrivingSchool.Repos.IDrivingPracticeRepo" Collapsed="true">
+    <Position X="11.5" Y="1.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DrivingSchool\Repos\IDrivingPracticeRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Autokool.Domain.DrivingSchool.Repos.IRegisterDrivingPracticeRepo">
+    <Position X="7.5" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DrivingSchool\Repos\IRegisterDrivingPracticeRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Autokool.Domain.DrivingSchool.Repos.ITeacherRepo">
+    <Position X="10.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DrivingSchool\Repos\ITeacherRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
