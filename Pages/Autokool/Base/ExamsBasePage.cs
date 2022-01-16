@@ -30,7 +30,6 @@ namespace Autokool.Pages.Autokool.Base
         {
             createColumn(x => Item.Name);
             createColumn(x => Item.ExamTypeID);
-            //createColumn(x => Item.Passed); //ToDo tee checkbox passedile
             createColumn(x => Item.ValidFrom);
             createColumn(x => Item.ValidTo);
         }

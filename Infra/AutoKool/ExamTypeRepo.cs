@@ -9,7 +9,6 @@ namespace Autokool.Infra.AutoKool
       IExamTypeRepo
     {
         public ExamTypeRepo(ApplicationDbContext c) : base(c, c.ExamTypes) { }
-        protected internal override ExamType toDomainObject(ExamTypeData d)
-            => new ExamType(d);
+        protected internal override ExamType toDomainObject(ExamTypeData d) => new (d);
     }
 }

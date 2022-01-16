@@ -7,6 +7,6 @@ namespace Autokool.Facade.DrivingSchool.Factories
 {
     public sealed class RegisterDrivingPracticeViewFactory : AbstractViewFactory<RegisterDrivingPracticeData, RegisterDrivingPractice, RegisterDrivingPracticeView>
     {
-        protected internal override RegisterDrivingPractice toObject(RegisterDrivingPracticeData d) => new RegisterDrivingPractice(d);
+        protected internal override RegisterDrivingPractice toObject(RegisterDrivingPracticeData d) => new (d);
     }
 }

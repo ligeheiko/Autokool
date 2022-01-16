@@ -18,8 +18,8 @@ namespace Autokool.Pages.Autokool.Admin
     [Authorize(Roles = "SuperAdmin")]
     public sealed class UserRolesAdminPage : ViewPage<UserRolesAdminPage, IUserRolesRepo, UserRoles, UserRolesView, UserRolesData>
     {
-        private UserManager<ApplicationUser> _userManager;
-        private RoleManager<IdentityRole> _roleManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         public List<UserRolesData> usersDataList { get; set; }
         public List<ManageUserRolesData> userRolesList { get; set; }
 

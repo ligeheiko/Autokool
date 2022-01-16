@@ -7,6 +7,6 @@ namespace Autokool.Facade.DrivingSchool.Factories
 {
     public sealed class ExamTypeViewFactory : AbstractViewFactory<ExamTypeData, ExamType, ExamTypeView>
     {
-        protected internal override ExamType toObject(ExamTypeData d) => new ExamType(d);
+        protected internal override ExamType toObject(ExamTypeData d) => new (d);
     }
 }

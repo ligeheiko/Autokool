@@ -9,7 +9,6 @@ namespace Autokool.Infra.AutoKool
       ICourseTypeRepo
     {
         public CourseTypeRepo(ApplicationDbContext c) : base(c, c.CourseTypes) { }
-        protected internal override CourseType toDomainObject(CourseTypeData d)
-            => new CourseType(d);
+        protected internal override CourseType toDomainObject(CourseTypeData d) => new (d);
     }
 }

@@ -11,8 +11,7 @@ namespace Autokool.Infra.AutoKool
        IRegisterDrivingPracticeRepo
     {
         public RegisterDrivingPracticeRepo(ApplicationDbContext c) : base(c, c.RegisterDrivingPractices) { }
-        protected internal override RegisterDrivingPractice toDomainObject(RegisterDrivingPracticeData d)
-        => new RegisterDrivingPractice(d);
+        protected internal override RegisterDrivingPractice toDomainObject(RegisterDrivingPracticeData d) => new (d);
         public override async Task RegisterDataToUser(RegisterDrivingPracticeData rData, ApplicationUser currentUser, IRegisterDrivingPracticeRepo r, string id)
         {
             rData.DrivingPracticeID = id;

@@ -9,7 +9,6 @@ namespace Autokool.Infra.AutoKool
        IDrivingPracticeRepo
     {
         public DrivingPracticeRepo(ApplicationDbContext c) : base(c, c.DrivingPractices) { }
-        protected internal override DrivingPractice toDomainObject(DrivingPracticeData d)
-            => new DrivingPractice(d);
+        protected internal override DrivingPractice toDomainObject(DrivingPracticeData d) => new (d);
     }
 }

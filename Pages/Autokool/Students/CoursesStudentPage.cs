@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Autokool.Pages.Autokool.Students
@@ -51,9 +50,7 @@ namespace Autokool.Pages.Autokool.Students
             await _registerRepo.Delete(regCourse.ID);
             return Redirect(IndexUrl.ToString());
         }
-        public async Task<IActionResult> OnPostRegisterAsync(string id, string sortOrder, string searchString,
-           int pageIndex,
-           string fixedFilter, string fixedValue)
+        public async Task<IActionResult> OnPostRegisterAsync(string id)
         {
             var currentUser = await GetCurrentUserAsync(HttpContext);
             await _registerRepo.RegisterDataToUser(new RegisterCourseData(), currentUser, _registerRepo, id);

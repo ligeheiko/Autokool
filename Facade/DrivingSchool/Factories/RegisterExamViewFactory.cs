@@ -7,6 +7,6 @@ namespace Autokool.Facade.DrivingSchool.Factories
 {
     public sealed class RegisterExamViewFactory : AbstractViewFactory<RegisterExamData, RegisterExam, RegisterExamView>
     {
-        protected internal override RegisterExam toObject(RegisterExamData d) => new RegisterExam(d);
+        protected internal override RegisterExam toObject(RegisterExamData d) => new (d);
     }
 }

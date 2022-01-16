@@ -7,7 +7,7 @@ namespace Autokool.Facade.DrivingSchool.Factories
 {
     public sealed class TeacherViewFactory : AbstractViewFactory<TeacherData, Teacher, TeacherView>
     {
-        protected internal override Teacher toObject(TeacherData d) => new Teacher(d);
+        protected internal override Teacher toObject(TeacherData d) => new (d);
         public override TeacherView Create(Teacher o)
         {
             var v = base.Create(o);

@@ -34,6 +34,12 @@ namespace Autokool.Tests.PagesTests.Autokool.Admin
             page.Item = random<TeacherView>();
             appDb.AddAsync(page.Item).ConfigureAwait(true);
         }
+        [TestCleanup]
+        public override void TestCleanup()
+        {
+            appDb.Database.EnsureDeleted();
+            base.TestCleanup();
+        }
         protected override object createObject()
         {
             return new TeachersAdminPage(MockRepos.TeacherRepos(), _userManager);

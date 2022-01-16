@@ -72,7 +72,7 @@ namespace Autokool.Tests.InfraTests
         [TestMethod]
         public void GetByIdTest()
         {
-            var o = repo.GetById(item?.ID) as TDomain;
+            var o = repo.GetById(item.ID) as TDomain;
             areEqualProperties(o.Data, item.Data);
             areEqual(count, dbSet.Count());
         }

@@ -1,6 +1,5 @@
 ﻿using Autokool.Aids.Constants;
 using Autokool.Data.Common;
-using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Domain.DrivingSchool.Repos;
 using Autokool.Pages.Autokool.Base;
 using Microsoft.AspNetCore.Authorization;

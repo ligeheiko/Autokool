@@ -27,6 +27,12 @@ namespace Autokool.Tests.InfraTests
             _userManager = MockHelpers.TestUserManager(userStore);
             roleManager = MockHelpers.TestRoleManager(roleStore);
         }
+        [TestCleanup]
+        public override void TestCleanup()
+        {
+            _userManager.Dispose();
+            base.TestCleanup();
+        }
         [TestMethod]
         public async Task SeedRolesAsyncTest()
         {

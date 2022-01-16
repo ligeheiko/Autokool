@@ -18,7 +18,6 @@ namespace Autokool.Infra.AutoKool
             d.ValidFrom = DateTime.Now;
             await Update(new Course(d));
         }
-        protected internal override Course toDomainObject(CourseData d)
-    => new Course(d);
+        protected internal override Course toDomainObject(CourseData d) => new (d);
     }
 }

@@ -6,6 +6,7 @@ using Autokool.Tests.InfraTests;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -117,6 +118,7 @@ namespace Autokool.Tests.PagesTests
         {
             var im = new InMemoryApplicationDbContext();
             appDb = im.AppDb;
+            
         }
     }
 }

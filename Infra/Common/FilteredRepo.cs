@@ -8,12 +8,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Autokool.Infra.Common
 {
-
     public abstract class FilteredRepo<TDomain, TData> : SortedRepo<TDomain, TData>, IFiltering
         where TDomain : IUniqueEntity<TData>
         where TData : BaseData, new()
     {
-
         public string SearchString { get; set; }
         public string CurrentFilter { get; set; }
         public string FixedFilter { get; set; }
@@ -29,13 +27,11 @@ namespace Autokool.Infra.Common
 
             return query;
         }
-
         private IQueryable<TData> addFixedFiltering(IQueryable<TData> query)
         {
             var expression = createFixedWhereExpression();
             return expression is null ? query : query.Where(expression);
         }
-
         private Expression<Func<TData, bool>> createFixedWhereExpression()
         {
             if (FixedFilter is null) return null;
@@ -57,7 +53,6 @@ namespace Autokool.Infra.Common
 
             return Expression.Lambda<Func<TData, bool>>(predicate, param);
         }
-
         internal IQueryable<TData> addFiltering(IQueryable<TData> query)
         {
             if (string.IsNullOrEmpty(SearchString)) return query;
@@ -65,11 +60,9 @@ namespace Autokool.Infra.Common
 
             return query.Where(expression);
         }
-
         internal Expression<Func<TData, bool>> createWhereExpression()
         {
             var param = Expression.Parameter(typeof(TData), "s");
-
             Expression predicate = null;
 
             foreach (var p in typeof(TData).GetProperties())
@@ -83,10 +76,7 @@ namespace Autokool.Infra.Common
                 body = Expression.Call(body, "Contains", null, Expression.Constant(SearchString));
                 predicate = predicate is null ? body : Expression.Or(predicate, body);
             }
-
             return predicate is null ? null : Expression.Lambda<Func<TData, bool>>(predicate, param);
         }
-
     }
-
 }

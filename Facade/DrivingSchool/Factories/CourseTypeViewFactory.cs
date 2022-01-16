@@ -7,6 +7,6 @@ namespace Autokool.Facade.DrivingSchool.Factories
 {
     public sealed class CourseTypeViewFactory : AbstractViewFactory<CourseTypeData, CourseType, CourseTypeView>
     {
-        protected internal override CourseType toObject(CourseTypeData d) => new CourseType(d);
+        protected internal override CourseType toObject(CourseTypeData d) => new (d);
     }
 }

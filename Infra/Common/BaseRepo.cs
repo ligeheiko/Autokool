@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Autokool.Aids;
 using Autokool.Data.Common;
 using Autokool.Domain.Common;
-using Autokool.Domain.DrivingSchool.Model;
 using Autokool.Domain.DrivingSchool.Repos;
 using Microsoft.EntityFrameworkCore;
 
@@ -58,7 +57,7 @@ namespace Autokool.Infra.Common
             d = copyData(d);
             db.Attach(d).State = EntityState.Modified;  
             try {
-            await db.SaveChangesAsync();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException) {
             }

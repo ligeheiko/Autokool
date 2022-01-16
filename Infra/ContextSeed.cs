@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using System.Linq;
 using System.Threading.Tasks;
+// ReSharper disable All
 
 namespace Autokool.Infra
 {

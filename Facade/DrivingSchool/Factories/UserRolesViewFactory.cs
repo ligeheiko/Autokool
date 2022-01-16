@@ -7,6 +7,6 @@ namespace Autokool.Facade.DrivingSchool.Factories
 {
     public sealed class UserRolesViewFactory : AbstractViewFactory<UserRolesData, UserRoles, UserRolesView>
     {
-        protected internal override UserRoles toObject(UserRolesData d) => new UserRoles(d);
+        protected internal override UserRoles toObject(UserRolesData d) => new (d);
     }
 }

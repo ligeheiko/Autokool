@@ -11,8 +11,7 @@ namespace Autokool.Infra.AutoKool
         IRegisterExamRepo
     {
         public RegisterExamRepo(ApplicationDbContext c) : base(c, c.RegisterExams) { }
-        protected internal override RegisterExam toDomainObject(RegisterExamData d)
-        => new RegisterExam(d);
+        protected internal override RegisterExam toDomainObject(RegisterExamData d) => new (d);
         public override async Task RegisterDataToUser(RegisterExamData rData, ApplicationUser currentUser, IRegisterExamRepo r, string id)
         {
             rData.ExamID = id;

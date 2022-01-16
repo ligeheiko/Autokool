@@ -19,7 +19,7 @@ namespace Autokool.Tests.InfraTests.AutoKool
             var dt1 = DateTime.Now.AddSeconds(-1);
             await repo.CreateValidFrom(item);
             var dt2 = DateTime.Now.AddSeconds(1);
-            var d = dbSet.Find(item.ID);
+            var d = await dbSet.FindAsync(item.ID);
             areEqualProperties(d, item.Data, nameof(item.Data.ValidFrom));
             isTrue(d.ValidFrom > dt1);
             isTrue(d.ValidFrom < dt2);

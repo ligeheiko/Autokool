@@ -11,8 +11,7 @@ namespace Autokool.Infra.AutoKool
       ITeacherRepo
     {
         public TeacherRepo(ApplicationDbContext c) : base(c, c.Teachers) { }
-        protected internal override Teacher toDomainObject(TeacherData d)
-            => new Teacher(d);
+        protected internal override Teacher toDomainObject(TeacherData d) => new (d);
         public async Task CreateValidFrom(Teacher t)
         {
             var d = t?.Data;

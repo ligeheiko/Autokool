@@ -49,9 +49,7 @@ namespace Autokool.Pages.Autokool.Students
 
             return Redirect(IndexUrl.ToString());
         }
-        public async Task<IActionResult> OnPostRegisterAsync(string id, string sortOrder, string searchString,
-           int pageIndex,
-           string fixedFilter, string fixedValue)
+        public async Task<IActionResult> OnPostRegisterAsync(string id)
         {
             var currentUser = await GetCurrentUserAsync(HttpContext);
             await _registerRepo.RegisterDataToUser(new RegisterExamData(), currentUser, _registerRepo,id);

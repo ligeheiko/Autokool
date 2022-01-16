@@ -11,8 +11,7 @@ namespace Autokool.Infra.AutoKool
       IExamRepo
     {
         public ExamRepo(ApplicationDbContext c) : base(c, c.Exams) { }
-        protected internal override Exam toDomainObject(ExamData d)
-            => new Exam(d);
+        protected internal override Exam toDomainObject(ExamData d) => new (d);
         public async Task Added(Exam e)
         {
             var d = e?.Data;

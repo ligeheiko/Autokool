@@ -1,6 +1,5 @@
 ﻿using Autokool.Domain.Common;
 using Autokool.Domain.DrivingSchool.Repos;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -20,19 +19,16 @@ namespace Autokool.Tests
         public int TotalPages { get; set; }
         public bool HasNextPage { get; set; }
         public bool HasPreviousPage { get; set; }
-        public bool IsRegistered { get; set; }
 
         public async Task Add(TDomainObject obj)
         {
             await Update(obj);
         }
-
         public async Task Delete(string id)
         {
             var item = await Get(id);
             if (item is not null )list.Remove(item);
         }
-
         public async Task<List<TDomainObject>> Get()
         {
             await Task.CompletedTask;
@@ -49,18 +45,15 @@ namespace Autokool.Tests
             }
             return new List<TDomainObject>(l);
         }
-
         public async Task<TDomainObject> Get(string id)
         {
             await Task.CompletedTask;
             return (TDomainObject)GetById(id);
         }
-
         public object GetById(string id)
         {
             return list.Find(x => x.ID == id);
         }
-
         public async Task Update(TDomainObject obj)
         {
             if (obj is not null)

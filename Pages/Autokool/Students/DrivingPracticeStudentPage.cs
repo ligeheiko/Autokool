@@ -56,9 +56,7 @@ namespace Autokool.Pages.Autokool.Students
 
             return Redirect(IndexUrl.ToString());
         }
-        public async Task<IActionResult> OnPostRegisterAsync(string id, string sortOrder, string searchString,
-           int pageIndex,
-           string fixedFilter, string fixedValue)
+        public async Task<IActionResult> OnPostRegisterAsync(string id)
         {
             var currentUser = await GetCurrentUserAsync(HttpContext);
             if (currentUser == null)
@@ -67,7 +65,7 @@ namespace Autokool.Pages.Autokool.Students
             }
             var obj = db.GetById(ItemId);
             var rData = new RegisterDrivingPracticeData();
-            rData.TeacherID = (obj as DrivingPractice).TeacherID;
+            rData.TeacherID = (obj as DrivingPractice)?.TeacherID;
             await _registerRepo.RegisterDataToUser(rData, currentUser, _registerRepo, id);
             return Redirect(IndexUrl.ToString());
         }

@@ -6,11 +6,9 @@ using Autokool.Facade.DrivingSchool.ViewModels;
 using Autokool.Infra;
 using Autokool.Pages.Autokool.Admin;
 using Autokool.Pages.Common;
-using Autokool.Tests.InfraTests;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -26,7 +24,6 @@ namespace Autokool.Tests.PagesTests.Autokool.Admin
         [TestInitialize]
         public override void TestInitialize()
         {
-            
             initInMemoryDatabase();
             count = random(1,5);
             var userStore = new UserStore<ApplicationUser>(appDb);
@@ -40,6 +37,12 @@ namespace Autokool.Tests.PagesTests.Autokool.Admin
                userManager.CreateAsync(random<ApplicationUser>()).ConfigureAwait(true);
             }
         }
+        [TestCleanup]
+        public override void TestCleanup()
+        {
+            appDb.Database.EnsureDeleted();
+            base.TestCleanup();
+        }
         protected override object createObject()
         {
             return new UserRolesAdminPage(userManager, roleManager, MockRepos.UserRolesRepos());
@@ -50,7 +53,7 @@ namespace Autokool.Tests.PagesTests.Autokool.Admin
         [TestMethod]
         public async Task OnGetIndexAsyncTest()
         {
-            areNotEqual(count, page.usersDataList.Count);
+            areNotEqual(count, page.usersDataList?.Count ?? 0);
             areNotEqual(page.SelectedId, id);
             await page.OnGetIndexAsync(sortOrder, id, currentFilter, searchString, pageIndex, fixedFilter, fixedValue);
             areEqual(count, page.usersDataList.Count);
@@ -59,7 +62,7 @@ namespace Autokool.Tests.PagesTests.Autokool.Admin
         [TestMethod]
         public async Task OnGetManageAsyncTest()
         {
-            areEqual(0, page.userRolesList.Count);
+            areEqual(0, page.userRolesList?.Count ?? 0);
             var user = random<ApplicationUser>();
             await userManager.CreateAsync(user);
             await page.OnGetManageAsync(user.Id);

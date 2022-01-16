@@ -9,7 +9,6 @@ namespace Autokool.Infra.AutoKool
         , IManageUserRolesRepo
     {
         public ManageUserRolesRepo(ApplicationDbContext c) : base(c, c.ManageUserRoles) { }
-        protected internal override ManageUserRoles toDomainObject(ManageUserRolesData d)
-        => new ManageUserRoles(d);
+        protected internal override ManageUserRoles toDomainObject(ManageUserRolesData d) => new (d);
     }
 }

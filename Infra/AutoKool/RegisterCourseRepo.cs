@@ -11,8 +11,7 @@ namespace Autokool.Infra.AutoKool
        IRegisterCourseRepo
     {
         public RegisterCourseRepo(ApplicationDbContext c) : base(c, c.RegisterCourses) { }
-        protected internal override RegisterCourse toDomainObject(RegisterCourseData d)
-        => new RegisterCourse(d);
+        protected internal override RegisterCourse toDomainObject(RegisterCourseData d) => new (d);
         public override async Task RegisterDataToUser(RegisterCourseData rData, ApplicationUser currentUser, IRegisterCourseRepo r, string id)
         {
             rData.CourseID = id;

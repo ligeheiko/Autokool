@@ -16,18 +16,13 @@ namespace Autokool.Tests.PagesTests.Autokool.Base
     public class CoursesBasePageTests : CommonPageTests<CoursesAdminPage,ViewPage<CoursesAdminPage, ICourseRepo, Course, CourseView, CourseData>>
     {
         private ICourseTypeRepo courseTypes;
-        private ICourseRepo course;
         [TestInitialize]
         public override void TestInitialize()
         {
-            initInMemoryDatabase();
             base.TestInitialize();
-            page.Item = random<CourseView>();
-            
         }
         protected override object createObject()
         {
-            course = new CourseRepo(appDb);
             courseTypes = addItems<CourseType, CourseTypeData>(MockRepos.CourseTypeRepos(),
                 d => new CourseType(d)) as ICourseTypeRepo;
             return new CoursesAdminPage(MockRepos.CourseRepos(), courseTypes);

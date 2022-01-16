@@ -1,5 +1,4 @@
-﻿using Autokool.Data.Common;
-using Autokool.Pages.Autokool.Base;
+﻿using Autokool.Pages.Autokool.Base;
 using Autokool.Pages.Autokool.Students;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
